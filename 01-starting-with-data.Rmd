@@ -97,4 +97,45 @@ Read more about the `raster` package in R.</a>
 
 There are many types of questions that can be addressed with spatial data.
 
-Let's think about the Harvard Forest site. 
+We're interested in the Harvard Forest site. It's a NEON site that has been monitored for about 40 years. There's a lot of different data available for this site, over time and space.
+
+-- add Harvard forest site link
+
+We would like to create the following outputs to better understand our project.
+- Plots of temperature, precipitation, PAR and daylength over the 2 year time period (metrics which are related to the greening and browning of plants)  compared to NDVI (greenness).
+- Basemaps of her site showing
+- The location of the tower that measured the above variables and imagery showing what the site look like.
+- tree height
+- Topography
+- A time series animation of NDVI for both sites that she can post on her blog.
+
+### File types
+
+We'll be working with raster and vector files that have different sets of measurements.
+
+**Raster data**  
+The raster data we'll be using are Geotiff.
+
+It has the data itself in the grid as well as the coordinate reference system stored in the same file.
+
+You have to access this data with particular tools - you can't look at it like a regular tiff. When you do access it, you can see that the coordinate information is like this:
+
+```
+dimensions  : 1367, 1697, 2319799  (nrow, ncol, ncell)
+resolution  : 1, 1  (x, y)
+extent      : 731453, 733150, 4712471, 4713838  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0
+values      : 0, 1098.62  (min, max)
+```
+
+resources:
+Finding Data
+DataOne - www.dataone.org/find-data
+Government / Federal Agency data:
+www.data.gov/
+www.geoplatform.gov/
+State and local data, such as : www.data.ny.gov/
+ecologicaldata.org
+Finding/reading metadata:
+https://www.fgdc.gov/metadata
+http://geology.usgs.gov/tools/metadata/tools/doc/faq.html
