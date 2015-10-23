@@ -1,21 +1,16 @@
 ---
 layout: post
-title: "Lesson Title Goes here"
-date:   2015-1-26 20:49:52
-authors: "FirstName LastName, FirstName LastName"
-dateCreated:  2014-11-26 20:49:52
-lastModified: 2015-07-23 14:28:52
+title: "Introduction to Spatial and Temporal data"
+date:   2015-10-23
+authors: "Dave Roberts, Kaitlin Stack Whitney, Tracy Teal"
+dateCreated:  2015-10-23
+lastModified: 2015-10-23
 category: time-series-workshop
 tags: [module-1]
 mainTag: GIS-Spatial-Data
-description: "This post explains the fundamental principles, functions and metadata that you need to work with raster data in R."
-code1: 
-image:
-  feature: lidar_GrandMesa.png
-  credit: LiDAR data collected over Grand Mesa, Colorado - National Ecological Observatory Network (NEON)
-  creditlink: http://www.neoninc.org
-permalink: /R/Raster-Data-In-R/
-code1: /R/2015-07-22-Introduction-to-Raster-Data-In-R.R
+description: "This lesson introduces spatial and temporal data."
+code1:
+permalink: /data-lessons/NEON-R-Spatial-Data-Intro/
 comments: true
 
 ---
@@ -31,65 +26,110 @@ comments: true
 </section><!-- /#table-of-contents -->
 
 ##About
-This activity will walk you through the fundamental principles of working 
-with raster data in R.
+This lesson will introduce spatial and temporal data.
 
-**R Skill Level:** Intermediate - you've got the basics of `R` down.
+**Experience required:** No prior experience or knowledge required
 
 <div id="objectives">
 
 <h3>Goals / Objectives</h3>
-After completing this activity, you will know:
+After completing this activity, you will:
 <ol>
-<li>What a raster dataset is and its fundamental attributes.</li>
-<li>How to import rasters into `R` using the raster library.</li>
-<li>How to perform raster calculations in `R`.</li>
+<li>Know the definition of spatial data
+<li>understand that spatial data come in many forms and formats
+<li>understand what the spatial data structure types are - raster and vector
+<li>understand what raster data are
+<li>understand what vector data are
+<li>understand that the data types are implemented differently
+<li>understand that you need special tools to be able to access spatial data
+<li>understand that working with different file types requires different tools
+
+<li>understand that you can have multiple data and file types for a single area
+<li>understand that you can look at datasets individually or in combination
+
+
+<li>understand that there is necessary metadata associated with and/or embedded in the data
+<li>understand that collecting data requires/includes collecting the metadata
+
+<li>understand that there is potentially ancillary data associated with individual elements (like NEON tower data (point), road (line), watershed (polygon))
+
+<li>understand that you also can work with data over time for the same area. You can ask question over time using spatial data. (incl timestamp mention here?)
+
 </ol>
 
 <h3>Things You'll Need To Complete This Lesson</h3>
 
-<h3>R Libraries to Install:</h3>
-<ul>
-<li><strong>raster:</strong> <code> install.packages("raster")</code></li>
-<li><strong>rgdal:</strong> <code> install.packages("rgdal")</code></li>
 
-</ul>
+
+
 <h4>Tools To Install</h4>
 
-Please be sure you have the most current version of `R` and preferably
-R studio to write your code.
 
 
 <h4>Data to Download</h4>
 
-Download the raster and *in situ* collected vegetation structure data:
-<ul>
-<li><a href="http://neonhighered.org/Data/LidarActivity/CHM_InSitu_Data.zip" class="btn btn-success"> DOWNLOAD Sample NEON LiDAR data in Raster Format & Vegetation Sampling Data</a></li>
-<li><a href="{{ site.baseurl }}/data/rasterLayers_tif.zip" class="btn btn-success"> DOWNLOAD NEON imagery data (tiff format) California Domain 17 (D17)</a></li>
-</ul>
-
-<p>The LiDAR and imagery data used to create the rasters in this dataset were 
-collected over the San Joaquin field site located in California (NEON Domain 17) 
-and processed at <a href="http://www.neoninc.org" target="_blank" >NEON </a> 
-headquarters. The entire dataset can be accessed by request from the NEON website.</p>  
 
 <h4>Recommended Pre-Lesson Reading</h4>
-<ul>
-<li>
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/" target="_blank">
-The Relationship Between Raster Resolution, Spatial extent & Number of Pixels - in R</a>
-</li>
-<li>
-<a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the `raster` package in R.</a>
-</li>
-</ul>
+
 </div>
 
-#About Raster Data
-Raster or "gridded" data are data that are saved in pixels. In the spatial world, 
-each pixel represents an area on the Earth's surface. For example in the raster 
-below, each pixel represents a particular land cover class that would be found in 
-that location in the real world. 
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/"> More on 
-rasters here</a>. 
+## About spatial data
+
+Starting exercise:  
+With the person next to you, take just one minute and discuss what you think are examples of spatial data and why.
+
+What are some of the examples you came up with? What makes these
+examples of spatial data?
+
+Spatial data are any data that have geographical coordinates associated with them.
+
+What is a coordinate system?
+Tells you where you are on the surface of the Earth
+To tell you where you are, you need three pieces of information
+- ellipsoid, projection datum
+
+Think about a globe of the earth. It's a 3D ellipsoid. You don't work with globes though, instead we work with maps, 2D representations of the earth or areas of the earth. To move from that 3D to the 2D representation, we need
+to know certain things about how that projection was done.
+
+You need to know what model of the earth you're using, (ellipsoid) how you've created your 2D map from the 3D earth (projection) and what's the central reference  point of the map (datum).
+
+When you're working with spatial data, you want all the maps that you're working with to employ the same coordinate system.
+
+Lattitude and longitude is a coordinate system, because it does tell you where you are on the earth. But, because it's dealing with the 3D earth, it doesn't have a projection. It does have a datum, which is 0 longitude, 0 latitude, where the Prime Meridian and Equator meet.
+
+Another unit system is Northings and Eastings, and this is often used with GPS units. In this coordinate system, the ellipsoid is WGS84 (link to WGS84 and/or a list of types), the projection is Universal Transverse Mercator (UTM) and the datum varies depending on where you are. In the US it's usually NAD83.
+
+If you were at the Washington Monument in Washington DC for example, you would report your Northings and Eastings coordinates as:
+
+XXX m North, YYY m East, UTM Zone 18
+and that says that you're XXX m north and YYY m East of the zero point for Zone 18, which is the lower left of that zone.
+
+Picture of the Washington monument in Zone 18
+
+Once you know all this information, you can convert site location between coordinate systems.
+
+### Types of spatial data
+
+Spatial data is represented in many different ways and file formats. (sarcastic yay!)
+
+
+
+
+
+
+
+Ellipsoid:
+
+
+
+
+The earth is a sphere, so every map that you see is a 2D representation of 3D. So you need to understand how that 2D map is made, and the maps that you work with have some information about how this was done.
+
+
+To compare maps you need to make sure you’re using that same 2D representation of the 3D. That information is represented as its ‘projection, ellipsoid and datum’. We won’t talk specifically about those terms here, but here’s a link to more information.
+
+
+You need these things with maps, because you're
+Example:
+
+- Latitude, longitude
