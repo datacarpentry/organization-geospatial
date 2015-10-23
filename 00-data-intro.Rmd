@@ -110,26 +110,89 @@ Once you know all this information, you can convert site location between coordi
 
 ### Types of spatial data
 
-Spatial data is represented in many different ways and file formats. (sarcastic yay!)
+Spatial data is represented in many different ways and file formats. This is often because there are different scales or measuring devices or people just
+like one or the other. It can seem a little overwhelming, but these data types will generally conform to standards.
 
+There are two broad categories of spatial data - raster and vector.
 
+**Raster**  
 
+- In a grid
+- In rows and columns
+- Every spot in the grid has a value - spatially extensive  
+- Every grid represents a single variable - it's just measuring one thing, like elevation would be one file and soil temperature would be another file.
+- The resolution or grid cell size can be different sizes between files
 
+--- Picture of raster grid sizes
 
+Maybe the Harvard forest DVM
 
+**Vector**
 
-Ellipsoid:
+- points, lines or polygons
+- not spatially extensive
+- used if you want to measure particular features in an area
+- examples, a point is a tower, a line is a transect, river or road and a polygon is a water shed
+- you can have more than one measured variable for each element
 
+--- picture of vector data
 
+Each of these has different file types. There are a lot of file types within each category, but particular file types are associated with a particular data type.
 
+-- Link to file types page.
 
-The earth is a sphere, so every map that you see is a 2D representation of 3D. So you need to understand how that 2D map is made, and the maps that you work with have some information about how this was done.
+If you're interested in a particular area, you can combine information or overlay data from both of these types.
 
+For instance we can combine the Harvard forest land cover map (raster) and the boundary of the forest (vector data) and the tower.
 
-To compare maps you need to make sure you’re using that same 2D representation of the 3D. That information is represented as its ‘projection, ellipsoid and datum’. We won’t talk specifically about those terms here, but here’s a link to more information.
+We're going to focus on two common examples, one for raster and one for vector, in this workshop.
 
+You need special tools to be able to open, read and manipulate these files. We will be using R in this workshop. There's also a lot of other options including things like ArcGIS and Q-GIS and GRASS.
 
-You need these things with maps, because you're
-Example:
+--- Maybe link to other tools
 
-- Latitude, longitude
+### Metadata
+
+With spatial data there is information that's necessary to understand it, but usually isn't included in the file.  This is the metadata. Data about the data.
+
+Use a file type. Show the raster of Harvard forest. Ask, what can you say
+about this data?
+
+What would you want/need to know about this data to be able to answer questions using this data?
+
+- where is this?
+- what coordinate system?
+- date?
+- time?
+- instrument?
+- what's being measured?
+- what units?
+
+With this file type as is, can you figure any of these things out?
+
+No, you can't figure this out. You need the data about the data. This is the metadata. This information is sometimes embedded in the file (we'll talk about this) or a separate file that contains this information. Sometimes it's in the download directory, but other times, it's just listed on a web site or in another directory and you need to seek it out.
+
+-- show cropland data layer as an example of a data repository that has the metadata on its web site, not when you download it
+
+Metadata comes in many formats, but generally is a text file like txt, CSV or XML.
+
+### Ancillary data
+
+Each element in the file can have more data associated with it. This can be things like a measured time series for an individual point or vector.
+
+This is often things like CSV files. They don't have a spatial element. You have to attach that data to the spatial data information.
+
+There also can be raster or vector data for the same area over time.
+
+All these different data types and series can be combined or compared.
+
+### Resources:
+more on coordinate systems:
+- http://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/coordinate_reference_systems.html
+- http://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/coordinate_reference_systems.html#coordinate-reference-system-crs-in-detail
+
+more on file types:
+- https://en.wikipedia.org/wiki/GIS_file_formats
+lists of tools (many open source) to work with spatial data:
+- https://en.wikipedia.org/wiki/List_of_geographic_information_systems_software
+- https://en.wikipedia.org/wiki/List_of_spatial_analysis_software
