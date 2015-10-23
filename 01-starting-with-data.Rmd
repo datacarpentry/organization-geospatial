@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lesson Title Goes here"
+title: "Starting with Data"
 date:   2015-1-26 20:49:52
 authors: "FirstName LastName, FirstName LastName"
 dateCreated:  2014-11-26 20:49:52
@@ -9,7 +9,7 @@ category: time-series-workshop
 tags: [module-1]
 mainTag: GIS-Spatial-Data
 description: "This post explains the fundamental principles, functions and metadata that you need to work with raster data in R."
-code1: 
+code1:
 image:
   feature: lidar_GrandMesa.png
   credit: LiDAR data collected over Grand Mesa, Colorado - National Ecological Observatory Network (NEON)
@@ -31,7 +31,7 @@ comments: true
 </section><!-- /#table-of-contents -->
 
 ##About
-This activity will walk you through the fundamental principles of working 
+This activity will walk you through the fundamental principles of working
 with raster data in R.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
@@ -41,9 +41,16 @@ with raster data in R.
 <h3>Goals / Objectives</h3>
 After completing this activity, you will know:
 <ol>
-<li>What a raster dataset is and its fundamental attributes.</li>
-<li>How to import rasters into `R` using the raster library.</li>
-<li>How to perform raster calculations in `R`.</li>
+Understand the types of questions we’re going to be focusing on
+Know about the site we’re looking at- introduce Harvard Forest site
+Understand what file types we’ll be working with
+Understand the Geotiff format
+Understand shp files
+Understand dbf files - exchange format for vector files
+csv files
+Understand what metadata are
+Understand that spatial data are generally available on web sites via some download protocol
+Understand that metadata come in many forms and you have to capture them
 </ol>
 
 <h3>Things You'll Need To Complete This Lesson</h3>
@@ -68,9 +75,9 @@ Download the raster and *in situ* collected vegetation structure data:
 <li><a href="{{ site.baseurl }}/data/rasterLayers_tif.zip" class="btn btn-success"> DOWNLOAD NEON imagery data (tiff format) California Domain 17 (D17)</a></li>
 </ul>
 
-<p>The LiDAR and imagery data used to create the rasters in this dataset were 
-collected over the San Joaquin field site located in California (NEON Domain 17) 
-and processed at <a href="http://www.neoninc.org" target="_blank" >NEON </a> 
+<p>The LiDAR and imagery data used to create the rasters in this dataset were
+collected over the San Joaquin field site located in California (NEON Domain 17)
+and processed at <a href="http://www.neoninc.org" target="_blank" >NEON </a>
 headquarters. The entire dataset can be accessed by request from the NEON website.</p>  
 
 <h4>Recommended Pre-Lesson Reading</h4>
@@ -86,10 +93,8 @@ Read more about the `raster` package in R.</a>
 </ul>
 </div>
 
-#About Raster Data
-Raster or "gridded" data are data that are saved in pixels. In the spatial world, 
-each pixel represents an area on the Earth's surface. For example in the raster 
-below, each pixel represents a particular land cover class that would be found in 
-that location in the real world. 
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/"> More on 
-rasters here</a>. 
+## Questions to ask of spatial data
+
+There are many types of questions that can be addressed with spatial data.
+
+Let's think about the Harvard Forest site. 
