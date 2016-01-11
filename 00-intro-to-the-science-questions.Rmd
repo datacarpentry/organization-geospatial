@@ -1,0 +1,119 @@
+---
+layout: post
+title: "Lesson 00: Introduction to The Science Question -- Plant Phenology"
+date:   2015-10-30
+authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+contributors: [ ]
+dateCreated: 2015-10-23
+lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+packagesLibraries: [ ]
+category: [self-paced-tutorial] 
+tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+mainTag: spatial-data-management-series
+description: "Add description here."
+code1: CodeTitleSameAsFileName.R
+image:
+  feature: NEONCarpentryHeader_2.png
+  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
+  creditlink: http://www.neoninc.org
+permalink: R/EditLink
+comments: false
+---
+
+{% include _toc.html %}
+
+##About
+Add description.
+
+**R Skill Level:** Intermediate - you've got the basics of `R` down.
+
+<div id="objectives" markdown="1">
+
+#Goals / Objectives
+
+After completing this activity, you will:
+
+* 
+
+
+##Things You’ll Need To Complete This Lesson
+To complete this lesson: you will need the most current version of R, and 
+preferably RStudio, loaded on your computer.
+
+###Install R Packages
+
+* **NAME:** `install.packages("NAME")`
+
+* [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
+
+###Download Data
+EDIT AS NEEDED
+{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
+****
+
+{% include/_greyBox-wd-rscript.html %}
+
+**Raster Lesson Series:** This lesson is part of a lesson series introducing
+[spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
+It is also part of a larger 
+[spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
+that includes working with  
+[raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
+[vector data in `R` ]({{ site.baseurl }}tutorial/spatial-vector-series)
+and  
+[tabular time series in `R` ]({{ site.baseurl }}tutorial/tabular-time-series).
+
+****
+
+###Additional Resources
+
+* <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
+Read more about the `raster` package in `R`.</a>
+* <a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank" >
+NEON Data Skills: Raster Data in R - The Basics</a>
+* <a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank" >
+NEON Data Skills: Image Raster Data in R - An Intro</a>
+
+</div>
+
+
+## nice overview graphic of the research topic, question and data needed to begin to address the question.
+
+##Comparing across sites to see patterns.
+
+## Thinking spatially
+Challenge: 
+* What makes data spatial? 
+* What are examples of spatial data?  Why is dataset you come up with a spatial data set?
+
+```{r what-spatial-data, echo=FALSE}
+#Spatial data are any data that have geographical coordinates associated with them.
+
+```
+
+## Questions to ask of spatial data
+
+There are many types of questions that can be addressed with spatial data.
+
+We're interested in the Harvard Forest site. It's a NEON site that has been monitored for about 40 years. There's a lot of different data available for this site, over time and space.
+
+-- add Harvard forest site link
+
+We would like to create the following outputs to better understand our project.
+- Plots of temperature, precipitation, PAR and daylength over the 2 year time period (metrics which are related to the greening and browning of plants)  compared to NDVI (greenness).
+- Basemaps of her site showing
+- The location of the tower that measured the above variables and imagery showing what the site look like.
+- tree height
+- Topography
+- A time series animation of NDVI for both sites that she can post on her blog.
+
+##overview of the data (format overview) used in the workshop with link to the spatial data formats page
+
+###Landsat
+
+###Met Data (Fisher Tower)
+
+###AOP data
+
+
