@@ -68,26 +68,69 @@ and
 
 ###Additional Resources
 
-* <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the `raster` package in `R`.</a>
-* <a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Raster Data in R - The Basics</a>
-* <a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Image Raster Data in R - An Intro</a>
+* Wikipedia article on 
+<a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
+GIS file formats.</a>
+
+
 
 </div>
 
+### Types of spatial data
+
+Spatial data is represented in many different ways and file formats. This is often because there are different scales or measuring devices or people just
+like one or the other. It can seem a little overwhelming, but these data types will generally conform to standards.
+
+There are two broad categories of spatial data - raster and vector.
+
 
 ##Vector - Point, Line Polygon
+- points, lines or polygons
+- not spatially extensive
+- used if you want to measure particular features in an area
+- examples, a point is a tower, a line is a transect, river or road and a polygon is a water shed
+- you can have more than one measured variable for each element
 
+--- picture of vector data
+
+Each of these has different file types. There are a lot of file types within each category, but particular file types are associated with a particular data type.
+
+-- Link to file types page.
 ###Shapefile vs text file (points focused)
 
 ###Attributes
 
 ##Raster 
+- In a grid
+- In rows and columns
+- Every spot in the grid has a value - spatially extensive  
+- Every grid represents a single variable - it's just measuring one thing, like elevation would be one file and soil temperature would be another file.
+- The resolution or grid cell size can be different sizes between files
+
+--- Picture of raster grid sizes
+
+Maybe the Harvard forest DVM
 
 ###GeoTIFF
+The raster data we'll be using are GeoTIFF.
 
+It has the data itself in the grid as well as the coordinate reference system stored in the same file.
+
+You have to access this data with particular tools - you can't look at it like a regular tiff. When you do access it, you can see that the coordinate information is like this:
+
+```
+dimensions  : 1367, 1697, 2319799  (nrow, ncol, ncell)
+resolution  : 1, 1  (x, y)
+extent      : 731453, 733150, 4712471, 4713838  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0
+values      : 0, 1098.62  (min, max)
+```
 ###brief list of other raster formats not covered in these lessons
 
+If you're interested in a particular area, you can combine information or overlay data from both of these types.
 
+For instance we can combine the Harvard forest land cover map (raster) and the boundary of the forest (vector data) and the tower.
+
+We're going to focus on two common examples, one for raster and one for vector, in this workshop.
+
+You need special tools to be able to open, read and manipulate these files. We will be using R in this workshop. There's also a lot of other options including things like ArcGIS and Q-GIS and GRASS.

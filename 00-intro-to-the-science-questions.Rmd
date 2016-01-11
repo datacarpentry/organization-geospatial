@@ -82,6 +82,32 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 ##Comparing across sites to see patterns.
 
+## Thinking spatially
+Challenge: 
+* What makes data spatial? 
+* What are examples of spatial data?  Why is dataset you come up with a spatial data set?
+
+```{r what-spatial-data, echo=FALSE}
+#Spatial data are any data that have geographical coordinates associated with them.
+
+```
+
+## Questions to ask of spatial data
+
+There are many types of questions that can be addressed with spatial data.
+
+We're interested in the Harvard Forest site. It's a NEON site that has been monitored for about 40 years. There's a lot of different data available for this site, over time and space.
+
+-- add Harvard forest site link
+
+We would like to create the following outputs to better understand our project.
+- Plots of temperature, precipitation, PAR and daylength over the 2 year time period (metrics which are related to the greening and browning of plants)  compared to NDVI (greenness).
+- Basemaps of her site showing
+- The location of the tower that measured the above variables and imagery showing what the site look like.
+- tree height
+- Topography
+- A time series animation of NDVI for both sites that she can post on her blog.
+
 ##overview of the data (format overview) used in the workshop with link to the spatial data formats page
 
 ###Landsat
