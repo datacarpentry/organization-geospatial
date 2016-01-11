@@ -2,7 +2,7 @@
 layout: post
 title: "Lesson xx: Template YAML for Spatial Data & Data Management Intro Lessons"
 date:   2015-10-30
-authors: [Dave, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`

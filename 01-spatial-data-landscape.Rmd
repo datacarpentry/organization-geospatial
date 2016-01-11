@@ -67,13 +67,9 @@ and
 ****
 
 ###Additional Resources
-
-* <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the `raster` package in `R`.</a>
-* <a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Raster Data in R - The Basics</a>
-* <a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Image Raster Data in R - An Intro</a>
+For a list of tools to work with spatial data, visit:
+* Wikipedia's <a href="http://en.wikipedia.org/wiki/List_of_geographic_information_systems_software" target="_blank" GIS software page. >
+* Wikipedia's <a href="http://en.wikipedia.org/wiki/List_of_spatial_analysis_software" target="_blank" spatial analysis software page. >
 
 </div>
 

@@ -69,15 +69,43 @@ and
 ###Additional Resources
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the `raster` package in `R`.</a>
-* <a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Raster Data in R - The Basics</a>
-* <a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank" >
-NEON Data Skills: Image Raster Data in R - An Intro</a>
+
 
 </div>
 
 ##What is it?
+With spatial data there is information that's necessary to understand it, but usually isn't included in the file.  This is the metadata. Data about the data.
+
+Use a file type. Show the raster of Harvard forest. Ask, what can you say
+about this data?
+
+What would you want/need to know about this data to be able to answer questions using this data?
+
+- where is this?
+- what coordinate system?
+- date?
+- time?
+- instrument?
+- what's being measured?
+- what units?
+
+With this file type as is, can you figure any of these things out?
+
+No, you can't figure this out. You need the data about the data. This is the metadata. This information is sometimes embedded in the file (we'll talk about this) or a separate file that contains this information. Sometimes it's in the download directory, but other times, it's just listed on a web site or in another directory and you need to seek it out.
+
+-- show cropland data layer as an example of a data repository that has the metadata on its web site, not when you download it
+
+Metadata comes in many formats, but generally is a text file like txt, CSV or XML.
+
+ Ancillary data
+
+Each element in the file can have more data associated with it. This can be things like a measured time series for an individual point or vector.
+
+This is often things like CSV files. They don't have a spatial element. You have to attach that data to the spatial data information.
+
+There also can be raster or vector data for the same area over time.
+
+All these different data types and series can be combined or compared.
 
 ##Where to find it? 
 
