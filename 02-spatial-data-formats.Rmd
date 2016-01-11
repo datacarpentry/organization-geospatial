@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
 code1: CodeTitleSameAsFileName.R
@@ -33,7 +33,13 @@ Add description.
 
 After completing this activity, you will:
 
-* 
+* Understand that spatial data come in many forms and formats.
+* Be able to differentiate between vector and raster spatial data formats.
+* Understand that vector and raster spatial data types are implemented
+differently. 
+* Understand that different spatial data require different file types. 
+* Understand that different file types require different tools to work with them.
+* Understand that multiple data and file types can exist for a single location.
 
 
 ##Things You’ll Need To Complete This Lesson

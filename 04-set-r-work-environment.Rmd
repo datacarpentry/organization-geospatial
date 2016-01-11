@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
 code1: CodeTitleSameAsFileName.R
@@ -34,7 +34,8 @@ Add description.
 After completing this activity, you will:
 
 * 
-
+* Understand that different spatial data types & associated file types require
+different tools to work with them. 
 
 ##Things You’ll Need To Complete This Lesson
 To complete this lesson: you will need the most current version of R, and 

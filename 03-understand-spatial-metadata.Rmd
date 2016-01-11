@@ -33,7 +33,10 @@ Add description.
 
 After completing this activity, you will:
 
-* 
+* Understand that there are necessary spatial metadata associated with and/or
+embedded in the data
+* Understand that there is potentially ancillary data associated with individual
+elements in vector data files (like NEON tower data (point), road (line), watershed (polygon)).
 
 
 ##Things You’ll Need To Complete This Lesson

@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data]
 mainTag: spatial-data-management-series
 description: "Add description here."
 code1: CodeTitleSameAsFileName.R
@@ -33,7 +33,11 @@ Add description.
 
 After completing this activity, you will:
 
-* 
+* Know the defintion of spatial data.
+* understand that one can work with data from different time points for the same area (e.g., you can ask question over time using spatial data.)
+* understand that one can work with data from different site to compare areas.
+* Know how scientific questions can help in selection of a field site. (->why use HAVR / SJER & introduce both.) 
+
 
 
 ##Things You’ll Need To Complete This Lesson
@@ -77,10 +81,15 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 </div>
 
+<figure>
+	<a href="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view">
+	<img src="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view"></a>
+	<figcaption> A nice overview graphic of the research topic, question and data needed to begin to address the question. ACTUAL GRAPHIC IN CONSTRUCTION
+	Source: National Ecological Observatory Network (NEON)  
+	</figcaption>
+</figure>
 
-## nice overview graphic of the research topic, question and data needed to begin to address the question.
-
-##Comparing across sites to see patterns.
+##
 
 ## Thinking spatially
 Challenge: 
@@ -108,7 +117,17 @@ We would like to create the following outputs to better understand our project.
 - Topography
 - A time series animation of NDVI for both sites that she can post on her blog.
 
-##overview of the data (format overview) used in the workshop with link to the spatial data formats page
+
+##Comparing across sites to see patterns.
+##Compare across time points to see patterns. 
+
+##Overview of Scientific Concepts
+###Phenology
+###NDVI
+###PAR 
+
+
+##Overview of the data (format overview) used in the workshop with link to the spatial data formats page
 
 ###Landsat
 
