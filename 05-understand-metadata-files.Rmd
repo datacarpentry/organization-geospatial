@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, metadata-eml, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
 code1: CodeTitleSameAsFileName.R
@@ -33,7 +33,13 @@ Add description.
 
 After completing this activity, you will:
 
-* 
+* Understand that metadata come in many formats and must be maintained with the
+data. 
+* Understand that there is necessary metadata associated with and/or embedded in
+the data.
+* Understand that collecting data requires/includes collecting the metadata.
+* Be able to create metadata files for different data types. 
+
 
 
 ##Things You’ll Need To Complete This Lesson
