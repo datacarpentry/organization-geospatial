@@ -138,6 +138,14 @@ represents the continuous range of values in the data from around 300 to 420
 meters.
 
 
+    ## Loading required package: sp
+    ## rgdal: version: 1.0-4, (SVN revision 548)
+    ##  Geospatial Data Abstraction Library extensions to R successfully loaded
+    ##  Loaded GDAL runtime: GDAL 1.11.2, released 2015/02/10
+    ##  Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/gdal
+    ##  Loaded PROJ.4 runtime: Rel. 4.9.1, 04 March 2015, [PJ_VERSION: 491]
+    ##  Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/proj
+    ##  Linking to sp version: 1.1-1
 
 
 ![ ]({{ site.baseurl }}/images/rfigs/02-spatial-data-formats/elevation-map-1.png) 
