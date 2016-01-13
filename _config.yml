@@ -1,14 +1,14 @@
-title: 	NEON Tabular Time Series Lessons
+title: 	NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices
 description: 	Hackathon held October 21-23 in Boulder, CO at NEON headquarters.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:      http://data-lessons.github.io/NEON-R-Tabular-Time-Series/
-baseurl:   http://data-lessons.github.io/NEON-R-Tabular-Time-Series/
+#url:      http://data-lessons.github.io/NEON-R-Spatio-Temporal-Data-and-Management-Intro/
+#baseurl:   http://data-lessons.github.io/NEON-R-Spatio-Temporal-Data-and-Management-Intro/
 
 #use this when working locally
 #just uncomment the first localhost.
-#url: http://localhost:4000
+url: http://localhost:4000
 #baseurl: http://localhost:4000
 
 #we might not need comments here???
@@ -21,7 +21,7 @@ owner:
   name: NEON / Data Carpentry Hackathon
   avatar: profilePic.png
   bio: "Devoted to open data and open source in science and education."
-  email: "lwasser@neoninc.org"
+  email: "NEONDataSkills@neoninc.org"
 #  twitter: "leahawasser"
   github: "data-lessons"
 #  youtube: " "

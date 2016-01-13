@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lesson 02: Spatial Data Formats -- Vector & Raster"
+title: "Lesson 02: Spatial Data Formats -- Vector & Raster Data Management"
 date:   2015-10-28
 authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
 contributors: [ ]
@@ -11,12 +11,12 @@ category: [self-paced-tutorial]
 tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
-code1: CodeTitleSameAsFileName.R
+code1: 02-spatial-data-formats.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: http://www.neoninc.org
-permalink: R/EditLink
+permalink: R/spatial-data-formats
 comments: false
 ---
 
@@ -78,17 +78,15 @@ and
 <a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
 GIS file formats.</a>
 
-
-
 </div>
 
-### Types of spatial data
-
-Spatial data is represented in many different ways and file formats. This is often because there are different scales or measuring devices or people just
-like one or the other. It can seem a little overwhelming, but these data types will generally conform to standards.
+##Types of spatial data
+Spatial data is represented in many different ways and file formats. This is 
+often because there are different scales or measuring devices or people just
+like one or the other. It can seem a little overwhelming, but these data types
+will generally conform to standards.
 
 There are two broad categories of spatial data - raster and vector.
-
 
 ##Vector - Point, Line Polygon
 - points, lines or polygons
@@ -102,41 +100,104 @@ There are two broad categories of spatial data - raster and vector.
 Each of these has different file types. There are a lot of file types within each category, but particular file types are associated with a particular data type.
 
 -- Link to file types page.
+
+###The Structure of a Shapefile
+
+#####DBF files / attributes
+
+#####Multiple files associated with a  shapefile
+
 ###Shapefile vs text file (points focused)
 
-###Attributes
+##Raster Data
+Raster or "gridded" data are saved on a regular grid which is rendered on a map
+as pixels. Each pixel contains a value that represents an area on the Earth's 
+surface.
 
-##Raster 
-- In a grid
-- In rows and columns
-- Every spot in the grid has a value - spatially extensive  
-- Every grid represents a single variable - it's just measuring one thing, like elevation would be one file and soil temperature would be another file.
-- The resolution or grid cell size can be different sizes between files
+<figure>
+    <a href="{{site.baseurl}}/images/raster_timeseries/raster_concept.png">
+    <img src="{{site.baseurl}}/images/raster_timeseries/raster_concept.png">
+    </a>
+    <figcaption> Source: National Ecological Observatory Network (NEON)
+    </figcaption>
+</figure>
 
---- Picture of raster grid sizes
+###Types of Data Stored in Raster Format
+Raster data can be continuous or categorical. Continuous rasters can have a 
+range of quantitative values. Some examples of continuous rasters include:
 
-Maybe the Harvard forest DVM
+1. Precipitation maps.
+2. Maps of tree height derived from LiDAR data.
+3. Elevation values for a region. 
+
+A map of elevation for Harvard Forest derived from the  
+<a href="http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> 
+NEON AOP LiDAR sensor</a> 
+is below. Notice that elevation is a continuous numeric variable. The legend
+represents the continuous range of values in the data from around 300 to 420
+meters.
+
+```{r load-libraries-1, results='hide', echo=FALSE}
+
+library(raster)
+library(rgdal)
+
+```
+
+
+```{r elevation-map, echo=FALSE}
+#render DSM for lesson content background
+DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+# code output here - DEM rendered on the screen
+plot(DSM_HARV, main="Continuous Elevation Map\n NEON Harvard Forest Field Site")
+
+```
+
+Some rasters contain categorical data. Thus each pixel represents a discrete
+class such as a landcover type ("forest") rather than a continuous value such as
+elevation or temperature. Some examples of classified maps include:
+
+1. Landcover / landuse maps.
+2. Tree height maps classified short, medium, tall trees.
+3. Elevation maps classified low, medium and high elevation.
+
+####Categorical Landcover Map for the United States 
+<figure>
+    <a href="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif ">
+    <img src="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif">
+    </a>
+    <figcaption> Map of the United States showing landcover as categorical data.
+    Each color is a different landcover category.  Source: 
+    <a href="http://www.mrlc.gov/nlcd06_data.php" target="_blank">
+    Multi-Resolution Land Characteristics Consortium, USGS</a> 
+    </figcaption>
+</figure>
 
 ###GeoTIFF
-The raster data we'll be using are GeoTIFF.
+The raster data that we will be using are GeoTIFFs. But what is that? Basically 
+a GeoTIFF has the data stored as the grid as well additional information about
+the data stored in the same file.
 
-It has the data itself in the grid as well as the coordinate reference system stored in the same file.
+The GeoTIFF format which has the extension `.tif`. A `.tif` file stores metadata
+or attributes about the file as embedded `tif tags`. For instance, your camera
+might store a tag that describes the make and model of the camera or the date 
+the photo was taken when it saves a `.tif`. A GeoTIFF is a standard `.tif` image
+format with additional spatial (georeferencing) information embedded in the file
+as tags. These tags can include the following raster metadata:
 
-You have to access this data with particular tools - you can't look at it like a regular tiff. When you do access it, you can see that the coordinate information is like this:
+1. A Coordinate Reference System (`CRS`)
+2. Spatial Extent (`extent`)
+3. Values for when no data is provided (`NoData Value`)
+4. The `resolution` of the data
 
-```
-dimensions  : 1367, 1697, 2319799  (nrow, ncol, ncell)
-resolution  : 1, 1  (x, y)
-extent      : 731453, 733150, 4712471, 4713838  (xmin, xmax, ymin, ymax)
-coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0
-values      : 0, 1098.62  (min, max)
-```
-###brief list of other raster formats not covered in these lessons
+###Other Raster Formats
+* .asc (txt format)
+* HDF5 -> link to NEON Data Skills lessons
+* ArcGIS grid
 
-If you're interested in a particular area, you can combine information or overlay data from both of these types.
-
-For instance we can combine the Harvard forest land cover map (raster) and the boundary of the forest (vector data) and the tower.
-
-We're going to focus on two common examples, one for raster and one for vector, in this workshop.
-
-You need special tools to be able to open, read and manipulate these files. We will be using R in this workshop. There's also a lot of other options including things like ArcGIS and Q-GIS and GRASS.
+##Raster and Vector Data Together
+If you're interested in a particular area, you can combine information or
+layer data from both of these types. For instance we can combine the Harvard
+Forest land cover map (raster) and the boundary of the study site (a vector
+polygon) and the tower location (a vector point).
