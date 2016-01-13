@@ -5,7 +5,7 @@ date:   2015-10-28
 authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-12
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, informatics]
@@ -137,22 +137,10 @@ is below. Notice that elevation is a continuous numeric variable. The legend
 represents the continuous range of values in the data from around 300 to 420
 meters.
 
-```{r load-libraries-1, results='hide', echo=FALSE}
-
-library(raster)
-library(rgdal)
-
-```
 
 
-```{r elevation-map, echo=FALSE}
-#render DSM for lesson content background
-DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
-# code output here - DEM rendered on the screen
-plot(DSM_HARV, main="Continuous Elevation Map\n NEON Harvard Forest Field Site")
-
-```
+![ ]({{ site.baseurl }}/images/rfigs/02-spatial-data-formats/elevation-map-1.png) 
 
 Some rasters contain categorical data. Thus each pixel represents a discrete
 class such as a landcover type ("forest") rather than a continuous value such as

@@ -1,22 +1,22 @@
 ---
 layout: post
-title: "Lesson 00: Introduction to The Science Question -- Plant Phenology"
-date:   2015-10-30
-authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+title: "Lesson 05: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
+date:   2015-10-25
+authors: [Megan A. Jones, Leah Wasser, Dave Roberts, Tracy Teal, Kaitlin Stack Whitney]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-12
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
-code1: CodeTitleSameAsFileName.R
+code1: set-r-work-environment.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: http://www.neoninc.org
-permalink: R/EditLink
+permalink: R/spatio-temporal-R-packages
 comments: false
 ---
 
@@ -34,7 +34,8 @@ Add description.
 After completing this activity, you will:
 
 * 
-
+* Understand that different spatial data types & associated file types require
+different tools to work with them. 
 
 ##Things You’ll Need To Complete This Lesson
 To complete this lesson: you will need the most current version of R, and 
@@ -77,43 +78,12 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 </div>
 
+##raster
 
-## nice overview graphic of the research topic, question and data needed to begin to address the question.
+##rgdal
 
-##Comparing across sites to see patterns.
+##rastervis - time series plotting
 
-## Thinking spatially
-Challenge: 
-* What makes data spatial? 
-* What are examples of spatial data?  Why is dataset you come up with a spatial data set?
-
-```{r what-spatial-data, echo=FALSE}
-#Spatial data are any data that have geographical coordinates associated with them.
-
-```
-
-## Questions to ask of spatial data
-
-There are many types of questions that can be addressed with spatial data.
-
-We're interested in the Harvard Forest site. It's a NEON site that has been monitored for about 40 years. There's a lot of different data available for this site, over time and space.
-
--- add Harvard forest site link
-
-We would like to create the following outputs to better understand our project.
-- Plots of temperature, precipitation, PAR and daylength over the 2 year time period (metrics which are related to the greening and browning of plants)  compared to NDVI (greenness).
-- Basemaps of her site showing
-- The location of the tower that measured the above variables and imagery showing what the site look like.
-- tree height
-- Topography
-- A time series animation of NDVI for both sites that she can post on her blog.
-
-##overview of the data (format overview) used in the workshop with link to the spatial data formats page
-
-###Landsat
-
-###Met Data (Fisher Tower)
-
-###AOP data
+##Set up working directory - <<link to working directory page??> 
 
 
