@@ -8,15 +8,15 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
-code1: CodeTitleSameAsFileName.R
+code1: 01-spatial-data-landscape.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: http://www.neoninc.org
-permalink: R/EditLink
+permalink: R/spatial-data-landscape
 comments: false
 ---
 
@@ -33,7 +33,7 @@ Add description.
 
 After completing this activity, you will:
 
-* 
+* Be aware of a variety of tools that can be used to access spatial data. 
 
 
 ##Things You’ll Need To Complete This Lesson
@@ -47,8 +47,7 @@ preferably RStudio, loaded on your computer.
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
 ###Download Data
-EDIT AS NEEDED
-{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
 
 ****
 
@@ -92,8 +91,25 @@ For a list of tools to work with spatial data, visit:
 
 ###Benefits: Reproducible workflows, more easily documented (inline comments, etc)
 
-##Overview of spatial data formats -- essentially one line about this with a link to the spatial data formats page.
+##Overview of commonly found spatial data formats -- essentially one line about this with a link to the spatial data formats page.
 
-##Packages specific to R - with link to the setting up your work environment page >>  Move to L04: Set Up a Spatial Working Evironment in R: R Packages for Spatial Data
+###Shapefiles (.shp, dbf, etc - group of files )
+
+###Geodatabases (.gdb, ??)
+
+###Csv’s (.csv)
+
+###text files: rasters (.asc) -- essentially one line about this with a link to the spatial data formats page.
+
+###Online: geojson,
+
+##Packages specific to R - with link to the setting up your work environment page
+
+###Raster
+
+###RGDAL
+
+###RasterVis
+
 
 

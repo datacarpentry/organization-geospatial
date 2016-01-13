@@ -1,17 +1,17 @@
 ---
 layout: post
 title: "Lesson 06: Cleaning Data -- Missing and Bad Data Values"
-date:   2015-10-30
+date:   2015-10-24
 authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
 description: "Add description here."
-code1: CodeTitleSameAsFileName.R
+code1: 06-clean-data-bad-and-missing-values.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
@@ -77,7 +77,7 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 </div>
 
-**We can cover cleaning data for both Rasters, AND time series
+###Clean data for both Raster, Vector, and Time Series Data
 
 ##NoData Values (NA, NAN)
 

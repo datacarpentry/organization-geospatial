@@ -1,9 +1,9 @@
 ---
 layout: workshop
-title: "Self-paced Tutorial: Introduction to Spatial Data and Data Management Series"
+title: "Self-paced Tutorial Series: Intro to Spatio-temporal Data and Data Management Best Practices"
 estimatedTime: 3.0 Hours
 packagesLibraries: []
-date:   2016-01-11
+date:   2015-10-31
 dateCreated:   2016-01-11
 lastModified: 2016-01-11
 authors: [ Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
