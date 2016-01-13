@@ -43,8 +43,8 @@ differently.
 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -53,8 +53,7 @@ preferably RStudio, loaded on your computer.
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
 ###Download Data
-EDIT AS NEEDED
-{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
 
 ****
 
@@ -105,7 +104,7 @@ Each of these has different file types. There are a lot of file types within eac
 
 #####DBF files / attributes
 
-#####Multiple files associated with a  shapefile
+#####Multiple files associated with a shapefile
 
 ###Shapefile vs text file (points focused)
 
@@ -145,7 +144,7 @@ library(rgdal)
 ```
 
 
-```{r elevation-map, echo=FALSE}
+```{r elevation-map, include=TRUE, results="hide", echo=FALSE}}
 #render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
@@ -197,7 +196,7 @@ as tags. These tags can include the following raster metadata:
 * ArcGIS grid
 
 ##Raster and Vector Data Together
-If you're interested in a particular area, you can combine information or
+If we are interested in a particular area, we can combine information or
 layer data from both of these types. For instance we can combine the Harvard
 Forest land cover map (raster) and the boundary of the study site (a vector
 polygon) and the tower location (a vector point).
