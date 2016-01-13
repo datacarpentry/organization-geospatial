@@ -5,7 +5,7 @@ date:   2015-10-24
 authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-12
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, informatics]
