@@ -134,12 +134,9 @@ article </a>
 for more information.
 
 ###Datum
-To have a grid of x,y coordinates for the CRS, there must first be a defined 
-point 0,0 from which all other coordinate values originate and a direction that
-that the main axis extend from it. The datum describes which origin (0,0) and
-axis orientation is chosen.  At a higher level, the datum describes the 
-relationship between a specific ellipsoid and the center of the earth, while
-giving the origin location for the CRS. 
+The datum describes the relationship between a specific ellipsoid and the 
+center of the earth. The datum also describes which origin (0,0) and
+axis orientation for a coordinate system using the datum. 
 
 Frequently encountered global and regional datums: 
 
@@ -192,6 +189,21 @@ that information and retain it when you process / analyze the data.
 *<a href="http://spatialreference.org/ref/epsg/" target="_blank">A great online 
 library of CRS information.</a>
 
+
+####Same Country, Different Datums & Projections
+<figure>
+    <a href="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
+    <img src="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
+    </a>
+    
+    <figcaption>Maps of the United States in different datums/projections. 
+    Notice the differences in shape and orientation associated with each
+    different datum/projection. These differences are a direct result of the
+    calculations used to "flatten" the data onto a two dimensional map. 
+    Source: opennews.org</figcaption>
+</figure>
+
+
 ##Geographic vs Projected Coordinate Systems
 Coordinate systems can be projected or geographic coordinate systems. Geographic
 coordinate systems have thier grid defined on the spherical globe itself.  
@@ -210,8 +222,8 @@ one is working in the northern or southern area of thier research area. However,
 as one gets further away from the origin the distortion between the projected 
 CRS and globe increase.   
 
-####Examples
-Latitude and Longitude (often referred to as the Geographic Coordinate System) 
+##Two Common CRSs
+**Latitude and Longitude** (often referred to as the Geographic Coordinate System) 
 are based on a grid that wraps around the globe. The units are in degrees.  The origin point (0,0) is at the intersection of the Equator (0° latitude) and Prime Meridian (0° longitude).
 
 <figure>
@@ -228,11 +240,18 @@ Since the grid wraps around the globe. The distance between the 2 degrees of
 longitude at the equator (0°) is ~ 69 miles, at 40°N (or S) the distance is
 only 53 miles. 
 
-The Universal Transverse Mercator (UTM) system is a projected coordinate
-reference system. The earth is flattened and subdivided Easting zones,
-numbered 0-60 (equivalent to longitude), and the Northing bands,
-lettered C-X (equivalent to latitutede). At a smaller scale the grid is further
-subdivided into 1000m x 1000m grids. The coordinates for the Harvard Forest could be written as: Zone 18T, 730782m Easting, 4712631m Northing. The units are in meters  
+The **Universal Transverse Mercator** (UTM) system is a projected coordinate
+reference system. The earth is flattened and subdivided into zones,
+numbered 0-60 (equivalent to longitude), and bands,
+lettered C-X (equivalent to latitude). Zone are always used with UTM data,
+however, the band designation is often dropped as it isn't esssential to 
+specifying the location.  
+
+While the grid is global in scale, the system uses a regional projection system .  
+Each zone grid is individually projected using a Mercator projection. The coordinate
+units are in meters and the origin points is the intersection of the equator and an
+arbitrary meridian 500,000m E of the central meridian of each zone.  This arbitrary
+point outside of the zone itself is used so that there are no negative Easting numbers.  
 
 <figure>
     <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Utm-zones.jpg/800px-Utm-zones.jpg">
@@ -242,42 +261,42 @@ subdivided into 1000m x 1000m grids. The coordinates for the Harvard Forest coul
     Source: Public domain from Earth Observatory, NASA</figcaption>
 </figure>
 
-####Same Country, Different Datums & Projections
-<figure>
-    <a href="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
-    <img src="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
-    </a>
-    
-    <figcaption>Maps of the United States in different datums/projections. 
-    Notice the differences in shape and orientation associated with each
-    different datum/projection. These differences are a direct result of the
-    calculations used to "flatten" the data onto a two dimensional map. 
-    Source: opennews.org</figcaption>
-</figure>
+The coordinates for the Harvard Forest would be written as: 
+Zone 18T, 730782m Easting, 4712631m Northing or ocassionally as 18N, 730782m, 4712631m
+where the N denotes that it is in the Northern, not Southern hemisphere).  However,
+this can be confused with band N and grid 18N.   
+
+Data Tip:  Wondering about the polar regions (>80°N or S)?  In these regions
+the UTM system doesn't apply and instead the Universal Polar Stereographic
+(UPS) coordinate system is used.  This is where zones A, B and Y, Z are used
+if you were wondering why they weren't in the UTM lettering system.  
 
 ###Coordinate Reference System Formats
 A particular CRS can be referenced in a number of different ways.  Three common
 ones currently are the **proj.4**, **EPSG**, and Well-known Text (**WKT**)
 formats.  
 
-
 ####PROJ or PROJ.4 strings 
-PROJ.4 strings are an initially confusing but compact way to identify a spatial
+PROJ.4 strings are, an initially confusing but, compact way to identify a spatial
 or coordinate reference system. PROJ.4 strings are the primary output from most
 of the spatial data `R` packagages that we will use (e.g. `raster`, `rgdal`).
 
-Using the PROJ.4 syntax, it is possible to specify the complete set of parameters that define a particular SRS.
-https://www.nceas.ucsb.edu/scicomp/recipes/projections
-https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf
+Using the PROJ.4 syntax, we specify the complete set of parameters (e.g. elipse, datum,
+units, etc) that define a particular CRS.
 
- by its EPSG code (i.e.,
-epsg:4121). The EPSG is a structured dataset of CRS and
-Coordinate Transformations. It was originally compiled by
-the, now defunct, European Petroleum Survey Group. Here
-are some websites: http://www.epsg-registry.org/
-http://spatialreference.org/
-(although I find these kind of confusing). 
-http://spatialreference.org/ref/epsg/
+*Read more about <a href="https://www.nceas.ucsb.edu/scicomp/recipes/projections" target="_blank">all three formats from the National Center for Ecological Analysis and Synthesis.</a>
+
+* A handy four page overview of CRS <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf" target="_blank">including file formats on page 1.</a>
+
+####EPSG codes
+The EPSG codes are a structured dataset of CRSs that are used around the world. They were
+originally compiled by the, now defunct, European Petroleum Survey Group, hence the
+EPSG acronym. Each code is a four digit number.  
+
+The codes and more information can be found on these websites: 
+* <a href="http://www.epsg-registry.org/" target="_blank">The EPSG registry. </a>
+* <a href="http://spatialreference.org/" target="_blank">Spatialreference.org</a>
+* <a href="http://spatialreference.org/ref/epsg/" target="_blank">list of ESPG codes.</a>
 
 ``` {r crs-strings}
 
@@ -287,9 +306,13 @@ epsg = make_EPSG()
 head(epsg)
 ```
 
+####WKT or Well-known Text
+Well-known Text (WKT) allows for compact machine- and human-readable representation of
+geometric objects as well as to consisely describing the critical elements of
+coordinate reference system (CRS) definitions. 
 
-https://www.epsg-registry.org/
-
+The codes and more information can be found on these websites: 
+* <a href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html#43" target="_blank">Open Geospatial Consortium WKT document. </a>
 
 ##Spatial Extent
 The spatial extent of a spatial object is just how much area does it cover. A 
