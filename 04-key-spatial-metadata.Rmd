@@ -56,7 +56,8 @@ preferably, RStudio loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -80,9 +81,9 @@ QGIS documentation.</a>
 There are three core spatial metadata elements that are crucial to understand
 in order to effectively work with any sort of spatial data: 
 
-* Coordinate Reference System (CRS), 
-* Extent
-* Resolution 
+* **Coordinate Reference System** (CRS), 
+* **Extent**
+* **Resolution** 
 
 ##What is a Coordinate Reference System
 
@@ -112,22 +113,22 @@ Each coordinate system also has units that those x- and y-values are based in.
 
 Common coordinate systems and their coordinates include: 
 
-* Geographical Coordinate System or Latitude and Longitude: degrees (which can
-be expressed as decimal degrees, degrees: minutes: seconds, and more)
-* Universal Transverse Mercator (UTM) coordinates: meters
-* State Plane Coordinate System (used for USA only): feet 
+* **Geographical Coordinate System** or **Latitude and Longitude**: degrees
+(which can be expressed as decimal degrees, degrees: minutes: seconds, and more)
+* **Universal Transverse Mercator** (UTM) Coordinate System: meters
+* **State Plane** Coordinate System (used for USA only): feet 
 
 The geographic coordinate system is depended on two other concepts that are 
 important to a deep understanding of Geographic Information Systems but the
 details are beyond the scope of this lesson series: 
 
-* ellipsoid (or spheroid): a mathematically representation of the shape of the
-earth. Visit
+* **ellipsoid** (or spheroid): a mathematically representation of the shape of
+the earth. Visit
 <a href="https://en.wikipedia.org/wiki/Earth_ellipsoid" target="_blank">Wikipedia's article on the earth ellipsoid </a> 
 for more information
-* geoid: a model of the earth's gravitatinal field which approximates the mean
-sea level across the entire earth.  It is from this that elevation is measured.
-Visit 
+* **geoid**: a model of the earth's gravitatinal field which approximates the
+mean sea level across the entire earth.  It is from this that elevation is
+measured.  Visit 
 <a href="https://en.wikipedia.org/wiki/Geoid" target="_blank">Wikipedia's geoid
 article </a> 
 for more information.
@@ -142,11 +143,11 @@ giving the origin location for the CRS.
 
 Frequently encountered global and regional datums: 
 
-* WGS84 -- World Geodetic System (created in) 1984.  The origin is the center of
+* *WGS84* -- World Geodetic System (created in) 1984.  The origin is the center of
 the earth.
-* NAD 27 & NAD 83 -- North American Datum 1927 and 1983,
+* *NAD27* & *NAD83* -- North American Datum 1927 and 1983,
 respectively.  The origin for NAD 27 is Meades Ranch in Kansas.
-* ED50 -- European Datum 1950
+* *ED50* -- European Datum 1950
 
 For more information, read
 *  <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/Datums/003r00000008000000/" target="_blank">ESRI's ArcGIS discussion of Datums.</a> 
@@ -169,7 +170,6 @@ must be stretched and other area must be compressed.
     Source: CA Furuti, progonos.com/furuti</figcaption>
 </figure>
 
-
 ####How Map Projections Can Fool the Eye
 Check out this short video highlighting how map projections can make continents 
 seems proportionally larger or smaller than they actually are!
@@ -181,9 +181,9 @@ seems proportionally larger or smaller than they actually are!
 * Read more about <a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank"> choosing a projection/datum.</a>
 
 ##What Makes Spatial Data Line Up On A Map?
-There are lots of great resources that describe coordinate reference systems and 
-projections in greater detail. However, for the purposes of this activity, what 
-is important to understand is that data from the same location but saved in 
+There are lots of great resources that describe coordinate reference systems 
+and projections in greater detail. However, for the purposes of this activity,
+what is important to understand is that data from the same location but saved in
 different projections **will not line up in any GIS or other program**. Thus 
 it's important when working with spatial data in a program like `R` or `Python` 
 to identify the coordinate reference system applied to the data, and to grab 
@@ -196,33 +196,51 @@ library of CRS information.</a>
 Coordinate systems can be projected or geographic coordinate systems. Geographic
 coordinate systems have thier grid defined on the spherical globe itself.  
 Projected geographic systems have thier grid defined on a 2-dimensional 
-projection of the globe.  
+projection of the globe. 
 
+####Advantages & Disadvantages
 Each system has advantages and disadvantages which is why both continue to be
-used. Projected CRS have constant lengths, angles, and areas across the two
-dimensions.  For smaller scale (even regional) applications, it is very much
+used. Geographic CRS has the advantage of not distoring the location of an
+object on the globe due to there being no transformations. 
+
+Projected CRS have constant lengths, angles, and areas across the two
+dimensions. For smaller scale (even regional) applications, it is very much
 more efficient to work with contant lengths and consistent sizes no matter if
-one is working in the northern or southern area of thier research area. However, 
+one is working in the northern or southern area of thier research area. However,
 as one gets further away from the origin the distortion between the projected 
 CRS and globe increase.   
 
-Latitude and Longitude (often referred to as The Geographic Coordinate System) 
-are based on a grid that wraps around the globe. The units are in degrees.  The
-distance between the 2 degrees of longitude at the equator is ~ 69 miles, at 40N (or S) the distance is only 53 miles. 
+####Examples
+Latitude and Longitude (often referred to as the Geographic Coordinate System) 
+are based on a grid that wraps around the globe. The units are in degrees.  The origin point (0,0) is at the intersection of the Equator (0° latitude) and Prime Meridian (0° longitude).
 
-Lat Long: geographic, 
-units: decimal degrees
-Scale: global
+<figure>
+    <a href="http://worldwind.arc.nasa.gov/graphics/screenshots/21.jpg">
+    <img src="http://worldwind.arc.nasa.gov/graphics/screenshots/21.jpg">
+    </a>
+    <figcaption> Latitude and Longitude are a Geographic CRS.  Latitude are
+    marked north and south from the Equator and longitude are marked east and
+    west of the Prime Meridian.  
+    Source: NASA</figcaption>
+</figure>
 
-UTM: Projected
-Easting / Northing
-Units (meters or feet) - most often meters
-Scale - Regional (globe divided into zones)
+Since the grid wraps around the globe. The distance between the 2 degrees of
+longitude at the equator (0°) is ~ 69 miles, at 40°N (or S) the distance is
+only 53 miles. 
 
+The Universal Transverse Mercator (UTM) system is a projected coordinate
+reference system. The earth is flattened and subdivided Easting zones,
+numbered 0-60 (equivalent to longitude), and the Northing bands,
+lettered C-X (equivalent to latitutede). At a smaller scale the grid is further
+subdivided into 1000m x 1000m grids. The coordinates for the Harvard Forest could be written as: Zone 18T, 730782m Easting, 4712631m Northing. The units are in meters  
 
-
-
-
+<figure>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Utm-zones.jpg/800px-Utm-zones.jpg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Utm-zones.jpg/800px-Utm-zones.jpg">
+    </a>
+    <figcaption> The gridded UTM coordinate system across the globe.    
+    Source: Public domain from Earth Observatory, NASA</figcaption>
+</figure>
 
 ####Same Country, Different Datums & Projections
 <figure>
