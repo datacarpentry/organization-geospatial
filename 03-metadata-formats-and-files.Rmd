@@ -41,8 +41,8 @@ the data.
 * Be able to create metadata files for different data types. 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -56,7 +56,8 @@ preferably RStudio, loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -72,66 +73,96 @@ and
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
 
+</div>
+
+
+```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
+#render DSM for lesson content background
+DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+# code output here - DEM rendered on the screen
+plot(DSM_HARV)
+
+```
+
+
+<div id="challenge" markdown="1">
+##Challenge: What Do I Know About My Data?
+The figure above is a map created from the file `HARV_dsmCrop.tif`.  That is all
+you know.  What other information would you like to know about this map and the
+data contained in the file before you would feel comfortable using
+this data to address your research question or to build a map for publication? 
 
 </div>
 
-##What is it?
 
-STRUCTURED data describing a dataset
-Documents who ‘collected / created’ the data, how, units and data structure, and spatial attributes. 
+Information that we might want to know are listed below, with the information
+that we can gather from the map:
 
-With spatial data there is information that's necessary to understand it, but usually isn't included in the file.  This is the metadata. Data about the data.
+* Where is this?  -- The file name says HARV. Is that a location abbreviation?
+... really we have no idea.  
+* What is the file format? -- .tif means it is likely a GeoTIFF.  
+* What coordinate reference system are the coordinates in?  -- Can't tell. 
+* When was the data collected to lead to this map?  -- Can't tell
+* How was the map created? -- Can't tell 
+* What’s being measured? -- The file name contains DSM which often denotes a 
+Digital Surface Model so it might be elevation but we're not 100% sure.   
+* What units? -- Can't tell
 
-Use a file type. Show the raster of Harvard forest. Ask, what can you say
-about this data?
+Obviously we need more data about the data: metadata!
 
-What would you want/need to know about this data to be able to answer questions using this data?
+##What is Metadata?  Why is it Needed?
+Metadata is structured data describing a dataset. Among other things metadata
+should include by whom and how the data was collected or created, the units and
+data structure, and spatial attributes. With spatial data there is information
+that's necessary to understand it, but usually isn't included in the file. 
+This is the metadata: data about the data.
 
-- where is this?
-- what coordinate system?
-- date?
-- time?
-- instrument?
-- what's being measured?
-- what units?
+###Ancillary Data
+Each element in the file can have more data associated with it. This can be
+information like a measured time series for a single, individual point or
+vector. Ancillary data often appears as a .csv file. They don't have an explicit
+spatial element (although they apply to a spatial element). You have to attach
+that data to the spatial data information.
 
-With this file type as is, can you figure any of these things out?
 
-No, you can't figure this out. You need the data about the data. This is the metadata. This information is sometimes embedded in the file (we'll talk about this) or a separate file that contains this information. Sometimes it's in the download directory, but other times, it's just listed on a web site or in another directory and you need to seek it out.
-
--- show cropland data layer as an example of a data repository that has the metadata on its web site, not when you download it
-
-Metadata comes in many formats, but generally is a text file like txt, CSV or XML.
-
-###Ancillary data
-
-Each element in the file can have more data associated with it. This can be things like a measured time series for an individual point or vector.
-
-This is often things like CSV files. They don't have a spatial element. You have to attach that data to the spatial data information.
-
-There also can be raster or vector data for the same area over time.
-
-All these different data types and series can be combined or compared.
-
-##Why is it useful
+###Why is it useful
 Need to document where the data came from and how it was produced
 also in the case of structured, digital metadata (e.g. EML) it can be used to automate workflows. For instance, things like scale factors, units, and uncertainty values may be stored in metadata and accessed programmatically to convert / transform data within an algorithm.
 
 ##Where to find it? 
-location and format will vary by provider. 
-best case scenario: packaged with a download in machine readible: txt, xml or eml format, 
-Less good: availbale on the website / repo / portal where data were download
+Metadate can be found in many different locations (in decreasing order of
+usefulness): 
+
+* embedded in the file (GeoTIFFs)
+* a separate file that contains this information (EML, .txt or .csv)
+* in the download directory
+* listed on the web site as text or in a seperate directory
+* in the original data collector's field notebook  
+
+The location and format will vary with the provider and the data type.  A best
+case scenario is that the data & it's metadata are embedded with the data
+(GeoTIFFs) or in a downloadable package that is machine readible (.txt, .xml or
+EML formats).  Less useful but still usable is when the metadata are available
+in another format on the website, repository, or portal where the data were
+download.  The worst case senario is that there is no additional metadata 
+readily available, this may result in unusable data or extensive additonal
+background work by the user.  
 
 ##Structured File Formats (very high level):
 ** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think?
+
 ###Ecological Metadata Language (EML): XML based format… more here 
 eg harvard forest LTER
 Code chunk showing some EML
 ** link out to EML lesson (in NEON-DS-Lesson-Development Repo: {{ site.baseurl }}/R/EML)
+
 ###XML - common for GIS ….
 Code chunk showing XML
+
 ###Web pages with text - EG harvard forest LTER
 screen shots?
+
 ###HEADERS of text files
 eg raster .asc files
 ** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think? 

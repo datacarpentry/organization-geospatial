@@ -43,8 +43,8 @@ differently.
 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -53,14 +53,14 @@ preferably RStudio, loaded on your computer.
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
 ###Download Data
-EDIT AS NEEDED
-{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
 
 ****
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -105,7 +105,7 @@ Each of these has different file types. There are a lot of file types within eac
 
 #####DBF files / attributes
 
-#####Multiple files associated with a  shapefile
+#####Multiple files associated with a shapefile
 
 ###Shapefile vs text file (points focused)
 
@@ -137,15 +137,12 @@ is below. Notice that elevation is a continuous numeric variable. The legend
 represents the continuous range of values in the data from around 300 to 420
 meters.
 
-```{r load-libraries-1, results='hide', echo=FALSE}
-
+```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
+#load libraries
 library(raster)
 library(rgdal)
 
-```
 
-
-```{r elevation-map, echo=FALSE}
 #render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
@@ -175,9 +172,10 @@ elevation or temperature. Some examples of classified maps include:
 </figure>
 
 ###GeoTIFF
-The raster data that we will be using are GeoTIFFs. But what is that? Basically 
-a GeoTIFF has the data stored as the grid as well additional information about
-the data stored in the same file.
+The raster data that we will be using are GeoTIFFs. But what is that? 
+
+Basically a GeoTIFF has the data stored as the grid as well additional
+information about the data stored in the same file.
 
 The GeoTIFF format which has the extension `.tif`. A `.tif` file stores metadata
 or attributes about the file as embedded `tif tags`. For instance, your camera
@@ -197,7 +195,7 @@ as tags. These tags can include the following raster metadata:
 * ArcGIS grid
 
 ##Raster and Vector Data Together
-If you're interested in a particular area, you can combine information or
+If we are interested in a particular area, we can combine information or
 layer data from both of these types. For instance we can combine the Harvard
 Forest land cover map (raster) and the boundary of the study site (a vector
 polygon) and the tower location (a vector point).
