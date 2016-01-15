@@ -59,7 +59,8 @@ preferably, RStudio loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -136,15 +137,12 @@ is below. Notice that elevation is a continuous numeric variable. The legend
 represents the continuous range of values in the data from around 300 to 420
 meters.
 
-```{r load-libraries-1, results='hide', echo=FALSE}
-
+```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
+#load libraries
 library(raster)
 library(rgdal)
 
-```
 
-
-```{r elevation-map, include=TRUE, results="hide", echo=FALSE}}
 #render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
@@ -174,9 +172,10 @@ elevation or temperature. Some examples of classified maps include:
 </figure>
 
 ###GeoTIFF
-The raster data that we will be using are GeoTIFFs. But what is that? Basically 
-a GeoTIFF has the data stored as the grid as well additional information about
-the data stored in the same file.
+The raster data that we will be using are GeoTIFFs. But what is that? 
+
+Basically a GeoTIFF has the data stored as the grid as well additional
+information about the data stored in the same file.
 
 The GeoTIFF format which has the extension `.tif`. A `.tif` file stores metadata
 or attributes about the file as embedded `tif tags`. For instance, your camera

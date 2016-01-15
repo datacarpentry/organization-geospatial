@@ -55,7 +55,8 @@ EDIT AS NEEDED
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)

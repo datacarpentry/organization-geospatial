@@ -56,7 +56,7 @@ preferably, RStudio loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -181,7 +181,7 @@ browning down of vegetation -- over a whole site.
 ####Measuring Plant Phenology from Ground to Space Video
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_4uHLXL1yZA" frameborder="0" allowfullscreen></iframe>
 
-As this video points out there are different ways to measure those phenophases. 
+As this video points out there are different ways to measure phenophases. 
 Remote sensing data are valuable when we are trying to view site-wide vegetation
 patterns. Specifically, the Normalized Difference Vegetation Index (NDVI) is an
 index that efficiently measures green-up and brown-down. NDVI is a quantitative
@@ -241,11 +241,10 @@ what data is available at different sites </a>
 and 
 <a href="http://fluxnet.ornl.gov/" target="_blank">
 general network information </a>. 
-* NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data>
-information on land-based weather stations </a> 
+* NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):
+<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data> information on land-based weather stations </a> 
 and 
-<a href="http://www.ncdc.noaa.gov/" target="_blank">
-general network information </a>. 
+<a href="http://www.ncdc.noaa.gov/" target="_blank"> general network information </a>. 
 
 ##Data to Describe the Study Site
 We often have to conduct a significant amount of planning (for grants, permits,
@@ -278,9 +277,10 @@ About the Landsat sensor
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLLWiknuNGd50GI8OZf3EBo6PMx04xcoFa" frameborder="0" allowfullscreen></iframe>
 
 ####NEON Airborne Observation Platform (AOP)
-The 
-<a "http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> NEON airborne observation platform (AOP)</a>
-collects annual remote sensing data over NEON field sites using sensors mounted
+The
+<a href="http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> NEON airborne observation platform </a>
+(AOP) collects annual remote sensing data over NEON field sites using sensors
+mounted
 on an airplane. The AOP consists of a hyperspectral imaging spectrometer, a full
 waveform and discrete return LiDAR, and a high-resolution Red Blue Green (RGB)
 camera. Data from the AOP build a robust time series of landscape-scale changes
@@ -292,8 +292,8 @@ IMAGE OF THE PLANE?  NONE ON THE WEBSITE ARE VERY GOOD AT CAPTURING THE WHOLE
 IDEA?
 
 ###Micro-meteorological Data from the Fisher Tower
-The <a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank">
-Harvard Forest Fisher Meteorolical Station </a> 
+The 
+<a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank"> Harvard Forest Fisher Meteorological Station </a> 
 has been operational since 2001.  It is located in an open field and records air
 temperature, relative humidity, precipitation, incoming and net radiation,
 barometric pressure, wind speed and direction, and soil temperature. Data is

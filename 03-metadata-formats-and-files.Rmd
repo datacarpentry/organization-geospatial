@@ -56,7 +56,8 @@ preferably, RStudio loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -75,7 +76,7 @@ and
 </div>
 
 
-```{r elevation-map, include=TRUE, results="hide", echo=FALSE}}
+```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
 #render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
@@ -83,6 +84,7 @@ DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 plot(DSM_HARV)
 
 ```
+
 
 <div id="challenge" markdown="1">
 ##Challenge: What Do I Know About My Data?
@@ -92,6 +94,7 @@ data contained in the file before you would feel comfortable using
 this data to address your research question or to build a map for publication? 
 
 </div>
+
 
 Information that we might want to know are listed below, with the information
 that we can gather from the map:
