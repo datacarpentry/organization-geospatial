@@ -2,15 +2,17 @@
 layout: post
 title: "Lesson 02: Spatial Data Formats -- Vector & Raster Data Management"
 date:   2015-10-28
-authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-12
+lastModified: 2016-01-22
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
-description: "Add description here."
+description: "This lesson covers the basics of key data formats that may contain spatial 
+information including shapefile, Geotiff and csv. description here. It also provides a 
+brief list of other formats that you may encounter when working with spatial data."
 code1: 02-spatial-data-formats.R
 image:
   feature: NEONCarpentryHeader_2.png
@@ -43,8 +45,8 @@ differently.
 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -53,14 +55,14 @@ preferably RStudio, loaded on your computer.
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
 ###Download Data
-EDIT AS NEEDED
-{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
 
 ****
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -105,7 +107,7 @@ Each of these has different file types. There are a lot of file types within eac
 
 #####DBF files / attributes
 
-#####Multiple files associated with a  shapefile
+#####Multiple files associated with a shapefile
 
 ###Shapefile vs text file (points focused)
 
@@ -137,17 +139,6 @@ is below. Notice that elevation is a continuous numeric variable. The legend
 represents the continuous range of values in the data from around 300 to 420
 meters.
 
-
-    ## Loading required package: sp
-    ## rgdal: version: 1.0-4, (SVN revision 548)
-    ##  Geospatial Data Abstraction Library extensions to R successfully loaded
-    ##  Loaded GDAL runtime: GDAL 1.11.2, released 2015/02/10
-    ##  Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/gdal
-    ##  Loaded PROJ.4 runtime: Rel. 4.9.1, 04 March 2015, [PJ_VERSION: 491]
-    ##  Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/proj
-    ##  Linking to sp version: 1.1-1
-
-
 ![ ]({{ site.baseurl }}/images/rfigs/02-spatial-data-formats/elevation-map-1.png) 
 
 Some rasters contain categorical data. Thus each pixel represents a discrete
@@ -171,9 +162,10 @@ elevation or temperature. Some examples of classified maps include:
 </figure>
 
 ###GeoTIFF
-The raster data that we will be using are GeoTIFFs. But what is that? Basically 
-a GeoTIFF has the data stored as the grid as well additional information about
-the data stored in the same file.
+The raster data that we will be using are GeoTIFFs. But what is that? 
+
+Basically a GeoTIFF has the data stored as the grid as well additional
+information about the data stored in the same file.
 
 The GeoTIFF format which has the extension `.tif`. A `.tif` file stores metadata
 or attributes about the file as embedded `tif tags`. For instance, your camera
@@ -193,7 +185,7 @@ as tags. These tags can include the following raster metadata:
 * ArcGIS grid
 
 ##Raster and Vector Data Together
-If you're interested in a particular area, you can combine information or
+If we are interested in a particular area, we can combine information or
 layer data from both of these types. For instance we can combine the Harvard
 Forest land cover map (raster) and the boundary of the study site (a vector
 polygon) and the tower location (a vector point).

@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-22
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, metadata-eml, informatics]
@@ -77,14 +77,7 @@ and
 </div>
 
 
-```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
-#render DSM for lesson content background
-DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
-
-# code output here - DEM rendered on the screen
-plot(DSM_HARV)
-
-```
+![ ]({{ site.baseurl }}/images/rfigs/03-metadata-formats-and-files/elevation-map-1.png) 
 
 
 <div id="challenge" markdown="1">

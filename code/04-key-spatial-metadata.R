@@ -39,20 +39,3 @@ DEM <- raster("DigitalTerrainModel/SJER2013_DTM.tif")
 DEM
 
 
-## ----change-raster-resolution--------------------------------------------
-myRaster2 <- raster(nrow=8, ncol=8)
-myRaster2 <- resample(myRaster1, myRaster2, method='bilinear')
-myRaster2
-
-plot(myRaster2, main="Raster with 32 pixels")
-
-myRaster3 <- raster(nrow=2, ncol=2)
-myRaster3 <- resample(myRaster1, myRaster3, method='bilinear')
-myRaster3
-
-plot(myRaster3, main="Raster with 4 pixels")
-
-myRaster4
-
-plot(myRaster4, main="Raster with 1 pixels")
-

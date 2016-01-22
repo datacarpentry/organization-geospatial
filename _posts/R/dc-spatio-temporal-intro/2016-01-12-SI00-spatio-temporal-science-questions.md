@@ -2,15 +2,17 @@
 layout: post
 title: "Lesson 00: Answer a Spatio-temporal Research Question with Data: Where to Start?"
 date:   2015-10-30
-authors: [Leah Wasser, Megan A. Jones, Dave Roberts, Tracy Teal, Kaitlin Stack Whitney]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-12
+lastModified: 2016-01-22
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data]
 mainTag: spatial-data-management-series
-description: "Add description here."
+description: "This lesson provides an overview of finding spatial data to support your research
+question. It covers some of the key data sources and providers and places that you can look
+to find data for your study are / research question."
 code1: 00-spatio-temporal-science-questions.R
 image:
   feature: NEONCarpentryHeader_2.png
@@ -34,15 +36,14 @@ Add description.
 After completing this activity, you will:
 
 * Know the definition of spatial data.
-* understand that one can work with data from different time points for the same area (e.g., you can ask question over time using spatial data.)
-* understand that one can work with data from different site to compare areas.
-* Know how scientific questions can help in selection of a field site. (->why use HAVR / SJER & introduce both.) 
-
-
+* Understand that one can work with data from different time points for the same
+  area (e.g., you can ask question over time using spatial data).
+* Understand that one can work with data from different site to compare areas.
+* Know how scientific questions can help in selection of a field site. 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -57,7 +58,7 @@ preferably RStudio, loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -74,17 +75,17 @@ and
 </div>
 
 <figure>
-	<a href="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view">
-	<img src="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view"></a>
+	<a href="https://xxxx">
+	<img src="https://xxxx"></a>
 	<figcaption> A nice overview graphic of the research topic, question and data needed to begin to address the question. ACTUAL GRAPHIC IN CONSTRUCTION
 	Source: National Ecological Observatory Network (NEON)  
 	</figcaption>
 </figure>
 
-
 ##Questions Start the Research Process
-The scientific method begins with a question that you would like to answer. Once
-we have a question, we identify the methods needed to address that question.
+The scientific method often begins with a question that you would like to 
+answer. Once we have a question, we identify the methods needed to address that
+question.
 When our question is small, in temporal and/or spatial scale, we might be able
 to go out and collect the data needed to answer the question ourselves. When we
 ask questions that cover broad spatial and temporal scales, we often need to use
@@ -114,7 +115,7 @@ use the Harvard Forest located in the northeastern US state of Massachusetts and
 the San Joaquin Experimental Range located in the southern end of the US state
 of California.  These two sites are about 4,900km (3,000 miles) apart!
 
-MAP OF USA w/ two sites -- do not yet link to NEON site.  We'll "gather" that
+MAP OF USA w/ the two sites -- do not yet link to NEON site.  We'll "gather" that
 data later. 
 
 Our revised research question is now, *What causes the pattern of phenophase*
@@ -128,7 +129,9 @@ site and then potentially compare these patterns to those observed at another
 site. 
 
 ##Think Spatially
+
 <div id="challenge" markdown="1">
+
 ##Challenge: Thinking Spatially
 
 * What makes data spatial? 
@@ -141,10 +144,12 @@ site.
 XXX
 
 ##Insight from Comparisons
+
 ###across sites to see patterns.
+
 ###across time points to see patterns
 
-##Scientific Questions to Research Tasks
+##From Scientific Question to Research Tasks
 We've stated that we want to figure out what causes the pattern of phenophase
 timing at two different sites in the US. However, to tackle this question we
 need to break down the question in to several discrete questions that can later
@@ -153,7 +158,8 @@ figure out what data need to be collected.
 
 <div id="challenge" markdown="1">
 ##Challenge: Breaking Down a Large Research Quesion
-* What are some smaller questions we need to ask to figure out our overall question? 
+* What are some smaller questions/ tasks we need to ask to figure out our
+overall question? 
 * What data do we need to collect/ gather to answer these questions?
 </div>
 
@@ -172,9 +178,9 @@ As we said, we need to quantitatively measures phenology - the greening up and
 browning down of vegetation -- over a whole site. 
 
 ####Measuring Plant Phenology from Ground to Space Video
-<iframe width="560" height="315" src="https://youtu.be/_4uHLXL1yZA" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_4uHLXL1yZA" frameborder="0" allowfullscreen></iframe>
 
-As this video points out there are different ways to measure those phenophases. 
+As this video points out there are different ways to measure phenophases. 
 Remote sensing data are valuable when we are trying to view site-wide vegetation
 patterns. Specifically, the Normalized Difference Vegetation Index (NDVI) is an
 index that efficiently measures green-up and brown-down. NDVI is a quantitative
@@ -201,7 +207,6 @@ More on NDVI from NASA</a>
 ###Where to Access NDVI Data
 NDVI data is calculated from raster spatial data that is collected using 
 satellite based sensors.  
-
 
 ##Quantify Correlates of Phenology: Temperature, Daylength, Precipitation, and Light
 We know from the daily weather report that temperature and precipitation are
@@ -235,11 +240,10 @@ what data is available at different sites </a>
 and 
 <a href="http://fluxnet.ornl.gov/" target="_blank">
 general network information </a>. 
-* NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data>
-information on land-based weather stations </a> 
+* NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):
+<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data> information on land-based weather stations </a> 
 and 
-<a href="http://www.ncdc.noaa.gov/" target="_blank">
-general network information </a>. 
+<a href="http://www.ncdc.noaa.gov/" target="_blank"> general network information </a>. 
 
 ##Data to Describe the Study Site
 We often have to conduct a significant amount of planning (for grants, permits,
@@ -264,17 +268,18 @@ About the Landsat sensor
 ###Spectral Imagery
 
 ####Mapping the Invisible: Introduciton to Spectral Remote Sensing
-<iframe width="560" height="315" src="https://youtu.be/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe>  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe> 
 
 ###Light Reflectance and Imaging Data (LiDAR)
 
 ####LiDAR-Introduction to Light Detection and Ranging Video
-<iframe width="560" height="315" src="https://youtu.be/m7SXoFv6Sdc" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLLWiknuNGd50GI8OZf3EBo6PMx04xcoFa" frameborder="0" allowfullscreen></iframe>
 
 ####NEON Airborne Observation Platform (AOP)
-The 
-<a "http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> NEON airborne observation platform (AOP)</a>
-collects annual remote sensing data over NEON field sites using sensors mounted
+The
+<a href="http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> NEON airborne observation platform </a>
+(AOP) collects annual remote sensing data over NEON field sites using sensors
+mounted
 on an airplane. The AOP consists of a hyperspectral imaging spectrometer, a full
 waveform and discrete return LiDAR, and a high-resolution Red Blue Green (RGB)
 camera. Data from the AOP build a robust time series of landscape-scale changes
@@ -282,11 +287,12 @@ in numerous physical, biological and biochemical metrics, such as vegetation
 cover and density, canopy chemistry, and topography, including elevation, slope
 and aspect.
 
-IMAGE OF PLANE?  NONE ON THE WEBSITE ARE VERY GOOD AT CAPTURING THE WHOLE IDEA?
+IMAGE OF THE PLANE?  NONE ON THE WEBSITE ARE VERY GOOD AT CAPTURING THE WHOLE
+IDEA?
 
 ###Micro-meteorological Data from the Fisher Tower
-The <a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank">
-Harvard Forest Fisher Meteorolical Station </a> 
+The 
+<a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank"> Harvard Forest Fisher Meteorological Station </a> 
 has been operational since 2001.  It is located in an open field and records air
 temperature, relative humidity, precipitation, incoming and net radiation,
 barometric pressure, wind speed and direction, and soil temperature. Data is
