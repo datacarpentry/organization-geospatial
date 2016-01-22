@@ -5,24 +5,24 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Lesson 06: Cleaning Data -- Missing and Bad Data Values &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
-<meta name="description" content="Add description here.">
-<meta name="keywords" content="R, GIS-Spatial-Data, informatics">
+<title>Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
+<meta name="description" content="This lesson introduces key metadata formats including FGDC and EML. It provides basic approaches for understanding these formats and how to work with these formats.">
+<meta name="keywords" content="R, GIS-Spatial-Data, metadata-eml, informatics">
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lesson 06: Cleaning Data -- Missing and Bad Data Values">
-<meta property="og:description" content="Add description here.">
-<meta property="og:url" content="http://localhost:4000/R/EditLink">
+<meta property="og:title" content="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure">
+<meta property="og:description" content="This lesson introduces key metadata formats including FGDC and EML. It provides basic approaches for understanding these formats and how to work with these formats.">
+<meta property="og:url" content="http://localhost:4000/R/metadata-file-formats-structures">
 <meta property="og:site_name" content="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/R/EditLink">
+<link rel="canonical" href="http://localhost:4000/R/metadata-file-formats-structures">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices Feed">
 
 
@@ -99,7 +99,7 @@
     
       "http://localhost:4000/images/banners/NEONCarpentryHeader_2.png"
     
-  alt="Lesson 06: Cleaning Data -- Missing and Bad Data Values feature image">
+  alt="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure feature image">
     <span class="image-credit">Source: 
      
     A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry 
@@ -211,14 +211,14 @@
   <article>
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/R/EditLink" rel="bookmark" title="Lesson 06: Cleaning Data -- Missing and Bad Data Values">Lesson 06: Cleaning Data -- Missing and Bad Data Values</a></h1>
+        <h1><a href="http://localhost:4000/R/metadata-file-formats-structures" rel="bookmark" title="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure">Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure</a></h1>
       
     </div><!--/ .headline-wrap -->
 
     <div class="article-wrap">
     <!-- List authors at the top of the lesson -->
     <span class="post-date">
-    Authors: Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones<br>
+    Authors: <br>
     
     Reviewers: 
        
@@ -248,12 +248,17 @@
   <p>After completing this activity, you will:</p>
 
   <ul>
-    <li></li>
+    <li>Understand that metadata come in many formats and must be maintained with the
+data.</li>
+    <li>Understand that there is necessary metadata associated with and/or embedded in
+the data.</li>
+    <li>Understand that collecting data requires/includes collecting the metadata.</li>
+    <li>Be able to create metadata files for different data types.</li>
   </ul>
 
   <h2 id="things-youll-need-to-complete-this-lesson">Things You’ll Need To Complete This Lesson</h2>
-  <p>To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.</p>
+  <p>To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.</p>
 
   <h3 id="install-r-packages">Install R Packages</h3>
 
@@ -267,20 +272,6 @@ preferably RStudio, loaded on your computer.</p>
   </ul>
 
   <h3 id="download-data">Download Data</h3>
-  <p>EDIT AS NEEDED
-<a href="https://ndownloader.figshare.com/files/3648519" class="btn btn-success"> Download NEON Teaching Data Subset: Airborne Remote Sensing Data</a></p>
-
-  <p>The LiDAR and imagery data used to create this raster teaching data subset 
-were collected over the 
-<a href="http://www.neoninc.org/" target="_blank"> National Ecological Observatory Network's</a> 
-<a href="http://www.neoninc.org/science-design/field-sites/harvard-forest" target="_blank">Harvard Forest</a>
-and 
-<a href="http://www.neoninc.org/science-design/field-sites/san-joaquin-experimental-range" target="_blank">San Joaquin Experimental Range</a>
-field sites and processed at
-<a href="http://www.neoninc.org" target="_blank">NEON headquarters.</a> 
-The entire dataset can be accessed by request from the 
-<a href="http://www.neoninc.org/data-resources/get-data/airborne-data" target="_blank"> NEON Airborne Data Request Page </a> on the NEON website.
-</p>
 
   <hr />
 
@@ -292,7 +283,8 @@ of setting the working directory in <code>R</code> can be found here.</a>.</p>
 learned skills. If available, the code for challenge solutions is found in the
 downloadable <code>R</code> script of the entire lesson, available in the footer of each lesson page.</p>
 
-  <p><strong>Raster Lesson Series:</strong> This lesson is part of a lesson series introducing
+  <p><strong>Spatial-Temporal Data &amp; Data Management Lesson Series:</strong> This lesson is part
+of a lesson series introducing
 <a href="tutorial/URL">spatial data and data management in <code>R</code> </a>.
 It is also part of a larger 
 <a href="workshops/spatio-temporal-workshop">spatio-temporal Data Carpentry Workshop </a>
@@ -307,21 +299,96 @@ and<br />
   <h3 id="additional-resources">Additional Resources</h3>
 
   <ul>
-    <li><a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the <code>raster</code> package in <code>R</code>.</a></li>
-    <li><a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank">
-NEON Data Skills: Raster Data in R - The Basics</a></li>
-    <li><a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank">
-NEON Data Skills: Image Raster Data in R - An Intro</a></li>
+    <li><a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank"></a></li>
   </ul>
 
 </div>
 
-<h3 id="clean-data-for-both-raster-vector-and-time-series-data">Clean data for both Raster, Vector, and Time Series Data</h3>
+<p><img src="/images/rfigs/03-metadata-formats-and-files/elevation-map-1.png" alt=" " /></p>
 
-<h2 id="nodata-values-na-nan">NoData Values (NA, NAN)</h2>
+<div id="challenge">
+  <h2 id="challenge-what-do-i-know-about-my-data">Challenge: What Do I Know About My Data?</h2>
+  <p>The figure above is a map created from the file <code>HARV_dsmCrop.tif</code>.  That is all
+you know.  What other information would you like to know about this map and the
+data contained in the file before you would feel comfortable using
+this data to address your research question or to build a map for publication?</p>
 
-<h2 id="bad-data-values">Bad Data Values</h2>
+</div>
+
+<p>Information that we might want to know are listed below, with the information
+that we can gather from the map:</p>
+
+<ul>
+  <li>Where is this?  – The file name says HARV. Is that a location abbreviation?
+… really we have no idea.</li>
+  <li>What is the file format? – .tif means it is likely a GeoTIFF.</li>
+  <li>What coordinate reference system are the coordinates in?  – Can’t tell.</li>
+  <li>When was the data collected to lead to this map?  – Can’t tell</li>
+  <li>How was the map created? – Can’t tell</li>
+  <li>What’s being measured? – The file name contains DSM which often denotes a 
+Digital Surface Model so it might be elevation but we’re not 100% sure.</li>
+  <li>What units? – Can’t tell</li>
+</ul>
+
+<p>Obviously we need more data about the data: metadata!</p>
+
+<h2 id="what-is-metadata--why-is-it-needed">What is Metadata?  Why is it Needed?</h2>
+<p>Metadata is structured data describing a dataset. Among other things metadata
+should include by whom and how the data was collected or created, the units and
+data structure, and spatial attributes. With spatial data there is information
+that’s necessary to understand it, but usually isn’t included in the file. 
+This is the metadata: data about the data.</p>
+
+<h3 id="ancillary-data">Ancillary Data</h3>
+<p>Each element in the file can have more data associated with it. This can be
+information like a measured time series for a single, individual point or
+vector. Ancillary data often appears as a .csv file. They don’t have an explicit
+spatial element (although they apply to a spatial element). You have to attach
+that data to the spatial data information.</p>
+
+<h3 id="why-is-it-useful">Why is it useful</h3>
+<p>Need to document where the data came from and how it was produced
+also in the case of structured, digital metadata (e.g. EML) it can be used to automate workflows. For instance, things like scale factors, units, and uncertainty values may be stored in metadata and accessed programmatically to convert / transform data within an algorithm.</p>
+
+<h2 id="where-to-find-it">Where to find it?</h2>
+<p>Metadate can be found in many different locations (in decreasing order of
+usefulness):</p>
+
+<ul>
+  <li>embedded in the file (GeoTIFFs)</li>
+  <li>a separate file that contains this information (EML, .txt or .csv)</li>
+  <li>in the download directory</li>
+  <li>listed on the web site as text or in a seperate directory</li>
+  <li>in the original data collector’s field notebook</li>
+</ul>
+
+<p>The location and format will vary with the provider and the data type.  A best
+case scenario is that the data &amp; it’s metadata are embedded with the data
+(GeoTIFFs) or in a downloadable package that is machine readible (.txt, .xml or
+EML formats).  Less useful but still usable is when the metadata are available
+in another format on the website, repository, or portal where the data were
+download.  The worst case senario is that there is no additional metadata 
+readily available, this may result in unusable data or extensive additonal
+background work by the user.</p>
+
+<h2 id="structured-file-formats-very-high-level">Structured File Formats (very high level):</h2>
+<p>** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think?</p>
+
+<h3 id="ecological-metadata-language-eml-xml-based-format-more-here">Ecological Metadata Language (EML): XML based format… more here</h3>
+<p>eg harvard forest LTER
+Code chunk showing some EML
+** link out to EML lesson (in NEON-DS-Lesson-Development Repo: /R/EML)</p>
+
+<h3 id="xml---common-for-gis-">XML - common for GIS ….</h3>
+<p>Code chunk showing XML</p>
+
+<h3 id="web-pages-with-text---eg-harvard-forest-lter">Web pages with text - EG harvard forest LTER</h3>
+<p>screen shots?</p>
+
+<h3 id="headers-of-text-files">HEADERS of text files</h3>
+<p>eg raster .asc files
+** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think? 
+little activities to go look at metadata…</p>
 
 
 
@@ -334,7 +401,55 @@ NEON Data Skills: Image Raster Data in R - An Intro</a></li>
 <!-- This code generates the category link at the bottom of the page-->
 
 		
+            
+                
+            
+                
+            
+                
+            
+            
+        
 
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
         
 
 <!-- remove the stuff above if the site slows down - this is to populate tags -->
@@ -348,7 +463,7 @@ NEON Data Skills: Image Raster Data in R - An Intro</a></li>
 (some browsers may require you to right click.)
 <ul>
 	<li>
- 	<a href="/code/06-clean-data-bad-and-missing-values.R" class="btn btn-info"> 06-clean-data-bad-and-missing-values.R </a> </li>
+ 	<a href="/code/03-metadata-formats-and-files.R" class="btn btn-info"> 03-metadata-formats-and-files.R </a> </li>
 
 	
 </ul>
@@ -450,9 +565,9 @@ NEON Data Skills: Image Raster Data in R - An Intro</a></li>
 <br><br><br>
 
         </div>
-        <p class="byline id="post-meta"><strong>Lesson 06: Cleaning Data -- Missing and Bad Data Values</strong> was  with <i class="fa fa-tags"></i>: 
-       on <time datetime="2015-10-24T00:00:00-06:00">October 24, 2015</time> 
-       <!--by Dave RobertsTracy TealKaitlin Stack WhitneyLeah WasserMegan A. Jones.  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
+        <p class="byline id="post-meta"><strong>Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure</strong> was  with <i class="fa fa-tags"></i>: 
+       on <time datetime="2015-10-27T00:00:00-06:00">October 27, 2015</time> 
+       <!--by .  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
        <a href="http://localhost:4000/about" title="About NEON / Data Carpentry Hackathon">About NEON / Data Carpentry Hackathon</a>.</p>
       </footer>
 

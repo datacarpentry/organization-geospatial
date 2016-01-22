@@ -2,7 +2,7 @@
 layout: post
 title: "Lesson 05: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
 date:   2015-10-25
-authors: [Megan A. Jones, Leah Wasser, Dave Roberts, Tracy Teal, Kaitlin Stack Whitney]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
@@ -10,7 +10,8 @@ packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, informatics]
 mainTag: spatial-data-management-series
-description: "Add description here."
+description: "This lesson covers the key packages that support working with spatial data in
+R."
 code1: set-r-work-environment.R
 image:
   feature: NEONCarpentryHeader_2.png

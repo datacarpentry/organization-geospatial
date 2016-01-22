@@ -1,10 +1,9 @@
-## ----load-libraries-1, results='hide', echo=FALSE------------------------
-
+## ----elevation-map, include=TRUE, results="hide", echo=FALSE-------------
+#load libraries
 library(raster)
 library(rgdal)
 
 
-## ----elevation-map, echo=FALSE-------------------------------------------
 #render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 

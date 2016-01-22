@@ -5,7 +5,7 @@ date:   2015-10-26
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-22
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
@@ -299,13 +299,26 @@ The codes and more information can be found on these websites:
 * <a href="http://spatialreference.org/" target="_blank">Spatialreference.org</a>
 * <a href="http://spatialreference.org/ref/epsg/" target="_blank">list of ESPG codes.</a>
 
-``` {r crs-strings}
 
-library('rgdal')
-epsg = make_EPSG()
-#View(epsg)
-head(epsg)
-```
+    library('rgdal')
+    epsg = make_EPSG()
+    #View(epsg)
+    head(epsg)
+
+    ##   code                                               note
+    ## 1 3819                                           # HD1909
+    ## 2 3821                                            # TWD67
+    ## 3 3824                                            # TWD97
+    ## 4 3889                                             # IGRS
+    ## 5 3906                                         # MGI 1901
+    ## 6 4001 # Unknown datum based upon the Airy 1830 ellipsoid
+    ##                                                                                            prj4
+    ## 1 +proj=longlat +ellps=bessel +towgs84=595.48,121.69,515.35,4.115,-2.9383,0.853,-3.408 +no_defs
+    ## 2                                                         +proj=longlat +ellps=aust_SA +no_defs
+    ## 3                                    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+    ## 4                                    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+    ## 5                            +proj=longlat +ellps=bessel +towgs84=682,-203,480,0,0,0,0 +no_defs
+    ## 6                                                            +proj=longlat +ellps=airy +no_defs
 
 ####WKT or Well-known Text
 Well-known Text (WKT) allows for compact machine- and human-readable representation of
@@ -334,11 +347,11 @@ in 2 dimensional space.  Tools like `R`, using supporting packages such as
 `rgdal`, and associated raster tools have functions that allow you to view and
 define the extent of a new raster. 
 
-``` {r view-extent}
-# View the extent of the raster
-DEM@extent
 
-```
+    # View the extent of the raster
+    DEM@extent
+
+    ## Error in eval(expr, envir, enclos): object 'DEM' not found
 
 <figure>
     <a href="{{ site.baseurl }}/images/hyperspectral/pixelDetail.png">
@@ -366,23 +379,43 @@ of the raster.
 
 Let's explore that next.
 
-``` {r calculate-raster-extent}
-#create a raster from the matrix
-myRaster1 <- raster(nrow=4, ncol=4)
-    
-#assign some random data to the raster
-myRaster1[]<- 1:ncell(myRaster1)
-    
-#view attributes of the raster
-myRaster1
 
-#is the CRS defined?
-myRaster1@crs
+    #create a raster from the matrix
+    myRaster1 <- raster(nrow=4, ncol=4)
+        
+    #assign some random data to the raster
+    myRaster1[]<- 1:ncell(myRaster1)
+        
+    #view attributes of the raster
+    myRaster1
 
-#what are the data extents?
-myRaster1@extent
-plot(myRaster1, main="Raster with 16 pixels")
-```
+    ## class       : RasterLayer 
+    ## dimensions  : 4, 4, 16  (nrow, ncol, ncell)
+    ## resolution  : 90, 45  (x, y)
+    ## extent      : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
+    ## coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 
+    ## data source : in memory
+    ## names       : layer 
+    ## values      : 1, 16  (min, max)
+
+    #is the CRS defined?
+    myRaster1@crs
+
+    ## CRS arguments:
+    ##  +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0
+
+    #what are the data extents?
+    myRaster1@extent
+
+    ## class       : Extent 
+    ## xmin        : -180 
+    ## xmax        : 180 
+    ## ymin        : -90 
+    ## ymax        : 90
+
+    plot(myRaster1, main="Raster with 16 pixels")
+
+![ ]({{ site.baseurl }}/images/rfigs/04-key-spatial-metadata/calculate-raster-extent-1.png) 
 
 ##Spatial Resolution
 A raster consists of a series of pixels, each with the same dimensions 
@@ -410,18 +443,20 @@ the image represents a 1 m x 1 m area.
 
 Let's open up a raster in `R` to see how the attributes are stored.
 
-``` {r raster-attributes}
-#load raster library
-library(raster)
-library(rgdal)
-    
-# Load raster in an R object called 'DEM'
-DEM <- raster("DigitalTerrainModel/SJER2013_DTM.tif")  
-    
-# View raster attributes 
-DEM
 
-```
+    #load raster library
+    library(raster)
+    library(rgdal)
+        
+    # Load raster in an R object called 'DEM'
+    DEM <- raster("DigitalTerrainModel/SJER2013_DTM.tif")  
+
+    ## Error in .rasterObjectFromFile(x, band = band, objecttype = "RasterLayer", : Cannot create a RasterLayer object from this file. (file does not exist)
+
+    # View raster attributes 
+    DEM
+
+    ## Error in eval(expr, envir, enclos): object 'DEM' not found
 
 Notice that this raster (in GeoTIFF format) already has defined:
 

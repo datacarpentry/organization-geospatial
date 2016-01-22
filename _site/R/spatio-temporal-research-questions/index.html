@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Lesson 00: Answer a Spatio-temporal Research Question with Data: Where to Start? &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
-<meta name="description" content="Add description here.">
+<meta name="description" content="This lesson provides an overview of finding spatial data to support your research question. It covers some of the key data sources and providers and places that you can look to find data for your study are / research question.">
 <meta name="keywords" content="R, GIS-Spatial-Data">
 
 
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lesson 00: Answer a Spatio-temporal Research Question with Data: Where to Start?">
-<meta property="og:description" content="Add description here.">
+<meta property="og:description" content="This lesson provides an overview of finding spatial data to support your research question. It covers some of the key data sources and providers and places that you can look to find data for your study are / research question.">
 <meta property="og:url" content="http://localhost:4000/R/spatio-temporal-research-questions">
 <meta property="og:site_name" content="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices">
 
@@ -218,7 +218,7 @@
     <div class="article-wrap">
     <!-- List authors at the top of the lesson -->
     <span class="post-date">
-    Authors: Leah Wasser, Megan A. Jones, Dave Roberts, Tracy Teal, Kaitlin Stack Whitney<br>
+    Authors: <br>
     
     Reviewers: 
        
@@ -249,14 +249,15 @@
 
   <ul>
     <li>Know the definition of spatial data.</li>
-    <li>understand that one can work with data from different time points for the same area (e.g., you can ask question over time using spatial data.)</li>
-    <li>understand that one can work with data from different site to compare areas.</li>
-    <li>Know how scientific questions can help in selection of a field site. (-&gt;why use HAVR / SJER &amp; introduce both.)</li>
+    <li>Understand that one can work with data from different time points for the same
+area (e.g., you can ask question over time using spatial data).</li>
+    <li>Understand that one can work with data from different site to compare areas.</li>
+    <li>Know how scientific questions can help in selection of a field site.</li>
   </ul>
 
   <h2 id="things-youll-need-to-complete-this-lesson">Things You’ll Need To Complete This Lesson</h2>
-  <p>To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.</p>
+  <p>To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.</p>
 
   <h3 id="install-r-packages">Install R Packages</h3>
 
@@ -281,7 +282,7 @@ of setting the working directory in <code>R</code> can be found here.</a>.</p>
 learned skills. If available, the code for challenge solutions is found in the
 downloadable <code>R</code> script of the entire lesson, available in the footer of each lesson page.</p>
 
-  <p><strong>Raster Lesson Series:</strong> This lesson is part of a lesson series introducing
+  <p><strong>Spatial-Temporal Data &amp; Data Management Lesson Series:</strong> This lesson is part of a lesson series introducing
 <a href="tutorial/URL">spatial data and data management in <code>R</code> </a>.
 It is also part of a larger 
 <a href="workshops/spatio-temporal-workshop">spatio-temporal Data Carpentry Workshop </a>
@@ -298,16 +299,17 @@ and<br />
 </div>
 
 <figure>
-	<a href="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view">
-	<img src="https://drive.google.com/file/d/0B0OuNNmrplVUa3dtVHRadWhfTzg/view" /></a>
+	<a href="https://xxxx">
+	<img src="https://xxxx" /></a>
 	<figcaption> A nice overview graphic of the research topic, question and data needed to begin to address the question. ACTUAL GRAPHIC IN CONSTRUCTION
 	Source: National Ecological Observatory Network (NEON)  
 	</figcaption>
 </figure>
 
 <h2 id="questions-start-the-research-process">Questions Start the Research Process</h2>
-<p>The scientific method begins with a question that you would like to answer. Once
-we have a question, we identify the methods needed to address that question.
+<p>The scientific method often begins with a question that you would like to 
+answer. Once we have a question, we identify the methods needed to address that
+question.
 When our question is small, in temporal and/or spatial scale, we might be able
 to go out and collect the data needed to answer the question ourselves. When we
 ask questions that cover broad spatial and temporal scales, we often need to use
@@ -337,7 +339,7 @@ use the Harvard Forest located in the northeastern US state of Massachusetts and
 the San Joaquin Experimental Range located in the southern end of the US state
 of California.  These two sites are about 4,900km (3,000 miles) apart!</p>
 
-<p>MAP OF USA w/ two sites – do not yet link to NEON site.  We’ll “gather” that
+<p>MAP OF USA w/ the two sites – do not yet link to NEON site.  We’ll “gather” that
 data later.</p>
 
 <p>Our revised research question is now, <em>What causes the pattern of phenophase</em>
@@ -353,7 +355,9 @@ site.</li>
 </ul>
 
 <h2 id="think-spatially">Think Spatially</h2>
+
 <div id="challenge">
+
   <h2 id="challenge-thinking-spatially">Challenge: Thinking Spatially</h2>
 
   <ul>
@@ -366,10 +370,12 @@ site.</li>
 <p>XXX</p>
 
 <h2 id="insight-from-comparisons">Insight from Comparisons</h2>
-<p>###across sites to see patterns.
-###across time points to see patterns</p>
 
-<h2 id="scientific-questions-to-research-tasks">Scientific Questions to Research Tasks</h2>
+<h3 id="across-sites-to-see-patterns">across sites to see patterns.</h3>
+
+<h3 id="across-time-points-to-see-patterns">across time points to see patterns</h3>
+
+<h2 id="from-scientific-question-to-research-tasks">From Scientific Question to Research Tasks</h2>
 <p>We’ve stated that we want to figure out what causes the pattern of phenophase
 timing at two different sites in the US. However, to tackle this question we
 need to break down the question in to several discrete questions that can later
@@ -379,7 +385,8 @@ figure out what data need to be collected.</p>
 <div id="challenge">
   <h2 id="challenge-breaking-down-a-large-research-quesion">Challenge: Breaking Down a Large Research Quesion</h2>
   <ul>
-    <li>What are some smaller questions we need to ask to figure out our overall question?</li>
+    <li>What are some smaller questions/ tasks we need to ask to figure out our
+overall question?</li>
     <li>What data do we need to collect/ gather to answer these questions?</li>
   </ul>
 </div>
@@ -401,9 +408,9 @@ patterns that we find.</li>
 browning down of vegetation – over a whole site.</p>
 
 <h4 id="measuring-plant-phenology-from-ground-to-space-video">Measuring Plant Phenology from Ground to Space Video</h4>
-<iframe width="560" height="315" src="https://youtu.be/_4uHLXL1yZA" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_4uHLXL1yZA" frameborder="0" allowfullscreen=""></iframe>
 
-<p>As this video points out there are different ways to measure those phenophases. 
+<p>As this video points out there are different ways to measure phenophases. 
 Remote sensing data are valuable when we are trying to view site-wide vegetation
 patterns. Specifically, the Normalized Difference Vegetation Index (NDVI) is an
 index that efficiently measures green-up and brown-down. NDVI is a quantitative
@@ -466,11 +473,10 @@ what data is available at different sites </a>
 and 
 <a href="http://fluxnet.ornl.gov/" target="_blank">
 general network information </a>.</li>
-  <li>NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):&lt;a href=”http://www.ncdc.noaa.gov/data-access/land-based-station-data&gt;
-information on land-based weather stations &lt;/a&gt; 
+  <li>NOAA National Centers for Enviornmental Information (formerly National Climatic Data Center):
+&lt;a href=”http://www.ncdc.noaa.gov/data-access/land-based-station-data&gt; information on land-based weather stations &lt;/a&gt; 
 and 
-<a href="http://www.ncdc.noaa.gov/" target="_blank">
-general network information </a>.</li>
+<a href="http://www.ncdc.noaa.gov/" target="_blank"> general network information </a>.</li>
 </ul>
 
 <h2 id="data-to-describe-the-study-site">Data to Describe the Study Site</h2>
@@ -495,17 +501,18 @@ patterns of vegetation phenology (greening and browning ) across multiple sites.
 <h3 id="spectral-imagery">Spectral Imagery</h3>
 
 <h4 id="mapping-the-invisible-introduciton-to-spectral-remote-sensing">Mapping the Invisible: Introduciton to Spectral Remote Sensing</h4>
-<iframe width="560" height="315" src="https://youtu.be/3iaFzafWJQE" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen=""></iframe>
 
 <h3 id="light-reflectance-and-imaging-data-lidar">Light Reflectance and Imaging Data (LiDAR)</h3>
 
 <h4 id="lidar-introduction-to-light-detection-and-ranging-video">LiDAR-Introduction to Light Detection and Ranging Video</h4>
-<iframe width="560" height="315" src="https://youtu.be/m7SXoFv6Sdc" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLLWiknuNGd50GI8OZf3EBo6PMx04xcoFa" frameborder="0" allowfullscreen=""></iframe>
 
 <h4 id="neon-airborne-observation-platform-aop">NEON Airborne Observation Platform (AOP)</h4>
-<p>The 
-&lt;a “http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing” target=”_blank”&gt; NEON airborne observation platform (AOP)&lt;/a&gt;
-collects annual remote sensing data over NEON field sites using sensors mounted
+<p>The
+<a href="http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> NEON airborne observation platform </a>
+(AOP) collects annual remote sensing data over NEON field sites using sensors
+mounted
 on an airplane. The AOP consists of a hyperspectral imaging spectrometer, a full
 waveform and discrete return LiDAR, and a high-resolution Red Blue Green (RGB)
 camera. Data from the AOP build a robust time series of landscape-scale changes
@@ -513,11 +520,12 @@ in numerous physical, biological and biochemical metrics, such as vegetation
 cover and density, canopy chemistry, and topography, including elevation, slope
 and aspect.</p>
 
-<p>IMAGE OF PLANE?  NONE ON THE WEBSITE ARE VERY GOOD AT CAPTURING THE WHOLE IDEA?</p>
+<p>IMAGE OF THE PLANE?  NONE ON THE WEBSITE ARE VERY GOOD AT CAPTURING THE WHOLE
+IDEA?</p>
 
 <h3 id="micro-meteorological-data-from-the-fisher-tower">Micro-meteorological Data from the Fisher Tower</h3>
-<p>The <a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank">
-Harvard Forest Fisher Meteorolical Station </a> 
+<p>The 
+<a href="http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations" target="_blank"> Harvard Forest Fisher Meteorological Station </a> 
 has been operational since 2001.  It is located in an open field and records air
 temperature, relative humidity, precipitation, incoming and net radiation,
 barometric pressure, wind speed and direction, and soil temperature. Data is
@@ -553,7 +561,37 @@ recorded at 15-minute and daily intervals.</p>
 <!-- This code generates the category link at the bottom of the page-->
 
 		
+            
+                
+            
+                
+            
+                
+            
+            
+        
 
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
         
 
 <!-- remove the stuff above if the site slows down - this is to populate tags -->
@@ -671,7 +709,7 @@ recorded at 15-minute and daily intervals.</p>
         </div>
         <p class="byline id="post-meta"><strong>Lesson 00: Answer a Spatio-temporal Research Question with Data: Where to Start?</strong> was  with <i class="fa fa-tags"></i>: 
        on <time datetime="2015-10-30T00:00:00-06:00">October 30, 2015</time> 
-       <!--by Leah WasserMegan A. JonesDave RobertsTracy TealKaitlin Stack Whitney.  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
+       <!--by .  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
        <a href="http://localhost:4000/about" title="About NEON / Data Carpentry Hackathon">About NEON / Data Carpentry Hackathon</a>.</p>
       </footer>
 

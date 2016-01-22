@@ -5,7 +5,7 @@ date:   2015-10-24
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-22
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, GIS-Spatial-Data, informatics]
@@ -120,16 +120,20 @@ function. By asking for the `sum()` of `is.na()` we can see how many NA/ missing
 values we have. 
 
 REPLACE CODE TO BE FOR THE SAME SMALLISH DATA SET USED FOR BAD DATA VALUES BELOW
-```{r missing values}
 
-#Check for NA values
-sum(is.na(harMet15.09.11$datetime))
-sum(is.na(harMet15.09.11$airt))
+    #Check for NA values
+    sum(is.na(harMet15.09.11$datetime))
 
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
-#view rows where the air temperature is NA 
-harMet15.09.11[is.na(harMet15.09.11$airt),]
-```
+    sum(is.na(harMet15.09.11$airt))
+
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
+
+    #view rows where the air temperature is NA 
+    harMet15.09.11[is.na(harMet15.09.11$airt),]
+
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
 The results above tell us there are `NoData` values in the `datetime` column.
 However, there are `NoData` values in other variables.  

@@ -5,24 +5,24 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Lesson 01: The Spatial Data Landscape &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
-<meta name="description" content="Add description here.">
+<title>Lesson 06: Cleaning Data -- Missing and Bad Data Values &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
+<meta name="description" content="This tutorial covers spatial data cleaning - specifically dealing with missing (NA / NAN) values and bad values when working with spatial data in R.">
 <meta name="keywords" content="R, GIS-Spatial-Data, informatics">
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lesson 01: The Spatial Data Landscape">
-<meta property="og:description" content="Add description here.">
-<meta property="og:url" content="http://localhost:4000/R/spatial-data-landscape">
+<meta property="og:title" content="Lesson 06: Cleaning Data -- Missing and Bad Data Values">
+<meta property="og:description" content="This tutorial covers spatial data cleaning - specifically dealing with missing (NA / NAN) values and bad values when working with spatial data in R.">
+<meta property="og:url" content="http://localhost:4000/R/EditLink">
 <meta property="og:site_name" content="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/R/spatial-data-landscape">
+<link rel="canonical" href="http://localhost:4000/R/EditLink">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices Feed">
 
 
@@ -99,7 +99,7 @@
     
       "http://localhost:4000/images/banners/NEONCarpentryHeader_2.png"
     
-  alt="Lesson 01: The Spatial Data Landscape feature image">
+  alt="Lesson 06: Cleaning Data -- Missing and Bad Data Values feature image">
     <span class="image-credit">Source: 
      
     A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry 
@@ -211,14 +211,14 @@
   <article>
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/R/spatial-data-landscape" rel="bookmark" title="Lesson 01: The Spatial Data Landscape">Lesson 01: The Spatial Data Landscape</a></h1>
+        <h1><a href="http://localhost:4000/R/EditLink" rel="bookmark" title="Lesson 06: Cleaning Data -- Missing and Bad Data Values">Lesson 06: Cleaning Data -- Missing and Bad Data Values</a></h1>
       
     </div><!--/ .headline-wrap -->
 
     <div class="article-wrap">
     <!-- List authors at the top of the lesson -->
     <span class="post-date">
-    Authors: Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones<br>
+    Authors: <br>
     
     Reviewers: 
        
@@ -248,12 +248,12 @@
   <p>After completing this activity, you will:</p>
 
   <ul>
-    <li>Be aware of a variety of tools that can be used to access spatial data.</li>
+    <li></li>
   </ul>
 
   <h2 id="things-youll-need-to-complete-this-lesson">Things You’ll Need To Complete This Lesson</h2>
-  <p>To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.</p>
+  <p>To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.</p>
 
   <h3 id="install-r-packages">Install R Packages</h3>
 
@@ -267,6 +267,20 @@ preferably RStudio, loaded on your computer.</p>
   </ul>
 
   <h3 id="download-data">Download Data</h3>
+  <p>EDIT AS NEEDED
+<a href="https://ndownloader.figshare.com/files/3648519" class="btn btn-success"> Download NEON Teaching Data Subset: Airborne Remote Sensing Data</a></p>
+
+  <p>The LiDAR and imagery data used to create this raster teaching data subset 
+were collected over the 
+<a href="http://www.neoninc.org/" target="_blank"> National Ecological Observatory Network's</a> 
+<a href="http://www.neoninc.org/science-design/field-sites/harvard-forest" target="_blank">Harvard Forest</a>
+and 
+<a href="http://www.neoninc.org/science-design/field-sites/san-joaquin-experimental-range" target="_blank">San Joaquin Experimental Range</a>
+field sites and processed at
+<a href="http://www.neoninc.org" target="_blank">NEON headquarters.</a> 
+The entire dataset can be accessed by request from the 
+<a href="http://www.neoninc.org/data-resources/get-data/airborne-data" target="_blank"> NEON Airborne Data Request Page </a> on the NEON website.
+</p>
 
   <hr />
 
@@ -278,7 +292,8 @@ of setting the working directory in <code>R</code> can be found here.</a>.</p>
 learned skills. If available, the code for challenge solutions is found in the
 downloadable <code>R</code> script of the entire lesson, available in the footer of each lesson page.</p>
 
-  <p><strong>Raster Lesson Series:</strong> This lesson is part of a lesson series introducing
+  <p><strong>Spatial-Temporal Data &amp; Data Management Lesson Series:</strong> This lesson is part
+of a lesson series introducing
 <a href="tutorial/URL">spatial data and data management in <code>R</code> </a>.
 It is also part of a larger 
 <a href="workshops/spatio-temporal-workshop">spatio-temporal Data Carpentry Workshop </a>
@@ -291,49 +306,134 @@ and<br />
   <hr />
 
   <h3 id="additional-resources">Additional Resources</h3>
-  <p>For a list of tools to work with spatial data, visit:
-* Wikipedia’s <a href="http://en.wikipedia.org/wiki/List_of_geographic_information_systems_software" target="_blank" gis="" software="" page.="">
-* Wikipedia’s <a href="http://en.wikipedia.org/wiki/List_of_spatial_analysis_software" target="_blank" spatial="" analysis="" software="" page.=""></a></a></p>
+
+  <ul>
+    <li><a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
+Read more about the <code>raster</code> package in <code>R</code>.</a></li>
+    <li><a href="http://neondataskills.org/R/Raster-Data-In-R/" target="_blank">
+NEON Data Skills: Raster Data in R - The Basics</a></li>
+    <li><a href="http://neondataskills.org/R/Image-Raster-Data-In-R/" target="_blank">
+NEON Data Skills: Image Raster Data in R - An Intro</a></li>
+  </ul>
 
 </div>
 
-<h2 id="this-lesson-overviews-gui-vs-non-gui-tools-interactive-vs-non-interactive-nice-graphic-could-go-a-long-way-here">This lesson overviews Gui vs Non Gui tools, interactive vs non-interactive (nice graphic could go a long way here)</h2>
+<h3 id="clean-data">Clean Data</h3>
+<p>No dataset is perfect. It is common to encounter large files containing obviously
+erronious data (bad data).  It is also common to encounter <code>NoData</code>
+values that we need to account for when analyzing our data.</p>
 
-<h2 id="gui-tools---brief-description-of-this-and-a-few-examples-of-available-tools-brief-discussion-of-why-coding-is-potentially-more-reproducible-compared-to-gui-workflows">Gui Tools - Brief Description of this and a few examples of available tools. BRIEF discussion of why coding is potentially more reproducible compared to gui workflows</h2>
+<h2 id="nodata-values-na-nan">NoData Values (NA, NAN)</h2>
+<p>If we are lucky when working with external data, the <code>NoData</code> value is clearly
+specified in the metadata. Sometimes this value is <code>NA</code> or <code>nan</code> (not a number). However, 
+<code>NA</code> isn’t always used. Text values can make data storage difficult for some 
+programs and thus, sometimes you’ll encounter a large negative value such as
+<code>-9999</code> used as the <code>NoData</code> value. At other times, we might see blank values in
+a data file which designate <code>NoData</code>. Blanks are particularly problematic
+because we can’t be certain if a data value is purposefully missing (not
+measured that day or a bad measurement) or if someone unintentionally deleted
+it.</p>
 
-<h3 id="pay-arcgis">Pay: Arcgis</h3>
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip:</strong><code>-9999</code> is a common value used in
+both the remote sensing field and the atmospheric fields. It is also
+the standard used by the <a href="http://www.neoninc.org" target="_blank"> 
+National Ecological Observatory Network (NEON)</a>.</p>
 
-<h3 id="open--free-qgis-grass-maybe-a-line-on-each-and-a-link-to-each-page">Open / Free: QGIS, Grass (maybe a line on each and a link to each page</h3>
+<p>Because the actual value used to designate missing data can vary depending upon 
+what data we are working with, it is important to always check the metadata for
+the files associated <code>NoData</code> value. If the value is <code>NA</code>, we are in luck, <code>R</code>
+will recognize and flag this value as <code>NoData</code>. If the value is numeric (e.g.,
+<code>-9999</code>),then we might need to assign this value to <code>NA</code>.</p>
 
-<h2 id="non-gui-tools">Non Gui Tools</h2>
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip:</strong> <code>NA</code> values will be ignored when
+performing calculations in <code>R</code>. However a <code>NoData</code> value of <code>-9999</code> will be
+recognized as an integer and processed accordingly. If you encounter a numeric
+<code>NoData</code> value be sure to assign it to <code>NA</code> in <code>R</code>:
+<code>objectName[objectName==-9999] &lt;- NA</code></p>
 
-<h3 id="r">R</h3>
+<h3 id="check-for-na-values">Check for NA values</h3>
+<p>We can quickly check for <code>NoData</code> values in our data using the<code>is.na()</code> 
+function. By asking for the <code>sum()</code> of <code>is.na()</code> we can see how many NA/ missing
+values we have.</p>
 
-<h3 id="python">Python</h3>
+<p>REPLACE CODE TO BE FOR THE SAME SMALLISH DATA SET USED FOR BAD DATA VALUES BELOW</p>
 
-<h3 id="matlab">Matlab</h3>
+<pre><code>#Check for NA values
+sum(is.na(harMet15.09.11$datetime))
 
-<h3 id="benefits-reproducible-workflows-more-easily-documented-inline-comments-etc">Benefits: Reproducible workflows, more easily documented (inline comments, etc)</h3>
+## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
-<h2 id="overview-of-commonly-found-spatial-data-formats----essentially-one-line-about-this-with-a-link-to-the-spatial-data-formats-page">Overview of commonly found spatial data formats – essentially one line about this with a link to the spatial data formats page.</h2>
+sum(is.na(harMet15.09.11$airt))
 
-<h3 id="shapefiles-shp-dbf-etc---group-of-files-">Shapefiles (.shp, dbf, etc - group of files )</h3>
+## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
-<h3 id="geodatabases-gdb-">Geodatabases (.gdb, ??)</h3>
+#view rows where the air temperature is NA 
+harMet15.09.11[is.na(harMet15.09.11$airt),]
 
-<h3 id="csvs-csv">Csv’s (.csv)</h3>
+## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
+</code></pre>
 
-<h3 id="text-files-rasters-asc----essentially-one-line-about-this-with-a-link-to-the-spatial-data-formats-page">text files: rasters (.asc) – essentially one line about this with a link to the spatial data formats page.</h3>
+<p>The results above tell us there are <code>NoData</code> values in the <code>datetime</code> column.
+However, there are <code>NoData</code> values in other variables.</p>
 
-<h3 id="online-geojson">Online: geojson,</h3>
+<h3 id="deal-with-nodata-values">Deal with NoData Values</h3>
+<p>When we encounter <code>NoData</code> values (blank, NaN, -9999, etc.) in our data we
+need to decide how to deal with them. By default <code>R</code> treats <code>NoData</code> values
+designated
+with a <code>NA</code> as a missing value rather than a zero. This is good, as a value of 
+zero (no rain today) is not the same as missing data (e.g. we didn’t measure the 
+amount of rainfall today).</p>
 
-<h2 id="packages-specific-to-r---with-link-to-the-setting-up-your-work-environment-page">Packages specific to R - with link to the setting up your work environment page</h2>
+<p>How we deal with <code>NoData</code> values will depend on:</p>
 
-<h3 id="raster">Raster</h3>
+<ul>
+  <li>the data type we are working with</li>
+  <li>the analysis we are conducting</li>
+  <li>the significance of the gap or missing value</li>
+</ul>
 
-<h3 id="rgdal">RGDAL</h3>
+<p>Sometimes we might need to “gap fill” our data. This means we will interpolate 
+or estimate missing values often using statistical methods. Gap filling can be 
+complex and is beyond the scope of this lesson. The take away from this lessons
+is simply that it is important to acknowledge missing values in your data and to 
+carefully consider how you wish to account for them during analysis.</p>
 
-<h3 id="rastervis">RasterVis</h3>
+<p>Other resources:</p>
+
+<ol>
+  <li><a href="http://www.statmethods.net/input/missingdata.html" target="_blank"> Quick-R: Missing Data</a> 
+– R code for dealing with missing data</li>
+  <li>The Institute for Digital Research and Education has an <a href="http://www.ats.ucla.edu/stat/r/faq/missing.htm" target="_blank"> R FAQ on Missing Values</a>.</li>
+</ol>
+
+<h2 id="bad-data-values">Bad Data Values</h2>
+<p>Bad data values are different from <code>NoDataValue</code>. Bad data values are values that
+fall outside of the applicable range of a dataset. 
+Examples of Bad Data Values:</p>
+
+<ul>
+  <li>The normalized difference vegetation index (NDVI), which is a measure of 
+greenness, has a valid range of -1 to 1. Any value outside of that range would 
+be considered a “bad” or miscalculated value.</li>
+  <li>If we are using a Julian day (0-365/366) to represent the days of the year. A value
+of 1110 is clearly not correct.</li>
+</ul>
+
+<h3 id="find-bad-data-values">Find Bad Data Values</h3>
+<p>Sometimes a dataset’s metadata will tell us the range of expected values for a
+variable or common sense dictates the expected value (as in the Julian day example above).
+Values outside of this range are suspect and we need to consider than
+when we analyze the data. Sometimes, we need to use some common sense and
+scientific insight as we examine the data - just as we would for field data t
+identify questionable values.</p>
+
+<p>We can explore the distribution of values contained within our data using the 
+<code>hist</code> function which produces a histogram. Histograms are often useful in 
+identifying outliers and bad data values in our raster data.</p>
+
+<p>HIST of SMALLISH DATA SET WITH SOME OUTLANDISH VALUE</p>
+
+<h3 id="deal-with-bad-data-values">Deal with Bad Data Values</h3>
 
 
 
@@ -346,7 +446,46 @@ and<br />
 <!-- This code generates the category link at the bottom of the page-->
 
 		
+            
+                
+            
+                
+            
+                
+            
+            
+        
 
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
         
 
 <!-- remove the stuff above if the site slows down - this is to populate tags -->
@@ -360,7 +499,7 @@ and<br />
 (some browsers may require you to right click.)
 <ul>
 	<li>
- 	<a href="/code/01-spatial-data-landscape.R" class="btn btn-info"> 01-spatial-data-landscape.R </a> </li>
+ 	<a href="/code/06-clean-data-bad-and-missing-values.R" class="btn btn-info"> 06-clean-data-bad-and-missing-values.R </a> </li>
 
 	
 </ul>
@@ -462,9 +601,9 @@ and<br />
 <br><br><br>
 
         </div>
-        <p class="byline id="post-meta"><strong>Lesson 01: The Spatial Data Landscape</strong> was  with <i class="fa fa-tags"></i>: 
-       on <time datetime="2015-10-29T00:00:00-06:00">October 29, 2015</time> 
-       <!--by Dave RobertsTracy TealKaitlin Stack WhitneyLeah WasserMegan A. Jones.  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
+        <p class="byline id="post-meta"><strong>Lesson 06: Cleaning Data -- Missing and Bad Data Values</strong> was  with <i class="fa fa-tags"></i>: 
+       on <time datetime="2015-10-24T00:00:00-06:00">October 24, 2015</time> 
+       <!--by .  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
        <a href="http://localhost:4000/about" title="About NEON / Data Carpentry Hackathon">About NEON / Data Carpentry Hackathon</a>.</p>
       </footer>
 

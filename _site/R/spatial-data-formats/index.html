@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Lesson 02: Spatial Data Formats -- Vector & Raster Data Management &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
-<meta name="description" content="Add description here.">
+<meta name="description" content="This lesson covers the basics of key data formats that may contain spatial information including shapefile, Geotiff and csv. description here. It also provides a brief list of other formats that you may encounter when working with spatial data.">
 <meta name="keywords" content="R, GIS-Spatial-Data, informatics">
 
 
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lesson 02: Spatial Data Formats -- Vector & Raster Data Management">
-<meta property="og:description" content="Add description here.">
+<meta property="og:description" content="This lesson covers the basics of key data formats that may contain spatial information including shapefile, Geotiff and csv. description here. It also provides a brief list of other formats that you may encounter when working with spatial data.">
 <meta property="og:url" content="http://localhost:4000/R/spatial-data-formats">
 <meta property="og:site_name" content="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices">
 
@@ -218,7 +218,7 @@
     <div class="article-wrap">
     <!-- List authors at the top of the lesson -->
     <span class="post-date">
-    Authors: Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones<br>
+    Authors: <br>
     
     Reviewers: 
        
@@ -258,8 +258,8 @@ differently.</li>
   </ul>
 
   <h2 id="things-youll-need-to-complete-this-lesson">Things You’ll Need To Complete This Lesson</h2>
-  <p>To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.</p>
+  <p>To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.</p>
 
   <h3 id="install-r-packages">Install R Packages</h3>
 
@@ -273,20 +273,6 @@ preferably RStudio, loaded on your computer.</p>
   </ul>
 
   <h3 id="download-data">Download Data</h3>
-  <p>EDIT AS NEEDED
-<a href="https://ndownloader.figshare.com/files/3648519" class="btn btn-success"> Download NEON Teaching Data Subset: Airborne Remote Sensing Data</a></p>
-
-  <p>The LiDAR and imagery data used to create this raster teaching data subset 
-were collected over the 
-<a href="http://www.neoninc.org/" target="_blank"> National Ecological Observatory Network's</a> 
-<a href="http://www.neoninc.org/science-design/field-sites/harvard-forest" target="_blank">Harvard Forest</a>
-and 
-<a href="http://www.neoninc.org/science-design/field-sites/san-joaquin-experimental-range" target="_blank">San Joaquin Experimental Range</a>
-field sites and processed at
-<a href="http://www.neoninc.org" target="_blank">NEON headquarters.</a> 
-The entire dataset can be accessed by request from the 
-<a href="http://www.neoninc.org/data-resources/get-data/airborne-data" target="_blank"> NEON Airborne Data Request Page </a> on the NEON website.
-</p>
 
   <hr />
 
@@ -298,7 +284,8 @@ of setting the working directory in <code>R</code> can be found here.</a>.</p>
 learned skills. If available, the code for challenge solutions is found in the
 downloadable <code>R</code> script of the entire lesson, available in the footer of each lesson page.</p>
 
-  <p><strong>Raster Lesson Series:</strong> This lesson is part of a lesson series introducing
+  <p><strong>Spatial-Temporal Data &amp; Data Management Lesson Series:</strong> This lesson is part
+of a lesson series introducing
 <a href="tutorial/URL">spatial data and data management in <code>R</code> </a>.
 It is also part of a larger 
 <a href="workshops/spatio-temporal-workshop">spatio-temporal Data Carpentry Workshop </a>
@@ -347,7 +334,7 @@ will generally conform to standards.</p>
 
 <h5 id="dbf-files--attributes">DBF files / attributes</h5>
 
-<h5 id="multiple-files-associated-with-a--shapefile">Multiple files associated with a  shapefile</h5>
+<h5 id="multiple-files-associated-with-a-shapefile">Multiple files associated with a shapefile</h5>
 
 <h3 id="shapefile-vs-text-file-points-focused">Shapefile vs text file (points focused)</h3>
 
@@ -406,9 +393,10 @@ elevation or temperature. Some examples of classified maps include:</p>
 </figure>
 
 <h3 id="geotiff">GeoTIFF</h3>
-<p>The raster data that we will be using are GeoTIFFs. But what is that? Basically 
-a GeoTIFF has the data stored as the grid as well additional information about
-the data stored in the same file.</p>
+<p>The raster data that we will be using are GeoTIFFs. But what is that?</p>
+
+<p>Basically a GeoTIFF has the data stored as the grid as well additional
+information about the data stored in the same file.</p>
 
 <p>The GeoTIFF format which has the extension <code>.tif</code>. A <code>.tif</code> file stores metadata
 or attributes about the file as embedded <code>tif tags</code>. For instance, your camera
@@ -432,7 +420,7 @@ as tags. These tags can include the following raster metadata:</p>
 </ul>
 
 <h2 id="raster-and-vector-data-together">Raster and Vector Data Together</h2>
-<p>If you’re interested in a particular area, you can combine information or
+<p>If we are interested in a particular area, we can combine information or
 layer data from both of these types. For instance we can combine the Harvard
 Forest land cover map (raster) and the boundary of the study site (a vector
 polygon) and the tower location (a vector point).</p>
@@ -447,7 +435,46 @@ polygon) and the tower location (a vector point).</p>
 <!-- This code generates the category link at the bottom of the page-->
 
 		
+            
+                
+            
+                
+            
+                
+            
+            
+        
 
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
         
 
 <!-- remove the stuff above if the site slows down - this is to populate tags -->
@@ -565,7 +592,7 @@ polygon) and the tower location (a vector point).</p>
         </div>
         <p class="byline id="post-meta"><strong>Lesson 02: Spatial Data Formats -- Vector & Raster Data Management</strong> was  with <i class="fa fa-tags"></i>: 
        on <time datetime="2015-10-28T00:00:00-06:00">October 28, 2015</time> 
-       <!--by Dave RobertsTracy TealKaitlin Stack WhitneyLeah WasserMegan A. Jones.  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
+       <!--by .  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
        <a href="http://localhost:4000/about" title="About NEON / Data Carpentry Hackathon">About NEON / Data Carpentry Hackathon</a>.</p>
       </footer>
 

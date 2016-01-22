@@ -5,24 +5,24 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
-<meta name="description" content="Add description here.">
-<meta name="keywords" content="R, GIS-Spatial-Data, metadata-eml, informatics">
+<title>Lesson 01: The Spatial Data Landscape &#8211; NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices</title>
+<meta name="description" content="This lesson introduces the spatial data tool landscape. It covers the types of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) approach to method development that supports clear documentation of methods.">
+<meta name="keywords" content="R, GIS-Spatial-Data, informatics">
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure">
-<meta property="og:description" content="Add description here.">
-<meta property="og:url" content="http://localhost:4000/R/metadata-file-formats-structures">
+<meta property="og:title" content="Lesson 01: The Spatial Data Landscape">
+<meta property="og:description" content="This lesson introduces the spatial data tool landscape. It covers the types of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) approach to method development that supports clear documentation of methods.">
+<meta property="og:url" content="http://localhost:4000/R/spatial-data-landscape">
 <meta property="og:site_name" content="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/R/metadata-file-formats-structures">
+<link rel="canonical" href="http://localhost:4000/R/spatial-data-landscape">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices Feed">
 
 
@@ -99,7 +99,7 @@
     
       "http://localhost:4000/images/banners/NEONCarpentryHeader_2.png"
     
-  alt="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure feature image">
+  alt="Lesson 01: The Spatial Data Landscape feature image">
     <span class="image-credit">Source: 
      
     A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry 
@@ -211,14 +211,14 @@
   <article>
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/R/metadata-file-formats-structures" rel="bookmark" title="Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure">Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure</a></h1>
+        <h1><a href="http://localhost:4000/R/spatial-data-landscape" rel="bookmark" title="Lesson 01: The Spatial Data Landscape">Lesson 01: The Spatial Data Landscape</a></h1>
       
     </div><!--/ .headline-wrap -->
 
     <div class="article-wrap">
     <!-- List authors at the top of the lesson -->
     <span class="post-date">
-    Authors: Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones<br>
+    Authors: <br>
     
     Reviewers: 
        
@@ -248,17 +248,12 @@
   <p>After completing this activity, you will:</p>
 
   <ul>
-    <li>Understand that metadata come in many formats and must be maintained with the
-data.</li>
-    <li>Understand that there is necessary metadata associated with and/or embedded in
-the data.</li>
-    <li>Understand that collecting data requires/includes collecting the metadata.</li>
-    <li>Be able to create metadata files for different data types.</li>
+    <li>Be aware of a variety of tools that can be used to access spatial data.</li>
   </ul>
 
   <h2 id="things-youll-need-to-complete-this-lesson">Things You’ll Need To Complete This Lesson</h2>
-  <p>To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.</p>
+  <p>To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.</p>
 
   <h3 id="install-r-packages">Install R Packages</h3>
 
@@ -283,7 +278,8 @@ of setting the working directory in <code>R</code> can be found here.</a>.</p>
 learned skills. If available, the code for challenge solutions is found in the
 downloadable <code>R</code> script of the entire lesson, available in the footer of each lesson page.</p>
 
-  <p><strong>Raster Lesson Series:</strong> This lesson is part of a lesson series introducing
+  <p><strong>Spatial-Temporal Data &amp; Data Management Lesson Series:</strong> This lesson is part
+of a lesson series introducing
 <a href="tutorial/URL">spatial data and data management in <code>R</code> </a>.
 It is also part of a larger 
 <a href="workshops/spatio-temporal-workshop">spatio-temporal Data Carpentry Workshop </a>
@@ -296,76 +292,50 @@ and<br />
   <hr />
 
   <h3 id="additional-resources">Additional Resources</h3>
-
-  <ul>
-    <li><a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank"></a></li>
-  </ul>
+  <p>For a list of tools to work with spatial data, visit:
+* Wikipedia’s <a href="http://en.wikipedia.org/wiki/List_of_geographic_information_systems_software" target="_blank" gis="" software="" page.="">
+* Wikipedia’s <a href="http://en.wikipedia.org/wiki/List_of_spatial_analysis_software" target="_blank" spatial="" analysis="" software="" page.=""></a></a></p>
 
 </div>
 
-<h2 id="what-is-it">What is it?</h2>
+<h2 id="this-lesson-overviews-gui-vs-non-gui-tools-interactive-vs-non-interactive">This lesson overviews Gui vs Non Gui tools, interactive vs non-interactive</h2>
+<p>(nice graphic could go a long way here)</p>
 
-<p>STRUCTURED data describing a dataset
-Documents who ‘collected / created’ the data, how, units and data structure, and spatial attributes.</p>
+<h2 id="gui-tools--">Gui Tools -</h2>
+<p>Brief Description of this and a few examples of available tools. BRIEF discussion of why coding is potentially more reproducible compared to gui workflows</p>
 
-<p>With spatial data there is information that’s necessary to understand it, but usually isn’t included in the file.  This is the metadata. Data about the data.</p>
+<h3 id="pay-arcgis">Pay: Arcgis</h3>
 
-<p>Use a file type. Show the raster of Harvard forest. Ask, what can you say
-about this data?</p>
+<h3 id="open--free-qgis-grass-maybe-a-line-on-each-and-a-link-to-each-page">Open / Free: QGIS, Grass (maybe a line on each and a link to each page</h3>
 
-<p>What would you want/need to know about this data to be able to answer questions using this data?</p>
+<h2 id="non-gui-tools">Non Gui Tools</h2>
+<p>Benefits: Reproducible workflows, more easily documented (inline comments, etc)
+###R</p>
 
-<ul>
-  <li>where is this?</li>
-  <li>what coordinate system?</li>
-  <li>date?</li>
-  <li>time?</li>
-  <li>instrument?</li>
-  <li>what’s being measured?</li>
-  <li>what units?</li>
-</ul>
+<h3 id="python">Python</h3>
 
-<p>With this file type as is, can you figure any of these things out?</p>
+<h3 id="matlab">Matlab</h3>
 
-<p>No, you can’t figure this out. You need the data about the data. This is the metadata. This information is sometimes embedded in the file (we’ll talk about this) or a separate file that contains this information. Sometimes it’s in the download directory, but other times, it’s just listed on a web site or in another directory and you need to seek it out.</p>
+<h2 id="commonly-found-spatial-data-formats">Commonly found spatial data formats</h2>
+<p>essentially one line about this with a link to the spatial data formats page.</p>
 
-<p>– show cropland data layer as an example of a data repository that has the metadata on its web site, not when you download it</p>
+<h3 id="shapefiles-shp-dbf-etc---group-of-files-">Shapefiles (.shp, dbf, etc - group of files )</h3>
 
-<p>Metadata comes in many formats, but generally is a text file like txt, CSV or XML.</p>
+<h3 id="geodatabases-gdb-">Geodatabases (.gdb, ??)</h3>
 
-<h3 id="ancillary-data">Ancillary data</h3>
+<h3 id="csvs-csv">Csv’s (.csv)</h3>
 
-<p>Each element in the file can have more data associated with it. This can be things like a measured time series for an individual point or vector.</p>
+<h3 id="text-files-rasters-asc----essentially-one-line-about-this-with-a-link-to-the-spatial-data-formats-page">text files: rasters (.asc) – essentially one line about this with a link to the spatial data formats page.</h3>
 
-<p>This is often things like CSV files. They don’t have a spatial element. You have to attach that data to the spatial data information.</p>
+<h3 id="online-geojson">Online: geojson,</h3>
 
-<p>There also can be raster or vector data for the same area over time.</p>
+<h2 id="packages-specific-to-r---with-link-to-the-setting-up-your-work-environment-page">Packages specific to R - with link to the setting up your work environment page</h2>
 
-<p>All these different data types and series can be combined or compared.</p>
+<h3 id="raster">Raster</h3>
 
-<h2 id="why-is-it-useful">Why is it useful</h2>
-<p>Need to document where the data came from and how it was produced
-also in the case of structured, digital metadata (e.g. EML) it can be used to automate workflows. For instance, things like scale factors, units, and uncertainty values may be stored in metadata and accessed programmatically to convert / transform data within an algorithm.</p>
+<h3 id="rgdal">RGDAL</h3>
 
-<h2 id="where-to-find-it">Where to find it?</h2>
-<p>location and format will vary by provider. 
-best case scenario: packaged with a download in machine readible: txt, xml or eml format, 
-Less good: availbale on the website / repo / portal where data were download</p>
-
-<h2 id="structured-file-formats-very-high-level">Structured File Formats (very high level):</h2>
-<p>** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think?
-###Ecological Metadata Language (EML): XML based format… more here 
-eg harvard forest LTER
-Code chunk showing some EML
-** link out to EML lesson (in NEON-DS-Lesson-Development Repo: /R/EML)
-###XML - common for GIS ….
-Code chunk showing XML
-###Web pages with text - EG harvard forest LTER
-screen shots?
-###HEADERS of text files
-eg raster .asc files
-** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think? 
-little activities to go look at metadata…</p>
+<h3 id="rastervis">RasterVis</h3>
 
 
 
@@ -378,7 +348,46 @@ little activities to go look at metadata…</p>
 <!-- This code generates the category link at the bottom of the page-->
 
 		
+            
+                
+            
+                
+            
+                
+            
+            
+        
 
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
         
 
 <!-- remove the stuff above if the site slows down - this is to populate tags -->
@@ -392,7 +401,7 @@ little activities to go look at metadata…</p>
 (some browsers may require you to right click.)
 <ul>
 	<li>
- 	<a href="/code/03-metadata-formats-and-files.R" class="btn btn-info"> 03-metadata-formats-and-files.R </a> </li>
+ 	<a href="/code/01-spatial-data-landscape.R" class="btn btn-info"> 01-spatial-data-landscape.R </a> </li>
 
 	
 </ul>
@@ -494,9 +503,9 @@ little activities to go look at metadata…</p>
 <br><br><br>
 
         </div>
-        <p class="byline id="post-meta"><strong>Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure</strong> was  with <i class="fa fa-tags"></i>: 
-       on <time datetime="2015-10-27T00:00:00-06:00">October 27, 2015</time> 
-       <!--by Dave RobertsTracy TealKaitlin Stack WhitneyLeah WasserMegan A. Jones.  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
+        <p class="byline id="post-meta"><strong>Lesson 01: The Spatial Data Landscape</strong> was  with <i class="fa fa-tags"></i>: 
+       on <time datetime="2015-10-29T00:00:00-06:00">October 29, 2015</time> 
+       <!--by .  Contributors: Huge thanks to <strong> </strong> for input and feedback!  --> 
        <a href="http://localhost:4000/about" title="About NEON / Data Carpentry Hackathon">About NEON / Data Carpentry Hackathon</a>.</p>
       </footer>
 
