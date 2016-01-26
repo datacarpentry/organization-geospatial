@@ -2,15 +2,18 @@
 layout: post
 title: "Lesson 01: The Spatial Data Landscape"
 date:   2015-10-29
-authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-12
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
-description: "Add description here."
+workshopSeries: [spatial-data-management-series]
+description: "This lesson introduces the spatial data tool landscape. It covers the types
+of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) 
+approach to method development that supports clear documentation of methods."
 code1: 01-spatial-data-landscape.R
 image:
   feature: NEONCarpentryHeader_2.png
@@ -37,8 +40,8 @@ After completing this activity, you will:
 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -53,7 +56,8 @@ preferably RStudio, loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
@@ -73,25 +77,28 @@ For a list of tools to work with spatial data, visit:
 </div>
 
 
-##This lesson overviews Gui vs Non Gui tools, interactive vs non-interactive (nice graphic could go a long way here)
+##This lesson overviews Gui vs Non Gui tools, interactive vs non-interactive 
+(nice graphic could go a long way here)
 
-##Gui Tools - Brief Description of this and a few examples of available tools. BRIEF discussion of why coding is potentially more reproducible compared to gui workflows
+##Gui Tools - 
+Brief Description of this and a few examples of available tools. BRIEF discussion of why coding is potentially more reproducible compared to gui workflows
 
 ###Pay: Arcgis
 
 ###Open / Free: QGIS, Grass (maybe a line on each and a link to each page
 
 ##Non Gui Tools
-
+  Benefits: Reproducible workflows, more easily documented (inline comments, etc)
 ###R
 
 ###Python
 
 ###Matlab
 
-###Benefits: Reproducible workflows, more easily documented (inline comments, etc)
 
-##Overview of commonly found spatial data formats -- essentially one line about this with a link to the spatial data formats page.
+
+##Commonly found spatial data formats
+essentially one line about this with a link to the spatial data formats page.
 
 ###Shapefiles (.shp, dbf, etc - group of files )
 

@@ -5,7 +5,7 @@ date:   2015-10-30
 authors: [Megan A. Jones, Leah A. Wasser]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, gis-spatial-sata]
@@ -87,8 +87,8 @@ and
 We often begin a research project with one or more questions that we would like 
 to answer. Once we have a question, we identify the:
 
-* Type of data.
-* The spatial coverage - location that the data should cover & spatial `extent`. 
+* Type of data
+* The spatial coverage - location that the data should cover & spatial `extent` 
 * The required temporal coverage - time period that the data should span to properly 
 address the question.
 
@@ -100,7 +100,7 @@ we can often collect the data needed to answer the question ourselves. When we
 ask questions that cover larger spatial (e.g. regions to continents) and temporal 
 scales, we often need to use
 data collected by other labs, organizations, and agencies. We will refer to 
-these data as **external data** - data that we have not collected ourselves. 
+these data as “external data” - data that we have not collected ourselves. 
 
 ##Work With External Data
 Working with external data can require skills that are different from data that
@@ -123,16 +123,16 @@ In this workshop series <<LINK TO OVERALL WORKSHOP LANDING PAGE>>, we will learn
 some of the important skills needed to work with external spatio-temporal data 
 including:
 
-* Understanding metadata.
-* Dealing with null and missing values.
-* Importing and plotting time series data including dealing with data/time formats.
-* Importing and plotting spatial data in various formats formats - specifically.
-shapefiles and raster data.
+* Understanding metadata
+* Dealing with null and missing values
+* Importing and plotting time series data including dealing with data/time formats
+* Importing and plotting spatial data in various formats formats - specifically
+shapefiles and raster data
 
 ##Research Question - Explore (Regional) Drivers and Patterns of Plant Phenology
 
-Our science topic for all of the lessons in this series is plant phenology. Our 
-goal is to:
+Our science topic for all of the lessons in this series is plant phenology. Our goal:
+to 
 
 1. Better understand (to quantify) both the timing
 of when plants turn green (green-up) and die back / turn brown (brown-down)
@@ -225,10 +225,9 @@ space or an airplane they cover a larger area. Because the data are collected us
 the same "camera", the data can be easily compared across sites and through time. 
 
 
-####Mapping the Invisible: Introduction to Spectral Remote Sensing
+####Mapping the Invisible: Introduciton to Spectral Remote Sensing
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe> 
-Watch the video above to learn more about how high fidelity remote sensing cameras 
-work.
+Watch the video above to learn more about how remote sensing cameras work.
 ****
 
 <figure>
@@ -318,10 +317,7 @@ series.
 * See how to download it?
 </div>
 
-```{r explore-landsat-data, echo=FALSE}
-#Spatial data are any data that have geographical coordinates associated with them.
 
-```
 
 
 ###Find Temperature and Precipitation Data
@@ -404,10 +400,7 @@ recorded at 15-minute and daily intervals.
 </div>
 
 
-```{r explore-harvard-forest-data, echo=FALSE}
-#Spatial data are any data that have geographical coordinates associated with them.
 
-```
 
 ###Work With Time Series Data in R
 These data are available for download in text of Comma Separated Value (`.csv`)
@@ -479,10 +472,7 @@ and `sp`. We will cover this in the *Vector Data in R Tutorial Series*.
 </div>
 
 
-```{r vector-data-sources, echo=FALSE}
-#Spatial data are any data that have geographical coordinates associated with them.
 
-```
 
 ##Summary: Data Used In This Workshop Series
 In this workshop series series we will use the following data to explore the drivers of

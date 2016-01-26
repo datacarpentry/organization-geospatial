@@ -2,15 +2,17 @@
 layout: post
 title: "Lesson 05: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
 date:   2015-10-25
-authors: [Megan A. Jones, Leah Wasser, Dave Roberts, Tracy Teal, Kaitlin Stack Whitney]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-12
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
-description: "Add description here."
+workshopSeries: [spatial-data-management-series]
+description: "This lesson covers the key packages that support working with spatial data in
+R."
 code1: set-r-work-environment.R
 image:
   feature: NEONCarpentryHeader_2.png
@@ -38,8 +40,8 @@ After completing this activity, you will:
 different tools to work with them. 
 
 ##Things You’ll Need To Complete This Lesson
-To complete this lesson: you will need the most current version of R, and 
-preferably RStudio, loaded on your computer.
+To complete this lesson you will need the most current version of R, and 
+preferably, RStudio loaded on your computer.
 
 ###Install R Packages
 
@@ -55,7 +57,8 @@ EDIT AS NEEDED
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Raster Lesson Series:** This lesson is part of a lesson series introducing
+**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
+of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
 It is also part of a larger 
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)

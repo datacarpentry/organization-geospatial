@@ -2,15 +2,18 @@
 layout: post
 title: "Lesson 01: The Spatial Data Landscape"
 date:   2015-10-29
-authors: [Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
+authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
-description: "Add description here."
+workshopSeries: [spatial-data-management-series]
+description: "This lesson introduces the spatial data tool landscape. It covers the types
+of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) 
+approach to method development that supports clear documentation of methods."
 code1: 01-spatial-data-landscape.R
 image:
   feature: NEONCarpentryHeader_2.png
