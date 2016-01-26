@@ -1,1 +1,0 @@
-# NEON-spatial-data-intro
