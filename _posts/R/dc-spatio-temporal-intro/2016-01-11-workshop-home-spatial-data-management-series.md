@@ -1,15 +1,16 @@
 ---
-layout: workshop
-title: "Self-paced Tutorial Series: Intro to Spatio-temporal Data and Data Management Best Practices"
+layout: workshop-landing-page
+title: "Workshop Series: Intro to Spatio-temporal Data and Data Management Best Practices"
 estimatedTime: 3.0 Hours
 packagesLibraries: []
 date:   2015-10-31
 dateCreated:   2016-01-11
 lastModified: 2016-01-11
 authors: [ Dave Roberts, Tracy Teal, Kaitlin Stack Whitney, Leah Wasser, Megan A. Jones]
-categories: [self-paced-tutorial]
-tags: []
-mainTag: 
+category: [self-paced-tutorial] 
+tags: [R, gis-spatial-sata]
+mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This self-paced tutorial explain fundamental information about
  spatial data as well as how to work with spatial data in R. The tutorial
  consists of seven sequential lessons." 

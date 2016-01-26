@@ -5,11 +5,12 @@ date:   2015-10-29
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-22
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson introduces the spatial data tool landscape. It covers the types
 of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) 
 approach to method development that supports clear documentation of methods."

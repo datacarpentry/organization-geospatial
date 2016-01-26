@@ -5,11 +5,12 @@ date:   2015-10-27
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-22
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metadata-eml, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson introduces key metadata formats including FGDC and EML. It 
 provides basic approaches for understanding these formats and how to work with these formats."
 code1: 03-metadata-formats-and-files.R
