@@ -8,8 +8,9 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metadata-eml, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson introduces key metadata formats including FGDC and EML. It 
 provides basic approaches for understanding these formats and how to work with these formats."
 code1: 03-metadata-formats-and-files.R
