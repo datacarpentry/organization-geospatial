@@ -5,11 +5,12 @@ date:   2015-10-25
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-22
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key packages that support working with spatial data in
 R."
 code1: set-r-work-environment.R

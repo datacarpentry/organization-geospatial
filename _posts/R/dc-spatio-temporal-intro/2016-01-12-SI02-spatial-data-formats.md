@@ -5,11 +5,12 @@ date:   2015-10-28
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-22
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the basics of key data formats that may contain spatial 
 information including shapefile, Geotiff and csv. description here. It also provides a 
 brief list of other formats that you may encounter when working with spatial data."

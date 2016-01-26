@@ -5,11 +5,12 @@ date:   2015-10-26
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-22
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, GIS-Spatial-Data, metdata-eml, informatics]
+tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
+workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key spatial attributes that are needed to work with 
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
 code1: key-spatial-metadata.R
