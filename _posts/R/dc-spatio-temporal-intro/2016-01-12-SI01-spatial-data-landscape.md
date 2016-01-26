@@ -5,7 +5,7 @@ date:   2015-10-29
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-01-25
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, gis-spatial-sata]
