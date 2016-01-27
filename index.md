@@ -9,13 +9,5 @@ image:
 ---
 
 
-##Tabular Time Series Lessons
-
-
-###Link to sample lesson shell
-
-The page below illustrates what the code might look like for the lessons that we are building!
-
-[Sample Lesson Shell]({{ site_baseurl }}R/spatio-temporal/)
-
+##NEON / Data Carpentry Workshop
 
