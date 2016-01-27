@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, gis-spatial-data]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson provides an overview of finding spatial data to support your research
@@ -87,14 +87,16 @@ and
 We often begin a research project with one or more questions that we would like 
 to answer. Once we have a question, we identify the:
 
-* Type of data.
-* The spatial coverage - location that the data should cover & spatial `extent`. 
+* Type of data needed to address the question.
+* The spatial coverage required - location that the data should cover & spatial `extent`. 
 * The required temporal coverage - time period that the data should span to properly 
 address the question.
 
-Once we have identified the data required, we can determine what methods are 
-needed to collect that information need to answer our question.
+Once we have identified these things, we can determine what methods are 
+needed to collect data needed to answer our question.
 
+
+##Work With External Data
 When our question requires data that are small in temporal and/or spatial scale, 
 we can often collect the data needed to answer the question ourselves. When we
 ask questions that cover larger spatial (e.g. regions to continents) and temporal 
@@ -102,31 +104,31 @@ scales, we often need to use
 data collected by other labs, organizations, and agencies. We will refer to 
 these data as **external data** - data that we have not collected ourselves. 
 
-##Work With External Data
-Working with external data can require skills that are different from data that
-we collect ourselves:
+##Metadata - Data That Describe the Data
+When working with external data, we need to understand metadata - the documentation 
+associated with a dataset that helps us understand collection and processing methods, 
+format and other key information including:
 
-1. We need to figure out what methods were used to collect and process the data
+1. **what methods were used to collect and process the data**
 in order to trust that it will be sufficient to answer our question.
-2. We need to understand how the data are stored, what methods were used to indicate
+2. **the format / how the data are stored** - what methods were used to indicate
 missing data values and bad data values in order to process the data effectively and 
 get accurate analysis results. 
 3. If the data are explicedly spatial (e.g. "GIS" type data), then we need to 
 understand key spatial *metadata* to 
 to properly process and visualize the data.
 
-When working with external data, we need to understand metadata - the documentation 
-associated with a dataset that helps us understand collection and processing methods, 
-format and other key information. 
-
-In this workshop series <<LINK TO OVERALL WORKSHOP LANDING PAGE>>, we will learn
-some of the important skills needed to work with external spatio-temporal data 
-including:
+##About this Workshop Series
+In the data-tutorials in this workshop series <<LINK TO OVERALL WORKSHOP LANDING PAGE>>, 
+we will learn important skills and concepts that support working with 
+external spatio-temporal data including:
 
 * Understanding metadata.
 * Dealing with null and missing values.
-* Importing and plotting time series data including dealing with data/time formats.
-* Importing and plotting spatial data in various formats formats - specifically.
+* Importing and plotting time series data
+* Working with and manipulating data/time formats.
+* Importing and plotting raster data in Geotiff format.
+* Importing and plotting vector (shapefile and csv format) data.
 shapefiles and raster data.
 
 ##Research Question - Explore (Regional) Drivers and Patterns of Plant Phenology
@@ -135,15 +137,67 @@ Our science topic for all of the lessons in this series is plant phenology. Our
 goal is to:
 
 1. Better understand (to quantify) both the timing
-of when plants turn green (green-up) and die back / turn brown (brown-down)
-2. To quantify two key drivers of this timing - precipitation and temperature
+of when plants turn green (green-up) and die back / turn brown (brown-down).
+2. To quantify two key drivers of this timing - precipitation and temperature and
+visualize how / if trends observed in precipitation and temperature relate to trends
+observed in greening and browning of vegetation.
+3. Optionally - we'd like to understand how / if "1" and "2" above vary at different 
+sites.
 
-at two National Ecological Observatory Network (NEON) field sites in the United 
-States:
+Our study area includes two National Ecological Observatory Network (NEON) field 
+sites in the United States:
 
 * Site One: <a href="http://www.neoninc.org/science-design/field-sites/harvard-forest" target="_blank">Harvard Forest </a> located in the northeastern United States - Massachusetts
-* Site Two: the <a href="http://www.neoninc.org/science-design/field-sites/san-joaquin-experimental-range" target="_blank">San Joaquin Experimental Range </a> located in the southern end of the US state
-of California.  
+* Site Two: the <a href="http://www.neoninc.org/science-design/field-sites/san-joaquin-experimental-range" target="_blank">San Joaquin Experimental Range </a> 
+located in the southern end of the US state of California.  
+
+Both sites are mapped below:
+
+
+```{r Field-Site-Map, echo=FALSE, warning=FALSE}
+
+#please create a map that shows the location of BOTH field sites.
+#add a legend with a point for each site. 
+library(rgdal)
+#Read the .csv file
+State.Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
+          "US-State-Boundaries-Census-2014")
+
+Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
+          "US-Boundary-Dissolved-States")
+#palette(terrain.colors((50)))
+#palette()
+
+plot(State.Boundary.US,
+     main="NEON Field Site Locations \nHarvard Forest & San Joachin Experimental Range",
+     border="grey")
+
+plot(Boundary.US,
+     add=TRUE)
+
+#add Harvard forest
+#lat long: 42.5369, -72.17266
+
+points(y=42.5369, x=-72.17266,
+       col = "magenta",
+       pch=19)
+
+#Add  SJER
+#37.10878, -119.73228
+points(x=-119.73228,y=37.10878,
+       col = "green",
+       pch=19)
+
+#add a legend to our map
+legend("bottomleft",
+       legend=c("Harvard Forest (HARV)","San Joachin (SJER)"),
+       pch=19, 
+       bty="n", 
+       col=c("magenta", "green"),
+       cex=1.2)
+
+```
+
 
 <i class="fa fa-star"></i> **Data Note:** These two sites are about 4,900km 
 (3,000 miles) apart! Do we expect to see differences in the timing of greening 
@@ -151,16 +205,16 @@ and browning of plants (phenophase timing) between the two sites? If there are
 differences, what is causing them?
 {: .notice}
 
-#MAP OF USA w/ the two sites. 
+###Workshop Science Goals
 
-Our goal is to create plots of temperature, precipitations and the greening and 
-browning of plants at - for one year (2011), for two sites. To achieve this goal 
-we need data that:
+Our goal is to create plots of temperature, precipitation and the greening and 
+browning of plants - for one year (2011), over two NEON field sites. To 
+achieve this goal we need data that:
 
-1. Cover the same time periods - temporal data *(year=2011)*
-2. Are for the same spatial locations *(our two field sites)*
+1. Cover the same time periods - temporal data *(year=2011)*.
+2. Are for the same spatial locations *(our two field sites)*.
 3. Are collected using similar methods so they are comparable at our two field 
-sites that are located 3000+ miles apart!
+sites that are located 3,000+ miles apart!
 
 
 <figure>
@@ -174,40 +228,54 @@ sites that are located 3000+ miles apart!
 #GRAPHIC NEEDED - REMOTE SENSING IMAGE SHOWING THIS PATTERN?
 
 
-
 <div id="challenge" markdown="1">
-##Challenge: Breaking Down a Large Research Quesion
+##Challenge: Breaking Down a Large Research Question
 
-* What are some potential sources of data that might be useful to address our 
-phenology question?
+Discuss with your neighbor / colleague - what are some potential sources of data that might 
+be useful to address our phenology question? How would you go about finding these
+data?
 
 </div>
 
+
+```{r sources-of-data, echo=FALSE}
+#Some sources of data are discussed below.
+#some ways of finding data - repositories / data catalogs (e.g. DataOne)
+#agency sites - in the US - EPA, USGS, NRCS, NOAA all have data portals
+#spatial data - national map, etc
+#the key component here is not that they get all of the sources - that they begin
+#to think about how we find data!
+
+```
+
 ##Break Down Our Project
 
-One way to tackle our research project, is to break down this larger question
-into smaller pieces to help identify that types of data that we might need to work
-with. We'd like to do the following:
+One way to tackle our research project, is to break it down
+into smaller pieces. We can identify that types of data that we might need. 
+We'd like to do the following:
 
-* Understand our field sites: How big are the sites? How dense is the vegetation? 
+* **Map / plot phenophase timing at both sites:** We will need data that quantify 
+degree of greenness at both sites. Where can we get that and how do we process it
+to plot greenness at both sites?
+* **Understand our field sites:** How big are the sites? How dense is the vegetation? 
 Where are the field sites located? Are the sites accessible by roads or difficult to 
 get to? We also might want to create a map of our study 
 sites for a future publication. To understand our sites we will need data that 
 "map" vegetation cover and show road locations and boundaries.
-* Map / plot phenophase timing at both sites - We will need Data that quantify 
-degree of greenness at both sites
-* Plots of temperature and precipitation (the drivers of phenophase timing) at 
+* **Plots of temperature and precipitation:** (the drivers of phenophase timing) at 
 both sites for the same *TEMPORAL* duration as our greenness data.
 
 ##A Spatio-Temporal Approach 
 
-###Finding Phenology Data
+###Find Phenology Data
 
-So where do we start to quantify the timing of plant greening and browning?
+Where do we start to quantify the timing of plant greening and browning?
 We could go outside and monitor individual plants, and write down in field 
-notebooks when they turn green and brown. However we can't monitor enough plants 
-by ourselves to quantify greening and browning of entire forests or grasslands 
-at multiple sites. To answer our specific question at a regional scale, we need 
+notebooks when they turn green and brown. However, in this case, we can't monitor 
+enough plants 
+over a large enough area by ourselves to quantify greening and browning of 
+entire forests or grasslands at multiple sites. To answer our specific question 
+at a regional scale, we need 
 data that can measure these events over larger areas.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_4uHLXL1yZA" frameborder="0" allowfullscreen></iframe>
@@ -218,8 +286,8 @@ One way we can measure phenology over larger areas is to use
 <a href="http://phenology.cr.usgs.gov/index.php" target="_blank">Remote Sensing imagery
 </a> - data collected using 
 high fidelity cameras mounted on satelites and airplanes. Satellites continuously orbit the earth
-capturing images of the earth's surface- continuouslly. The Landsat sensor, can 
-capture images of the same area, every 16 days which makes it a very powerful spatio-temporal
+capturing images of the earth's surface- continuouslly. The Landsat sensor,  
+captures images of the same area, every 16 days which makes it a very powerful spatio-temporal
 data source. Because the data are collected from
 space or an airplane they cover a larger area. Because the data are collected using
 the same "camera", the data can be easily compared across sites and through time. 
@@ -240,9 +308,8 @@ work.
 </figure>
 
 
-<i class="fa fa-star"></i> **Data Note:** Another excellent source of phenology 
-data at the site scale is <a href="http://phenocam.sr.unh.edu/webcam/" target="_blank">
-phenocam data</a>. Phenocams are often mounted on towers
+<i class="fa fa-star"></i> **Data Note:** <a href="http://phenocam.sr.unh.edu/webcam/" target="_blank">Phenocam data </a>are another source of phenology 
+data at the site scale. Phenocams are often mounted on towers
 and capture repeat photography of vegetation each day. Learn more about the 
 <a href="http://budburst.org/what-is-phenocam"phenocam Citizen Science collaboration
  - Season Spotter</a>.
@@ -251,11 +318,12 @@ and capture repeat photography of vegetation each day. Learn more about the
 
 ###NDVI Measures Plant Greenness
 
-We can derive the Normalized Difference Vegetation Index (NDVI), a quantitative index that can
-that measures how "green" or healthy vegetation is on the ground. NDVI is a quantitative
-index of greenness ranging from 0-1 where 0 represents minimal or no greenness
-and 1 represents maximum greenness. NDVI is often used for a quantitative proxy 
-measure of vegetation health, cover and phenology (life cycle stage) over large areas.
+We can use remote sensing imagery to
+derive the Normalized Difference Vegetation Index (NDVI), a quantitative index
+that measures how "green" or healthy vegetation is on the ground. NDVI greenness 
+values ranging from 0-1 where 0 represents minimal or no greenness
+and 1 represents maximum greenness. NDVI is an ideal data product to use to estimate
+the timing of plant "green-up" and "brown-down" over large areas.
 
 <figure>
  <a href="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/Images/ndvi_example.jpg"> 
@@ -271,6 +339,11 @@ measure of vegetation health, cover and phenology (life cycle stage) over large 
 * <a href="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php" target="_blank">
 More on NDVI from NASA</a>
 
+
+<i class="fa fa-star"></i> **Data Note:** NDVI can be calculated using any image
+that contains a near-infrared band. Some phenocams capture near-infrared light.
+{: .notice}
+
 ##Find Remote Sensing Data 
 
 There are many sources that allow you to request and freely download remote sensing 
@@ -284,7 +357,23 @@ Geological Survey.
 
 #ISSUE: ** need to find sources globally -- 
 
-<<Challenge - explore the landsat look tool>>
+
+##Landsat Look Viewer
+
+<div id="challenge" markdown="1">
+
+##Challenge: Explore Landsat Look Website
+
+Visit the <a href="http://landsatlook.usgs.gov/" target="_blank">Landsat Look Viewer
+website</a>. Search for an location - for example `Harvard Forest, Massachusetts, 
+United States`. 
+
+</div>
+
+```{r explore-landsat-data, echo=FALSE}
+#.
+
+```
 
 ### Raster Data Format - Work With Remote Sensing Imagery 
 
@@ -292,10 +381,10 @@ Remote sensing images are in **raster** format. They are composed of pixels - ju
 the pixels in the images we take with our camera phones. To work with raster data 
 in R, we need the following:
 
-* The `raster` package <<link>>
+* The `raster` package <<link>>.
 * To understand coordinate reference systems / map projections (the earth is round
 so the data need to be "flattened" when we visualize them on a screen or paper or
-when we process them)
+when we process them).
 
 Because we are studying phenophase timing, we need raster data collected 
 repeateldly through time to identify when groups of plants green-up and brown down.
@@ -308,20 +397,7 @@ series.
 
 
 
-##Landsat Look Viewer
 
-<div id="challenge" markdown="1">
-
-##Challenge: Thinking Spatially
-
-* Explore landsat data on the landsat look site??
-* See how to download it?
-</div>
-
-```{r explore-landsat-data, echo=FALSE}
-#Spatial data are any data that have geographical coordinates associated with them.
-
-```
 
 
 ###Find Temperature and Precipitation Data
@@ -335,22 +411,20 @@ including temperature, precipitation, light intensity, wind speed and more.
 
 Some sources of climatic data include:
 
-* NEON: National Ecological Observatory Network (NEON)<a href="http://www.neoninc.org/science-design/collection-methods/flux-tower-measurements" target="_blank">
+* **NEON: National Ecological Observatory Network (NEON)**<a href="http://www.neoninc.org/science-design/collection-methods/flux-tower-measurements" target="_blank">
 will have flux towers, that measure temperature, precipitation, wind speed, 
 light intensity and more  at its field sites located across the United States</a> 
 Data can be downloaded from the <a href="http://data.neoninc.org/browse-data?showTheme=atmos" target="_blank">
 NEON data portal </a>. 
-* FluxNet: <a href="http://fluxnet.ornl.gov/site_status" target="_blank">
-what data is available at different sites </a> 
-and 
-<a href="http://fluxnet.ornl.gov/" target="_blank">
-general network information </a>. 
-* NOAA National Center for Environmental Information (formerly National Climatic Data Center):
-<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data> information on land-based weather stations </a> 
+* **FluxNet:** <a href="http://fluxnet.ornl.gov" target="_blank">
+a network of towers located around the world</a>. 
+* **NOAA National Center for Environmental Information (formerly National Climatic Data Center):**
+<a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data> weather stations maintained by NOAA</a> 
 and 
 <a href="http://www.ncdc.noaa.gov/" target="_blank"> general network information </a>. 
 
-#* LTER: Many LTER sites have towers..
+* **<a href="https://portal.lternet.edu/nis/home.jsp" target="_blank">Long Term Ecological Research sites (LTER):</a>** Many LTER sites have 
+micrometerology towers that collect climatic data.
 
 <figure>
   <a href="https://farm6.staticflickr.com/5146/5666008904_85a10f5848_b.jpg">
@@ -366,13 +440,17 @@ and
 
 ###Climatic Data At Our Field Sites
 
+If we want climatic data for our field sites, there are several places that 
+we can start. In our case, Harvard forest is a LTER site, so we can hope for a
+micrometerology tower that contains temperature and precipitation sensors. 
 Visiting the <a href="http://harvardforest.fas.harvard.edu/data-archives" target="_blank">
 Harvard Forest research station home page</a>, we learn that it has
 a flux tower that has been collecting data since 2001. Better yet, the data are
 freely available for download. 
 
 <i class="fa fa-star"></i> **Data Note:** Also take note that there are some other data 
-resources on this page including "GIS" data. 
+resources on this page including "GIS" data. Many research stations (not all) 
+have these types of data available.
 {: .notice}
 
 ###Micro-meteorological Data from the Fisher Tower
@@ -382,7 +460,6 @@ has been operational since 2001. It is located in an open field and records air
 temperature, relative humidity, precipitation, incoming and net radiation,
 barometric pressure, wind speed and direction, and soil temperature. Data is
 recorded at 15-minute and daily intervals.
-
 
  <figure class="half">
    		<a href="http://harvardforest.fas.harvard.edu/sites/harvardforest.fas.harvard.edu/files/metsta-fall.jpg">
@@ -502,7 +579,14 @@ patterns of vegetation phenology (greening and browning ) across multiple sites.
 * <a href="http://www.data.ny.gov/" target="_blank"> New York state government data</a>: Many states have their own data portal.  Simply search for the state name and  "data portal" to find most of the repositories. 
 * <a href="http://www.ecologicaldata.org" target="_blank"> DataOne</a> : Brief description
 
-#Other Sources of Remote Sensing Data
+##Phenology Data Sources 
+
+* NEON
+* National Phenology Network
+* Phenocam
+* others??
+
+## Sources of Remote Sensing Data
 
 ***
 
