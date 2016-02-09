@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-25
+lastModified: 2016-02-09
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, gis-spatial-sata]
@@ -78,7 +78,7 @@ and
 </div>
 
 
-![ ]({{ site.baseurl }}/images/rfigs/03-metadata-formats-and-files/elevation-map-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/elevation-map-1.png) 
 
 
 <div id="challenge" markdown="1">

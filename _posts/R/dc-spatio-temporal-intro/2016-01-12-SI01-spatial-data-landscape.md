@@ -5,7 +5,7 @@ date:   2015-10-29
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-01-25
+lastModified: 2016-02-09
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, gis-spatial-sata]
@@ -83,7 +83,9 @@ For a list of tools to work with spatial data, visit:
 ##Gui Tools - 
 Brief Description of this and a few examples of available tools. BRIEF discussion of why coding is potentially more reproducible compared to gui workflows
 
-###Pay: Arcgis
+###Pay: 
+
+* ESRI ArcGIS
 
 ###Open / Free: QGIS, Grass (maybe a line on each and a link to each page
 
@@ -93,7 +95,7 @@ Brief Description of this and a few examples of available tools. BRIEF discussio
 
 ###Python
 
-###Matlab
+###Matlab, IDL
 
 
 
