@@ -11,92 +11,32 @@
 <h3>{{ site.owner.name }}</h3>
 <p>{{ site.owner.bio }}</p>
 
-<!-- If the page is a tutorial but it's a part of a series-->
-{% if page.tutorialSeries and page.layout contains 'post' %}
 
-<h3 style="color:#1ea0c1">This tutorial is a part of a series! </h3>
-<p>Click below to view all lessons in the series!</p>
-{% for member in site.data.tutorialSeries %}
-	{% if page.tutorialSeries contains  member.slug %}
-	  <div id="workshopLink">
-		<h4>
-			<a href="{{ site.baseurl }}/tutorial-series/{{ member.slug }}" alt="{{ member.description }}" title="{{ member.description }}" class="post-link">
-			<div>{{ member.name  }}
-			 </div>
-			</a>
-		</h4>
-	   </div>         
-	{% endif %}
-{% endfor %}
-
-
-{% if page.tutorialSeriesName and page.layout contains 'tutorial-series-landing' %}
-
-<h5>Other Data Series</h5>
-{% for member in site.data.tutorialSeries %}
-  <div id="workshopLink">
-	<h4>	
-        <a href="{{ site.baseurl }}/tutorial-series/{{ member.slug }}" class="post-link">
-        <div>{{ member.name  }}
-         </div>
-        </a>
-	</h4>
-   </div>         
-{% endfor %}
-	{% endif %}
-
-
-
-
+<!-- Testing This out to see if it crashes -->
+<h2><a>{{ page.mainTag }}</a></h2>
 {% for post in site.posts %}
-	{% if post.workshopSeries contains page.mainTag %}
-	 	<div id="workshopLink">
-        <h4>
-		<a href="{{ site.baseurl }}{{ post.url }}" class="post-link" ><div>{{ post.title }}</div></a>
-		</h4>
-		</div>
-	{% endif %}
+    {% if post.tags contains page.mainTag  %}
+        <ul class="posts">
+        <li><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+        </ul>
+    {% endif %}
 {% endfor %}
-{% endif %}
 
-
-{% if page.workshopSeries %}
-
-<h5>Workshop: <br>{{ page.mainTag }}</h5>
+{% if page.categories  %} {% endif %}
+<!-- Testing This out to see if it crashes -->
+<h2><a>{{ page.categories }}</a></h2>
 {% for post in site.posts %}
-	{% if post.workshopSeries contains page.mainTag %}
-	 	<div id="workshopLink">
-        <h4>
-		<a href="{{ site.baseurl }}{{ post.url }}" class="post-link" ><div>{{ post.title }}</div></a>
-		</h4>
-		</div>
-	{% endif %}
+    {% if post.categories == page.categories %}
+
+        <ul class="posts">
+        <li><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+        </ul>
+    {% endif %}
 {% endfor %}
 
-{% else %}
-
-<!-- commenting this out for now 
-<h3>Workshops</h3>
--->
-{% comment %}
-{% for member in site.data.workshopSeries %}
-{% assign counter = 0 %}
-<!-- this code counts the number of posts associated with the member -->
-{% for post in site.posts %}
-	{% if post.workshopSeries contains member.slug %}
-	{% assign counter = counter | plus: 1 %}
-	{% endif %}
-{% endfor %}	
-  <h5>
-  <a href="{{ site.baseurl }}/data-workshop/{{ member.slug }}">{{ member.name }} ({{ counter }})</a>
-  </h5> 
-{% endfor %}
-
-{% endcomment %}
 
 
-<h3>Tags</h3>
-
+<h3>All Activities By Topic</h3>
 {% for tag in site.tags %}
 {% assign t = tag | first %}
   {% for atag in site.data.tags %}
@@ -108,26 +48,9 @@
      </a></h5>
 {% endfor %} 
 
-<h3>Tutorial by R Package</h3>
 
-{% for member in site.data.packagesLibraries %}
-{% assign counter = 0 %}
-<!-- this code counts the number of posts associated with the member -->
-{% for post in site.posts %}
-	{% if post.packagesLibraries contains member.slug %}
-	{% assign counter = counter | plus: 1 %}
-	{% endif %}
-{% endfor %}	
-  <h5><a href="{{ site.baseurl }}/R-package/{{ member.slug }}">{{ member.name }} ({{ counter }})</h5>
-  	
-
-{% endfor %}
-
-{% endif %}
-
-<h4><a href="{{ site.baseurl }}/activities/">View ALL Tutorials</a></h4>
-<h4><a href="{{ site.baseurl }}/data-workshops/">View ALL Workshops</a></h4>
-<!-- <h4><a href="{{ site.baseurl }}/activities-by-tag/">Activities by Tag</a></h4> -->
+<h4><a href="{{ site.baseurl }}/activities/">View ALL Activities</a></h4>
+<h4><a href="{{ site.baseurl }}/activities-by-tag/">Activities by Tag</a></h4>
 
 <br><br><br>
 
@@ -146,7 +69,3 @@
 {% if site.owner.pinterest %}<a href="http://www.pinterest.com/{{ site.owner.pinterest }}" class="author-social" target="_blank"><i class="fa fa-pinterest"></i> Pinterest</a>{% endif %}
 {% if site.owner.foursquare %}<a href="http://foursquare.com/{{ site.owner.foursquare }}" class="author-social" target="_blank"><i class="fa fa-foursquare"></i> Foursquare</a>{% endif %}
 {% if site.owner.steam %}<a href="http://steamcommunity.com/id/{{ site.owner.steam }}" class="author-social" target="_blank"><i class="fa fa-steam-square"></i> Steam</a>{% endif %}
-
-<br><br><br>
-<h3>Blog.Roll</h3>
-<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
