@@ -1,5 +1,5 @@
-title: 	NEON/ Data Carpentry Intro to Spatio-Temporal Data and Data Management Best Practices
-description: 	Hackathon held October 21-23 in Boulder, CO at NEON headquarters.
+title: 	NEON Work With Data
+description: 	Data lesson development - Intro to Spatio Temporal Data.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
@@ -11,14 +11,14 @@ baseurl:   http://data-lessons.github.io/NEON-R-Spatio-Temporal-Data-and-Managem
 #url: http://localhost:4000
 #baseurl: http://localhost:4000
 
-#we might not need comments here???
+#turning off disqus by removing our username
 disqus_shortname: 
 
 # Social networking links are used in author-bio sidebar. Update and remove as you like.
 
 # Owner/author information
 owner: 		
-  name: NEON / Data Carpentry Hackathon
+  name: NEON
   avatar: profilePic.png
   bio: "Devoted to open data and open source in science and education."
   email: "NEONDataSkills@neoninc.org"
@@ -40,16 +40,24 @@ google_analytics:
 # Links to include in top navigation
 # For external links add external: true
 links:  
+  - title: Data Tutorials
+    url: /self-paced-tutorial/   
+
+  - title: Tutorial Series
+    url: /tutorial-series/
+    
+  - title: Events
+    url: /workshop-event/
+
+  - title: Science Videos
+    url: /science-video/ 
+        
   - title: About
-    url: /about/
+    url: /about/ 
     
   - title: NEON Website
-    url: http://www.neoninc.org
+    url: http://neonscience.org
     external: true
-    
-  - title: Data Carpentry Website
-    url: http://www.datacarpentry.org
-    external: true  
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Denver
