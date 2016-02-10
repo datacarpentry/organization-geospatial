@@ -11,6 +11,7 @@ category: [self-paced-tutorial]
 tags: [R, gis-spatial-sata]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
+workshopSeriesName: spatial-data-management-series
 description: "This self-paced tutorial explain fundamental information about
  spatial data as well as how to work with spatial data in R. The tutorial
  consists of seven sequential lessons." 
@@ -20,17 +21,17 @@ image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: http://www.neoninc.org
-permalink: tutorial/spatial-raster-series
+permalink: data-workshop/spatial-data-management
 comments: false
 ---
 
-This self-paced tutorial explain how to work with spatial data in R.  The tutorial consists of
+This workshop series... -paced tutorial explain how to work with spatial data in R.  The tutorial consists of
  seven sequential lessons.
 
 
 <div id="objectives" markdown="1">
 
-#Goals / Objectives
+#Workshop Goals / Objectives
 After completing this lesson, you will:
 
  * OVERALL GOALS or list for each lesson? 
@@ -60,6 +61,17 @@ of the necessary R Packages now.
 
 [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-<\div>
+##Download Data
+The data below are required for the spatial raster and vector data lessons:
+{% include/dataSubsets/_data_Site-Layout-Files.html %}
+{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
+
+The data below are required for the tabular time series lessons:
+{% include/dataSubsets/_data_Met-Time-Series.html %}
+
+****
+
+{% include/_greyBox-wd-rscript.html %}
+</div>
 
 

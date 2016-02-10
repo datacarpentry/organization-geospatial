@@ -1,9 +1,6 @@
 - slug: dplyr 
   name: dplyr
   
-- slug: ggplot
-  name: ggplot
-  
 - slug: ggplot2
   name: ggplot2  
 

@@ -330,7 +330,14 @@ font-size:.875rem
 }
 p {
 	margin: 0 0 1.625rem
+	line-height: 1.2rem;
 }
+
+.article-wrap li {
+    line-height: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
 p+p {
 	/* margin-top: -1.625rem;
 	text-indent: 1.625rem */
@@ -367,8 +374,8 @@ pre {
 	margin-bottom: 1.5em;
 	font-family: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
 	font-size: 12px;
-font-size:.75rem;
-	line-height: 2.1667;
+	font-size:.75rem;
+	line-height: 1.4;
 	color: #333332;
 	background-color: #efefef;
 	-webkit-border-radius: 4px;
@@ -4555,4 +4562,12 @@ a:hover.post-link > div {
 
 #workshopLink > h4 {
     margin: 0;
+}
+
+#index > h1 {
+    color: #1ea0c1;
+}
+
+.workshop div#objectives, .tutorialSeries  div#objectives {
+    background-color: #d4eff7;
 }

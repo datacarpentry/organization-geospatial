@@ -20,7 +20,7 @@
   {% include _author-bio.html %}
 </div>
 
-<div id="index">
+<div id="index" class="workshop">
   <h1>{{ page.title }}</h1>
  <header id="post-header">
 </header>
@@ -32,8 +32,7 @@
 
 {% for post in site.posts %}
 
-	{% if post.workshopSeries contains page.workshopSeriesName %}
-	{{ page.workshopSeries }} 
+	{% if post.workshopSeries contains page.workshopSeriesName and post.layout contains 'post' %}
 	{% assign counter = counter | plus: 1 %}
 	
 		<article>
