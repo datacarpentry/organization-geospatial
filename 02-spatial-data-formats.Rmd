@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Spatial Intro 02: Spatial Data Formats -- Vector & Raster Data Management"
+title: "Spatial Intro 02: Spatial Data Formats -- Intro to Shapefiles (Vector Data)
+and GeoTiffs (Raster Data)"
 date:   2015-10-28
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
@@ -20,15 +21,16 @@ image:
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink:
 permalink: R/spatial-data-formats
-comments: false
+comments: true
 ---
 
 {% include _toc.html %}
 
-##About
+## About
 This tutorial covers the basics of key data formats that may contain spatial 
-information including shapefile, Geotiff and csv. description here. It also provides a 
-brief list of other formats that you may encounter when working with spatial data.
+information including shapefile, Geotiff and csv. description here. It also 
+provides a brief list of other formats that you may encounter when working with 
+spatial data.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
 
@@ -88,20 +90,18 @@ GIS file formats.</a>
 
 Sometimes it makes sense to store your data in a specific data directory that you
 use for one particular project. However, when you work with spatial data on your
-computer, consider storing large data sets in a general data directory that you
-can easily access from many projects. It's  common to use the same spatio-temporal
-data for different projects and it uses excessive hard drive space to store the 
-same data several times. If you are working in a collaborative 
+computer, it is a good idea to store large data sets in a general data directory 
+that you can easily access from many projects. If you are working in a collaborative 
 environment, use a shared data directory. 
 
 ## Types of Spatial Data
 Spatial data are represented in many different ways and are stored in different
-file formats. These formats can be challenging to navigate. In this tutorial, 
-we will focus on the two main categories - raster and vector.
+file formats. In this tutorial, we will focus on the two types of spatial data 
+- raster and vector data.
 
 ### Vector Data - Points, Lines, Polygons
 
-Vector format data, are often used to store things like road and plot locations, 
+Vector data, are often used to store things like road and plot locations, 
 boundaries of states, countries and lakes. 
 
 Vector data are composed of discrete geometric locations (x,y values) known as
@@ -280,55 +280,5 @@ the photo was taken.
 * **Hierarchical Data Format (HDF5):** More on HDF5 formated rasters can be found on the [NEON Data Skills website](http://neondataskills.org/HDF5/Imaging-Spectroscopy-HDF5-In-R/) 
 * **.grd:** An ESRI specific raster format.
 
-### Bonus Information
 
-#### Raster Data Types
-
-Raster data can be continuous or categorical. Continuous rasters have a 
-range of quantitative values. Some examples of continuous rasters include:
-
-1. Precipitation maps.
-2. Maps of tree height derived from LiDAR data.
-3. Elevation values for a region. 
-
-A elevation map for the NEON Harvard Forest field site, derived from the  
-<a href="http://www.neoninc.org/science-design/collection-methods/airborne-remote-sensing" target="_blank"> 
-NEON AOP LiDAR sensor</a> 
-is below. Notice that elevation is a continuous numeric variable. The legend
-represents the continuous range of values in the data spanning 300 to 420
-meters.
-
-```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
-#load libraries
-library(raster)
-library(rgdal)
-
-
-#render DSM for lesson content background
-DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
-
-# code output here - DEM rendered on the screen
-plot(DSM_HARV, main="Continuous Elevation Map\n NEON Harvard Forest Field Site")
-
-```
-
-Some rasters contain categorical data. Thus each pixel represents a discrete
-class such as a landcover type ("forest") rather than a continuous value such as
-elevation or temperature. Some examples of classified maps include:
-
-1. Landcover / landuse maps.
-2. Tree height maps classified short, medium, tall trees.
-3. Elevation maps classified low, medium and high elevation.
-
-#### Categorical Landcover Map for the United States 
-<figure>
-    <a href="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif ">
-    <img src="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif">
-    </a>
-    <figcaption> Map of the United States showing landcover as categorical data.
-    Each color is a different landcover category.  Source: 
-    <a href="http://www.mrlc.gov/nlcd06_data.php" target="_blank">
-    Multi-Resolution Land Characteristics Consortium, USGS</a> 
-    </figcaption>
-</figure>
 
