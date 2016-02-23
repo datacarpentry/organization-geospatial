@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Lesson 01: The Spatial Data Landscape"
+title: "Spatial Intro : The Spatial Data Landscape"
 date:   2015-10-29
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-09
+lastModified: 2016-02-17
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson introduces the spatial data tool landscape. It covers the types

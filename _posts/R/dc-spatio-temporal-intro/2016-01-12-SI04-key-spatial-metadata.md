@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Lesson 04: Key Spatial Metadata to Understand"
+title: "Spatial Intro 04: Key Spatial Metadata to Understand"
 date:   2015-10-26
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-09
+lastModified: 2016-02-17
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key spatial attributes that are needed to work with 
