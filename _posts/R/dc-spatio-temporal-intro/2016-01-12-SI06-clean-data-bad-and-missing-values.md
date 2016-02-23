@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Lesson 06: Cleaning Data -- Missing and Bad Data Values"
+title: "Spatial Intro 06: Cleaning Data -- Missing and Bad Data Values"
 date:   2015-10-24
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-09
+lastModified: 2016-02-17
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This tutorial covers spatial data cleaning - specifically dealing with missing 
@@ -24,7 +24,7 @@ comments: false
 
 {% include _toc.html %}
 
-##About
+## About
 Add description.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
@@ -38,17 +38,17 @@ After completing this activity, you will:
 * 
 
 
-##Things You’ll Need To Complete This Lesson
+## Things You’ll Need To Complete This Lesson
 To complete this lesson you will need the most current version of R, and 
 preferably, RStudio loaded on your computer.
 
-###Install R Packages
+### Install R Packages
 
 * **NAME:** `install.packages("NAME")`
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-###Download Data
+### Download Data
 EDIT AS NEEDED
 {% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
 
@@ -69,7 +69,7 @@ and
 
 ****
 
-###Additional Resources
+### Additional Resources
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
 Read more about the `raster` package in `R`.</a>
@@ -80,12 +80,12 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 </div>
 
-###Clean Data
+### Clean Data
 No dataset is perfect. It is common to encounter large files containing obviously
 erronious data (bad data).  It is also common to encounter `NoData`
 values that we need to account for when analyzing our data. 
 
-##NoData Values (NA, NAN)
+## NoData Values (NA, NAN)
 If we are lucky when working with external data, the `NoData` value is clearly
 specified in the metadata. Sometimes this value is `NA` or `nan` (not a number). However, 
 `NA` isn't always used. Text values can make data storage difficult for some 

@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "SpatialIntro 00: Answer a Spatio-temporal Research Question with Data: Where to Start?"
+title: "Spatial Intro 00: Answer a Spatio-temporal Research Question with Data: Where to Start?"
 date:   2015-10-30
 authors: [Megan A. Jones, Leah A. Wasser]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-09
+lastModified: 2016-02-17
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-data]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson provides an overview of finding spatial data to support your research
