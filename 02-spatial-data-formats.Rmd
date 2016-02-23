@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SpatialIntro 02: Spatial Data Formats -- Vector & Raster Data Management"
+title: "Spatial Intro 02: Spatial Data Formats -- Vector & Raster Data Management"
 date:   2015-10-28
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
@@ -8,7 +8,7 @@ dateCreated: 2015-10-23
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-data]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This tutorial covers the basics of key data formats that may contain spatial 
@@ -86,16 +86,13 @@ GIS file formats.</a>
 
 ## Storing Spatial Data On Your Computer
 
-Sometimes it makes sense to store your data in a data directory that is specific
-to your research. However, when you work with spatial data on your computer, you 
-may want to consider storing these data in general data directory. OR if you are 
-working in a collaborative environment, in a shared data directory. 
-
-It is a good idea to start a `data` directory on your 
-computer given it's very common to use the same spatial data for different projects.
-These data are often large in size and thus storying the same data in one place,
-rath than storing multiple copies across your computer (one for each project)
-is a more efficient approach! 
+Sometimes it makes sense to store your data in a specific data directory that you
+use for one particular project. However, when you work with spatial data on your
+computer, consider storing large data sets in a general data directory that you
+can easily access from many projects. It's  common to use the same spatio-temporal
+data for different projects and it uses excessive hard drive space to store the 
+same data several times. If you are working in a collaborative 
+environment, use a shared data directory. 
 
 ## Types of Spatial Data
 Spatial data are represented in many different ways and are stored in different
@@ -205,7 +202,7 @@ When you work with a shapefile, you must keep all of the key associated
 file types together. And when you share a shapefile with a colleague, it is important
 to zip up all of these files into one package, before you send it to them!
 
-We cover working with shapefiles in `R` in the (Introduction to Working With Vector Data in R)[{{site.baseurl}}/tutorial-series/vector-data-series/] series.
+We cover working with shapefiles in `R` in the [Introduction to Working With Vector Data in R]({{site.baseurl}}/tutorial-series/vector-data-series/) series.
 
 ### Vector Data in .CSV Format
 
@@ -268,6 +265,7 @@ exampleRaster <- writeRaster(rasterObject,
                              NAflag = -9999)
 ```
 
+We cover writing `NA` values using the `writeRaster` function in R in [Raster 03: Raster Calculations in R - Subtract One Raster from Another and Extract Pixel Values For Defined Locations]({{ site.baseurl }}/R/Raster-Calculations-In-R).
 
 <i class="fa fa-star"></i> **Data Note:** `Tif tags` - metadata tags stored within
 a `tif` or `GeoTiff` file are also what your camera uses to store information about
