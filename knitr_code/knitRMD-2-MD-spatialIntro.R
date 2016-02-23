@@ -27,7 +27,7 @@ setwd(wd)
 postsDir <- ("_posts/R/dc-spatio-temporal-intro/")
 
 #images path
-imagePath <- "images/rfigs/"
+imagePath <- "images/rfigs/dc-spatio-temporal-intro/"
 
 #set the base url for images and links in the md file
 base.url="{{ site.baseurl }}/"
@@ -43,12 +43,28 @@ if (file.exists(paste0(wd,"/","images"))){
   #create image directory structure
   dir.create(file.path(wd, "images/"))
   dir.create(file.path(wd, "images/rfigs"))
-  dir.create(file.path(wd, figDir))
+  dir.create(file.path(wd, imagePath))
   print("image directories created!")
 }
 
 #NOTE -- delete the image directory at the end!
 
+
+#make sure image subdir exists in the git repo
+#note this will fail if the sub dir doesn't exist
+if (file.exists(paste0(gitRepoPath, imagePath))){
+  print("image dir exists - all good")
+} else {
+  #create image directory structure
+  dir.create(file.path(gitRepoPath, "images/rfigs"))
+  dir.create(file.path(gitRepoPath, imagePath))
+  print("git image directories created!")
+}
+#copy image directory over
+file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
+
+#copy rmd file to the rmd directory on git
+file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
 #################### Get List of RMD files to Render #############################
 
 
@@ -80,10 +96,12 @@ for (files in rmd.files) {
   #knit Rmd to jekyll flavored md format 
   knit(input, output = mdFile, envir = parent.frame())
   
-  #COPY image director, rmd file OVER to the GIT SITE###
-  
-  #copy image directory over
-  file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
+  #COPY image directory, rmd file OVER to the GIT SITE###
+  #only copy over if there are images for the lesson
+  if (dir.exists(paste0(wd,"/",fig.path))){
+    #copy image directory over
+    file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
+  }
   
   #copy rmd file to the rmd directory on git
   file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
