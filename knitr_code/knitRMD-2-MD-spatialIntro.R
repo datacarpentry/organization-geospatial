@@ -73,6 +73,8 @@ rmd.files <- list.files(gitRepoPath, pattern="*.Rmd", full.names = TRUE )
 
 #################### Set up Image Directory #############################
 
+#just render one file
+rmd.files <- rmd.files[5]
 
 for (files in rmd.files) {
   

@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-17
+lastModified: 2016-02-26
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -57,6 +57,7 @@ preferably, RStudio loaded on your computer.
 * **rgdal:** `install.packages("rgdal")`
 
 **OPTIONAL**
+
 * **devtools** `install.packages("devtools")` 
 * **eml** `install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))`
 
@@ -110,14 +111,16 @@ Looking at the map above, we are missing information needed to begin working wit
 the data effectively including:
 
 **Spatial Information**
+
 * **Spatial Extent:** What area does this dataset cover? 
-* **Coordinate reference system: ** what spatial projection / coordinate reference
+* **Coordinate reference system:** what spatial projection / coordinate reference
 system are used to store the data? Will it line up with other data? 
 * **Resolution:** The data appears to be in **raster** format. This means it is
 composed of pixels. What area on the ground does each pixel cover - ie What is 
 its spatial resolution?
 
 **Data Collection / Processing Methods**
+
 * **How was this data generated?** Is this an output from a model, is it an image
 from a remote sensing instrument such as a satellite (e.g. landsat) or collected
 from an airplane? How were the data colected?
@@ -136,13 +139,13 @@ data about the data.
 Metadata is structured information that describes a dataset. It includes a suite of
 information about the data including:
 
-* contact information
-* spatial extent / other spatila attributes
-* processing methods
+* Contact information
+* Spatial Attributes including: extent, coordinate reference system, resolution
+* Data collection & processing methods
 * and more.
 
 Without sufficient documentation, it is difficult for us to work with 
-external data - data that we did not collect ourselves!
+external data - data that we did not collect ourselves.
 
 ### Why Are Metadata Needed?
 We need metadata to not only work with external data, but also when it's embedded
@@ -154,17 +157,16 @@ next.
 
 Metadata come in different formats. We will discuss three of those in this tutorial:
 
-
-* **Embedded in a File:** `Geotiffs` and `HDF5`
-* **Ecological Metadata Language (EML):** A standardized metadata format stored 
-in `xml` format which is machine readable. Metadata has some standards however it's
-common to encounter metadata stored differently in EML files created by different
-organizations.
-* **Text file:** Sometimes metadata files can be found in text files that are either
-downloaded with a data product OR that are available separately for the data. 
-* **Directly on a website (HTML / XML):** Sometimes data are documented directly
-in text format, on a web page. 
-
+* **Structured Embedded Metadata:** Some file formats (e.g. `Geotiff` and `HDF5`)
+ supported embedded metadata which you can access from a tool like `R` or `Python`
+ directly when you import the data.
+* **Structured Metadata Files:** Structured metadata files such as the Ecological 
+Metadata Language (EML) are stored in a machine readable format which means they
+can be accessed using a tool like `R` or `Python`. There are different file formats
+and standards but it's important to understand that standards will vary.
+* **UnStructured Metadata Files:** These include text files, web pages and other
+documentation that does not follow a particular standard or format, but documents
+key attributes required to work with the data.
 
 
 <i class="fa fa-star"></i> **Data Tip:** When you find metadata for a dataset 
@@ -207,24 +209,24 @@ We can quickly view the spatial `extent`, `coordinate reference system` and `res
 of the data. 
 
 
-    #load libraries
+    # load libraries
     library(raster)
     library(rgdal)
     
-    #set working directory to ensure R can find the file we wish to import
-    #setwd("working-dir-path-here")
+    # set working directory to ensure R can find the file we wish to import
+    # setwd("working-dir-path-here")
     
-    #render DSM for lesson content background
+    # render DSM for lesson content background
     DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
     
-    #view Coordinate Reference System (note this often contains horizontal units!)
+    # view Coordinate Reference System (note this often contains horizontal units!)
     crs(DSM_HARV)
 
     ## CRS arguments:
     ##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
     ## +towgs84=0,0,0
 
-    #assign crs to an object (class) to use for reprojection and other tasks
+    # assign crs to an object (class) to use for reprojection and other tasks
     myCRS <- crs(DSM_HARV)
     myCRS
 
@@ -232,7 +234,7 @@ of the data.
     ##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
     ## +towgs84=0,0,0
 
-    #view spatial extent
+    # view spatial extent
     extent(DSM_HARV)
 
     ## class       : Extent 
@@ -241,7 +243,7 @@ of the data.
     ## ymin        : 4712471 
     ## ymax        : 4713838
 
-    #view spatial resolution
+    # view spatial resolution
     res(DSM_HARV)
 
     ## [1] 1 1
@@ -258,25 +260,24 @@ of the data.
     ## values      : 305.07, 416.07  (min, max)
 
 
-We can in turn use this information to programtically perform processing tasks 
+We can use embedded metadata to programtically perform processing tasks 
 on our data including reprojections, cropping and more.
 
-#We will do this in the vector and raster data series! <<link to tutorial series
-landing pages>>
+We will work with eembedded metadata in both the [vector data]( http://www.neondataskills.org/tutorial-series/vector-data-series/)  and 
+[raster data]( http://www.neondataskills.org/tutorial-series/raster-data-series/) 
+series!
 
 ### Hierarchical Data Formats (HDF5)
-HDF5 is another file type which supports embedded metadata format. Check out the 
-following lessons on creating and working with HDF5 for more
 
-# NEED TO ADD THESE LINKS
-
-* LINK ONE
-* link two
+HDF5 is another file type that supports embedded metadata format. Check out the 
+HDF5 tutorial series to learn more about 
+[how HDF5 stores metadata](http://www.neondataskills.org/tutorial-series/intro-hdf5-r-series/).
 
 
 ## Structured Metadata - EML
-A second type of metadata is found in a **separate document**. This document
-may be 
+
+Metadata can also be stored, separately, in a separate document. This document
+may be: 
 
 1. **Carefully structured** So that we can access metadata contents programatically
 (e.g. EML)
@@ -285,7 +286,8 @@ to manually extract key metadata attributes to use in our code but it is often u
 if we are reading about data collection and processing methods which may be 
 length and detailed to support reproducible workflows.
 
-We will briefly look at both structured and unstructured metadata formats, next.
+We will briefly look at both structured and unstructured (non-embedded) metadata 
+formats, next.
 
 
 ## Structured Metadata - Introduction to EML
@@ -309,15 +311,15 @@ structure.
     </creator>
     
 
-The `EML` package for `R` is designed to read and allow users to work with `EML`
+The `EML` package for `R` is designed to open, read and create `EML`
 formatted metadata. In this tutorial, we will overview demonstrate how we can
-use EML in an automated workflow. NOTE: To save time, we will not explicetedly 
+use EML in an automated workflow. NOTE: To save time, we will not explicitly 
 teach the `EML` package given it is still being developed. But we will provide
 an example of how you can access `EML` programmatically below.
 
 ## EML Terminology
 
-Let's first discuss some basic EML terminology. In the 
+Let's first discuss some basic `EML` terminology. In the 
 context of `EML`, a file documents a `dataset`. This `dataset` may consist of one
 or more files that are documented in the `EML` document. In the case of our 
 tabular meteorology data, the structure of our `EML` file includes:
@@ -348,8 +350,10 @@ To begin, we will load the `EML` package directly from ropensci's Git repository
     
     # load ggmap for mapping
     library(ggmap)
-    
-    
+
+    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
+    ## Please cite ggmap if you use it: see citation('ggmap') for details.
+
     # data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
@@ -367,18 +371,18 @@ load.
 
     # import EML from Harvard Forest Met Data
     eml_HARV <- eml_read("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
-
-    ## Error in getClass(Class, where = topenv(parent.frame())): "html" is not a defined class
-
+    
     # view size of object
     object.size(eml_HARV)
 
-    ## Error in structure(.Call(C_objectSize, x), class = "object_size"): object 'eml_HARV' not found
+    ## 287015216 bytes
 
     # view the object class
     class(eml_HARV)
 
-    ## Error in eval(expr, envir, enclos): object 'eml_HARV' not found
+    ## [1] "eml"
+    ## attr(,"package")
+    ## [1] "EML"
 
 The `eml_read` function creates an `EML` class object. This object can be accessed
 using `slots` in R (`@`) rather than a typical subset `[]` approach.
@@ -396,23 +400,57 @@ and spatial (if relevant) coverage.
     # this works well!
     eml_get(eml_HARV,"contact")
 
-    ## Error in is(eml, "eml"): object 'eml_HARV' not found
+    ## [1] "Emery Boose <boose@fas.harvard.edu>"
 
     # grab all keywords in the file
     eml_get(eml_HARV,"keywords")
 
-    ## Error in is(eml, "eml"): object 'eml_HARV' not found
+    ## $`LTER controlled vocabulary`
+    ##  [1] "air temperature"                    
+    ##  [2] "atmospheric pressure"               
+    ##  [3] "climate"                            
+    ##  [4] "relative humidity"                  
+    ##  [5] "meteorology"                        
+    ##  [6] "precipitation"                      
+    ##  [7] "net radiation"                      
+    ##  [8] "solar radiation"                    
+    ##  [9] "photosynthetically active radiation"
+    ## [10] "soil temperature"                   
+    ## [11] "wind direction"                     
+    ## [12] "wind speed"                         
+    ## 
+    ## $`LTER core area`
+    ## [1] "disturbance"
+    ## 
+    ## $`HFR default`
+    ## [1] "Harvard Forest" "HFR"            "LTER"           "USA"
 
     # figure out the extent & temporal coverage of the data
     eml_get(eml_HARV,"coverage")
 
-    ## Error in is(eml, "eml"): object 'eml_HARV' not found
+    ## geographicCoverage:
+    ##   geographicDescription: Prospect Hill Tract (Harvard Forest)
+    ##   boundingCoordinates:
+    ##     westBoundingCoordinate: '-72.18968'
+    ##     eastBoundingCoordinate: '-72.18968'
+    ##     northBoundingCoordinate: '42.53311'
+    ##     southBoundingCoordinate: '42.53311'
+    ##     boundingAltitudes:
+    ##       altitudeMinimum: '342'
+    ##       altitudeMaximum: '342'
+    ##       altitudeUnits: meter
+    ## temporalCoverage:
+    ##   rangeOfDates:
+    ##     beginDate:
+    ##       calendarDate: '2001-02-11'
+    ##     endDate:
+    ##       calendarDate: '2015-12-31'
 
 
 ## Identify & Map Data Location
 
 Looking at the coverage for our data, there is only one unique x and y value. This 
-suggests that our data were collected at (x,y) one point location. We know this is a 
+suggests that our data were collected at (x, y) one point location. We know this is a 
 tower so a point location makes sense. Let's grab the x and y coordinates and 
 create a quick context map. We will use `ggmap` to create our map.
 
@@ -425,24 +463,18 @@ to properly geolocate and process the data.**
 
     # grab x coordinate
     XCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@westBoundingCoordinate
-
-    ## Error in eval(expr, envir, enclos): object 'eml_HARV' not found
-
-    #grab y coordinate
+    # grab y coordinate
     YCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@northBoundingCoordinate
-
-    ## Error in eval(expr, envir, enclos): object 'eml_HARV' not found
-
-    #map <- get_map(location='Harvard', maptype = "terrain")
+    
+    
+    # map <- get_map(location='Harvard', maptype = "terrain")
     map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
-
-    ## Error in readPNG(tmp): file is not in PNG format
-
+    
     ggmap(map, extent=TRUE) +
       geom_point(aes(x=XCoord,y=YCoord), 
                  color="darkred", size=6, pch=18)
 
-    ## Error in ggmap(map, extent = TRUE): object 'map' not found
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/map-location-1.png) 
 
 The above example, demonstated how we can extract information from an `EML` document
 and use it programatically in `R`! This is just the beginning of what we can do!
@@ -452,15 +484,12 @@ and use it programatically in `R`! This is just the beginning of what we can do!
 
 ## Metadata Stored on a Web Page
 
-The metadata for the data that we are working with for the Harvard Forest field 
-site are stored in both `EML` format and on a web page. Let's explore the web 
-page first.
+Some metadata are stored in a less or non-structured format such as a web page,
+or a text file. For example, if we  <a href="http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001" target="_blank">visit the Harvard Forest Fisher Tower Webpage</a>, we find
+that metadata is stored there for some of the data that we use in the 
+[tabular time tutorial series](http://www.neondataskills.org/tutorial-series/tabular-time-series/).
 
-* <a href="http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001" target="_blank">View Harvard Forest Fisher Tower Webpage.</a>
-
-Let's begin by visiting that page above. At the top of the page, there is a list of 
- data available for Harvard Forest. NOTE: **hf001-06: daily (metric) since 2001 
- (preview)** is the data that we used in the [previous tutorial]({{ site.baseurl }}R/Brief-Tabular-Time-Series-qplot/).
+If we visit the link above, we see a list of data available for Harvard Forest. 
 
 Scroll down to the **Overview** section. Take note of the information provided 
 in that section and answer the following questions in the challenge below:
@@ -489,5 +518,44 @@ HINT: Can you answer all of the questions above from the information provided
 on this website? Is there information that you might prefer to find on that page?
 </div>
 
+
+
+## Unstructured vs Structured Metadata
+
+Metadata are particularly important when we are working with data that we did not
+collect ourselves. When you download, or gain access to data from a colleague, 
+or other data provider, be sure to first find and review the metadata. Then make
+sure you save the metadata in a directory that is closely associated with wherever
+you save the data itself! Structured metadata formats are ideal if you can find
+them because they are most often:
+
+* In a standard, documented format that others use.
+* Are machine readable which means you can use them in scripts and algorithms.
+
+
+
+
+## Create Metadata For Your Data
+
+When you are creating data that you want to share with others, it is critical
+to create your own metadata. While this is beyond the scope of this tutorial,
+There are many resources available to support metadata documentation including:
+
+* Morpho
+* others...
+
+# Be sure to link to the metadata support pages and tools
+# a good challenge for this would be to find a few datasets and have them explore the 
+site and find the metadata for them -- NLCD is a good example.
+
+
+## ATBD vs Metadata
+
+Algorithm Theoretical Basis Document (ATBD) is a document which describes the 
+collection and processing methods associated with a data product. While this topic
+is beyond the scope of this tutorial, it is important to note that often times
+some important information about your data, is documented in other documents
+such as ATBDs. <a href="http://www.neonscience.org" target="_blank">NEON</a> provides
+ATBDs for all of it's data products.
 
 
