@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Spatial Intro 07: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
-date:   2015-10-22
+title: "Spatial Intro 09: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
+date:   2015-10-21
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-23
+lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]

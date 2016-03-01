@@ -4,8 +4,8 @@ title: "Spatial Intro 03: Data About Data -- Intro to Metadata File Formats and 
 date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
-dateCreated: 2015-10-23
-lastModified: 2016-02-26
+dateCreated: 2015-10-27
+lastModified: 2016-03-01
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -350,10 +350,8 @@ To begin, we will load the `EML` package directly from ropensci's Git repository
     
     # load ggmap for mapping
     library(ggmap)
-
-    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
-    ## Please cite ggmap if you use it: see citation('ggmap') for details.
-
+    
+    
     # data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv

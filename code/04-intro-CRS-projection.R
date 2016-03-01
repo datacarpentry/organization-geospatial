@@ -48,9 +48,13 @@ worldBound_robin <- spTransform(worldBound,
 
 worldBound_df_robin <- fortify(worldBound_robin)
 
+# force R to plot x and y values without abbrev
+options(scipen=100)
+
 robMap <- ggplot(worldBound_df_robin, aes(long,lat, group=group)) +
   geom_polygon() +
   labs(title="World map (robinson)") +
+  xlab("X Coordinates (meters)") + ylab("Y Coordinates (meters)") +
   coord_equal()
 
 robMap
@@ -79,8 +83,12 @@ loc.spdf
 loc.spdf.rob <- spTransform(loc.spdf, CRSobj = CRS("+proj=robin"))
 
 loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon,loc.spdf.rob$lat))
+# rename each column
 names(loc.rob.df ) <- c("X","Y")
+
+# convert spatial object to a data.frame for ggplot
 loc.rob <- fortify(loc.rob.df)
+
 # notice the coordinate system in the Robinson projection (CRS) is DIFFERENT
 # from the coordinate values for the same locations in a geographic CRS.
 loc.rob
@@ -90,6 +98,67 @@ newMap <- robMap + geom_point(data=loc.rob,
                       size=5)
 
 newMap + theme(legend.position="none")
+
+
+## ----plot-w-graticules, echo=FALSE, message=FALSE, warning=FALSE---------
+#this is not taught in the lesson but use it to display ggplot next to each other
+require(gridExtra)
+
+# turn off axis elements in ggplot for better visual comparison
+newTheme <- list(theme(line = element_blank(),
+      line = element_blank(),
+      axis.text.x = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks = element_blank(), #turn off ticks
+      axis.title.x = element_blank(), #turn off titles
+      axis.title.y = element_blank(),
+      legend.position="none")) #turn off legend
+
+## add graticules
+graticule <- readOGR("Global/Boundaries/ne_110m_graticules_all", 
+                     layer="ne_110m_graticules_15") 
+graticule_df <- fortify(graticule)
+
+bbox <- readOGR("Global/Boundaries/ne_110m_graticules_all", layer="ne_110m_wgs84_bounding_box") 
+bbox_df<- fortify(bbox)
+
+
+latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) + 
+  geom_polygon(fill="white") +
+  geom_polygon(data=worldBound_df, aes(long,lat, group=group, fill=hole)) + 
+  geom_path(data=graticule_df, aes(long, lat, group=group, fill=NULL), linetype="dashed", color="grey70") +
+  labs(title="World Map - Geographic (long/lat degrees)") + 
+  coord_equal() + newTheme +
+  scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
+
+latLongMap <- latlongMap + geom_point(data=loc.df, 
+                      aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                      size=5)
+
+# reproject grat into robinson
+graticule_robin <- spTransform(graticule, CRS("+proj=robin"))  # reproject graticule
+grat_df_robin <- fortify(graticule_robin)
+bbox_robin <- spTransform(bbox, CRS("+proj=robin"))  # reproject bounding box
+bbox_robin_df <- fortify(bbox_robin)
+
+# plot using robinson
+
+finalRobMap <- ggplot(bbox_robin_df, aes(long,lat, group=group)) + 
+  geom_polygon(fill="white") +
+  geom_polygon(data=worldBound_df_robin, aes(long,lat, group=group, fill=hole)) + 
+  geom_path(data=grat_df_robin, aes(long, lat, group=group, fill=NULL), linetype="dashed", color="grey70") +
+  labs(title="World Map Projected - Robinson (Meters)") + 
+  coord_equal() + newTheme +
+  scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
+
+# add a point to the map
+finalRobMap <- finalRobMap + geom_point(data=loc.rob, 
+                      aes(x=X, y=Y, group=NULL, colour = "purple"),
+                      size=5)
+
+
+# display side by side
+grid.arrange(latLongMap, finalRobMap)
 
 
 ## ----challenge-1, echo=FALSE---------------------------------------------
@@ -105,28 +174,4 @@ newMap + theme(legend.position="none")
 ## ALbers Equal Area
 ## UTM Zone 11n
 ## Geographic WGS84 (lat/lon): 
-
-## ---- geographic-WGS84, echo=FALSE, message=FALSE------------------------
-
-# read grat shapefile
-worldGrat30 <- readOGR(dsn="../../Global/Boundaries/ne_110m_graticules_all", 
-                      layer="ne_110m_graticules_30")
-# convert to dataframe
-worldGrat30_df <- fortify(worldGrat30) 
-
-#import box
-wgs84Box <- readOGR("../../Global/Boundaries/ne_110m_graticules_all",
-                    layer="ne_110m_wgs84_bounding_box") 
-wgs84Box_df<- fortify(wgs84Box)
-
-#plot data
-ggplot(wgs84Box_df, aes(long,lat, group=group)) + 
-  geom_polygon(fill="white") +
-  xlab("Longitude (Degrees)") + ylab("Latitude (Degrees)") +
-  ggtitle("World Map - Geographic WGS84 (lat/lon)") +
-  geom_polygon(data=worldBound_df, aes(long,lat, group=group, fill=hole))+
-  geom_path(data=worldGrat30, aes(long, lat, group=group, fill=NULL), linetype="dashed", color="grey50") +
-  labs(title="World map + graticule (longlat)") + 
-  coord_equal() + 
-  scale_fill_manual(values=c("black", "white"), guide="none") # change colors & 
 
