@@ -4,7 +4,7 @@ title: "Spatial Intro 03: Data About Data -- Intro to Metadata File Formats and 
 date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
-dateCreated: 2015-10-23
+dateCreated: 2015-10-27
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 

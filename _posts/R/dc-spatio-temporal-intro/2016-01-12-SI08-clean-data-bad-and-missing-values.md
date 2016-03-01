@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Spatial Intro 06: Cleaning Data -- Missing and Bad Data Values"
-date:   2015-10-24
+title: "Spatial Intro 07: Cleaning Data -- Missing and Bad Data Values"
+date:   2015-10-23
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-23
+lastModified: 2016-03-01
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
