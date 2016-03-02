@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Spatial Intro 05: Geographic vs Projected CRS` - A Brief Overview"
+title: "Spatial Intro 05: Introduction to the UTM Projected CRS and a Brief overview
+of datums"
 date: 2015-10-25
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
@@ -11,13 +12,15 @@ category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "Description here."
-code1: intro-CRS-projection.R
+description: "This tutorial focuses on the Universal Trans Mercator (UTM) 
+projected Coordinate Reference which divides the globe into zones to optimize
+projection results in each zone. It also briefly introduces the concept of a datum."
+code1: 05-geographic-vs-projected-CRS.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: 
-permalink: R/intro-to-coordinate-reference-systems
+permalink: R/geographic-vs-projected-coordinate-reference-systems-UTM
 comments: true
 ---
 
@@ -25,8 +28,10 @@ comments: true
 
 ## About
 
-This lesson covers the key spatial attributes that are needed to work with 
-spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution.
+This tutorial focuses on the Universal Trans Mercator (UTM) 
+projected Coordinate Reference which divides the globe into zones to optimize
+projection results in each zone. It also briefly introduces the concept of a 
+datum.
 
 **R Skill Level:** Beginner - you've got the basics of `R` down.
 
@@ -36,10 +41,10 @@ spatial data including: Coordinate Reference Systems (CRS), Extent and spatial r
 
 After completing this activity, you will:
 
-* The basic concept of what a Coordinate Reference System (`CRS`) is and how it
-impacts data processing, analysis and visualization.
-* Understand the basic differences between a geographic and a projected `CRS`.
-* Become familiar with the Universal Trans Mercator (UTM) and Geographic (WGS84) `CRS`s
+* The basic difference between a Geographic and a projected  Coordinate Reference 
+System.
+* Become familiar with the Universal Trans Mercator (UTM) and Geographic (WGS84)
+`CRS`s
 
 
 ## Things You’ll Need To Complete This Lesson
@@ -78,6 +83,7 @@ and
 ****
 
 ### Additional Resources
+
 * Read more on coordinate systems in the
 <a href="http://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/coordinate_reference_systems.html" target="_blank">
 QGIS documentation.</a>
@@ -89,18 +95,16 @@ QGIS documentation.</a>
 ## Geographic vs Projected CRS
 
 
-The above maps provide examples of the two main types of coordinate systems:
+In the previous tutorial, we explored, two different types of Coordinate Reference
+Systems: 
 
 1. **Geographic coordinate systems:** coordinate systems that span the entire
 globe (e.g. latitude / longitude). 
 2. **Projected coordinate Systems:** coordinate systems that are localized to 
 minimize visual distortion in a particular region (e.g. Robinson, UTM, State Plane)
 
-Next, we will discuss the differences between these `CRS`s in more detail. Feel
-free to skip over this section and come back to it with fresh eyes if the 
-concept of a `CRS` is becoming too complex. It's easisest to take on in 
-bite sized pieces!
-
+In this tutorial, we will discuss the differences between these `CRS`s in more 
+detail. 
 
 
 
@@ -114,17 +118,6 @@ is important to remember that distance is distorted using a geographic lat / lon
 The **geographic WGS84 lat/long** `CRS` has an origin - (0,0) -
 located at the intersection of the 
 Equator (0° latitude) and Prime Meridian (0° longitude) on the globe.
-
-
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "../../Global/Boundaries/ne_110m_graticules_all", layer: "ne_110m_graticules_30"
-    ## with 17 features
-    ## It has 6 fields
-
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "../../Global/Boundaries/ne_110m_graticules_all", layer: "ne_110m_wgs84_bounding_box"
-    ## with 1 features
-    ## It has 2 fields
 
 ![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/05-geographic-vs-projected-CRS/geographic-WGS84-1.png) 
 
@@ -162,20 +155,11 @@ optimize the relative size and shape of a particular region on the globe.
     Source: CA Furuti, progonos.com/furuti</figcaption>
 </figure>
 
-A few common example projections, and how they optimize the visual appearance of a region
-on a map, are listed below.
-
-# make the below into a table 
-* **State Plane** Region: United States. Optimized for: states
-in the U.S. Sub regions:  north / south (withing hte state). Units:
-Feet 
-* **Universal Trans Mercator (UTM)** Region: Entire Globe, Optimized for: regions 
-throughout the globe. Sub regions: north / south (above / below the equator)divides the entire globe
 
 ### About UTM
 
-The **Universal Transverse Mercator** (UTM) system is a projected coordinate
-reference system. The earth is flattened and subdivided into zones,
+The **Universal Transverse Mercator** (UTM) system is a commonly used projected 
+coordinate reference system. UTM subdivides the globe into zones,
 numbered 0-60 (equivalent to longitude) and regions (north and south)
 
 
@@ -184,8 +168,8 @@ lettered C-X (equivalent to latitude) however, the band designation is often
 dropped as it isn't esssential to specifying the location. 
 {: .notice}
 
-While UTM zones span the entire globe, UTM uses a regional 
-projection and associated coordinate system. The coordinate system grid for each
+While UTM zones span the entire globe, UTM uses a regional projection and 
+associated coordinate system. The coordinate system grid for each
 zone is projected individually using the **Mercator projection**. 
 
 The origin (0,0) for each UTM zone and associated region is located at the 
@@ -193,7 +177,28 @@ intersection of the equator and a location, 500,000 meters east of the central
 meridian of each zone. The origin location is placed outside of the boundary of 
 the UTM zone, to avoid negative Easting numbers.  
 
-# LINK TO PSU INFO ON UTM!
+
+
+
+<figure>
+    <a href="https://www.e-education.psu.edu/natureofgeoinfo/sites/www.e-education.psu.edu.natureofgeoinfo/files/image/utm_zone_characteristics.png">
+    <img src="https://www.e-education.psu.edu/natureofgeoinfo/sites/www.e-education.psu.edu.natureofgeoinfo/files/image/utm_zone_characteristics.png">
+    </a>
+    <figcaption>The 0,0 origin of each UTM zone is located in the **Bottom left** hand corner (south west) of the zone - exactly 500,000 m EAST from the central meridian of the zone.  
+    Source: Penn State E-education</figcaption>
+</figure>
+
+***
+
+### More on UTM
+
+* <a href="https://www.e-education.psu.edu/geog482spring2/c2_p22.html" target="_blank">
+Penn State E-education overview of UTM</a>
+* <a href="https://www.e-education.psu.edu/geog482spring2/c2_p23.html
+" target="_blank">
+More about UTM Zones - Penn State E-education</a>
+
+***
 
 <figure>
     <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Utm-zones.jpg/800px-Utm-zones.jpg">
@@ -214,6 +219,13 @@ regions (>80°N or S). Universal Polar Stereographic (UPS) coordinate system is
 used in these area. This is where zones A, B and Y, Z are used if you were 
 wondering why they weren't in the UTM lettering system.  
 {: .notice }
+
+<div id="challenge" markdown="1">
+
+Practice understanding UTM coordinates: 
+
+https://www.e-education.psu.edu/natureofgeoinfo/sites/www.e-education.psu.edu.natureofgeoinfo/files/flash/coord_practice_utm_v06.swf
+</div>
 
 
 ### Datum
@@ -250,12 +262,15 @@ article </a>for more information. We will not cover these concepts in this tutor
 
 ### Coordinate Reference System Formats
 
-There are numerous formats that are used to document a `CRS`. Three common
-formats. We will discuss Proj4, WKT and EPSG.....
+There are numerous formats that are used to document a **CRS**. In the next tutorial
+we will discuss three of the commonly encountered formats including: **Proj4**, 
+**WKT** (Well Known Text) and **EPSG**.
 
 
 *** 
-##Additional Resources
+
+## Additional Resources
+
 ESRI help on CRS
 QGIS help on CRS
 NCEAS cheatsheets
