@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "SpatialIntro 00: Answer a Spatio-temporal Research Question with Data: Where to Start?"
+title: "Spatial Intro 00: Answer a Spatio-temporal Research Question with Data: Where to Start?"
 date:   2015-10-30
 authors: [Megan A. Jones, Leah A. Wasser]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-02-09
+lastModified: 2016-03-01
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-data]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson provides an overview of finding spatial data to support your research
@@ -30,7 +30,7 @@ This lesson provides an overview of finding spatial data to support your researc
 question. It covers some of the key data sources and providers and places that you can look
 to find data for your study are / research question.
 
-**R Skill Level:** Intermediate - you've got the basics of `R` down.
+**R Skill Level:** Introduction - you've got the basics of `R` down.
 
 <div id="objectives" markdown="1">
 
@@ -54,7 +54,7 @@ preferably, RStudio loaded on your computer.
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-###Download Data
+### Download Data
 
 
 ****

@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Lesson 06: Cleaning Data -- Missing and Bad Data Values"
-date:   2015-10-24
+title: "Spatial Intro 07: Cleaning Data -- Missing and Bad Data Values"
+date:   2015-10-23
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-03-01
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This tutorial covers spatial data cleaning - specifically dealing with missing 
@@ -17,14 +17,14 @@ code1: 06-clean-data-bad-and-missing-values.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: http://www.neoninc.org
-permalink: R/EditLink
-comments: false
+  creditlink:
+permalink: R/missing-bad-data
+comments: true
 ---
 
 {% include _toc.html %}
 
-##About
+## About
 Add description.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
@@ -38,17 +38,17 @@ After completing this activity, you will:
 * 
 
 
-##Things You’ll Need To Complete This Lesson
+## Things You’ll Need To Complete This Lesson
 To complete this lesson you will need the most current version of R, and 
 preferably, RStudio loaded on your computer.
 
-###Install R Packages
+### Install R Packages
 
 * **NAME:** `install.packages("NAME")`
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-###Download Data
+### Download Data
 EDIT AS NEEDED
 {% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
 
@@ -69,7 +69,7 @@ and
 
 ****
 
-###Additional Resources
+### Additional Resources
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
 Read more about the `raster` package in `R`.</a>
@@ -80,12 +80,12 @@ NEON Data Skills: Image Raster Data in R - An Intro</a>
 
 </div>
 
-###Clean Data
+### Clean Data
 No dataset is perfect. It is common to encounter large files containing obviously
 erronious data (bad data).  It is also common to encounter `NoData`
 values that we need to account for when analyzing our data. 
 
-##NoData Values (NA, NAN)
+## NoData Values (NA, NAN)
 If we are lucky when working with external data, the `NoData` value is clearly
 specified in the metadata. Sometimes this value is `NA` or `nan` (not a number). However, 
 `NA` isn't always used. Text values can make data storage difficult for some 
@@ -115,27 +115,31 @@ recognized as an integer and processed accordingly. If you encounter a numeric
 `objectName[objectName==-9999] <- NA`
 {: .notice}
 
-###Check for NA values
+### Check for NA values
 We can quickly check for `NoData` values in our data using the`is.na()` 
 function. By asking for the `sum()` of `is.na()` we can see how many NA/ missing
 values we have. 
 
 REPLACE CODE TO BE FOR THE SAME SMALLISH DATA SET USED FOR BAD DATA VALUES BELOW
-```{r missing values}
 
-#Check for NA values
-sum(is.na(harMet15.09.11$datetime))
-sum(is.na(harMet15.09.11$airt))
+    # Check for NA values
+    sum(is.na(harMet15.09.11$datetime))
 
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
-#view rows where the air temperature is NA 
-harMet15.09.11[is.na(harMet15.09.11$airt),]
-```
+    sum(is.na(harMet15.09.11$airt))
+
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
+
+    # view rows where the air temperature is NA 
+    harMet15.09.11[is.na(harMet15.09.11$airt),]
+
+    ## Error in eval(expr, envir, enclos): object 'harMet15.09.11' not found
 
 The results above tell us there are `NoData` values in the `datetime` column.
 However, there are `NoData` values in other variables.  
 
-###Deal with NoData Values
+### Deal with NoData Values
 When we encounter `NoData` values (blank, NaN, -9999, etc.) in our data we
 need to decide how to deal with them. By default `R` treats `NoData` values
 designated
@@ -161,7 +165,7 @@ Other resources:
 -- R code for dealing with missing data 
 2. The Institute for Digital Research and Education has an <a href="http://www.ats.ucla.edu/stat/r/faq/missing.htm" target="_blank"> R FAQ on Missing Values</a>.
 
-##Bad Data Values
+## Bad Data Values
 Bad data values are different from `NoDataValue`. Bad data values are values that
 fall outside of the applicable range of a dataset. 
 Examples of Bad Data Values:
@@ -172,7 +176,7 @@ be considered a "bad" or miscalculated value.
 * If we are using a Julian day (0-365/366) to represent the days of the year. A value
 of 1110 is clearly not correct.
 
-###Find Bad Data Values
+### Find Bad Data Values
 Sometimes a dataset's metadata will tell us the range of expected values for a
 variable or common sense dictates the expected value (as in the Julian day example above).
 Values outside of this range are suspect and we need to consider than
@@ -187,7 +191,7 @@ identifying outliers and bad data values in our raster data.
 HIST of SMALLISH DATA SET WITH SOME OUTLANDISH VALUE
 
 
-###Deal with Bad Data Values
+### Deal with Bad Data Values
 
 
 

@@ -1,37 +1,42 @@
 ---
 layout: post
-title: "Lesson 03: Data About Data -- Intro to Metadata File Formats and Structure"
+title: "Spatial Intro 03: Data About Data -- Intro to Metadata File Formats and Structure"
 date:   2015-10-27
-authors: []
+authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
-dateCreated: 2015-10-23
+dateCreated: 2015-10-27
 lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [ ]
+packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis, metadata]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This lesson introduces key metadata formats including FGDC and EML. It 
-provides basic approaches for understanding these formats and how to work with these formats."
+description: "This tutorial covers what metadata are, and why we need to work with
+metadata. It discusses metadata in the context of spatio-temporal data. It 
+covers the 3 most common metadata formats: text file format, 
+web page format and Ecological Metadata Language (EML)."
 code1: 03-metadata-formats-and-files.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: http://www.neoninc.org
+  creditlink: 
 permalink: R/metadata-file-formats-structures
-comments: false
+comments: true
 ---
 
 {% include _toc.html %}
 
-##About
-Add description.
+## About
+This tutorial covers what metadata are, and why we need to work with
+metadata. It discusses metadata in the context of spatio-temporal data. It 
+covers the 3 most common metadata formats: text file format, 
+web page format and Ecological Metadata Language (EML).
 
-**R Skill Level:** Intermediate - you've got the basics of `R` down.
+**R Skill Level:** Introduction - You are just learning about metadata.
 
 <div id="objectives" markdown="1">
 
-#Goals / Objectives
+# Goals / Objectives
 
 After completing this activity, you will:
 
@@ -42,17 +47,24 @@ the data.
 * Understand that collecting data requires/includes collecting the metadata.
 * Be able to create metadata files for different data types. 
 
-##Things You’ll Need To Complete This Lesson
+## Things You’ll Need To Complete This Lesson
 To complete this lesson you will need the most current version of R, and 
 preferably, RStudio loaded on your computer.
 
-###Install R Packages
+### Install R Packages
 
-* **NAME:** `install.packages("NAME")`
+* **raster:** `install.packages("raster")`
+* **rgdal:** `install.packages("rgdal")`
+
+**OPTIONAL**
+
+* **devtools** `install.packages("devtools")` 
+* **eml** `install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))`
+
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-###Download Data
+### Download Data
 
 ****
 
@@ -71,7 +83,7 @@ and
 
 ****
 
-###Additional Resources
+### Additional Resources
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
 
@@ -83,96 +95,425 @@ and
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # code output here - DEM rendered on the screen
-plot(DSM_HARV)
+plot(DSM_HARV,
+      main="A Dataset You Are Given\n What metric does it represent?\nHow Was It Processed??")
 
 ```
 
 
 <div id="challenge" markdown="1">
-##Challenge: What Do I Know About My Data?
-The figure above is a map created from the file `HARV_dsmCrop.tif`.  That is all
-you know.  What other information would you like to know about this map and the
-data contained in the file before you would feel comfortable using
-this data to address your research question or to build a map for publication? 
+## Challenge: What Do I Know About My Data?
+
+The figure above was create from a that you are given called: `HARV_dsmCrop.tif`.  
+What other information would you like to know about the data used to create the 
+above map before you would feel comfortable using this data to address a 
+research question? 
 
 </div>
 
+```{r challenge-1, echo=FALSE}
 
-Information that we might want to know are listed below, with the information
-that we can gather from the map:
+# the idea is that we have no idea what this raster represents (what metric),
+# what the units are, what the scale represents. When it was collected. 
+# this should engage the participants in a discussion of how do we share / document
+# data efficiently for sharing.
 
-* Where is this?  -- The file name says HARV. Is that a location abbreviation?
-... really we have no idea.  
-* What is the file format? -- .tif means it is likely a GeoTIFF.  
-* What coordinate reference system are the coordinates in?  -- Can't tell. 
-* When was the data collected to lead to this map?  -- Can't tell
-* How was the map created? -- Can't tell 
-* What’s being measured? -- The file name contains DSM which often denotes a 
-Digital Surface Model so it might be elevation but we're not 100% sure.   
-* What units? -- Can't tell
+```
 
-Obviously we need more data about the data: metadata!
+## Why Do We Need Metadata?
 
-##What is Metadata?  Why is it Needed?
-Metadata is structured data describing a dataset. Among other things metadata
-should include by whom and how the data was collected or created, the units and
-data structure, and spatial attributes. With spatial data there is information
-that's necessary to understand it, but usually isn't included in the file. 
-This is the metadata: data about the data.
+Looking at the map above, we are missing information needed to begin working with
+the data effectively including:
 
-###Ancillary Data
-Each element in the file can have more data associated with it. This can be
-information like a measured time series for a single, individual point or
-vector. Ancillary data often appears as a .csv file. They don't have an explicit
-spatial element (although they apply to a spatial element). You have to attach
-that data to the spatial data information.
+**Spatial Information**
 
+* **Spatial Extent:** What area does this dataset cover? 
+* **Coordinate reference system:** what spatial projection / coordinate reference
+system are used to store the data? Will it line up with other data? 
+* **Resolution:** The data appears to be in **raster** format. This means it is
+composed of pixels. What area on the ground does each pixel cover - ie What is 
+its spatial resolution?
 
-###Why is it useful
-Need to document where the data came from and how it was produced
-also in the case of structured, digital metadata (e.g. EML) it can be used to automate workflows. For instance, things like scale factors, units, and uncertainty values may be stored in metadata and accessed programmatically to convert / transform data within an algorithm.
+**Data Collection / Processing Methods**
 
-##Where to find it? 
-Metadate can be found in many different locations (in decreasing order of
-usefulness): 
+* **How was this data generated?** Is this an output from a model, is it an image
+from a remote sensing instrument such as a satellite (e.g. landsat) or collected
+from an airplane? How were the data colected?
+* **Units:** We can see a scale bar of values to the right of the data however, 
+what units / metric does this represent? Temperature? Elevation? Precipitation?
+* **How were the data processed?**
 
-* embedded in the file (GeoTIFFs)
-* a separate file that contains this information (EML, .txt or .csv)
-* in the download directory
-* listed on the web site as text or in a seperate directory
-* in the original data collector's field notebook  
+**Contact Information**
+* Who created this data? Who do we contact if we have questions?
 
-The location and format will vary with the provider and the data type.  A best
-case scenario is that the data & it's metadata are embedded with the data
-(GeoTIFFs) or in a downloadable package that is machine readible (.txt, .xml or
-EML formats).  Less useful but still usable is when the metadata are available
-in another format on the website, repository, or portal where the data were
-download.  The worst case senario is that there is no additional metadata 
-readily available, this may result in unusable data or extensive additonal
-background work by the user.  
+When we are given a dataset, or when we download it online, we do not know anything
+about it without proper documentation. This documentation is called **metadata** - 
+data about the data.
 
-##Structured File Formats (very high level):
-** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think?
+## What is Metadata?
+Metadata is structured information that describes a dataset. It includes a suite of
+information about the data including:
 
-###Ecological Metadata Language (EML): XML based format… more here 
-eg harvard forest LTER
-Code chunk showing some EML
-** link out to EML lesson (in NEON-DS-Lesson-Development Repo: {{ site.baseurl }}/R/EML)
+* Contact information
+* Spatial Attributes including: extent, coordinate reference system, resolution
+* Data collection & processing methods
+* and more.
 
-###XML - common for GIS ….
-Code chunk showing XML
+Without sufficient documentation, it is difficult for us to work with 
+external data - data that we did not collect ourselves.
 
-###Web pages with text - EG harvard forest LTER
-screen shots?
+### Why Are Metadata Needed?
+We need metadata to not only work with external data, but also when it's embedded
+in a file or in provided in a machine readable format, we can access it directly
+in tools like `R` or `Python`. We will talk about different metadata formats,
+next.
 
-###HEADERS of text files
-eg raster .asc files
-** provide examples of each of the above - we have that from the harvard met data and the EML file- i can pull XML and a file with a header - the daylength files have a header i think? 
-little activities to go look at metadata…
+## Metadata Formats
 
+Metadata come in different formats. We will discuss three of those in this tutorial:
+
+* **Structured Embedded Metadata:** Some file formats (e.g. `Geotiff` and `HDF5`)
+ supported embedded metadata which you can access from a tool like `R` or `Python`
+ directly when you import the data.
+* **Structured Metadata Files:** Structured metadata files such as the Ecological 
+Metadata Language (EML) are stored in a machine readable format which means they
+can be accessed using a tool like `R` or `Python`. There are different file formats
+and standards but it's important to understand that standards will vary.
+* **UnStructured Metadata Files:** These include text files, web pages and other
+documentation that does not follow a particular standard or format, but documents
+key attributes required to work with the data.
 
 
+<i class="fa fa-star"></i> **Data Tip:** When you find metadata for a dataset 
+that you are working with, **DOWNLOAD AND SAVE IT** immediately to a directory 
+on your computer where you saved the data. It is also a good idea to document
+the URL where you found the metadata and the data in a "readme" text file!
+{: .notice}
 
 
+## Embedded Metadata - Geotiff
+
+If we want to automate workflows, it's ideal when key metadata required to process
+our data are embedded directly in our data files. The **geotiff** (`fileName.tif`) 
+is one common spatio-temporal format that can store **metadata** directly in the
+`.tif` file itself.
+
+## What is a GeoTIFF??
+
+A `geotiff` file stores metadata or attributes about the file as embedded `tif tags`. 
+A GeoTIFF is a standard `.tif` image format with additional spatial (georeferencing)
+information embedded in the file as tags. These tags can include the following raster metadata:
+
+1. A Coordinate Reference System (`CRS`)
+2. Spatial Extent (`extent`)
+3. Values for when no data is provided (`NoData` Value)
+4. The `resolution` of the data
+
+<i class="fa fa-star"></i> **Data Tip:**  Your camera uses embedded tags to store
+information about pictures that you take including the camera make and model, 
+and the time the image was taken!
+{: .notice }
+
+More about the  `.tif` format:
+
+* <a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank"> GeoTIFF on Wikipedia</a>
+* <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
+
+The `Raster` package in `R` allows us to directly access tif tags programatically.
+We can quickly view the spatial `extent`, `coordinate reference system` and `resolution` 
+of the data. 
+
+```{r load-libraries }
+# load libraries
+library(raster)
+library(rgdal)
+
+# set working directory to ensure R can find the file we wish to import
+# setwd("working-dir-path-here")
+
+# render DSM for lesson content background
+DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+# view Coordinate Reference System (note this often contains horizontal units!)
+crs(DSM_HARV)
+
+# assign crs to an object (class) to use for reprojection and other tasks
+myCRS <- crs(DSM_HARV)
+myCRS
+
+# view spatial extent
+extent(DSM_HARV)
+
+# view spatial resolution
+res(DSM_HARV)
+
+DSM_HARV
+```
+
+
+We can use embedded metadata to programtically perform processing tasks 
+on our data including reprojections, cropping and more.
+
+We will work with eembedded metadata in both the [vector data]( http://www.neondataskills.org/tutorial-series/vector-data-series/)  and 
+[raster data]( http://www.neondataskills.org/tutorial-series/raster-data-series/) 
+series!
+
+### Hierarchical Data Formats (HDF5)
+
+HDF5 is another file type that supports embedded metadata format. Check out the 
+HDF5 tutorial series to learn more about 
+[how HDF5 stores metadata](http://www.neondataskills.org/tutorial-series/intro-hdf5-r-series/).
+
+
+## Structured Metadata - EML
+
+Metadata can also be stored, separately, in a separate document. This document
+may be: 
+
+1. **Carefully structured** So that we can access metadata contents programatically
+(e.g. EML)
+2. **Written out in text or web page format** This is less ideal as it means we have
+to manually extract key metadata attributes to use in our code but it is often useful
+if we are reading about data collection and processing methods which may be 
+length and detailed to support reproducible workflows.
+
+We will briefly look at both structured and unstructured (non-embedded) metadata 
+formats, next.
+
+
+## Structured Metadata - Introduction to EML
+
+The Ecological Metadata Language (EML) is a data specification developed specifically
+to document ecological data. An EML file is created using a `XML` based format.
+This means that content is embedded within hierarchical tags. For example
+the title of a dataset might be embedded in a `<title>` tag as follows:
+
+`<title>Fisher Meteorological Station at Harvard Forest since 2001</title>`
+
+Similarly, the creator of a dataset is also be found in a hierarchical tag
+structure.
+
+
+    <creator>
+      <individualName>
+        <givenName>Emery</givenName>
+        <surName>Boose</surName>
+      </individualName>
+    </creator>
+    
+
+The `EML` package for `R` is designed to open, read and create `EML`
+formatted metadata. In this tutorial, we will overview demonstrate how we can
+use EML in an automated workflow. NOTE: To save time, we will not explicitly 
+teach the `EML` package given it is still being developed. But we will provide
+an example of how you can access `EML` programmatically below.
+
+## EML Terminology
+
+Let's first discuss some basic `EML` terminology. In the 
+context of `EML`, a file documents a `dataset`. This `dataset` may consist of one
+or more files that are documented in the `EML` document. In the case of our 
+tabular meteorology data, the structure of our `EML` file includes:
+
+1. The **dataset**. A dataset may contain
+one or more data tables associated with it that may contain different types of related
+information. For this Harvard meteorological data, the data tables contain tower
+measurements including precipitation and temperature, that are aggregated
+at various time intervales (15 minute, daily, etc) and that date back to 2001.
+2. The **data tables**. Data tables refer to the actual data that make up the dataset. 
+For the Harvard Data, each data table contains a suite of meterological metrics 
+including precipiation and temperature (and associated quality flags), that are 
+aggregated at a particular time interval. (e.g. one data table contains monthly
+average data, another contains 15 minute averaged data, etc)
+
+## Work With EML in R 
+
+To begin, we will load the `EML` package directly from ropensci's Git repository.
+
+
+```{r install-EML-package, results="hide", warning=FALSE }
+# install R EML tools
+# library("devtools")
+# install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))
+
+# load ROpenSci EML package
+library("EML")
+
+# load ggmap for mapping
+library(ggmap)
+
+
+# data location
+# http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
+# table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
+```
+
+Next, we will read in the LTER `EML` file - directly from the online URL using
+`eml_read`. This file documents multiple data products that can be downloaded.
+<a href="http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001" target="_blank">
+Check out the Harvard Forest Data Archive Page for Fisher Meteorological Station
+for more on this dataset and to download the archive files directly.</a>
+
+Note that because this eml file is large, it takes a few seconds for the file to 
+load.
+
+
+```{r read-eml }
+# import EML from Harvard Forest Met Data
+eml_HARV <- eml_read("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
+
+# view size of object
+object.size(eml_HARV)
+
+# view the object class
+class(eml_HARV)
+```
+
+The `eml_read` function creates an `EML` class object. This object can be accessed
+using `slots` in R (`@`) rather than a typical subset `[]` approach.
+
+## Explore Metadata Attributes
+
+We can begin to explore the contents of our EML file and associated data that it
+describes. Let's start at the dataset level. We can use `eml_get` to view the 
+contact information for the dataset, the keywords and it's associated temporal
+and spatial (if relevant) coverage.
+
+
+```{r view-eml-content }
+# view the contact name listed in the file
+# this works well!
+eml_get(eml_HARV,"contact")
+
+# grab all keywords in the file
+eml_get(eml_HARV,"keywords")
+
+# figure out the extent & temporal coverage of the data
+eml_get(eml_HARV,"coverage")
+
+```
+
+
+## Identify & Map Data Location
+
+Looking at the coverage for our data, there is only one unique x and y value. This 
+suggests that our data were collected at (x, y) one point location. We know this is a 
+tower so a point location makes sense. Let's grab the x and y coordinates and 
+create a quick context map. We will use `ggmap` to create our map.
+
+**NOTE: if this were a rectangular extent we'd want the bounding BOX. this is important
+if the data are for example, raster format, in HDF5 or something. we need the extent
+to properly geolocate and process the data.**
+
+<a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/ggmap/ggmapCheatsheet.pdf" target="_blank">Learn More: A nice cheatsheet for GGMAP created by NCEAS</a>
+
+```{r map-location, warning=FALSE, message=FALSE}
+# grab x coordinate
+XCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@westBoundingCoordinate
+# grab y coordinate
+YCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@northBoundingCoordinate
+
+
+# map <- get_map(location='Harvard', maptype = "terrain")
+map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
+
+ggmap(map, extent=TRUE) +
+  geom_point(aes(x=XCoord,y=YCoord), 
+             color="darkred", size=6, pch=18)
+
+```
+
+The above example, demonstated how we can extract information from an `EML` document
+and use it programatically in `R`! This is just the beginning of what we can do!
+
+
+## Unstructured Metadata - Web pages & Text Files
+
+## Metadata Stored on a Web Page
+
+Some metadata are stored in a less or non-structured format such as a web page,
+or a text file. For example, if we  <a href="http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001" target="_blank">visit the Harvard Forest Fisher Tower Webpage</a>, we find
+that metadata is stored there for some of the data that we use in the 
+[tabular time tutorial series](http://www.neondataskills.org/tutorial-series/tabular-time-series/).
+
+If we visit the link above, we see a list of data available for Harvard Forest. 
+
+Scroll down to the **Overview** section. Take note of the information provided 
+in that section and answer the following questions in the challenge below:
+
+<div id="challenge" markdown="1">
+## Challenge - Explore Metadata
+
+Explore the metadata stored on the Harvard Forest LTER web page. Answer the 
+following questions. 
+
+1. What is the time span of the data available for this site? 
+2. You have some questions about these data. Who is the lead investigator / who 
+do you contact for more information? And how do you contact them? 
+3. Where is this field site located? How is the site location information stored
+in the metadata? Is there any information that may be useful to you viewing the location?
+(HINT: what if you were not familiar with Harvard as a site / from another country, 
+etc?)
+4. Field Site Information: What is the elevation for the site? What is the dominant
+vegetation cover for the site? HINT: is dominant vegetation easy to find in the
+metadata?
+5. How is snow dealt with in the precipitation data?
+6. Are there some metadata attributes that might be useful to access in a script
+in `R` or `Python` rather than viewed on a web page?
+
+HINT: Can you answer all of the questions above from the information provided
+on this website? Is there information that you might prefer to find on that page?
+</div>
+
+```{r metadata-challenge-1, echo=FALSE}
+# Metadata Notes from hf001_10-15-m_Metadata.txt
+# 1. 2001-2015
+# 2. Emery Boos - located at the top of the document, email is available
+# 3. a lat long is available in the metadata at the top, we see the location described
+# as Prospect Hill Tract (Harvard Forest). 
+# 4. 342 m elevation, the veg type is not clear in the metadata
+# 5. Found in the methods: Delayed melting of snow and ice (caused by problems with rain gage heater or heavy precipitation) is noted in log - daily values are corrected if necessary but 15-minute values are not. The gage may underestimate actual precipitation under windy or cold conditions.
+# 6. this could be a discussion. things like units, time zone, etc are all useful
+# if accessed programmatically
+
+```
+
+## Unstructured vs Structured Metadata
+
+Metadata are particularly important when we are working with data that we did not
+collect ourselves. When you download, or gain access to data from a colleague, 
+or other data provider, be sure to first find and review the metadata. Then make
+sure you save the metadata in a directory that is closely associated with wherever
+you save the data itself! Structured metadata formats are ideal if you can find
+them because they are most often:
+
+* In a standard, documented format that others use.
+* Are machine readable which means you can use them in scripts and algorithms.
+
+
+
+
+## Create Metadata For Your Data
+
+When you are creating data that you want to share with others, it is critical
+to create your own metadata. While this is beyond the scope of this tutorial,
+There are many resources available to support metadata documentation including:
+
+* Morpho
+* others...
+
+# Be sure to link to the metadata support pages and tools
+# a good challenge for this would be to find a few datasets and have them explore the 
+site and find the metadata for them -- NLCD is a good example.
+
+
+## ATBD vs Metadata
+
+Algorithm Theoretical Basis Document (ATBD) is a document which describes the 
+collection and processing methods associated with a data product. While this topic
+is beyond the scope of this tutorial, it is important to note that often times
+some important information about your data, is documented in other documents
+such as ATBDs. <a href="http://www.neonscience.org" target="_blank">NEON</a> provides
+ATBDs for all of it's data products.
 
 

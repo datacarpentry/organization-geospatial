@@ -1,37 +1,37 @@
 ---
 layout: post
-title: "Lesson 05: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
-date:   2015-10-25
+title: "Spatial Intro 09: R Packages for Spatial-temporal Data -- Setting Up Your Working Environment"
+date:   2015-10-21
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+lastModified: 2016-03-01
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
-tags: [R, gis-spatial-sata]
+tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This lesson covers the key packages that support working with spatial data in
-R."
+description: "This lesson covers the key packages that support working with 
+spatial data in R."
 code1: set-r-work-environment.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: http://www.neoninc.org
+  creditlink:
 permalink: R/spatio-temporal-R-packages
-comments: false
+comments: true
 ---
 
 {% include _toc.html %}
 
-##About
+## About
 Add description.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
 
 <div id="objectives" markdown="1">
 
-#Goals / Objectives
+# Goals / Objectives
 
 After completing this activity, you will:
 
@@ -39,17 +39,17 @@ After completing this activity, you will:
 * Understand that different spatial data types & associated file types require
 different tools to work with them. 
 
-##Things You’ll Need To Complete This Lesson
+## Things You’ll Need To Complete This Lesson
 To complete this lesson you will need the most current version of R, and 
 preferably, RStudio loaded on your computer.
 
-###Install R Packages
+### Install R Packages
 
 * **NAME:** `install.packages("NAME")`
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-###Download Data
+### Download Data
 EDIT AS NEEDED
 {% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
 
@@ -70,7 +70,7 @@ and
 
 ****
 
-###Additional Resources
+### Additional Resources
 
 * <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
 Read more about the `raster` package in `R`.</a>
