@@ -14,7 +14,7 @@ mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key spatial attributes that are needed to work with 
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
-code1: intro-CRS-projection.R
+code1: 04-intro-CRS-projection.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
@@ -184,6 +184,12 @@ the central meridian on the globe (0,0).
     library(rgdal)
     library(ggplot2)
     library(rgeos)
+
+    ## rgeos version: 0.3-11, (SVN revision 479)
+    ##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
+    ##  Linking to sp version: 1.1-0 
+    ##  Polygon checking: TRUE
+
     library(raster)
     setwd("~/Documents/data")
     
@@ -210,7 +216,7 @@ the central meridian on the globe (0,0).
     
     worldMap
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/lat-long-example-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/lat-long-example-1.png)
 
 We can add three coordinate locations to our map. Note that the UNITS are
 in decimal **degrees** (latitude, longitude):
@@ -237,7 +243,7 @@ boundary layer.
     
     mapLocations + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-lat-long-locations-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-lat-long-locations-1.png)
 
 ## Geographic CRS - The Good & The Less Good
 
@@ -249,8 +255,8 @@ have been developed.
 
 
 <figure>
-	<a href="{{ site.baseurl }} /images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif">
-	<img src="{{ site.baseurl }} /images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif"></a>
+	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif">
+	<img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif"></a>
 	<figcaption>A geographic coordinate system locates latitude and longitude
 	location using angles. Thus the spacing of each line of latitude moving north
 	and south is not uniform.
@@ -285,7 +291,7 @@ different shape compared to the map that we created above in the `CRS`:
     
     robMap
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/global-map-robinson-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/global-map-robinson-1.png)
 
 Now what happens if you try to add the same Lat / Long coordinate locations that
 we used above, to our map, with the `CRS` of `Robinsons`?
@@ -298,7 +304,7 @@ we used above, to our map, with the `CRS` of `Robinsons`?
     
     newMap + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-locations-robinson-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-locations-robinson-1.png)
 
 Notice above that when we try to add lat/long coordinates in degrees, to a map 
 in a different `CRS`, that the points are not in the correct location. We need 
@@ -355,7 +361,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
     
     newMap + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/reproject-robinson-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/reproject-robinson-1.png)
 
 ## Compare Maps
 
@@ -368,17 +374,9 @@ be found in the .R document that is available for download at the bottom of this
 page!
 
 
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "Global/Boundaries/ne_110m_graticules_all", layer: "ne_110m_graticules_15"
-    ## with 35 features
-    ## It has 5 fields
+    ## Error in eval(expr, envir, enclos): object 'latlongMap' not found
 
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "Global/Boundaries/ne_110m_graticules_all", layer: "ne_110m_wgs84_bounding_box"
-    ## with 1 features
-    ## It has 2 fields
-
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/plot-w-graticules-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/plot-w-graticules-1.png)
 
 
 ## Why Multiple CRS?
