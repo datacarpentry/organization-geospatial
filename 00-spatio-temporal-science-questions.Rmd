@@ -43,8 +43,8 @@ After completing this activity, you will:
 * Understand the general process of identifying types of data we might need to 
 answer a spatio-temporal research question. 
 * Understand the overall science concept and associated data of the NEON / DC 
-workshop series.
-* Understand that one can work with data from different site to compare areas.
+[Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/).
+* Understand that one can work with data from different sites to compare areas.
 
 ****
 
@@ -55,9 +55,12 @@ workshop series.
 <figure>
 	<a href="https://xxxx">
 	<img src="https://xxxx"></a>
-	<figcaption> A nice overview graphic of the research topic, question and data
-	needed to begin to address the question. ACTUAL GRAPHIC IN CONSTRUCTION
-	Source: National Ecological Observatory Network (NEON)  
+	<figcaption> OVERVIEW GRAPHIC UNDER CONSTRUCTION. 
+	The process of answering a research question begins with deciding 
+	what data are needed and finding/collecting the metadata needed to understand 
+	and work with the data. Once this is decided we can then decide on what tools/
+	program we want to work with to manipulate, visualize, and analyze our data to
+	answer our questions. Source: National Ecological Observatory Network (NEON)  
 	</figcaption>
 </figure>
 
@@ -106,7 +109,7 @@ of when plants turn green (green-up) and die back / turn brown (brown-down).
 2. To quantify two key drivers of this timing - precipitation and temperature 
 and visualize how / if trends observed in precipitation and temperature relate 
 to trends observed in greening and browning of vegetation.
-3. Optionally - we'd like to understand how / if "1" and "2" above vary at 
+3. Additionally, we'd like to understand how / if "1" and "2" above vary at 
 different sites.
 
 Our study area includes two National Ecological Observatory Network (NEON) field 
@@ -121,7 +124,7 @@ located in the central region of the US state of California.
 
 Both sites are mapped below:
 
-```{r field-site-map, echo=FALSE, include=TRUE, results="hide", warning=FALSE}
+```{r field-site-map, include=TRUE, echo=FALSE, results="hide", message =FALSE, warning=FALSE}
 
 # please create a map that shows the location of BOTH field sites.
 # add a legend with a point for each site. 
@@ -172,7 +175,7 @@ two sites have the same drivers (causes) of phenologic change.
 
 ### Science Goals in the Work with Spatio-temporal Data in R Series
 
-In the In the 
+In the 
 [Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/),
 our goal is to create plots of temperature, precipitation and the patterns of 
 phenology - specifically the greening and 
@@ -184,17 +187,18 @@ achieve this goal we need data that:
 3. Are collected using similar methods so they are comparable at our two field 
 sites that are located 3,000+ miles apart!
 
-
 <figure>
 	<a href="https://xxxx">
 	<img src="https://xxxx"></a>
-	<figcaption> Plot of NDVI that colin made with the vegetation below and the 
-	plot above.  Source: National Ecological Observatory Network (NEON)  
+	<figcaption> TO BE ADDED NDVI PLOT FROM VIDEO. 
+	On a plot of NDVI (Normalized Difference Vegetative Index) we can see when the
+	vegetation is greener (a larger value) throughout a year or a growing season. 
+	Source: National Ecological Observatory Network (NEON)  
 	</figcaption>
 </figure>
 
 <div id="challenge" markdown="1">
-## Challenge: Breaking Down a Large Research Question
+## Challenge: Components of a Large Research Question
 
 What are some potential sources of data that might be useful to
 address our phenology question? How would you go about finding these
@@ -222,11 +226,13 @@ following:
 * **Map / plot phenophase timing at both sites:** We will need data that 
 quantify degree of greenness at both sites. Where can we get that and how do we 
 process it to plot greenness at both sites?
-* **Understand our field sites:** How big are the sites? How dense is the 
-vegetation? Where are the field sites located? Are the sites accessible by roads
-or difficult to get to? We also might want to create a map of our study 
-sites for a future publication. To understand our sites we will need data that 
-"map" vegetation cover and show road locations and boundaries.
+* **Understand our field sites:** To understand our sites we will need data that 
+"map" vegetation cover and show road locations and boundaries. We also might want to create a map of our study 
+sites for a future publication.
+	+ How big are the sites?
+	+ How dense is the vegetation? 
+	+ Where are the field sites located? 
+	+ Are the sites accessible by roads or difficult to get to?  
 * **Plots of temperature and precipitation:** Both are drivers of phenophase 
 timing. We want to plot each at both sites for the same *temporal duration* as
 our greenness data.
@@ -262,7 +268,6 @@ the same "camera", so the data can be easily compared across sites and through
 time. 
 
 #### Mapping the Invisible: Introduction to Spectral Remote Sensing
-
 This video explains more about how high fidelity remote sensing cameras work.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe> 
@@ -331,15 +336,15 @@ Other, non-USGS sources of remote sensing data can be found in the
 [Data Sources list at the end of this tutorial]({{ site.baseurl}}/R/spatio-temporal-research-questions#resources-for-locating-spatial-and-ecological-data).
 
 <div id="challenge" markdown="1">
-## Challenge: Explore Landsat Look Website
+## Challenge: Explore *Landsat Look* Website
 
 Visit the 
 <a href="http://landsatlook.usgs.gov/" target="_blank">Landsat Look Viewer website</a>.
 Search for any location of interest. Can decide? Try one of our study sites: 
 Harvard Forest, Massachusetts, United States. 
 
-1) Data from which Landsat sensors are available for your area? 
-2) How is the quality of the images?
+1. Data from which Landsat sensors are available for your area? 
+2. How is the quality of the images?
 </div>
 
 ```{r explore-landsat-data, echo=FALSE}
@@ -373,19 +378,18 @@ intensity, wind speed and more.
 Some sources of climatic data include:
 
 * <a href="http://www.neonscience.org/science-design/collection-methods/flux-tower-measurements" target="_blank"> **National Ecological Observatory Network (NEON):** </a>
-will have flux towers, that measure temperature, precipitation, wind speed, 
-light intensity and more, at its field sites located across the United States. 
-Data can be downloaded from the 
-<a href="http://data.neonscience.org/browse-data?showTheme=atmos" target="_blank">
-NEON data portal </a>. 
+data from a network of have flux towers, that measure temperature, 
+precipitation, wind speed, light intensity and more at its field sites located 
+across the United States. Data can be downloaded from the 
+<a href="http://data.neonscience.org/browse-data?showTheme=atmos" target="_blank">NEON data portal </a>. 
 * <a href="http://fluxnet.ornl.gov" target="_blank">**FluxNet:** </a>
 a network of towers located around the world. 
-* <a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data> **NOAA National Center for Environmental Information (formerly National Climatic Data Center):**</a>
+* <a href="http://www.ncdc.noaa.gov/data-access/land-based-station-data" target="_blank">**NOAA National Center for Environmental Information (formerly National Climatic Data Center):**</a>
 from a
-<a href="http://www.ncdc.noaa.gov/" target="_blank"> network of weather stations</a>
+<a href="http://www.ncdc.noaa.gov/" target="_blank"> network of weather stations </a>
 maintained by NOAA. 
-* **<a href="https://portal.lternet.edu/nis/home.jsp" target="_blank">Long Term Ecological Research sites (LTER):</a>** Many LTER sites have 
-micrometerology towers that collect climatic data.
+* <a href="https://portal.lternet.edu/nis/home.jsp" target="_blank">**Long Term Ecological Research sites (LTER):**</a>
+Many LTER sites have micrometerology towers that collect climatic data.
 
 <figure>
   <a href="https://farm6.staticflickr.com/5146/5666008904_85a10f5848_b.jpg">
@@ -437,16 +441,16 @@ The micrometeorolgical data are available for download in text of Comma
 Separated Value (`.csv`) format. To work with these data in `R`, we will need 
 to understand how to work with date and time formats. 
 
-[The **Introduction to Working With Time Series Data in Text Formats in R** tutorials]({{ site.baseurl }}/tutorial-series/tabular-time-series/) 
+[The *Introduction to Working With Time Series Data in Text Formats in R* tutorials]({{ site.baseurl }}/tutorial-series/tabular-time-series/) 
 cover how to import time series data in `.csv` format into `R` and how to work with, subset and plot date & date/time formats.
 
 <div id="challenge" markdown="1">
-## Challenge: Explore External Data from Harvard Forest. 
+## Challenge: Explore External Data from Harvard Forest 
 Revisiting the <a href="http://harvardforest.fas.harvard.edu/data-archives" target="_blank"> Harvard Forest research station data archives</a>:
 
-1) What other data are available for Harvard Forest?
-2) Is there inforamtion that you'd consider metadata?
-3) Which file formats do you recognize? Which are new to you?
+1. What other data are available for Harvard Forest?
+2. Is there inforamtion that you'd consider metadata?
+3. Which file formats do you recognize? Which are new to you?
 
 </div>
 
@@ -485,10 +489,10 @@ This is a **vector format** that is read by most **GIS programs**.
 #### Work With Vector Data
 
 We will learn more about the vector format in 
-[Spatial Intro 02: Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)]({{ site.baseurl }}/R/spatial-data-formats) 
+[*Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)* tutorial.]({{ site.baseurl }}/R/spatial-data-formats) 
 
 Further, we explore working with vector data in more depth in the 
-[Introduction to Working With Vector Data in R]({{ site.baseurl }}/tutorial-series/vector-data-series/).
+[*Introduction to Working With Vector Data in R* tutorial series]({{ site.baseurl }}/tutorial-series/vector-data-series/).
 
 
 ### Map Topography & Vegetation Cover - LiDAR
@@ -501,8 +505,10 @@ mentioned above).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLLWiknuNGd50GI8OZf3EBo6PMx04xcoFa" frameborder="0" allowfullscreen></iframe>
 
-* [Learn more about LiDAR]({{ site.baseurl }}/remote-sensing/1_About-LiDAR-Data-Light-Detection-and-Ranging_Activity1/)
-( [Learn more about LiDAR canopy height and digital elevation models]({{ site.baseurl }}emote-sensing/2_LiDAR-Data-Concepts_Activity2/))
+* Learn more about LiDAR in the NEON Data Skills 
+[ *The Basics of LiDAR - Light Detection and Ranging - Remote Sensing* tutorial]({{ site.baseurl }}/self-paced-tutorial/1_About-LiDAR-Data-Light-Detection-and-Ranging_Activity1/)
+* Learn more about LiDAR canopy height and digital elevation models in the NEON Data Skills 
+[*What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data* tutorial]({{ site.baseurl }}/self-paced-tutorial/2_LiDAR-Data-Concepts_Activity2/)
 
 ### Sources of LiDAR Data 
 
@@ -513,13 +519,11 @@ Canopy Height Models (CHM), that map elevation and vegetation height
 respectively, or other LiDAR-derived data available for researchers. 
 
 
-* <a href="http://www.neonscience.org/data-resources/get-data/airborne-data" target="_blank"> NEON airborne observation platform data portal</a>: more 
+* <a href="http://www.neonscience.org/data-resources/get-data/airborne-data" target="_blank"> **NEON airborne observation platform** data portal</a>: more 
 information in the next section. 
-* <a href="http://www.opentopography.org/" target="_blank">Open Topography - </a>
+* <a href="http://www.opentopography.org/" target="_blank">**Open Topography**: </a>
 a great source of free LiDAR data in the US.
-* Get
-<a href="http://earthexplorer.usgs.gov/" target="_blank"> LiDAR data from
-the USGS.</a> )
+* <a href="http://earthexplorer.usgs.gov/" target="_blank"> **USGS LiDAR data**</a> 
 
 <i class="fa fa-star"></i> **Data Note:** In the United States, state-wide data 
 are often also available locally. State GIS offices are often a good source of
@@ -542,40 +546,47 @@ In the
 [Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/),
 we will use the following data to explore the drivers of patterns of vegetation phenology (greening and browning ) across multiple sites.
 
-* Landsat-derived NDVI Data 
-* Light Detection and Ranging Data (LiDAR)
-* Site layout Vector Data
-* Micro-meteorolgical Data in Tabular (.csv) Format
+* Landsat-derived NDVI data 
+* Light Detection and Ranging Data (LiDAR) data
+* Site layout vector data
+* Micro-meteorolgical data in tabular (.csv) format
 
 This 
-[Intro to Working With Spatio-Temporal Data and Data Management series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/)
+[Intro to Working With Spatio-Temporal Data and Data Management series]({{ site.baseurl }}/tutorial-series/spatial-data-management-series/)
 will provide you with the conceptual information to succeed in the following 
 data skill intensive series. 
 
 ## Resources for Locating Spatial and Ecological Data
 
 #### General / Broad Topics
-* <a href="http://www.dataone.org/find-data" target="_blank"> DataOne</a>: a 
-wide variety of data shared by different users.
-* <a href="http://www.data.gov/" target="_blank"> US federal data portal (data.gov)</a>: This is the clearing-house for all types of US federal data. 
-* <a href="http://www.geoplatform.gov/" target="_blank"> US federal spatial data portal</a>: provide geospatial data, services, and applications for use by the public and by government agencies and partners.
-* <a href="http://www.data.ny.gov/" target="_blank"> New York state government data</a>: Many states have their own data portal. Simply search for the state name and "data portal" to find most of the repositories. 
-* <a href="http://www.ecologicaldata.org" target="_blank"> Ecological Data Wiki </a>: This wiki is designed to find & compile ecological datasets.
+* <a href="http://www.dataone.org/find-data" target="_blank"> **DataOne**</a>:
+a wide variety of data shared by different users.
+* <a href="http://www.data.gov/" target="_blank"> **US federal data portal** (data.gov)</a>:
+This is the clearing-house for all types of US federal data. 
+* <a href="http://www.geoplatform.gov/" target="_blank"> **US federal spatial data portal**</a>:
+provide geospatial data, services, and applications for use by the public and by government agencies and partners.
+* <a href="http://www.data.ny.gov/" target="_blank"> **New York state government data**</a>:
+Many states have their own data portal. Simply search for the state name and "data portal" to find most of the repositories. 
+* <a href="http://www.ecologicaldata.org" target="_blank"> **Ecological Data Wiki** </a>:
+This wiki is designed to find & compile ecological datasets.
 
 #### Additional Phenology Data Sources
-* <a href="http://www.neonscience.org" target="_blank"> National Ecological 
-Observatory Network (NEON) </a>: provide data from a continental-scale 
-observation system with the purpose of examining ecological change over time. 
-The data portal provides a wide diversity of standardized ecological data, 
-including phenology, for all sites in the observatory network.
-* <a href="https://www.usanpn.org/" target="_blank"> USA National Phenology Network </a>: a collaborative effort to collect phenology data
-* <a href="http://phenocam.sr.unh.edu/webcam/" target="_blank"> Phenocam </a>:
+* <a href="http://www.neonscience.org" target="_blank"> **National Ecological 
+Observatory Network (NEON)** </a>:
+provide data from a continental-scale observation system with the purpose of 
+examining ecological change over time. The data portal provides a wide diversity 
+of standardized ecological data, including phenology, for all sites in the 
+observatory network.
+* <a href="https://www.usanpn.org/" target="_blank"> **USA National Phenology Network** </a>:
+a collaborative effort to collect phenology data
+* <a href="http://phenocam.sr.unh.edu/webcam/" target="_blank"> **Phenocam**</a>:
 provide automated, near-surface remote sensing of canopy phenology across the
 northeastern United States and adjacent areas of Canada. 
 
 #### Additional Remote Sensing Data Sources
-* <a href="http://phenology.cr.usgs.gov/get_data_main.php" target="_blank">USGS/EROS Center</a>: remote sensing phenology data
-* <a href="http://landsat.gsfc.nasa.gov/" target="_blank">NASA Landsat</a>: 
+* <a href="http://phenology.cr.usgs.gov/get_data_main.php" target="_blank">**USGS/EROS Center**</a>:
+remote sensing phenology data
+* <a href="http://landsat.gsfc.nasa.gov/" target="_blank">**NASA Landsat**</a>:
 Landsat imagery data for the globe
 
 <i class="fa fa-star"></i> **Data Note:** Do you know of other good sources of 
