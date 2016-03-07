@@ -43,7 +43,7 @@ After completing this activity, you will:
 * Understand the general process of identifying types of data we might need to 
 answer a spatio-temporal research question. 
 * Understand the overall science concept and associated data of the NEON / DC 
-[Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/).
+[Work with Spatio-temporal Data in R series](http://neondataskills.org/tutorial-series/neon-dc-phenology-series/).
 * Understand that one can work with data from different sites to compare areas.
 
 ****
@@ -176,7 +176,7 @@ two sites have the same drivers (causes) of phenologic change.
 ### Science Goals in the Work with Spatio-temporal Data in R Series
 
 In the 
-[Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/),
+[Work with Spatio-temporal Data in R series](http://neondataskills.org/tutorial-series/neon-dc-phenology-series/),
 our goal is to create plots of temperature, precipitation and the patterns of 
 phenology - specifically the greening and 
 browning of plants - for one year (2011), over two NEON field sites. To 
@@ -360,7 +360,7 @@ Harvard Forest, Massachusetts, United States.
 Remote sensing images are in **raster** format. They are composed of pixels -
 just like the pixels in the images we take with our camera phones. We will 
 learn more about the raster format in 
-[Spatial Intro 02: Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)]({{ site.baseurl }}/R/spatial-data-formats)
+[Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)]({{ site.baseurl }}/R/spatial-data-formats)
 
 ## Find Temperature and Precipitation Data
 
@@ -441,7 +441,7 @@ The micrometeorolgical data are available for download in text of Comma
 Separated Value (`.csv`) format. To work with these data in `R`, we will need 
 to understand how to work with date and time formats. 
 
-[The *Introduction to Working With Time Series Data in Text Formats in R* tutorials]({{ site.baseurl }}/tutorial-series/tabular-time-series/) 
+[The *Introduction to Working With Time Series Data in Text Formats in R* tutorials](http://neondataskills.org/tutorial-series/tabular-time-series/) 
 cover how to import time series data in `.csv` format into `R` and how to work with, subset and plot date & date/time formats.
 
 <div id="challenge" markdown="1">
@@ -492,7 +492,7 @@ We will learn more about the vector format in
 [*Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)* tutorial.]({{ site.baseurl }}/R/spatial-data-formats) 
 
 Further, we explore working with vector data in more depth in the 
-[*Introduction to Working With Vector Data in R* tutorial series]({{ site.baseurl }}/tutorial-series/vector-data-series/).
+[*Introduction to Working With Vector Data in R* tutorial series](http://neondataskills.org/tutorial-series/vector-data-series/).
 
 
 ### Map Topography & Vegetation Cover - LiDAR
@@ -506,9 +506,9 @@ mentioned above).
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLLWiknuNGd50GI8OZf3EBo6PMx04xcoFa" frameborder="0" allowfullscreen></iframe>
 
 * Learn more about LiDAR in the NEON Data Skills 
-[ *The Basics of LiDAR - Light Detection and Ranging - Remote Sensing* tutorial]({{ site.baseurl }}/self-paced-tutorial/1_About-LiDAR-Data-Light-Detection-and-Ranging_Activity1/)
+[ *The Basics of LiDAR - Light Detection and Ranging - Remote Sensing* tutorial](http://neondataskills.org/self-paced-tutorial/1_About-LiDAR-Data-Light-Detection-and-Ranging_Activity1/)
 * Learn more about LiDAR canopy height and digital elevation models in the NEON Data Skills 
-[*What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data* tutorial]({{ site.baseurl }}/self-paced-tutorial/2_LiDAR-Data-Concepts_Activity2/)
+[*What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data* tutorial](http://neondataskills.org/self-paced-tutorial/2_LiDAR-Data-Concepts_Activity2/)
 
 ### Sources of LiDAR Data 
 
@@ -543,7 +543,7 @@ including elevation, slope and aspect.
 
 ## Data Used In The Work with Spatio-temporal Data in R Series
 In the 
-[Work with Spatio-temporal Data in R series]({{ site.baseurl }}/tutorial-series/neon-dc-phenology-series/),
+[Work with Spatio-temporal Data in R series](http://neondataskills.org/tutorial-series/neon-dc-phenology-series/),
 we will use the following data to explore the drivers of patterns of vegetation phenology (greening and browning ) across multiple sites.
 
 * Landsat-derived NDVI data 
@@ -552,7 +552,7 @@ we will use the following data to explore the drivers of patterns of vegetation 
 * Micro-meteorolgical data in tabular (.csv) format
 
 This 
-[Intro to Working With Spatio-Temporal Data and Data Management series]({{ site.baseurl }}/tutorial-series/spatial-data-management-series/)
+[Intro to Working With Spatio-Temporal Data and Data Management series](http://neondataskills.org/tutorial-series/spatial-data-management-series/)
 will provide you with the conceptual information to succeed in the following 
 data skill intensive series. 
 
