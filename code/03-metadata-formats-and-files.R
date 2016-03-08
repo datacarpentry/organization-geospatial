@@ -1,5 +1,6 @@
 ## ----elevation-map, include=TRUE, results="hide", echo=FALSE-------------
-#render DSM for lesson content background
+library(raster)
+# render DSM for lesson content background
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # code output here - DEM rendered on the screen
@@ -23,23 +24,48 @@ library(rgdal)
 # set working directory to ensure R can find the file we wish to import
 # setwd("working-dir-path-here")
 
-# render DSM for lesson content background
+# open DSM using the raster package
 DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # view Coordinate Reference System (note this often contains horizontal units!)
 crs(DSM_HARV)
 
+
+## ----crs-class-----------------------------------------------------------
 # assign crs to an object (class) to use for reprojection and other tasks
 myCRS <- crs(DSM_HARV)
 myCRS
 
+# what class is the new CRS object?
+class(myCRS)
 # view spatial extent
 extent(DSM_HARV)
 
 # view spatial resolution
 res(DSM_HARV)
 
+
+## ----view-extent---------------------------------------------------------
+# view object extent
+myExtent <- extent(DSM_HARV)
+myExtent
+class(myExtent)
+
+# view other attributes of the raster
 DSM_HARV
+
+## ----challenge-extent, echo=FALSE----------------------------------------
+
+# 1. they should create both objects
+CHM.HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
+crs(CHM.HARV)
+extent(CHM.HARV)
+
+# 2. the extent and CRS should be the same
+# 3. The extent and CRS are different. 
+ndvi1.HARV <- raster("NEON-DS-Landsat-NDVI/HARV/2011/ndvi/005_HARV_ndvi_crop.tif")
+crs(ndvi1.HARV)
+extent(ndvi1.HARV)
 
 ## ----install-EML-package, results="hide", warning=FALSE------------------
 # install R EML tools
@@ -53,13 +79,16 @@ library("EML")
 library(ggmap)
 
 
-# data location
+# EML / data location
 # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
 # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
 
-## ----read-eml------------------------------------------------------------
+## ----read-eml, warning=FALSE, message=FALSE------------------------------
 # import EML from Harvard Forest Met Data
-eml_HARV <- eml_read("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
+# note: the original xml file is below commented out
+# eml_HARV <- read_eml("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
+# import a truncated version of the eml file for quicker demonstration
+eml_HARV <- read_eml("http://neon-workwithdata.github.io/NEON-R-Spatio-Temporal-Data-and-Management-Intro/hf001-revised.xml")
 
 # view size of object
 object.size(eml_HARV)
@@ -67,30 +96,30 @@ object.size(eml_HARV)
 # view the object class
 class(eml_HARV)
 
+
 ## ----view-eml-content----------------------------------------------------
 # view the contact name listed in the file
-# this works well!
-eml_get(eml_HARV,"contact")
+eml_HARV@dataset@creator
 
-# grab all keywords in the file
-eml_get(eml_HARV,"keywords")
-
-# figure out the extent & temporal coverage of the data
-eml_get(eml_HARV,"coverage")
+# view information about the methods used to collect the data as described in EML
+eml_HARV@dataset@methods
 
 
 ## ----map-location, warning=FALSE, message=FALSE--------------------------
-# grab x coordinate
-XCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@westBoundingCoordinate
-# grab y coordinate
-YCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@northBoundingCoordinate
+
+# grab x coordinate from the coverage information
+XCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@westBoundingCoordinate@.Data
+
+# grab y coordinate from the coverage information
+YCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@northBoundingCoordinate@.Data
 
 
-# map <- get_map(location='Harvard', maptype = "terrain")
+
+# plot the NW corner of the site.
 map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
 
 ggmap(map, extent=TRUE) +
-  geom_point(aes(x=XCoord,y=YCoord), 
+  geom_point(aes(x=as.numeric(XCoord),y=as.numeric(YCoord)), 
              color="darkred", size=6, pch=18)
 
 
