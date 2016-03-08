@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-27
-lastModified: 2016-03-01
+lastModified: 2016-03-08
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -53,12 +53,16 @@ preferably, RStudio loaded on your computer.
 
 ### Install R Packages
 
+note: these packages are option, if you wish to experiment and follow along on
+your own!
+
 * **raster:** `install.packages("raster")`
 * **rgdal:** `install.packages("rgdal")`
 
 **OPTIONAL**
 
 * **devtools** `install.packages("devtools")` 
+* NOTE: You have to call the devtools library `library(devtools)` first, and then `install_github` will work.
 * **eml** `install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))`
 
 
@@ -70,36 +74,31 @@ preferably, RStudio loaded on your computer.
 
 {% include/_greyBox-wd-rscript.html %}
 
-**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
-of a lesson series introducing
-[spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
-It is also part of a larger 
-[spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
-that includes working with  
-[raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
-[vector data in `R` ]({{ site.baseurl }}tutorial/spatial-vector-series)
-and  
-[tabular time series in `R` ]({{ site.baseurl }}tutorial/tabular-time-series).
 
 ****
 
 ### Additional Resources
 
-* <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
+* <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">Read about the raster package.</a>
 
 </div>
 
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/elevation-map-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/elevation-map-1.png)
 
 
 <div id="challenge" markdown="1">
 ## Challenge: What Do I Know About My Data?
 
-The figure above was create from a that you are given called: `HARV_dsmCrop.tif`.  
-What other information would you like to know about the data used to create the 
-above map before you would feel comfortable using this data to address a 
-research question? 
+The figure above was created from a dataset that you are given called: 
+`HARV_dsmCrop.tif`. 
+
+* What other information would you like to know about the data 
+used to create the above map before you would feel comfortable using this data
+to address a research question? 
+* Thing about the data used to create this plot.  If you had to share this data
+with a colleague, what information do they need to know, to efficiently work 
+with it? 
 
 </div>
 
@@ -113,10 +112,10 @@ the data effectively including:
 **Spatial Information**
 
 * **Spatial Extent:** What area does this dataset cover? 
-* **Coordinate reference system:** what spatial projection / coordinate reference
+* **Coordinate reference system:** What spatial projection / coordinate reference
 system are used to store the data? Will it line up with other data? 
 * **Resolution:** The data appears to be in **raster** format. This means it is
-composed of pixels. What area on the ground does each pixel cover - ie What is 
+composed of pixels. What area on the ground does each pixel cover - i.e. What is 
 its spatial resolution?
 
 **Data Collection / Processing Methods**
@@ -129,6 +128,7 @@ what units / metric does this represent? Temperature? Elevation? Precipitation?
 * **How were the data processed?**
 
 **Contact Information**
+
 * Who created this data? Who do we contact if we have questions?
 
 When we are given a dataset, or when we download it online, we do not know anything
@@ -136,8 +136,9 @@ about it without proper documentation. This documentation is called **metadata**
 data about the data.
 
 ## What is Metadata?
+
 Metadata is structured information that describes a dataset. It includes a suite of
-information about the data including:
+information about a dataset including:
 
 * Contact information
 * Spatial Attributes including: extent, coordinate reference system, resolution
@@ -148,10 +149,11 @@ Without sufficient documentation, it is difficult for us to work with
 external data - data that we did not collect ourselves.
 
 ### Why Are Metadata Needed?
-We need metadata to not only work with external data, but also when it's embedded
+
+We need metadata to work with external data. Better yet, when metadata are embedded 
 in a file or in provided in a machine readable format, we can access it directly
-in tools like `R` or `Python`. We will talk about different metadata formats,
-next.
+in tools like `R` or `Python` to support automated workflows. We will talk about 
+different metadata formats, next.
 
 ## Metadata Formats
 
@@ -196,7 +198,7 @@ information embedded in the file as tags. These tags can include the following r
 
 <i class="fa fa-star"></i> **Data Tip:**  Your camera uses embedded tags to store
 information about pictures that you take including the camera make and model, 
-and the time the image was taken!
+and the time the image was taken.
 {: .notice }
 
 More about the  `.tif` format:
@@ -206,7 +208,12 @@ More about the  `.tif` format:
 
 The `Raster` package in `R` allows us to directly access tif tags programatically.
 We can quickly view the spatial `extent`, `coordinate reference system` and `resolution` 
-of the data. 
+of a dataset in **geotiff** format, if it contains tif tags.
+
+NOTE: not all geotiffs contain tif tags!
+
+Next, let's explore the metadata associated with  a **Digital Surface Model** created
+using LiDAR data for the NEON Harvard Forest field site.
 
 
     # load libraries
@@ -216,7 +223,7 @@ of the data.
     # set working directory to ensure R can find the file we wish to import
     # setwd("working-dir-path-here")
     
-    # render DSM for lesson content background
+    # open DSM using the raster package
     DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
     
     # view Coordinate Reference System (note this often contains horizontal units!)
@@ -226,6 +233,13 @@ of the data.
     ##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
     ## +towgs84=0,0,0
 
+### Spatial Classes in R
+
+There are specific classes designed to store some of the spatial metadata 
+associated with spatial data in R. Let's have a look.
+
+
+
     # assign crs to an object (class) to use for reprojection and other tasks
     myCRS <- crs(DSM_HARV)
     myCRS
@@ -233,6 +247,13 @@ of the data.
     ## CRS arguments:
     ##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
     ## +towgs84=0,0,0
+
+    # what class is the new CRS object?
+    class(myCRS)
+
+    ## [1] "CRS"
+    ## attr(,"package")
+    ## [1] "sp"
 
     # view spatial extent
     extent(DSM_HARV)
@@ -248,6 +269,26 @@ of the data.
 
     ## [1] 1 1
 
+The spatial `extent()` is a class as well. Let's have a look.
+
+
+    # view object extent
+    myExtent <- extent(DSM_HARV)
+    myExtent
+
+    ## class       : Extent 
+    ## xmin        : 731453 
+    ## xmax        : 733150 
+    ## ymin        : 4712471 
+    ## ymax        : 4713838
+
+    class(myExtent)
+
+    ## [1] "Extent"
+    ## attr(,"package")
+    ## [1] "raster"
+
+    # view other attributes of the raster
     DSM_HARV
 
     ## class       : RasterLayer 
@@ -263,7 +304,45 @@ of the data.
 We can use embedded metadata to programtically perform processing tasks 
 on our data including reprojections, cropping and more.
 
-We will work with eembedded metadata in both the [vector data]( http://www.neondataskills.org/tutorial-series/vector-data-series/)  and 
+<div id="challenge" markdown="1">
+## Challenge - Explore GeoTiff Metadata
+
+Open the file `NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif`. This
+file is a Canopy Height Model (CHM) for the Harvard Forest Field site. 
+
+1. Create an **extent** and a **crs** object from the file. 
+2. Is the extent and CRS of the CHM different from the extent and CRS of the DSM
+that we just opened above?
+3. Now, open the file `NEON-DS-Landsat-NDVI/HARV/2011/ndvi/005_HARV_ndvi_crop.tif`. 
+Compare the extent and crs to the CHM and DSM. Are they different?
+
+</div>
+
+
+    ## CRS arguments:
+    ##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
+    ## +towgs84=0,0,0
+
+    ## class       : Extent 
+    ## xmin        : 731453 
+    ## xmax        : 733150 
+    ## ymin        : 4712471 
+    ## ymax        : 4713838
+
+    ## CRS arguments:
+    ##  +proj=utm +zone=19 +ellps=WGS84 +units=m +no_defs
+
+    ## class       : Extent 
+    ## xmin        : 239415 
+    ## xmax        : 239535 
+    ## ymin        : 4714215 
+    ## ymax        : 4714365
+
+It appears as if there are some differences between the objects **extent** and
+**crs**. What does this mean for us as we work with these data in the coming 
+tutorials? HINT: we will find out!
+
+We will work with embedded metadata in both the [vector data]( http://www.neondataskills.org/tutorial-series/vector-data-series/)  and 
 [raster data]( http://www.neondataskills.org/tutorial-series/raster-data-series/) 
 series!
 
@@ -352,7 +431,7 @@ To begin, we will load the `EML` package directly from ropensci's Git repository
     library(ggmap)
     
     
-    # data location
+    # EML / data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
 
@@ -368,12 +447,15 @@ load.
 
 
     # import EML from Harvard Forest Met Data
-    eml_HARV <- eml_read("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
+    # note: the original xml file is below commented out
+    # eml_HARV <- read_eml("http://harvardforest.fas.harvard.edu/data/eml/hf001.xml")
+    # import a truncated version of the eml file for quicker demonstration
+    eml_HARV <- read_eml("http://neon-workwithdata.github.io/NEON-R-Spatio-Temporal-Data-and-Management-Intro/hf001-revised.xml")
     
     # view size of object
     object.size(eml_HARV)
 
-    ## 287015216 bytes
+    ## 5602744 bytes
 
     # view the object class
     class(eml_HARV)
@@ -395,54 +477,41 @@ and spatial (if relevant) coverage.
 
 
     # view the contact name listed in the file
-    # this works well!
-    eml_get(eml_HARV,"contact")
+    eml_HARV@dataset@creator
 
-    ## [1] "Emery Boose <boose@fas.harvard.edu>"
+    ## An object of class "ListOfcreator"
+    ## [[1]]
+    ## <creator>
+    ##   <individualName>
+    ##     <givenName>Emery</givenName>
+    ##     <surName>Boose</surName>
+    ##   </individualName>
+    ## </creator>
 
-    # grab all keywords in the file
-    eml_get(eml_HARV,"keywords")
+    # view information about the methods used to collect the data as described in EML
+    eml_HARV@dataset@methods
 
-    ## $`LTER controlled vocabulary`
-    ##  [1] "air temperature"                    
-    ##  [2] "atmospheric pressure"               
-    ##  [3] "climate"                            
-    ##  [4] "relative humidity"                  
-    ##  [5] "meteorology"                        
-    ##  [6] "precipitation"                      
-    ##  [7] "net radiation"                      
-    ##  [8] "solar radiation"                    
-    ##  [9] "photosynthetically active radiation"
-    ## [10] "soil temperature"                   
-    ## [11] "wind direction"                     
-    ## [12] "wind speed"                         
-    ## 
-    ## $`LTER core area`
-    ## [1] "disturbance"
-    ## 
-    ## $`HFR default`
-    ## [1] "Harvard Forest" "HFR"            "LTER"           "USA"
-
-    # figure out the extent & temporal coverage of the data
-    eml_get(eml_HARV,"coverage")
-
-    ## geographicCoverage:
-    ##   geographicDescription: Prospect Hill Tract (Harvard Forest)
-    ##   boundingCoordinates:
-    ##     westBoundingCoordinate: '-72.18968'
-    ##     eastBoundingCoordinate: '-72.18968'
-    ##     northBoundingCoordinate: '42.53311'
-    ##     southBoundingCoordinate: '42.53311'
-    ##     boundingAltitudes:
-    ##       altitudeMinimum: '342'
-    ##       altitudeMaximum: '342'
-    ##       altitudeUnits: meter
-    ## temporalCoverage:
-    ##   rangeOfDates:
-    ##     beginDate:
-    ##       calendarDate: '2001-02-11'
-    ##     endDate:
-    ##       calendarDate: '2015-12-31'
+    ## <methods>
+    ##   <methodStep>
+    ##     <description>
+    ##       <section>
+    ##         <title>Observation periods</title>
+    ##         <para>15-minute: 15 minutes, ending with given time. Hourly: 1 hour, ending with given time. Daily: 1 day, midnight to midnight. All times are Eastern Standard Time.</para>
+    ##       </section>
+    ##       <section>
+    ##         <title>Instruments</title>
+    ##         <para>Air temperature and relative humidity: Vaisala HMP45C (2.2m above ground). Precipitation: Met One 385 heated rain gage (top of gage 1.6m above ground). Global solar radiation: Licor LI200X pyranometer (2.7m above ground). PAR radiation: Licor LI190SB quantum sensor (2.7m above ground). Net radiation: Kipp and Zonen NR-LITE net radiometer (5.0m above ground). Barometric pressure: Vaisala CS105 barometer. Wind speed and direction: R.M. Young 05103 wind monitor (10m above ground). Soil temperature: Campbell 107 temperature probe (10cm below ground). Data logger: Campbell Scientific CR10X.</para>
+    ##       </section>
+    ##       <section>
+    ##         <title>Instrument and flag notes</title>
+    ##         <para>Air temperature. Daily air temperature is estimated from other stations as needed to complete record.</para>
+    ##         <para>Precipitation. Daily precipitation is estimated from other stations as needed to complete record. Delayed melting of snow and ice (caused by problems with rain gage heater or heavy precipitation) is noted in log - daily values are corrected if necessary but 15-minute values are not.  The gage may underestimate actual precipitation under windy or cold conditions.</para>
+    ##         <para>Radiation. Whenever possible, snow and ice are removed from radiation instruments after precipitation events.  Depth of snow or ice on instruments and time of removal are noted in log, but values are not corrected or flagged.</para>
+    ##         <para>Wind speed and direction. During ice storms, values are flagged as questionable when there is evidence (from direct observation or the 15-minute record) that ice accumulation may have affected the instrument's operation.</para>
+    ##       </section>
+    ##     </description>
+    ##   </methodStep>
+    ## </methods>
 
 
 ## Identify & Map Data Location
@@ -459,20 +528,22 @@ to properly geolocate and process the data.**
 <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/ggmap/ggmapCheatsheet.pdf" target="_blank">Learn More: A nice cheatsheet for GGMAP created by NCEAS</a>
 
 
-    # grab x coordinate
-    XCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@westBoundingCoordinate
-    # grab y coordinate
-    YCoord <- eml_HARV@dataset@coverage@geographicCoverage@boundingCoordinates@northBoundingCoordinate
+    # grab x coordinate from the coverage information
+    XCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@westBoundingCoordinate@.Data
+    
+    # grab y coordinate from the coverage information
+    YCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@northBoundingCoordinate@.Data
     
     
-    # map <- get_map(location='Harvard', maptype = "terrain")
+    
+    # plot the NW corner of the site.
     map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
     
     ggmap(map, extent=TRUE) +
-      geom_point(aes(x=XCoord,y=YCoord), 
+      geom_point(aes(x=as.numeric(XCoord),y=as.numeric(YCoord)), 
                  color="darkred", size=6, pch=18)
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/map-location-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/map-location-1.png)
 
 The above example, demonstated how we can extract information from an `EML` document
 and use it programatically in `R`! This is just the beginning of what we can do!
@@ -493,6 +564,7 @@ Scroll down to the **Overview** section. Take note of the information provided
 in that section and answer the following questions in the challenge below:
 
 <div id="challenge" markdown="1">
+
 ## Challenge - Explore Metadata
 
 Explore the metadata stored on the Harvard Forest LTER web page. Answer the 
