@@ -186,7 +186,7 @@ often:
 * In a standard, documented format that others use.
 * Are machine readable which means you can use them in scripts and algorithms.
 
-<i class="fa fa-star"></i> **Data Tip:** When you find metadata for a dataset 
+<i class="fa fa-star"></i> **Data Note:** When you find metadata for a dataset 
 that you are working with, **DOWNLOAD AND SAVE IT** immediately to the directory 
 on your computer where you saved the data. It is also a good idea to document
 the URL where you found the metadata and the data in a "readme" text file that 
@@ -213,7 +213,7 @@ include the following raster metadata:
 3. Values for when no data is provided (NoData Value)
 4. The resolution of the data
 
-<i class="fa fa-star"></i> **Data Tip:**  Your camera uses embedded tags to store
+<i class="fa fa-star"></i> **Data Note:**  Your camera uses embedded tags to store
 information about pictures that you take including the camera make and model, 
 and the time the image was taken!
 {: .notice }
@@ -394,9 +394,10 @@ This suggests that our data were collected at one point (x, y) location. We
 know this is data from a tower so a point location makes sense. Let's grab the 
 x and y coordinates and create a quick context map. We will use `ggmap` to create our map.
 
-<i class="fa fa-star"></i> **Data Tip:**  If this were a rectangular extent (e.g. from a raster, line or polygon 
-object) we'd want the bounding box, not just a point within the extent. We need 
-the extent to properly geolocate and process the data.
+<i class="fa fa-star"></i> **Data Note:**  If this were a rectangular extent 
+(e.g. from a raster, line or polygon object) we'd want the bounding box, not 
+just a point within the extent. We need the extent to properly geolocate and 
+process the data.
 {: .notice}
 
 

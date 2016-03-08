@@ -101,8 +101,8 @@ data.
 
 ## Research Question - Explore (Regional) Drivers and Patterns of Plant Phenology
 
-Our science topic for all of the tutorials in this series is plant phenology. Our 
-goal is to:
+Our science topic for all of the tutorials in this series is plant phenology. 
+Our goal is to:
 
 1. Better understand (to quantify) both the timing
 of when plants turn green (green-up) and die back / turn brown (brown-down).
@@ -300,9 +300,10 @@ an ideal data product used to estimate the timing of plant "green-up" and
     </figcaption>
 </figure>
 
-We can visualize NDVI data and see the change in color (representing the change 
-in the index) as the growing season progresses across the year. In this figure,
-each plot presents a snapshot of the NDVI values across an area of 120m x 150m. 
+We can visualize NDVI remote sensing data and see the change in color 
+(representing the change in the index) as the growing season progresses across 
+the year. In this figure, each plot presents a snapshot of the NDVI values 
+across an area of 120m x 150m. 
 
 <figure>
 	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI-Landsat-RS.png">
@@ -318,7 +319,7 @@ each plot presents a snapshot of the NDVI values across an area of 120m x 150m.
 
 * <a href="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php" target="_blank"> More on NDVI from NASA</a>
 
-<i class="fa fa-star"></i> **Data Tip:** NDVI can be calculated using any image
+<i class="fa fa-star"></i> **Data Note:** NDVI can be calculated using any image
 that contains a near-infrared band. Some phenocams capture near-infrared light.
 {: .notice}
 
@@ -361,6 +362,11 @@ Remote sensing images are in **raster** format. They are composed of pixels -
 just like the pixels in the images we take with our camera phones. We will 
 learn more about the raster format in 
 [Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)]({{ site.baseurl }}/R/spatial-data-formats)
+
+We teach how to work with raster data in the NEON Data Skills
+[*Introduction to Working With Raster Data in R* tutorial series]({{ http://neondataskills.org/tutorial-series/raster-data-series/).
+And, specifically for working with raster time series data, in the 
+[*Working With Raster Time Series Data in R* tutorial series]({{ http://neondataskills.org/tutorial-series/raster-time-series/).
 
 ## Find Temperature and Precipitation Data
 
