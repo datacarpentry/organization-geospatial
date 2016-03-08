@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.0" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 http://nis.lternet.edu/schemas/EML/eml-2.1.0/eml.xsd" system="hfr" scope="system" packageId="knb-lter-hfr.1.22">
+   <access authSystem="knb" order="allowFirst" scope="document">
+      <allow>
+         <principal>uid=HFR,o=lter,dc=ecoinformatics,dc=org</principal>
+         <permission>all</permission>
+      </allow>
+      <allow>
+         <principal>public</principal>
+         <permission>read</permission>
+      </allow>
+   </access>
+   <dataset id="HF001">
+      <alternateIdentifier>HF001</alternateIdentifier>
+      <title>Fisher Meteorological Station at Harvard Forest since 2001</title>
+      <creator>
+         <individualName>
+            <givenName>Emery</givenName>
+            <surName>Boose</surName>
+         </individualName>
+      </creator>
+      <associatedParty>
+         <individualName>
+            <givenName>Mark</givenName>
+            <surName>VanScoy</surName>
+         </individualName>
+         <role>Researcher</role>
+      </associatedParty>
+      <pubDate>2001</pubDate>
+      <abstract>
+         <section>
+            <para>The Fisher Meteorological Station became operational on 11 Feb 2001. The Station is located in an open field 200 m north of the Shaler Station, in a site chosen to minimize the angle of surrounding trees above the horizon (currently 15-25 degrees from the station at breast height). The Fisher Station records air temperature, relative humidity, dew point, precipitation (water equivalent of snow), global solar radiation, PAR radiation, net radiation, barometric pressure, scalar wind speed, vector wind speed, peak gust speed (1-second), vector wind direction, standard deviation of wind direction (wind measurements at 10 m height), and soil temperature (10 cm depth). Instruments are scanned once per second, and 15-minute (hourly before 2005) and daily values are calculated and stored by a datalogger. Data for the current month are available online, updated every 15 minutes, with out-of-range values replaced by NA but values not otherwise checked. Earlier data are checked and archived with missing, questionable, and estimated values flagged, following methods of the LTER ClimbDB project. A log of events affecting station measurements (e.g., instrument repair and recalibration, ice storms, lightning) and selected monthly and annual values are also posted.</para>
+            <para>For current data, please see: http://harvardforest.fas.harvard.edu/meteorological-hydrological-stations. For a complete set of archived data, please see: http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf001.</para>
+         </section>
+      </abstract>
+      <keywordSet>
+         <keyword>air temperature</keyword>
+         <keyword>atmospheric pressure</keyword>
+         <keyword>climate</keyword>
+         <keyword>relative humidity</keyword>
+         <keyword>meteorology</keyword>
+         <keyword>precipitation</keyword>
+         <keyword>net radiation</keyword>
+         <keyword>solar radiation</keyword>
+         <keyword>photosynthetically active radiation</keyword>
+         <keyword>soil temperature</keyword>
+         <keyword>wind direction</keyword>
+         <keyword>wind speed</keyword>
+         <keywordThesaurus>LTER controlled vocabulary</keywordThesaurus>
+      </keywordSet>
+      <keywordSet>
+         <keyword>disturbance</keyword>
+         <keywordThesaurus>LTER core area</keywordThesaurus>
+      </keywordSet>
+      <keywordSet>
+         <keyword>Harvard Forest</keyword>
+         <keyword>HFR</keyword>
+         <keyword>LTER</keyword>
+         <keyword>USA</keyword>
+         <keywordThesaurus>HFR default</keywordThesaurus>
+      </keywordSet>
+      <intellectualRights>
+         <section>
+            <para>This dataset is released to the public and may be freely downloaded. Please keep the designated Contact person informed of any plans to use the dataset. Consultation or collaboration with the original investigators is strongly encouraged. Publications and data products that make use of the dataset must include proper acknowledgement. For more information on LTER Network data access and use policies, please see: http://www.lternet.edu/data/netpolicy.html.</para>
+         </section>
+      </intellectualRights>
+      <distribution>
+         <online>
+            <url function="information">http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf001</url>
+         </online>
+      </distribution>
+      <coverage>
+         <geographicCoverage>
+            <geographicDescription>Prospect Hill Tract (Harvard Forest)</geographicDescription>
+            <boundingCoordinates>
+               <westBoundingCoordinate>-72.18968</westBoundingCoordinate>
+               <eastBoundingCoordinate>-72.18968</eastBoundingCoordinate>
+               <northBoundingCoordinate>+42.53311</northBoundingCoordinate>
+               <southBoundingCoordinate>+42.53311</southBoundingCoordinate>
+               <boundingAltitudes>
+                  <altitudeMinimum>342</altitudeMinimum>
+                  <altitudeMaximum>342</altitudeMaximum>
+                  <altitudeUnits>meter</altitudeUnits>
+               </boundingAltitudes>
+            </boundingCoordinates>
+         </geographicCoverage>
+         <temporalCoverage>
+            <rangeOfDates>
+               <beginDate>
+                  <calendarDate>2001-02-11</calendarDate>
+               </beginDate>
+               <endDate>
+                  <calendarDate>2015-12-31</calendarDate>
+               </endDate>
+            </rangeOfDates>
+         </temporalCoverage>
+      </coverage>
+      <maintenance>
+         <description>
+            <para>data updated monthly</para>
+         </description>
+      </maintenance>
+      <contact>
+         <individualName>
+            <givenName>Emery</givenName>
+            <surName>Boose</surName>
+         </individualName>
+         <organizationName>Harvard Forest</organizationName>
+         <address>
+            <deliveryPoint>324 North Main Street</deliveryPoint>
+            <city>Petersham</city>
+            <administrativeArea>MA</administrativeArea>
+            <postalCode>01366</postalCode>
+            <country>USA</country>
+         </address>
+         <phone phonetype="voice">(978) 724-3302</phone>
+         <electronicMailAddress>boose@fas.harvard.edu</electronicMailAddress>
+      </contact>
+      <publisher>
+         <organizationName>Harvard Forest</organizationName>
+         <address>
+            <deliveryPoint>324 North Main Street</deliveryPoint>
+            <city>Petersham</city>
+            <administrativeArea>MA</administrativeArea>
+            <postalCode>01366</postalCode>
+            <country>USA</country>
+         </address>
+         <phone phonetype="voice">(978) 724-3302</phone>
+         <phone phonetype="fax">(978) 724-3595</phone>
+         <onlineUrl>http://harvardforest.fas.harvard.edu</onlineUrl>
+      </publisher>
+      <methods>
+         <methodStep>
+            <description>
+               <section>
+                  <title>Observation periods</title>
+                  <para>15-minute: 15 minutes, ending with given time. Hourly: 1 hour, ending with given time. Daily: 1 day, midnight to midnight. All times are Eastern Standard Time.</para>
+               </section>
+               <section>
+                  <title>Instruments</title>
+                  <para>Air temperature and relative humidity: Vaisala HMP45C (2.2m above ground). Precipitation: Met One 385 heated rain gage (top of gage 1.6m above ground). Global solar radiation: Licor LI200X pyranometer (2.7m above ground). PAR radiation: Licor LI190SB quantum sensor (2.7m above ground). Net radiation: Kipp and Zonen NR-LITE net radiometer (5.0m above ground). Barometric pressure: Vaisala CS105 barometer. Wind speed and direction: R.M. Young 05103 wind monitor (10m above ground). Soil temperature: Campbell 107 temperature probe (10cm below ground). Data logger: Campbell Scientific CR10X.</para>
+               </section>
+               <section>
+                  <title>Instrument and flag notes</title>
+                  <para>Air temperature. Daily air temperature is estimated from other stations as needed to complete record.</para>
+                  <para>Precipitation. Daily precipitation is estimated from other stations as needed to complete record. Delayed melting of snow and ice (caused by problems with rain gage heater or heavy precipitation) is noted in log - daily values are corrected if necessary but 15-minute values are not.  The gage may underestimate actual precipitation under windy or cold conditions.</para>
+                  <para>Radiation. Whenever possible, snow and ice are removed from radiation instruments after precipitation events.  Depth of snow or ice on instruments and time of removal are noted in log, but values are not corrected or flagged.</para>
+                  <para>Wind speed and direction. During ice storms, values are flagged as questionable when there is evidence (from direct observation or the 15-minute record) that ice accumulation may have affected the instrument's operation.</para>
+               </section>
+            </description>
+         </methodStep>
+      </methods>
+      <dataTable id="hf001-01">
+         <entityName>hf001-01-station-log.csv</entityName>
+         <entityDescription>station log</entityDescription>
+         <physical id="1229538795856">
+            <objectName>hf001-01-station-log.csv</objectName>
+            <dataFormat>
+               <textFormat>
+                  <numHeaderLines>1</numHeaderLines>
+                  <recordDelimiter>\r\n</recordDelimiter>
+                  <attributeOrientation>column</attributeOrientation>
+                  <simpleDelimited>
+                     <fieldDelimiter>,</fieldDelimiter>
+                  </simpleDelimited>
+               </textFormat>
+            </dataFormat>
+            <distribution>
+               <online>
+                  <url function="download">http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-01-station-log.csv</url>
+               </online>
+            </distribution>
+         </physical>
+         <attributeList>
+            <attribute id="1229538797871">
+               <attributeName>date</attributeName>
+               <attributeDefinition>date</attributeDefinition>
+               <measurementScale>
+                  <dateTime>
+                     <formatString>YYYY-MM-DD</formatString>
+                  </dateTime>
+               </measurementScale>
+            </attribute>
+            <attribute id="1229538797887">
+               <attributeName>notes</attributeName>
+               <attributeDefinition>notes</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <textDomain>
+                           <definition>notes</definition>
+                        </textDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+         </attributeList>
+         <numberOfRecords>171</numberOfRecords>
+      </dataTable>
+      <dataTable id="hf001-02">
+         <entityName>hf001-02-annual-m.csv</entityName>
+         <entityDescription>annual (metric) since 2002</entityDescription>
+         <physical id="1185463193628">
+            <objectName>hf001-02-annual-m.csv</objectName>
+            <dataFormat>
+               <textFormat>
+                  <numHeaderLines>1</numHeaderLines>
+                  <recordDelimiter>\r\n</recordDelimiter>
+                  <attributeOrientation>column</attributeOrientation>
+                  <simpleDelimited>
+                     <fieldDelimiter>,</fieldDelimiter>
+                  </simpleDelimited>
+               </textFormat>
+            </dataFormat>
+            <distribution>
+               <online>
+                  <url function="download">http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-02-annual-m.csv</url>
+               </online>
+            </distribution>
+         </physical>
+         <attributeList>
+            <attribute id="1185463194329">
+               <attributeName>date</attributeName>
+               <attributeDefinition>date</attributeDefinition>
+               <measurementScale>
+                  <dateTime>
+                     <formatString>YYYY</formatString>
+                  </dateTime>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194339">
+               <attributeName>airt</attributeName>
+               <attributeDefinition>average air temperature. Average of daily averages.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194349">
+               <attributeName>f.airt</attributeName>
+               <attributeDefinition>flag for average air temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194359">
+               <attributeName>airtmax</attributeName>
+               <attributeDefinition>average maximum air temperature. Average of daily maximums.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194379">
+               <attributeName>f.airtmax</attributeName>
+               <attributeDefinition>flag for average maximum air temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194389">
+               <attributeName>airtmin</attributeName>
+               <attributeDefinition>average minimum air temperature. Average of daily minimums.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194399">
+               <attributeName>f.airtmin</attributeName>
+               <attributeDefinition>flag for average minimum air temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194409">
+               <attributeName>airtmmx</attributeName>
+               <attributeDefinition>extreme maximum air temperature. Maximum of daily maximums.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194419">
+               <attributeName>f.airtmmx</attributeName>
+               <attributeDefinition>flag for extreme maximum air temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194429">
+               <attributeName>airtmmn</attributeName>
+               <attributeDefinition>extreme minimum air temperature. Minimum of daily minimums.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194439">
+               <attributeName>f.airtmmn</attributeName>
+               <attributeDefinition>flag for extreme minimum air temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194449">
+               <attributeName>prec</attributeName>
+               <attributeDefinition>total precipitation. Includes water equivalent of snow. Sum of daily totals.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>millimeter</standardUnit>
+                     </unit>
+                     <precision>1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194459">
+               <attributeName>f.prec</attributeName>
+               <attributeDefinition>flag for precipitation</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194469">
+               <attributeName>slrt</attributeName>
+               <attributeDefinition>average total global solar radiation. Average of daily totals.</attributeDefinition>
+               <measurementScale>
+                  <ratio>
+                     <unit>
+                        <customUnit>megajoulePerMeterSquared</customUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </ratio>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194479">
+               <attributeName>f.slrt</attributeName>
+               <attributeDefinition>flag for average total global solar radiation</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194489">
+               <attributeName>part</attributeName>
+               <attributeDefinition>average total photosynthetically active radiation. Average of daily totals.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <customUnit>molePerMeterSquared</customUnit>
+                     </unit>
+                     <precision>1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194499">
+               <attributeName>f.part</attributeName>
+               <attributeDefinition>flag for average total photosynthetically active radiation</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194509">
+               <attributeName>netr</attributeName>
+               <attributeDefinition>average net radiation. Includes short and long wave. Corrected for wind speeds above 5 m/s using Cambell Scientific equation. Average of daily averages.</attributeDefinition>
+               <measurementScale>
+                  <ratio>
+                     <unit>
+                        <customUnit>wattPerMeterSquared</customUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </ratio>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194519">
+               <attributeName>f.netr</attributeName>
+               <attributeDefinition>flag for average net radiation</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194529">
+               <attributeName>wspd</attributeName>
+               <attributeDefinition>average horizontal scalar wind speed. Average of daily averages.</attributeDefinition>
+               <measurementScale>
+                  <ratio>
+                     <unit>
+                        <standardUnit>metersPerSecond</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </ratio>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194539">
+               <attributeName>f.wspd</attributeName>
+               <attributeDefinition>flag for average horizonal scalar wind speed</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194549">
+               <attributeName>wres</attributeName>
+               <attributeDefinition>average horizontal resultant vector wind speed. Vector average of daily averages.</attributeDefinition>
+               <measurementScale>
+                  <ratio>
+                     <unit>
+                        <standardUnit>metersPerSecond</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </ratio>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194560">
+               <attributeName>f.wres</attributeName>
+               <attributeDefinition>flag for average horizonal resultant vector wind speed</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194570">
+               <attributeName>wdir</attributeName>
+               <attributeDefinition>average horizontal vector wind direction. Measured in degrees clockwise from true north. Vector average of daily values.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>degree</standardUnit>
+                     </unit>
+                     <precision>1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194580">
+               <attributeName>f.wdir</attributeName>
+               <attributeDefinition>flag for average horizonal vector wind direction</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194590">
+               <attributeName>gspd</attributeName>
+               <attributeDefinition>extreme maximum gust speed. Maximum of daily maximums.</attributeDefinition>
+               <measurementScale>
+                  <ratio>
+                     <unit>
+                        <standardUnit>metersPerSecond</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </ratio>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194600">
+               <attributeName>f.gspd</attributeName>
+               <attributeDefinition>flag for extreme maximum gust speed</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+            <attribute id="1185463194610">
+               <attributeName>s10t</attributeName>
+               <attributeDefinition>average soil temperature at 10cm depth. Average of daily averages.</attributeDefinition>
+               <measurementScale>
+                  <interval>
+                     <unit>
+                        <standardUnit>celsius</standardUnit>
+                     </unit>
+                     <precision>0.1</precision>
+                     <numericDomain>
+                        <numberType>real</numberType>
+                     </numericDomain>
+                  </interval>
+               </measurementScale>
+               <missingValueCode>
+                  <code>NA</code>
+                  <codeExplanation>missing value</codeExplanation>
+               </missingValueCode>
+            </attribute>
+            <attribute id="1185463194620">
+               <attributeName>f.s10t</attributeName>
+               <attributeDefinition>flag for average soil temperature</attributeDefinition>
+               <measurementScale>
+                  <nominal>
+                     <nonNumericDomain>
+                        <enumeratedDomain>
+                           <codeDefinition>
+                              <code>M</code>
+                              <definition>10 or more daily measurements missing. Summary value not calculated.</definition>
+                           </codeDefinition>
+                           <codeDefinition>
+                              <code>1-9</code>
+                              <definition>Number of daily measurements missing.</definition>
+                           </codeDefinition>
+                        </enumeratedDomain>
+                     </nonNumericDomain>
+                  </nominal>
+               </measurementScale>
+            </attribute>
+         </attributeList>
+         <numberOfRecords>14</numberOfRecords>
+      </dataTable>
+   </dataset>
+   <additionalMetadata>
+      <metadata>
+         <additionalClassifications>
+            <status>ongoing</status>
+            <researchTopic>atmosphere</researchTopic>
+            <researchTopic>watershed</researchTopic>
+            <studyType>long-term measurement</studyType>
+            <timeSeries>2,3,4,5,6,7,8,9,10,11</timeSeries>
+         </additionalClassifications>
+      </metadata>
+   </additionalMetadata>
+   <additionalMetadata>
+      <metadata>
+         <additionalLinks>
+            <url name="Real-Time Measurements">http://harvardforest.fas.harvard.edu/harvard-forest-weather-station</url>
+            <url name="Barn Tower Meteorological Station at Harvard Forest since 2010">http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf165</url>
+            <url name="Harvard Forest Snow Pillow since 2009">http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf155</url>
+            <url name="Prospect Hill Hydrological Stations at Harvard Forest since 2005">http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf070</url>
+            <url name="Shaler Meteorological Station at Harvard Forest 1964-2002">http://harvardforest.fas.harvard.edu:8080/exist/xquery/data.xq?id=hf000</url>
+         </additionalLinks>
+      </metadata>
+   </additionalMetadata>
+   <additionalMetadata>
+      <metadata>
+         <stmml:unitList convention="CML">
+            <stmml:unit name="megajoulePerMeterSquared" unitType="energy" id="megajoulePerMeterSquared" parentSI="joulePerMeterSquared" multiplierToSI="+1000000" constantToSI="0.0"/>
+            <stmml:unit name="wattPerMeterSquared" unitType="irradiance" id="wattPerMeterSquared" parentSI="wattPerMeterSquared" multiplierToSI="1" constantToSI="0.0"/>
+            <stmml:unit name="molePerMeterSquared" unitType="arealDensity" id="molePerMeterSquared" parentSI="molePerMeterSquared" multiplierToSI="1" constantToSI="0.0"/>
+            <stmml:unit name="micromolePerMeterSquaredPerSecond" unitType="arealMassDensityRate" id="micromolePerMeterSquaredPerSecond" parentSI="molePerMeterSquaredPerSecond" multiplierToSI="0.000001" constantToSI="0.0"/>
+            <stmml:unit name="inchOfMercury" unitType="pressure" id="inchOfMercury" parentSI="pascal" multiplierToSI="3386" constantToSI="0.0"/>
+         </stmml:unitList>
+      </metadata>
+   </additionalMetadata>
+</eml:eml>
