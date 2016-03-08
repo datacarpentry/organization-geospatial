@@ -100,7 +100,7 @@ newMap <- robMap + geom_point(data=loc.rob,
 newMap + theme(legend.position="none")
 
 
-## ----plot-w-graticules, echo=FALSE, message=FALSE, warning=FALSE---------
+## ----plot-w-graticules, echo=FALSE, message=FALSE, warning=FALSE, results='hide'----
 #this is not taught in the lesson but use it to display ggplot next to each other
 require(gridExtra)
 

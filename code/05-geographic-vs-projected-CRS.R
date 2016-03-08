@@ -1,4 +1,4 @@
-## ---- geographic-WGS84, echo=FALSE, message=FALSE------------------------
+## ---- geographic-WGS84, echo=FALSE, message=FALSE, results='hide'--------
 
 # read grat shapefile
 worldGrat30 <- readOGR(dsn="../../Global/Boundaries/ne_110m_graticules_all", 
