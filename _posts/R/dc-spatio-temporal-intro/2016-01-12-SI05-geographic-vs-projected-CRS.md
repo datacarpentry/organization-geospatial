@@ -6,7 +6,7 @@ date: 2015-10-25
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-01
+lastModified: 2016-03-08
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -119,7 +119,7 @@ The **geographic WGS84 lat/long** `CRS` has an origin - (0,0) -
 located at the intersection of the 
 Equator (0° latitude) and Prime Meridian (0° longitude) on the globe.
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/05-geographic-vs-projected-CRS/geographic-WGS84-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/05-geographic-vs-projected-CRS/geographic-WGS84-1.png)
 
 
 
@@ -176,8 +176,6 @@ The origin (0,0) for each UTM zone and associated region is located at the
 intersection of the equator and a location, 500,000 meters east of the central 
 meridian of each zone. The origin location is placed outside of the boundary of 
 the UTM zone, to avoid negative Easting numbers.  
-
-
 
 
 <figure>
