@@ -384,9 +384,9 @@ learn more about the raster format in
 [Spatial Data Formats -- Intro to Shapefiles (Vector Data) and GeoTiffs (Raster Data)](http://neondataskills.org/R/spatial-data-formats)
 
 We will learn how to work with raster data in the NEON Data Skills
-[*Introduction to Working With Raster Data in R* tutorial series]({{ http://neondataskills.org/tutorial-series/raster-data-series/).
+[*Introduction to Working With Raster Data in R* tutorial series](http://neondataskills.org/tutorial-series/raster-data-series/).
 And, about raster time series data, in the 
-[*Working With Raster Time Series Data in R* tutorial series]({{ http://neondataskills.org/tutorial-series/raster-time-series/).
+[*Work With Raster Time Series Data in R* tutorial series](http://neondataskills.org/tutorial-series/raster-time-series/).
 
 
 ## Find Temperature and Precipitation Data
