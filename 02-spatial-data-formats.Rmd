@@ -214,8 +214,8 @@ head(roads_HARV@data, 3)
 
 
 <figure>
-    <a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/challenge-code-plot-color-1.png">
-    <img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/challenge-code-plot-color-1.png"></a>
+    <a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/plot-color.png">
+    <img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/plot-color.png"></a>
     <figcaption>The map above contains point and line format vector data. We will
     create a map like this in the vector data tutorial series.
     Image Source: National Ecological Observatory Network (NEON) 
