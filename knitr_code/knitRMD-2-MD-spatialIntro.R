@@ -60,11 +60,11 @@ if (file.exists(paste0(gitRepoPath, imagePath))){
   dir.create(file.path(gitRepoPath, imagePath))
   print("git image directories created!")
 }
-#copy image directory over
-file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
+# copy image directory over
+#file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
 
 #copy rmd file to the rmd directory on git
-file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
+#file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
 #################### Get List of RMD files to Render #############################
 
 
@@ -74,7 +74,7 @@ rmd.files <- list.files(gitRepoPath, pattern="*.Rmd", full.names = TRUE )
 #################### Set up Image Directory #############################
 
 #just render one file
-#rmd.files <- rmd.files[5]
+rmd.files <- rmd.files[3]
 
 for (files in rmd.files) {
   
