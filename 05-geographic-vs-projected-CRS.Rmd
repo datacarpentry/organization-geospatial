@@ -201,8 +201,6 @@ meridian of each zone. The origin location is placed outside of the boundary of
 the UTM zone, to avoid negative Easting numbers.  
 
 
-
-
 <figure>
     <a href="https://www.e-education.psu.edu/natureofgeoinfo/sites/www.e-education.psu.edu.natureofgeoinfo/files/image/utm_zone_characteristics.png">
     <img src="https://www.e-education.psu.edu/natureofgeoinfo/sites/www.e-education.psu.edu.natureofgeoinfo/files/image/utm_zone_characteristics.png">
