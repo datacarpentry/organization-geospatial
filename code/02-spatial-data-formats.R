@@ -14,10 +14,7 @@ slotNames(roads_HARV)
 
 ## ----view-lines-coordinates----------------------------------------------
 
-# view the coordinates for each vertice, for the first feature in the spatial object
-roads_HARV@lines[1]
-
-# view the coordinates for the last feature in the spatial object
+# view the coordinates for each vertex, for the last feature in the spatial object
 roads_HARV@lines[13]
 
 # view the coordinates for the last feature in the spatial object
