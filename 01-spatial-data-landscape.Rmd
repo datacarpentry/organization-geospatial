@@ -11,24 +11,29 @@ category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This lesson introduces the spatial data tool landscape. It covers the types
-of gui and non gui tools that are available. And the benefits (and challenges) of using a non-gui (coding) 
-approach to method development that supports clear documentation of methods."
+description: "This tutorial introduces the spatial data tool landscape. It 
+covers the types of gui and non-gui tools that are available. The tutorial 
+explores the benefits (and challenges) of using a non-gui (coding) approach to 
+method development that supports clear documentation of methods."
 code1: 01-spatial-data-landscape.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
   creditlink: 
-permalink: R/spatial-data-landscape
+permalink: /R/spatial-data-landscape
 comments: true
 ---
 
 {% include _toc.html %}
 
-## About
-Add description.
+This tutorial introduces the spatial data tool landscape. It 
+covers the types of gui and non-gui tools that are available. The tutorial 
+explores the benefits (and challenges) of using a non-gui (coding) approach to 
+method development that supports clear documentation of methods.
 
-**R Skill Level:** Intermediate - you've got the basics of `R` down.
+**R Skill Level:** None. This tutorial is in a series with data skills
+intensive tutorials in the `R` programming language, however, the conceptual
+topics presented here relate to all programming languages! 
 
 <div id="objectives" markdown="1">
 
@@ -38,36 +43,9 @@ After completing this activity, you will:
 
 * Be aware of a variety of tools that can be used to access spatial data. 
 
-
-## Things You’ll Need To Complete This Lesson
-To complete this lesson you will need the most current version of R, and 
-preferably, RStudio loaded on your computer.
-
-### Install R Packages
-
-* **NAME:** `install.packages("NAME")`
-
-* [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
-
-### Download Data
-
-
 ****
 
 {% include/_greyBox-wd-rscript.html %}
-
-**Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
-of a lesson series introducing
-[spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
-It is also part of a larger 
-[spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
-that includes working with  
-[raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
-[vector data in `R` ]({{ site.baseurl }}tutorial/spatial-vector-series)
-and  
-[tabular time series in `R` ]({{ site.baseurl }}tutorial/tabular-time-series).
-
-****
 
 ### Additional Resources
 For a list of tools to work with spatial data, visit:
@@ -77,7 +55,7 @@ For a list of tools to work with spatial data, visit:
 </div>
 
 
-## This lesson overviews Gui vs Non Gui tools, interactive vs non-interactive 
+## This lesson overviews Gui vs Non-Gui tools, interactive vs non-interactive 
 (nice graphic could go a long way here)
 
 ## Gui Tools - 
@@ -87,38 +65,36 @@ Brief Description of this and a few examples of available tools. BRIEF discussio
 
 * ESRI ArcGIS
 
-###Open / Free: QGIS, Grass (maybe a line on each and a link to each page
+### Open / Free: QGIS, Grass (maybe a line on each and a link to each page
 
-##Non Gui Tools
+## Non Gui Tools
   Benefits: Reproducible workflows, more easily documented (inline comments, etc)
-###R
+### R
 
-###Python
+### Python
 
-###Matlab, IDL
+### Matlab, IDL
 
-
-
-##Commonly found spatial data formats
+## Commonly found spatial data formats
 essentially one line about this with a link to the spatial data formats page.
 
-###Shapefiles (.shp, dbf, etc - group of files )
+### Shapefiles (.shp, dbf, etc - group of files )
 
-###Geodatabases (.gdb, ??)
+### Geodatabases (.gdb, ??)
 
-###Csv’s (.csv)
+### Csv’s (.csv)
 
-###text files: rasters (.asc) -- essentially one line about this with a link to the spatial data formats page.
+### text files: rasters (.asc) -- essentially one line about this with a link to the spatial data formats page.
 
-###Online: geojson,
+### Online: geojson,
 
-##Packages specific to R - with link to the setting up your work environment page
+## Packages specific to R - with link to the setting up your work environment page
 
-###Raster
+### Raster
 
-###RGDAL
+### RGDAL
 
-###RasterVis
+### RasterVis
 
 
 
