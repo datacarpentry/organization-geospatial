@@ -470,3 +470,9 @@ the date the photo was taken.
 complex, heterogensous data. More on HDF5 formated rasters can be found in the
 NEON Data Skills [tutorials focusing on HDF5](http://neondataskills.org/HDF5/). 
 * **.grd:** An ESRI specific raster format.
+* **netCDF:**  
+    + <a href="http://www.unidata.ucar.edu/software/netcdf/docs/faq.html" target="_blank">About netCDF (UCAR)</a>
+    + <a href="https://publicwiki.deltares.nl/display/OET/Creating+a+netCDF+file+with+R" target="_blank">Create netCDF in R</a>
+    + <a href="http://geog.uoregon.edu/bartlein/courses/geog607/Rmd/netCDF_01.htm" target="_blank">A tutorial for version 3 in R</a>
+* **GRIB:** <a href="http://luckgrib.com/tutorials/2015/07/23/what-is-grib.html" target="_blank">What is Grib?</a>
+
