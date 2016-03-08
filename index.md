@@ -9,5 +9,6 @@ image:
 ---
 
 
-##NEON / Data Carpentry Workshop
+## National Ecological Observatory Network (NEON) - Data Carpentry Workshop
 
+ 
