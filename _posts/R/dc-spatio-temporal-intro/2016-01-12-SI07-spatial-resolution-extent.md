@@ -6,7 +6,7 @@ date: 2015-10-22
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-01
+lastModified: 2016-03-08
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -179,7 +179,7 @@ Let's explore that next.
 
     plot(myRaster1, main="Raster with 16 pixels")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/07-spatial-resolution-extent/calculate-raster-extent-1.png) 
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/07-spatial-resolution-extent/calculate-raster-extent-1.png)
 
 ## Spatial Resolution
 A raster consists of a series of pixels, each with the same dimensions 
