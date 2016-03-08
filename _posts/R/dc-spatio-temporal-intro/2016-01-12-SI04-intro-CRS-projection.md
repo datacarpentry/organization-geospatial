@@ -184,12 +184,6 @@ the central meridian on the globe (0,0).
     library(rgdal)
     library(ggplot2)
     library(rgeos)
-
-    ## rgeos version: 0.3-11, (SVN revision 479)
-    ##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
-    ##  Linking to sp version: 1.1-0 
-    ##  Polygon checking: TRUE
-
     library(raster)
     setwd("~/Documents/data")
     
