@@ -59,11 +59,11 @@ preferably, `RStudio` loaded on your computer.
 
 If you want to follow along, please download 
 
-<a href="http//www.naturalearthdata.com/download/110m/physical/ne_110m_land.zip" class="btn btn-success">
-Download Natural Earth Global Continent Boundary Layer</a>
+<a href="http://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/" target="_blank"  class="btn btn-success">
+Download "land" - Natural Earth Global Continent Boundary Layer</a>
 
-<a href="http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip" class="btn btn-success">
-Download Natural Earth Global Graticules Layer</a>
+<a href="http://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-graticules/" target="_blank" class="btn btn-success">
+Download all Graticules - Natural Earth Global Graticules Layer</a>
 
 ****
 
