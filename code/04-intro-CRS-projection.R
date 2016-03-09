@@ -27,7 +27,7 @@ worldMap
 
 # define locations of Boulder, CO and Oslo, Norway
 loc <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
-                lat=c(40.0274, 50.9500, 39.6167))
+                lat=c(40.0274, 59.9500, 39.6167))
 
 # convert to dataframe
 loc.df <- fortify(loc)  
