@@ -126,7 +126,7 @@ YCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@
 map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
 
 ggmap(map, extent=TRUE) +
-  geom_point(aes(x=as.numeric(XCoord),y=as.numeric(YCoord)), 
+  geom_point(aes(x=as.numeric(XCoord), y=as.numeric(YCoord)), 
              color="darkred", size=6, pch=18)
 
 
