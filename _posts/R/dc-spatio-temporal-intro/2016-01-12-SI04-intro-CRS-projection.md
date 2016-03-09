@@ -6,7 +6,7 @@ date: 2015-10-26
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-08
+lastModified: 2016-03-09
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -182,8 +182,25 @@ the central meridian on the globe (0,0).
 
 
     library(rgdal)
+
+    ## Loading required package: sp
+
+    ## rgdal: version: 1.0-4, (SVN revision 548)
+    ##  Geospatial Data Abstraction Library extensions to R successfully loaded
+    ##  Loaded GDAL runtime: GDAL 1.11.2, released 2015/02/10
+    ##  Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/gdal
+    ##  Loaded PROJ.4 runtime: Rel. 4.9.1, 04 March 2015, [PJ_VERSION: 491]
+    ##  Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/proj
+    ##  Linking to sp version: 1.1-1
+
     library(ggplot2)
     library(rgeos)
+
+    ## rgeos version: 0.3-11, (SVN revision 479)
+    ##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
+    ##  Linking to sp version: 1.1-0 
+    ##  Polygon checking: TRUE
+
     library(raster)
     setwd("~/Documents/data")
     
@@ -216,7 +233,7 @@ We can add three coordinate locations to our map. Note that the UNITS are
 in decimal **degrees** (latitude, longitude):
 
 * Boulder, Colorado:  40.0274, -105.2519
-* Oslo, Norway: 50.9500, 10.7500
+* Oslo, Norway: 59.9500, 10.7500
 * Mallorca, Spain: 39.6167, 2.9833
 
 Let's create a second map with the locations overlayed on top of the continental
@@ -225,7 +242,7 @@ boundary layer.
 
     # define locations of Boulder, CO and Oslo, Norway
     loc <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
-                    lat=c(40.0274, 50.9500, 39.6167))
+                    lat=c(40.0274, 59.9500, 39.6167))
     
     # convert to dataframe
     loc.df <- fortify(loc)  
@@ -311,7 +328,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
 
     ##         lon     lat
     ## 1 -105.2519 40.0274
-    ## 2   10.7500 50.9500
+    ## 2   10.7500 59.9500
     ## 3    2.9833 39.6167
 
     # convert to spatial Points data frame
@@ -322,12 +339,12 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
 
     ## class       : SpatialPointsDataFrame 
     ## features    : 3 
-    ## extent      : -105.2519, 10.75, 39.6167, 50.95  (xmin, xmax, ymin, ymax)
+    ## extent      : -105.2519, 10.75, 39.6167, 59.95  (xmin, xmax, ymin, ymax)
     ## coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
     ## variables   : 2
     ## names       :       lon,     lat 
     ## min values  : -105.2519, 39.6167 
-    ## max values  :     10.75,   50.95
+    ## max values  :     10.75,   59.95
 
     # reproject data to Robinson
     loc.spdf.rob <- spTransform(loc.spdf, CRSobj = CRS("+proj=robin"))
@@ -345,7 +362,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
 
     ##            X       Y
     ## 1 -9162993.5 4279263
-    ## 2   875481.0 5424980
+    ## 2   811462.5 6331141
     ## 3   260256.6 4235608
 
     # add a point to the map

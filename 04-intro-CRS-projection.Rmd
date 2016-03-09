@@ -210,7 +210,7 @@ We can add three coordinate locations to our map. Note that the UNITS are
 in decimal **degrees** (latitude, longitude):
 
 * Boulder, Colorado:  40.0274, -105.2519
-* Oslo, Norway: 50.9500, 10.7500
+* Oslo, Norway: 59.9500, 10.7500
 * Mallorca, Spain: 39.6167, 2.9833
 
 Let's create a second map with the locations overlayed on top of the continental
@@ -220,7 +220,7 @@ boundary layer.
 
 # define locations of Boulder, CO and Oslo, Norway
 loc <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
-                lat=c(40.0274, 50.9500, 39.6167))
+                lat=c(40.0274, 59.9500, 39.6167))
 
 # convert to dataframe
 loc.df <- fortify(loc)  
