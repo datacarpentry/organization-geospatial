@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-27
-lastModified: 2016-03-08
+lastModified: 2016-03-09
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -430,16 +430,31 @@ To begin, we will load the `EML` package directly from
     library("devtools")
     install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))
 
-    ## Skipping install for github remote, the SHA1 (1e06c96c) has not changed since last install.
-    ##   Use `force = TRUE` to force installation
+    ## Downloading GitHub repo ropensci/EML@master
+    ## from URL https://api.github.com/repos/ropensci/EML/zipball/master
+
+    ## Installing EML
+
+    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
+    ##   --no-environ --no-save --no-restore CMD INSTALL  \
+    ##   '/private/var/folders/x9/0p6djscn2890hpkvmlz4nx0nn42rsp/T/RtmpNI626R/devtools300213f6a25/ropensci-EML-1da8a85'  \
+    ##   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
+    ##   --install-tests
+
+    ## 
+
+    ## Reloading installed EML
 
     # load ROpenSci EML package
     library("EML")
     
     # load ggmap for mapping
     library(ggmap)
-    
-    
+
+    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
+
+    ## Please cite ggmap if you use it: see citation('ggmap') for details.
+
     # EML / data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
@@ -464,7 +479,7 @@ load.
     # view size of object
     object.size(eml_HARV)
 
-    ## 5602744 bytes
+    ## 5600424 bytes
 
     # view the object class
     class(eml_HARV)
@@ -479,9 +494,8 @@ accessed using `slots` in `R` (`@`) rather than a typical subset `[ ]` approach.
 ## Explore Metadata Attributes
 
 We can begin to explore the contents of our EML file and associated data that it
-describes. Let's start at the **dataset** level. We can use `eml_get` to view 
-the contact information for the dataset, the keywords and it's associated
-temporal and spatial (if relevant) coverage.
+describes. Let's start at the **dataset** level. We can use `slots` to view 
+the contact information for the dataset and a description of the methods.
 
 
     # view the contact name listed in the file
@@ -550,7 +564,7 @@ process the data.
     map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
     
     ggmap(map, extent=TRUE) +
-      geom_point(aes(x=as.numeric(XCoord),y=as.numeric(YCoord)), 
+      geom_point(aes(x=as.numeric(XCoord), y=as.numeric(YCoord)), 
                  color="darkred", size=6, pch=18)
 
 ![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/03-metadata-formats-and-files/map-location-1.png)
