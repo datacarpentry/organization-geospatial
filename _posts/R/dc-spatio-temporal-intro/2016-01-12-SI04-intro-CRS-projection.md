@@ -62,7 +62,7 @@ If you want to follow along, please download
 <a href="http//www.naturalearthdata.com/download/110m/physical/ne_110m_land.zip" class="btn btn-success">
 Download Natural Earth Global Continent Boundary Layer</a>
 
-<a href="http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip" class="btn btn-success">
+<a href="http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip" class="btn btn-success">
 Download Natural Earth Global Graticules Layer</a>
 
 ****
