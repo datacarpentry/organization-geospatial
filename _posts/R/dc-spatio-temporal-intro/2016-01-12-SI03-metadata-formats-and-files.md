@@ -430,31 +430,16 @@ To begin, we will load the `EML` package directly from
     library("devtools")
     install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))
 
-    ## Downloading GitHub repo ropensci/EML@master
-    ## from URL https://api.github.com/repos/ropensci/EML/zipball/master
-
-    ## Installing EML
-
-    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
-    ##   --no-environ --no-save --no-restore CMD INSTALL  \
-    ##   '/private/var/folders/x9/0p6djscn2890hpkvmlz4nx0nn42rsp/T/RtmpNI626R/devtools300213f6a25/ropensci-EML-1da8a85'  \
-    ##   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
-    ##   --install-tests
-
-    ## 
-
-    ## Reloading installed EML
+    ## Skipping install for github remote, the SHA1 (1da8a85d) has not changed since last install.
+    ##   Use `force = TRUE` to force installation
 
     # load ROpenSci EML package
     library("EML")
     
     # load ggmap for mapping
     library(ggmap)
-
-    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
-
-    ## Please cite ggmap if you use it: see citation('ggmap') for details.
-
+    
+    
     # EML / data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
