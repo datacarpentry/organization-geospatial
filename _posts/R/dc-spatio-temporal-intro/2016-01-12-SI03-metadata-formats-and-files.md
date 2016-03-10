@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-27
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -15,7 +15,7 @@ description: "This tutorial covers what metadata are and why we need to work
 with metadata in the context of spatio-temporal data. It 
 covers the three common metadata formats: text file 
 format, web page format and Ecological Metadata Language (EML)."
-code1: 03-metadata-formats-and-files.R
+code1: /R/dc-spatio-temporal-intro/03-metadata-formats-and-files.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
@@ -430,16 +430,33 @@ To begin, we will load the `EML` package directly from
     library("devtools")
     install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))
 
-    ## Skipping install for github remote, the SHA1 (1da8a85d) has not changed since last install.
-    ##   Use `force = TRUE` to force installation
+    ## Downloading GitHub repo ropensci/EML@master
+    ## from URL https://api.github.com/repos/ropensci/EML/zipball/master
+
+    ## Installing EML
+
+    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
+    ##   --no-environ --no-save --no-restore CMD INSTALL  \
+    ##   '/private/var/folders/x9/0p6djscn2890hpkvmlz4nx0nn42rsp/T/Rtmpwx26xt/devtools2822745c544/ropensci-EML-dc4e398'  \
+    ##   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
+    ##   --install-tests
+
+    ## 
+
+    ## Reloading installed EML
 
     # load ROpenSci EML package
     library("EML")
     
     # load ggmap for mapping
     library(ggmap)
-    
-    
+
+    ## Loading required package: ggplot2
+
+    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
+
+    ## Please cite ggmap if you use it: see citation('ggmap') for details.
+
     # EML / data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
@@ -464,7 +481,7 @@ load.
     # view size of object
     object.size(eml_HARV)
 
-    ## 5600424 bytes
+    ## 5598104 bytes
 
     # view the object class
     class(eml_HARV)
