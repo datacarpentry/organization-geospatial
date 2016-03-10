@@ -6,7 +6,7 @@ date:   2015-10-28
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [raster, rgdal, sp]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -16,7 +16,7 @@ description: "This tutorial covers the basics of key data formats that may
 contain spatial information including shapefile, GeoTIFF and .csv. It also
 provides a brief overview of other formats that you may encounter when working
 with spatial data."
-code1: 02-spatial-data-formats.R
+code1: /R/dc-spatio-temporal-intro/02-spatial-data-formats.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

@@ -15,7 +15,7 @@ description: "This tutorial covers what metadata are and why we need to work
 with metadata in the context of spatio-temporal data. It 
 covers the three common metadata formats: text file 
 format, web page format and Ecological Metadata Language (EML)."
-code1: 03-metadata-formats-and-files.R
+code1: /R/dc-spatio-temporal-intro/03-metadata-formats-and-files.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

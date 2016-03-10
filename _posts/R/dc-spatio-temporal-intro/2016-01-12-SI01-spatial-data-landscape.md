@@ -5,7 +5,7 @@ date:   2015-10-29
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -15,7 +15,7 @@ description: "This tutorial introduces the spatial data tool landscape. It
 covers the types of gui and non-gui tools that are available. The tutorial 
 explores the benefits (and challenges) of using a non-gui (coding) approach to 
 method development that supports clear documentation of methods."
-code1: 01-spatial-data-landscape.R
+code1: /R/dc-spatio-temporal-intro/01-spatial-data-landscape.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

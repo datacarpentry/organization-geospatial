@@ -5,7 +5,7 @@ date:   2015-10-21
 authors: []
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -13,7 +13,7 @@ mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key packages that support working with 
 spatial data in R."
-code1: set-r-work-environment.R
+code1: /R/dc-spatio-temporal-intro/09-set-r-work-environment.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

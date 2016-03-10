@@ -14,7 +14,7 @@ mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key spatial attributes that are needed to work with 
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
-code1: key-spatial-metadata.R
+code1: /R/dc-spatio-temporal-intro/07-spatial-resolution-extent.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

@@ -5,7 +5,7 @@ date:   2015-10-30
 authors: [Megan A. Jones, Leah A. Wasser]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -14,7 +14,7 @@ workshopSeries: [spatial-data-management-series]
 description: "This tutorial provides an overview of finding spatial data to 
 support a research question. It covers some of the key data sources, 
 providers and places that one can use to find data."
-code1: 00-spatio-temporal-science-questions.R
+code1: /R/dc-spatio-temporal-intro/00-spatio-temporal-science-questions.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
@@ -148,10 +148,10 @@ achieve this goal we need data that:
 sites that are located 3,000+ miles apart!
 
 <figure>
-	<a href="https://xxxx">
-	<img src="https://xxxx"></a>
-	<figcaption> TO BE ADDED NDVI Graphic 
-	On a plot of NDVI (Normalized Difference Vegetative Index) we can see when the
+	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI_Plot.png">
+	<img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI_Plot.png"></a>
+	<figcaption> 
+	An example plot of NDVI (Normalized Difference Vegetative Index). We see when the
 	vegetation is greener (a larger value) throughout a year or a growing season. 
 	Source: National Ecological Observatory Network (NEON)  
 	</figcaption>

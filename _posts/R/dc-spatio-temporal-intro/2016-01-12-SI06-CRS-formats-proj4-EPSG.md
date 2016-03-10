@@ -5,7 +5,7 @@ date: 2015-10-24
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2016-02-26
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -13,7 +13,7 @@ mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers formats that CRS information may be in including
 proj4 and EPGS and how to work with them in R."
-code1: CRS-formats-proj4-EPSG.R
+code1: /R/dc-spatio-temporal-intro/06-CRS-formats-proj4-EPSG.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry

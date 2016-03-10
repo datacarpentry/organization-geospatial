@@ -6,7 +6,7 @@ date: 2015-10-26
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-09
+lastModified: 2016-03-10
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -14,7 +14,7 @@ mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
 description: "This lesson covers the key spatial attributes that are needed to work with 
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
-code1: 04-intro-CRS-projection.R
+code1: /R/dc-spatio-temporal-intro/04-intro-CRS-projection.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
@@ -187,6 +187,12 @@ the central meridian on the globe (0,0).
     library(rgdal)
     library(ggplot2)
     library(rgeos)
+
+    ## rgeos version: 0.3-11, (SVN revision 479)
+    ##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
+    ##  Linking to sp version: 1.1-0 
+    ##  Polygon checking: TRUE
+
     library(raster)
     setwd("~/Documents/data")
     
