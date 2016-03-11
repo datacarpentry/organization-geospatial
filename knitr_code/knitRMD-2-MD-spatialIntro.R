@@ -80,11 +80,11 @@ if (file.exists(paste0(gitRepoPath, codeDir))){
 # NOTE: comment this out if you just want to rebuild one lesson
 
 # clean out images dir to avoid the issue of duplicate files 
-unlink(paste0(gitRepoPath, postsDir,"*"), recursive = TRUE)
+#unlink(paste0(gitRepoPath, postsDir,"*"), recursive = TRUE)
 # clean out images dir to avoid the issue of duplicate files 
-unlink(paste0(gitRepoPath, codeDir,"*"), recursive = TRUE)
+#unlink(paste0(gitRepoPath, codeDir,"*"), recursive = TRUE)
 # clean out images dir to avoid the issue of duplicate files 
-unlink(paste0(gitRepoPath, imagePath,"*"), recursive = TRUE)
+#unlink(paste0(gitRepoPath, imagePath,"*"), recursive = TRUE)
 
 
 # copy image directory over
@@ -101,7 +101,7 @@ rmd.files <- list.files(gitRepoPath, pattern="*.Rmd", full.names = TRUE )
 #################### Set up Image Directory #############################
 
 # just render one file
-# rmd.files <- rmd.files[5]
+rmd.files <- rmd.files[5]
 
 for (files in rmd.files) {
   
