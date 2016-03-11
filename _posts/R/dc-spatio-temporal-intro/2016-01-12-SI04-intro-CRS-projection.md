@@ -239,7 +239,7 @@ boundary layer.
     # add a point to the map
     mapLocations <- worldMap + geom_point(data=loc.df, 
                             aes(x=lon, y=lat, group=NULL),
-                          colour = "purple",
+                          colour = "springgreen",
                           size=5)
     
     mapLocations + theme(legend.position="none")
@@ -301,7 +301,7 @@ we used above, to our map, with the `CRS` of `Robinsons`?
     # add a point to the map
     newMap <- robMap + geom_point(data=loc.df, 
                           aes(x=lon, y=lat, group=NULL),
-                          colour = "purple",
+                          colour = "springgreen",
                           size=5)
     
     newMap + theme(legend.position="none")
@@ -359,7 +359,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
     # add a point to the map
     newMap <- robMap + geom_point(data=loc.rob, 
                           aes(x=X, y=Y, group=NULL),
-                          colour = "purple",
+                          colour = "springgreen",
                           size=5)
     
     newMap + theme(legend.position="none")

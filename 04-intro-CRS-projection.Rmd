@@ -234,7 +234,7 @@ loc.df <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
 # add a point to the map
 mapLocations <- worldMap + geom_point(data=loc.df, 
                         aes(x=lon, y=lat, group=NULL),
-                      colour = "purple",
+                      colour = "springgreen",
                       size=5)
 
 mapLocations + theme(legend.position="none")
@@ -295,7 +295,7 @@ we used above, to our map, with the `CRS` of `Robinsons`?
 # add a point to the map
 newMap <- robMap + geom_point(data=loc.df, 
                       aes(x=lon, y=lat, group=NULL),
-                      colour = "purple",
+                      colour = "springgreen",
                       size=5)
 
 newMap + theme(legend.position="none")
@@ -333,7 +333,7 @@ loc.rob
 # add a point to the map
 newMap <- robMap + geom_point(data=loc.rob, 
                       aes(x=X, y=Y, group=NULL),
-                      colour = "purple",
+                      colour = "springgreen",
                       size=5)
 
 newMap + theme(legend.position="none")
@@ -384,6 +384,7 @@ latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) +
 
 latLongMap <- latLongMap + geom_point(data=loc.df, 
                       aes(x=lon, y=lat, group=NULL),
+                      colour="springgreen",
                       size=5)
 
 # reproject grat into robinson
@@ -405,6 +406,7 @@ finalRobMap <- ggplot(bbox_robin_df, aes(long,lat, group=group)) +
 # add a point to the map
 finalRobMap <- finalRobMap + geom_point(data=loc.rob, 
                       aes(x=X, y=Y, group=NULL),
+                      colour="springgreen",
                       size=5)
 
 
