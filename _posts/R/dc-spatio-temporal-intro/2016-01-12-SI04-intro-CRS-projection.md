@@ -229,11 +229,12 @@ boundary layer.
 
 
     # define locations of Boulder, CO and Oslo, Norway
-    loc <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
+    # store them in a data.frame format
+    loc.df <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
                     lat=c(40.0274, 59.9500, 39.6167))
     
-    # convert to dataframe
-    loc.df <- fortify(loc)  
+    # only needed if the above is a spatial points object
+    # loc.df <- fortify(loc)  
     
     # add a point to the map
     mapLocations <- worldMap + geom_point(data=loc.df, 
@@ -374,9 +375,6 @@ or latitude and longitude lines rendered on the map.
 NOTE: The code for this map can
 be found in the .R document that is available for download at the bottom of this 
 page!
-
-
-    ## Error in eval(expr, envir, enclos): object 'latlongMap' not found
 
 ![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/plot-w-graticules-1.png)
 
