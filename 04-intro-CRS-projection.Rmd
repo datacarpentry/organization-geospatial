@@ -224,11 +224,12 @@ boundary layer.
 ```{r add-lat-long-locations }
 
 # define locations of Boulder, CO and Oslo, Norway
-loc <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
+# store them in a data.frame format
+loc.df <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
                 lat=c(40.0274, 59.9500, 39.6167))
 
-# convert to dataframe
-loc.df <- fortify(loc)  
+# only needed if the above is a spatial points object
+# loc.df <- fortify(loc)  
 
 # add a point to the map
 mapLocations <- worldMap + geom_point(data=loc.df, 
@@ -366,6 +367,7 @@ newTheme <- list(theme(line = element_blank(),
 ## add graticules
 graticule <- readOGR("Global/Boundaries/ne_110m_graticules_all", 
                      layer="ne_110m_graticules_15") 
+# convert spatial object into a ggplot ready, data.frame
 graticule_df <- fortify(graticule)
 
 bbox <- readOGR("Global/Boundaries/ne_110m_graticules_all", layer="ne_110m_wgs84_bounding_box") 
@@ -380,7 +382,7 @@ latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) +
   coord_equal() + newTheme +
   scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
 
-latLongMap <- latlongMap + geom_point(data=loc.df, 
+latLongMap <- latLongMap + geom_point(data=loc.df, 
                       aes(x=lon, y=lat, group=NULL, colour = "purple"),
                       size=5)
 

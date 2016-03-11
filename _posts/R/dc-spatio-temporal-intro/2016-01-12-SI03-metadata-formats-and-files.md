@@ -438,11 +438,8 @@ To begin, we will load the `EML` package directly from
     
     # load ggmap for mapping
     library(ggmap)
-
-    ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
-
-    ## Please cite ggmap if you use it: see citation('ggmap') for details.
-
+    
+    
     # EML / data location
     # http://harvardforest.fas.harvard.edu:8080/exist/apps/datasets/showData.html?id=hf001
     # table 4 http://harvardforest.fas.harvard.edu/data/p00/hf001/hf001-04-monthly-m.csv
