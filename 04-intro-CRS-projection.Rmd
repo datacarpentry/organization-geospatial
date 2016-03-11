@@ -383,7 +383,7 @@ latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) +
   scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
 
 latLongMap <- latLongMap + geom_point(data=loc.df, 
-                      aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                      aes(x=lon, y=lat, group=NULL),
                       size=5)
 
 # reproject grat into robinson
@@ -404,7 +404,7 @@ finalRobMap <- ggplot(bbox_robin_df, aes(long,lat, group=group)) +
 
 # add a point to the map
 finalRobMap <- finalRobMap + geom_point(data=loc.rob, 
-                      aes(x=X, y=Y, group=NULL, colour = "purple"),
+                      aes(x=X, y=Y, group=NULL),
                       size=5)
 
 
