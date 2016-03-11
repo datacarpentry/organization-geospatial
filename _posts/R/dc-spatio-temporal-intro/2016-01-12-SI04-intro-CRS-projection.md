@@ -6,7 +6,7 @@ date: 2015-10-26
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-10
+lastModified: 2016-03-11
 packagesLibraries: [ ]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis]
@@ -187,14 +187,10 @@ the central meridian on the globe (0,0).
     library(rgdal)
     library(ggplot2)
     library(rgeos)
-
-    ## rgeos version: 0.3-11, (SVN revision 479)
-    ##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
-    ##  Linking to sp version: 1.1-0 
-    ##  Polygon checking: TRUE
-
     library(raster)
-    setwd("~/Documents/data")
+    
+    # be sure to set your working directory
+    # setwd("~/Documents/data")
     
     # read shapefile
     worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land", 
@@ -241,7 +237,8 @@ boundary layer.
     
     # add a point to the map
     mapLocations <- worldMap + geom_point(data=loc.df, 
-                          aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                            aes(x=lon, y=lat, group=NULL),
+                          colour = "purple",
                           size=5)
     
     mapLocations + theme(legend.position="none")
@@ -302,7 +299,8 @@ we used above, to our map, with the `CRS` of `Robinsons`?
 
     # add a point to the map
     newMap <- robMap + geom_point(data=loc.df, 
-                          aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                          aes(x=lon, y=lat, group=NULL),
+                          colour = "purple",
                           size=5)
     
     newMap + theme(legend.position="none")
@@ -359,7 +357,8 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
 
     # add a point to the map
     newMap <- robMap + geom_point(data=loc.rob, 
-                          aes(x=X, y=Y, group=NULL, colour = "purple"),
+                          aes(x=X, y=Y, group=NULL),
+                          colour = "purple",
                           size=5)
     
     newMap + theme(legend.position="none")
