@@ -4,7 +4,9 @@ library(rgdal)
 library(ggplot2)
 library(rgeos)
 library(raster)
-setwd("~/Documents/data")
+
+# be sure to set your working directory
+# setwd("~/Documents/data")
 
 # read shapefile
 worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land", 
@@ -34,7 +36,8 @@ loc.df <- fortify(loc)
 
 # add a point to the map
 mapLocations <- worldMap + geom_point(data=loc.df, 
-                      aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                        aes(x=lon, y=lat, group=NULL),
+                      colour = "purple",
                       size=5)
 
 mapLocations + theme(legend.position="none")
@@ -63,7 +66,8 @@ robMap
 
 # add a point to the map
 newMap <- robMap + geom_point(data=loc.df, 
-                      aes(x=lon, y=lat, group=NULL, colour = "purple"),
+                      aes(x=lon, y=lat, group=NULL),
+                      colour = "purple",
                       size=5)
 
 newMap + theme(legend.position="none")
@@ -94,7 +98,8 @@ loc.rob <- fortify(loc.rob.df)
 loc.rob
 # add a point to the map
 newMap <- robMap + geom_point(data=loc.rob, 
-                      aes(x=X, y=Y, group=NULL, colour = "purple"),
+                      aes(x=X, y=Y, group=NULL),
+                      colour = "purple",
                       size=5)
 
 newMap + theme(legend.position="none")

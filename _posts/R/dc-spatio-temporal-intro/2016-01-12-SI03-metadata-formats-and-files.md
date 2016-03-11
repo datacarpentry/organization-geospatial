@@ -5,7 +5,7 @@ date:   2015-10-27
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-27
-lastModified: 2016-03-10
+lastModified: 2016-03-11
 packagesLibraries: [raster, rgdal, eml, devtools]
 category: [self-paced-tutorial] 
 tags: [R, spatial-data-gis, metadata]
@@ -430,28 +430,14 @@ To begin, we will load the `EML` package directly from
     library("devtools")
     install_github("ropensci/EML", build=FALSE, dependencies=c("DEPENDS", "IMPORTS"))
 
-    ## Downloading GitHub repo ropensci/EML@master
-    ## from URL https://api.github.com/repos/ropensci/EML/zipball/master
-
-    ## Installing EML
-
-    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
-    ##   --no-environ --no-save --no-restore CMD INSTALL  \
-    ##   '/private/var/folders/x9/0p6djscn2890hpkvmlz4nx0nn42rsp/T/Rtmpwx26xt/devtools2822745c544/ropensci-EML-dc4e398'  \
-    ##   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
-    ##   --install-tests
-
-    ## 
-
-    ## Reloading installed EML
+    ## Skipping install for github remote, the SHA1 (dc4e398d) has not changed since last install.
+    ##   Use `force = TRUE` to force installation
 
     # load ROpenSci EML package
     library("EML")
     
     # load ggmap for mapping
     library(ggmap)
-
-    ## Loading required package: ggplot2
 
     ## Google Maps API Terms of Service: http://developers.google.com/maps/terms.
 
