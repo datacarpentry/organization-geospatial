@@ -315,7 +315,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
 
 
     # define locations of Boulder, CO and Oslo, Norway
-    loc 
+    loc.df
 
     ##         lon     lat
     ## 1 -105.2519 40.0274
@@ -323,7 +323,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
     ## 3    2.9833 39.6167
 
     # convert to spatial Points data frame
-    loc.spdf <- SpatialPointsDataFrame(coords = loc,data=loc,
+    loc.spdf <- SpatialPointsDataFrame(coords = loc.df, data=loc.df,
                                 proj4string=crs(worldBound))  
     
     loc.spdf
@@ -340,7 +340,7 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
     # reproject data to Robinson
     loc.spdf.rob <- spTransform(loc.spdf, CRSobj = CRS("+proj=robin"))
     
-    loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon,loc.spdf.rob$lat))
+    loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon, loc.spdf.rob$lat))
     # rename each column
     names(loc.rob.df ) <- c("X","Y")
     
