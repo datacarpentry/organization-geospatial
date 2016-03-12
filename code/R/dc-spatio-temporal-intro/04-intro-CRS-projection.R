@@ -77,17 +77,17 @@ newMap + theme(legend.position="none")
 ## ----reproject-robinson--------------------------------------------------
 
 # define locations of Boulder, CO and Oslo, Norway
-loc 
+loc.df
 
 # convert to spatial Points data frame
-loc.spdf <- SpatialPointsDataFrame(coords = loc,data=loc,
+loc.spdf <- SpatialPointsDataFrame(coords = loc.df, data=loc.df,
                             proj4string=crs(worldBound))  
 
 loc.spdf
 # reproject data to Robinson
 loc.spdf.rob <- spTransform(loc.spdf, CRSobj = CRS("+proj=robin"))
 
-loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon,loc.spdf.rob$lat))
+loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon, loc.spdf.rob$lat))
 # rename each column
 names(loc.rob.df ) <- c("X","Y")
 
