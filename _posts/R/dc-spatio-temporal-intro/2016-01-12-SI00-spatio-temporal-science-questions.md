@@ -126,7 +126,7 @@ located in the central region of the US state of California.
 
 Both sites are mapped below:
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/00-spatio-temporal-science-questions/field-site-map-1.png)
+![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/00-spatio-temporal-science-questions/Field-Site-Map-1.png)
 
 These two sites are about 4,900km (3,000 miles) apart! Do we expect to see 
 differences in the timing of greening and browning of plants (phenophase timing)
