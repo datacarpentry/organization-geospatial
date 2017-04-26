@@ -3,8 +3,8 @@ description: 	Data lesson development - Intro to Spatio Temporal Data.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:      http://datacarpentry.org/NEON-R-Spatio-Temporal-Data-and-Management-Intro
-baseurl:   http://datacarpentry.org/NEON-R-Spatio-Temporal-Data-and-Management-Intro
+url:      http://datacarpentry.org/r-spatial-data-management-intro
+baseurl:   http://datacarpentry.org/r-spatial-data-management-intro
 
 # use this when working locally
 # just uncomment the first localhost.
@@ -18,10 +18,10 @@ disqus_shortname:
 
 # Owner/author information
 owner: 		
-  name: NEON
+  name: 
   avatar: profilePic.png
-  bio: "Devoted to open data and open source in science and education."
-  email: "NEONDataSkills@neoninc.org"
+  bio: ""
+  email: 
 #  twitter: "leahawasser"
   github: "data-lessons"
 #  youtube: " "
