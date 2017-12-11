@@ -5,9 +5,9 @@ date: 2015-10-24
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2016-02-26
-lastModified: 2016-03-11
+lastModified: 2017-12-11
 packagesLibraries: [ ]
-category: [self-paced-tutorial] 
+category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
@@ -17,7 +17,7 @@ code1: /R/dc-spatio-temporal-intro/06-CRS-formats-proj4-EPSG.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: 
+  creditlink:
 permalink: R/intro-to-CRS-formats-proj4-EPSG-R
 comments: true
 ---
@@ -37,12 +37,12 @@ proj4 and EPGS and how to work with them in R.
 
 After completing this activity, you will:
 
-* 
+*
 
 
 ## Things You’ll Need To Complete This Lesson
 
-To complete this lesson you will need the most current version of `R`, and 
+To complete this lesson you will need the most current version of `R`, and
 preferably, `RStudio` loaded on your computer.
 
 ### Install R Packages
@@ -61,7 +61,7 @@ preferably, `RStudio` loaded on your computer.
 **Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
 of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
-It is also part of a larger 
+It is also part of a larger
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
 that includes working with  
 [raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
@@ -82,14 +82,14 @@ QGIS documentation.</a>
 ## What is a Coordinate Reference System
 
 To define the location of something we often use a coordinate system. This system
-consists of an X and a Y value, located within a 2 (or more) -dimensional 
+consists of an X and a Y value, located within a 2 (or more) -dimensional
 (as shown below) space.
 
 <figure>
 	<a href="http://open.senecac.on.ca/clea/label/projectImages/15_276_xy-grid.jpg">
 	<img src="http://open.senecac.on.ca/clea/label/projectImages/15_276_xy-grid.jpg"></a>
 	<figcaption> We use coordinate systems with X, Y (and sometimes Z axes) to
-	define the location of objects in space. 
+	define the location of objects in space.
 	Source: http://open.senecac.on.ca
 	</figcaption>
 </figure>
@@ -105,13 +105,13 @@ formats include:
 * Well-known Text (**WKT**)
 formats.  
 
-#### PROJ or PROJ.4 strings 
+#### PROJ or PROJ.4 strings
 
-PROJ.4 strings are a compact way to identify a spatial or coordinate reference 
+PROJ.4 strings are a compact way to identify a spatial or coordinate reference
 system. PROJ.4 strings are the primary output from most of the spatial data `R`
 packages that we will use (e.g. `raster`, `rgdal`).
 
-Using the PROJ.4 syntax, we specify the complete set of parameters (e.g. elipse, datum,
+Using the PROJ.4 syntax, we specify the complete set of parameters (e.g. ellipse, datum,
 units, etc) that define a particular CRS.
 
 
@@ -119,46 +119,46 @@ units, etc) that define a particular CRS.
 The `CRS` for our data are given to us by `R` in `proj4` format. Let's break
 down the pieces of `proj4` string. The string contains all of the individual
 `CRS` elements that `R` or another `GIS` might need. Each element is specified
-with a `+` sign, similar to how a `.csv` file is delimited or broken up by 
+with a `+` sign, similar to how a `.csv` file is delimited or broken up by
 a `,`. After each `+` we see the `CRS` element being defined. For example
 `+proj=` and `+datum=`.
 
 ### UTM Proj4 String
-Our project string for `point_HARV` specifies the UTM projection as follows: 
+Our project string for `point_HARV` specifies the UTM projection as follows:
 
-`+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0` 
+`+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0`
 
 * **+proj=utm:** the projection is UTM, UTM has several zones.
 * **+zone=18:** the zone is 18
 * **datum=WGS84:** the datum WGS84 (the datum refers to the  0,0 reference for
 the coordinate system used in the projection)
 * **+units=m:** the units for the coordinates are in METERS.
-* **+ellps=WGS84:** the ellipsoid (how the earth's  roundness is calculated) for 
+* **+ellps=WGS84:** the ellipsoid (how the earth's  roundness is calculated) for
 the data is WGS84
 
-Note that the `zone` is unique to the UTM projection. Not all `CRS` will have a 
+Note that the `zone` is unique to the UTM projection. Not all `CRS` will have a
 zone.
 
 ### Geographic (lat / long) Proj4 String
 
 Our project string for `State.boundary.US` and `Country.boundary.US` specifies
-the lat/long projection as follows: 
+the lat/long projection as follows:
 
-`+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0` 
+`+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0`
 
 * **+proj=longlat:** the data are in a geographic (latitude and longitude)
 coordinate system
 * **datum=WGS84:** the datum WGS84 (the datum refers to the  0,0 reference for
-the coordinate system used in the projection) 
+the coordinate system used in the projection)
 * **+ellps=WGS84:** the ellipsoid (how the earth's roundness is calculated)
 is WGS84
 
-Note that there are no specified units above. This is because this geographic 
-coordinate reference system is in latitude and longitude which is most 
+Note that there are no specified units above. This is because this geographic
+coordinate reference system is in latitude and longitude which is most
 often recorded in *Decimal Degrees*.
 
-<i class="fa fa-star"></i> **Data Tip:** the last portion of each `proj4` string 
-is `+towgs84=0,0,0 `. This is a conversion factor that is used if a `datum` 
+<i class="fa fa-star"></i> **Data Tip:** the last portion of each `proj4` string
+is `+towgs84=0,0,0 `. This is a conversion factor that is used if a `datum`
 conversion is required. We will not deal with datums in this particular series.
 {: .notice}
 
@@ -172,7 +172,7 @@ The EPSG codes are a structured dataset of CRSs that are used around the world. 
 originally compiled by the, now defunct, European Petroleum Survey Group, hence the
 EPSG acronym. Each code is a four digit number.  
 
-The codes and more information can be found on these websites: 
+The codes and more information can be found on these websites:
 * <a href="http://www.epsg-registry.org/" target="_blank">The EPSG registry. </a>
 * <a href="http://spatialreference.org/" target="_blank">Spatialreference.org</a>
 * <a href="http://spatialreference.org/ref/epsg/" target="_blank">list of ESPG codes.</a>
@@ -201,13 +201,13 @@ The codes and more information can be found on these websites:
 #### WKT or Well-known Text
 Well-known Text (WKT) allows for compact machine- and human-readable representation of
 geometric objects as well as to consisely describing the critical elements of
-coordinate reference system (CRS) definitions. 
+coordinate reference system (CRS) definitions.
 
-The codes and more information can be found on these websites: 
+The codes and more information can be found on these websites:
 * <a href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html#43" target="_blank">Open Geospatial Consortium WKT document. </a>
 
 
-*** 
+***
 ##Additional Resources
 ESRI help on CRS
 QGIS help on CRS
