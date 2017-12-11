@@ -3,12 +3,12 @@ description: 	Data lesson development - Intro to Spatio Temporal Data.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-# url:      http://datacarpentry.org/r-spatial-data-management-intro
-# baseurl:   http://datacarpentry.org/r-spatial-data-management-intro
+url:      /r-spatial-data-management-intro
+baseurl:   /r-spatial-data-management-intro
 
 # use this when working locally
 # just uncomment the first localhost.
-url: http://localhost:4000
+# url: http://localhost:4000
 # baseurl: http://localhost:4000
 
 #turning off disqus by removing our username

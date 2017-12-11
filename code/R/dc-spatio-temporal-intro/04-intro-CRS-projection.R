@@ -9,7 +9,7 @@ library(raster)
 # setwd("~/Documents/data")
 
 # read shapefile
-worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land", 
+worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land",
                       layer="ne_110m_land")
 
 # convert to dataframe
@@ -36,7 +36,7 @@ loc.df <- data.frame(lon=c(-105.2519, 10.7500, 2.9833),
 # loc.df <- fortify(loc)  
 
 # add a point to the map
-mapLocations <- worldMap + geom_point(data=loc.df, 
+mapLocations <- worldMap + geom_point(data=loc.df,
                         aes(x=lon, y=lat, group=NULL),
                       colour = "springgreen",
                       size=5)
@@ -66,7 +66,7 @@ robMap
 ## ----add-locations-robinson----------------------------------------------
 
 # add a point to the map
-newMap <- robMap + geom_point(data=loc.df, 
+newMap <- robMap + geom_point(data=loc.df,
                       aes(x=lon, y=lat, group=NULL),
                       colour = "springgreen",
                       size=5)
@@ -98,7 +98,7 @@ loc.rob <- fortify(loc.rob.df)
 # from the coordinate values for the same locations in a geographic CRS.
 loc.rob
 # add a point to the map
-newMap <- robMap + geom_point(data=loc.rob, 
+newMap <- robMap + geom_point(data=loc.rob,
                       aes(x=X, y=Y, group=NULL),
                       colour = "springgreen",
                       size=5)
@@ -121,24 +121,24 @@ newTheme <- list(theme(line = element_blank(),
       legend.position="none")) #turn off legend
 
 ## add graticules
-graticule <- readOGR("Global/Boundaries/ne_110m_graticules_all", 
-                     layer="ne_110m_graticules_15") 
+graticule <- readOGR("Global/Boundaries/ne_110m_graticules_all",
+                     layer="ne_110m_graticules_15")
 # convert spatial object into a ggplot ready, data.frame
 graticule_df <- fortify(graticule)
 
-bbox <- readOGR("Global/Boundaries/ne_110m_graticules_all", layer="ne_110m_wgs84_bounding_box") 
+bbox <- readOGR("Global/Boundaries/ne_110m_graticules_all", layer="ne_110m_wgs84_bounding_box")
 bbox_df<- fortify(bbox)
 
 
-latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) + 
+latLongMap <- ggplot(bbox_df, aes(long,lat, group=group)) +
   geom_polygon(fill="white") +
-  geom_polygon(data=worldBound_df, aes(long,lat, group=group, fill=hole)) + 
+  geom_polygon(data=worldBound_df, aes(long,lat, group=group, fill=hole)) +
   geom_path(data=graticule_df, aes(long, lat, group=group, fill=NULL), linetype="dashed", color="grey70") +
-  labs(title="World Map - Geographic (long/lat degrees)") + 
+  labs(title="World Map - Geographic (long/lat degrees)") +
   coord_equal() + newTheme +
   scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
 
-latLongMap <- latLongMap + geom_point(data=loc.df, 
+latLongMap <- latLongMap + geom_point(data=loc.df,
                       aes(x=lon, y=lat, group=NULL),
                       colour="springgreen",
                       size=5)
@@ -151,16 +151,16 @@ bbox_robin_df <- fortify(bbox_robin)
 
 # plot using robinson
 
-finalRobMap <- ggplot(bbox_robin_df, aes(long,lat, group=group)) + 
+finalRobMap <- ggplot(bbox_robin_df, aes(long,lat, group=group)) +
   geom_polygon(fill="white") +
-  geom_polygon(data=worldBound_df_robin, aes(long,lat, group=group, fill=hole)) + 
+  geom_polygon(data=worldBound_df_robin, aes(long,lat, group=group, fill=hole)) +
   geom_path(data=grat_df_robin, aes(long, lat, group=group, fill=NULL), linetype="dashed", color="grey70") +
-  labs(title="World Map Projected - Robinson (Meters)") + 
+  labs(title="World Map Projected - Robinson (Meters)") +
   coord_equal() + newTheme +
   scale_fill_manual(values=c("black", "white"), guide="none") # change colors & remove legend
 
 # add a point to the map
-finalRobMap <- finalRobMap + geom_point(data=loc.rob, 
+finalRobMap <- finalRobMap + geom_point(data=loc.rob,
                       aes(x=X, y=Y, group=NULL),
                       colour="springgreen",
                       size=5)
@@ -172,15 +172,15 @@ grid.arrange(latLongMap, finalRobMap)
 
 ## ----challenge-1, echo=FALSE---------------------------------------------
 
-## notes about robinson -- you will see distortion above 40 = 45 degrees latitude 
-## it is optimized for the latitudes between 0-45 (north and south). 
+## notes about robinson -- you will see distortion above 40 = 45 degrees latitude
+## it is optimized for the latitudes between 0-45 (north and south).
 
 ## geographic - notice that the latitude lines are closer together are you move
 ## north...
 
 # What each CRS optimizes:
-## Mercator: 
+## Mercator:
 ## ALbers Equal Area
 ## UTM Zone 11n
-## Geographic WGS84 (lat/lon): 
+## Geographic WGS84 (lat/lon):
 
