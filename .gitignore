@@ -2,3 +2,6 @@ _site
 .DS_Store
 _config.yml
 .Rproj.user
+.Rhistory
+Gemfile.lock
+
