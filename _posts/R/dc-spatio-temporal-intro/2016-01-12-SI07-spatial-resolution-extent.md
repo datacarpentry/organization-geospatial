@@ -6,19 +6,19 @@ date: 2015-10-22
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-11
+lastModified: 2017-12-11
 packagesLibraries: [ ]
-category: [self-paced-tutorial] 
+category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This lesson covers the key spatial attributes that are needed to work with 
+description: "This lesson covers the key spatial attributes that are needed to work with
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
 code1: /R/dc-spatio-temporal-intro/07-spatial-resolution-extent.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: 
+  creditlink:
 permalink: R/key-spatial-metadata
 comments: true
 ---
@@ -27,7 +27,7 @@ comments: true
 
 ## About
 
-This lesson covers the key spatial attributes that are needed to work with 
+This lesson covers the key spatial attributes that are needed to work with
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution.
 
 **R Skill Level:** Beginner - you've got the basics of `R` down.
@@ -45,7 +45,7 @@ elements in vector data files (like NEON tower data (point), road (line), waters
 
 
 ## Things You’ll Need To Complete This Lesson
-To complete this lesson you will need the most current version of R, and 
+To complete this lesson you will need the most current version of R, and
 preferably, RStudio loaded on your computer.
 
 ### Install R Packages
@@ -64,7 +64,7 @@ preferably, RStudio loaded on your computer.
 **Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
 of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
-It is also part of a larger 
+It is also part of a larger
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
 that includes working with  
 [raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
@@ -84,32 +84,32 @@ QGIS documentation.</a>
 
 ## Spatial Metadata
 There are three core spatial metadata elements that are crucial to understand
-in order to effectively work with spatial data: 
+in order to effectively work with spatial data:
 
-* **Coordinate Reference System** (CRS), 
+* **Coordinate Reference System** (CRS),
 * **Extent**
-* **Resolution** 
+* **Resolution**
 
 
 
 ## Spatial Extent
-The spatial extent of a spatial object is just how much area does it cover. A 
+The spatial extent of a spatial object is just how much area does it cover. A
 map of Paris has a smaller spatial extent than a map of all of France.  
 
 ### Units
-The units of the extent are defined by the coordinate system that the spatial 
+The units of the extent are defined by the coordinate system that the spatial
 data is in.  
 
 ### Extent in Vector Data
 GRAPHIC FROM COLIN
 
 ### Extent in Raster Data
-The spatial extent of a raster, represents the x,y coordinates of the corners 
-of the raster in geographic space. This information, in addition to the cell 
-size or spatial resolution, tells the program how to place or render each pixel 
+The spatial extent of a raster, represents the x,y coordinates of the corners
+of the raster in geographic space. This information, in addition to the cell
+size or spatial resolution, tells the program how to place or render each pixel
 in 2 dimensional space.  Tools like `R`, using supporting packages such as
 `rgdal`, and associated raster tools have functions that allow you to view and
-define the extent of a new raster. 
+define the extent of a new raster.
 
 
     # View the extent of the raster
@@ -120,8 +120,8 @@ define the extent of a new raster.
 <figure>
     <a href="{{ site.baseurl }}/images/hyperspectral/pixelDetail.png">
     <img src="{{ site.baseurl }}/images/hyperspectral/pixelDetail.png"></a>
-    <figcaption>The spatial resolution of a raster refers the size of each cell 
-    in meters. This size in turn relates to the area on the ground that the pixel 
+    <figcaption>The spatial resolution of a raster refers the size of each cell
+    in meters. This size in turn relates to the area on the ground that the pixel
     represents.</figcaption>
 </figure>
 
@@ -135,109 +135,13 @@ define the extent of a new raster.
 
 ### Calculating Raster Extent
 To calculate the extent of a raster, we first need the bottom left x,y
-coordinate of the raster. In 
+coordinate of the raster. In
 the case of the UTM coordinate system which is in meters, to calculate
-the raster's extent, we can add the number of columns and rows to the x,y corner 
-coordinate location of the raster, multiplied by the resolution (the pixel size) 
+the raster's extent, we can add the number of columns and rows to the x,y corner
+coordinate location of the raster, multiplied by the resolution (the pixel size)
 of the raster.
 
 Let's explore that next.
-
-
-    # create a raster from the matrix
-    myRaster1 <- raster(nrow=4, ncol=4)
-        
-    # assign some random data to the raster
-    myRaster1[]<- 1:ncell(myRaster1)
-        
-    # view attributes of the raster
-    myRaster1
-
-    ## class       : RasterLayer 
-    ## dimensions  : 4, 4, 16  (nrow, ncol, ncell)
-    ## resolution  : 90, 45  (x, y)
-    ## extent      : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
-    ## coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 
-    ## data source : in memory
-    ## names       : layer 
-    ## values      : 1, 16  (min, max)
-
-    # is the CRS defined?
-    myRaster1@crs
-
-    ## CRS arguments:
-    ##  +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0
-
-    # what are the data extents?
-    myRaster1@extent
-
-    ## class       : Extent 
-    ## xmin        : -180 
-    ## xmax        : 180 
-    ## ymin        : -90 
-    ## ymax        : 90
-
-    plot(myRaster1, main="Raster with 16 pixels")
-
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/07-spatial-resolution-extent/calculate-raster-extent-1.png)
-
-## Spatial Resolution
-A raster consists of a series of pixels, each with the same dimensions 
-and shape. In the case of rasters derived from airborne sensors, each pixel 
-represents an area of space on the Earth's surface. The size of the area on the 
-surface that each pixel covers is known as the spatial resolution of the image. 
-For instance, an image that has a 1 m spatial resolution means that each pixel in 
-the image represents a 1 m x 1 m area.
-
-<figure>
-    <a href="{{ site.baseurl }}/images/hyperspectral/pixelDetail.png">
-    <img src="{{ site.baseurl }}/images/hyperspectral/pixelDetail.png"></a>
-    <figcaption>The spatial resolution of a raster refers the size of each cell 
-    in meters. This size in turn relates to the area on the ground that the pixel 
-    represents.</figcaption>
-</figure>
-
-<figure>
-    <img src="{{ site.baseurl }}/images/spatialData/raster1.png">
-    <figcaption>A raster at the same extent with more pixels will have a higher
-    resolution (it looks more "crisp"). A raster that is stretched over the same
-    extent with fewer pixels will look more blury and will be of lower resolution.
-    </figcaption>
-</figure>
-
-Let's open up a raster in `R` to see how the attributes are stored.
-
-
-    #load raster library
-    library(raster)
-    library(rgdal)
-        
-    # Load raster in an R object called 'DEM'
-    DEM <- raster("DigitalTerrainModel/SJER2013_DTM.tif")  
-
-    ## Error in .rasterObjectFromFile(x, band = band, objecttype = "RasterLayer", : Cannot create a RasterLayer object from this file. (file does not exist)
-
-    # View raster attributes 
-    DEM
-
-    ## Error in eval(expr, envir, enclos): object 'DEM' not found
-
-Notice that this raster (in GeoTIFF format) already has defined:
-
-* extent
-* resolution (1 in both x and y directions), and
-* CRS (units in meters).
-
-
-For more one the relationship between extent & resolution, visit http://neondataskills.org/GIS-Spatial-Data/Working-With-Rasters/
-***
-*** 
-##Additional Resources
-ESRI help on CRS
-QGIS help on CRS
-NCEAS cheatsheets
-
-
 
 
 

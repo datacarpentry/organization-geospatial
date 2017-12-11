@@ -6,13 +6,13 @@ date:   2015-10-28
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-11
+lastModified: 2017-12-11
 packagesLibraries: [raster, rgdal, sp]
-category: [self-paced-tutorial] 
+category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This tutorial covers the basics of key data formats that may 
+description: "This tutorial covers the basics of key data formats that may
 contain spatial information including shapefile, GeoTIFF and .csv. It also
 provides a brief overview of other formats that you may encounter when working
 with spatial data."
@@ -27,11 +27,11 @@ comments: true
 
 {% include _toc.html %}
 
-This tutorial covers the basics of key data formats that may contain spatial 
-information including shapefile, GeoTIFF and .csv. It also provides a brief 
+This tutorial covers the basics of key data formats that may contain spatial
+information including shapefile, GeoTIFF and .csv. It also provides a brief
 overview of other formats that you may encounter when working with spatial data.
 
-**R Skill Level:** Beginner 
+**R Skill Level:** Beginner
 
 <div id="objectives" markdown="1">
 
@@ -39,14 +39,14 @@ overview of other formats that you may encounter when working with spatial data.
 
 After completing this activity, you will:
 
-* Understand two key spatial data formats: raster and vector. 
-* Understand the basic structure of a GeoTiff file as a key raster spatial data 
-format. 
-* Understand the basic file structure of a shapefile as a key vector spatial 
+* Understand two key spatial data formats: raster and vector.
+* Understand the basic structure of a GeoTiff file as a key raster spatial data
+format.
+* Understand the basic file structure of a shapefile as a key vector spatial
 data format.
-* Understand the basic data management / file storage approaches for working 
+* Understand the basic data management / file storage approaches for working
 with shapefiles which contain multiple associated files.
-* Understand where metadata are often stored in both raster and vector data 
+* Understand where metadata are often stored in both raster and vector data
 formats.
 
 ### Install R Packages
@@ -61,7 +61,7 @@ formats.
 
 ### Additional Resources
 
-* Wikipedia article on 
+* Wikipedia article on
 <a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
 GIS file formats.</a>
 
@@ -70,69 +70,69 @@ GIS file formats.</a>
 
 ## Get Started With Your Project -  File Organization
 
-When we work with large, spatio-temporal data, it is a good idea to store large 
-data sets in a general data directory that you can easily access from many 
-projects. If you are working in a collaborative 
-environment, use a shared data directory. 
+When we work with large, spatio-temporal data, it is a good idea to store large
+data sets in a general data directory that you can easily access from many
+projects. If you are working in a collaborative
+environment, use a shared data directory.
 
 ## One Dataset - Many Files
 
 While text files often are self contained (one CSV) is composed of one unique file,
-many spatial formats contain several files. For instance, a shapefile (discussed 
+many spatial formats contain several files. For instance, a shapefile (discussed
 below) contains 3 or more files, all of which must retain the same NAME and be
 stored in the same file directory, in order for you to be able to work with them.
-We will discuss these issues as they related to two key spatial data formats - 
+We will discuss these issues as they related to two key spatial data formats -
 .shp (shapefile) which stores **vector** data and .tif (geotiff) which stores
-**raster** data in more detail, below. 
+**raster** data in more detail, below.
 
 
 ## Types of Spatial Data
 
 Spatial data are represented in many different ways and are stored in different
-file formats. In this tutorial, we will focus on the two types of spatial data: 
+file formats. In this tutorial, we will focus on the two types of spatial data:
 raster and vector data.
 
 ## Vector Data - Points, Lines, Polygons
 
-Vector data, are often used to store things like road and plot locations, 
-boundaries of states, countries and lakes. 
+Vector data, are often used to store things like road and plot locations,
+boundaries of states, countries and lakes.
 
 Vector data are composed of discrete geometric locations (x,y values) known as
-**vertices** that define the "shape" of the spatial object. The organization 
-of the vertices determines the type of vector that we are working 
+**vertices** that define the "shape" of the spatial object. The organization
+of the vertices determines the type of vector that we are working
 with: **point**, **line** or **polygon**.
 
 <figure>
     <a href="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png">
     <img src="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png"></a>
-    <figcaption> There are 3 types of vector objects: points, lines or 
-    polygons. Each vector object type has a different structure. 
-    Image Source: National Ecological Observatory Network (NEON) 
+    <figcaption> There are 3 types of vector objects: points, lines or
+    polygons. Each vector object type has a different structure.
+    Image Source: National Ecological Observatory Network (NEON)
     </figcaption>
 </figure>
 
-* **Points:** Each individual point is define by a **single x, y coordinate**.
+* **Points:** Each individual point is defined by a **single x, y coordinate**.
 There can be many points in a vector point file. Examples of point data include:
-	+ sampling locations, 
-	+ the location of individual trees or 
+	+ sampling locations,
+	+ the location of individual trees or
 	+ the location of plots.
 * **Lines:** Lines are composed of **many (at least 2) vertices that
-are connected**. For instance, a road or a stream may be represented by a line. 
-This line is composed of a series of segments, each "bend" in the road or stream 
+are connected**. For instance, a road or a stream may be represented by a line.
+This line is composed of a series of segments, each "bend" in the road or stream
 represents a vertex that has defined `x, y` location.
-* **Polygons:** A polygon consists of **3 or more vertices that are connected 
-and "closed"**. Occasionally, a polygon can have a hole in the middle of it 
-(like a doughnut), this is something to be aware of but not an issue we will 
-deal with in this tutorial series. Objects often represented by polygons 
+* **Polygons:** A polygon consists of **3 or more vertices that are connected
+and "closed"**. Occasionally, a polygon can have a hole in the middle of it
+(like a doughnut), this is something to be aware of but not an issue we will
+deal with in this tutorial series. Objects often represented by polygons
 include:
 	+ outlines of plot boundaries,
 	+ lakes,
-	+ oceans and 
+	+ oceans and
 	+ states or country boundaries.  
- 
+
 
 <i class="fa fa-star"></i> **Data Tip:** A shapefile will only contain **one
-type of vector data**: points, lines or polygons. 
+type of vector data**: points, lines or polygons.
 {: .notice}
 
 
@@ -143,21 +143,18 @@ type of vector data**: points, lines or polygons.
     # Open shapefile
     roads_HARV <- readOGR("NEON-DS-Site-Layout-Files/HARV","HARV_roads")
 
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "NEON-DS-Site-Layout-Files/HARV", layer: "HARV_roads"
-    ## with 13 features
-    ## It has 15 fields
+    ## Error in ogrInfo(dsn = dsn, layer = layer, encoding = encoding, use_iconv = use_iconv, : Cannot open data source
 
     # view slots available for the object
     slotNames(roads_HARV)
 
-    ## [1] "data"        "lines"       "bbox"        "proj4string"
+    ## Error in is(x, "classRepresentation"): object 'roads_HARV' not found
 
     # view all methods available for that object
     # methods(class = class(roads_HARV))
 
 
-## Stucture of a Lines Feature 
+## Stucture of a Lines Feature
 
 If we are working with a shapefile containing **line** data, then each line
 consists of 2 or more vertices that are connected. We can view each set of coordinates
@@ -167,71 +164,12 @@ for that object using `R`.
     # view the coordinates for each vertex, for the last feature in the spatial object
     roads_HARV@lines[13]
 
-    ## [[1]]
-    ## An object of class "Lines"
-    ## Slot "Lines":
-    ## [[1]]
-    ## An object of class "Line"
-    ## Slot "coords":
-    ##           [,1]    [,2]
-    ##  [1,] 732479.6 4713107
-    ##  [2,] 732485.9 4713115
-    ##  [3,] 732498.2 4713148
-    ##  [4,] 732496.7 4713211
-    ##  [5,] 732487.1 4713259
-    ##  [6,] 732486.9 4713279
-    ##  [7,] 732488.9 4713322
-    ##  [8,] 732491.1 4713349
-    ##  [9,] 732504.8 4713377
-    ## [10,] 732528.3 4713443
-    ## [11,] 732533.0 4713476
-    ## [12,] 732528.8 4713506
-    ## [13,] 732522.0 4713534
-    ## [14,] 732509.9 4713569
-    ## [15,] 732496.6 4713604
-    ## [16,] 732479.4 4713639
-    ## [17,] 732463.5 4713670
-    ## [18,] 732454.0 4713697
-    ## [19,] 732439.3 4713734
-    ## [20,] 732428.8 4713763
-    ## [21,] 732416.5 4713816
-    ## [22,] 732414.5 4713829
-    ## [23,] 732413.4 4713845
-    ## [24,] 732415.0 4713879
-    ## [25,] 732416.5 4713905
-    ## [26,] 732421.4 4713932
-    ## [27,] 732427.6 4713961
-    ## [28,] 732437.7 4713996
-    ## [29,] 732449.0 4714027
-    ## [30,] 732465.3 4714068
-    ## [31,] 732474.8 4714085
-    ## [32,] 732485.4 4714097
-    ## [33,] 732500.5 4714110
-    ## [34,] 732517.8 4714122
-    ## [35,] 732544.8 4714135
-    ## [36,] 732565.0 4714153
-    ## [37,] 732624.9 4714162
-    ## [38,] 732682.9 4714177
-    ## [39,] 732764.1 4714184
-    ## [40,] 732843.3 4714200
-    ## [41,] 732915.8 4714219
-    ## [42,] 732991.7 4714236
-    ## [43,] 733067.5 4714255
-    ## [44,] 733106.4 4714260
-    ## [45,] 733170.0 4714259
-    ## [46,] 733239.0 4714246
-    ## [47,] 733295.5 4714217
-    ## 
-    ## 
-    ## 
-    ## Slot "ID":
-    ## [1] "12"
+    ## Error in eval(expr, envir, enclos): object 'roads_HARV' not found
 
     # view the coordinates for the last feature in the spatial object
     roads_HARV@lines[14]
 
-    ## [[1]]
-    ## NULL
+    ## Error in eval(expr, envir, enclos): object 'roads_HARV' not found
 
 
 <div id="challenge" markdown="1">
@@ -240,27 +178,27 @@ Question - Why didn't `roads_HARV@lines[14]` return any vertex coordinates?
 
 ## Spatial Data Attributes
 
-Each object in a shapefile, is called a `feature`. Each `feature` has one or 
-more `attributes` associated with it. 
+Each object in a shapefile, is called a `feature`. Each `feature` has one or
+more `attributes` associated with it.
 
 Shapefile attributes are similar to fields or columns in a spreadsheet. Each row
 in the spreadsheet has a set of columns associated with it that describe the row
 element. In the case of a shapefile, each row represents a spatial object - for
-example, a road, represented as a line in a line shapefile, will have one "row" 
-of attributes associated with it. These attributes can include different types 
+example, a road, represented as a line in a line shapefile, will have one "row"
+of attributes associated with it. These attributes can include different types
 of information that describe shapefile `features`. Thus, a road,
 may have a name, length, number of lanes, speed limit, type of road and other
-attributes stored with it. 
+attributes stored with it.
 
 <figure>
     <a href="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png">
     <img src="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png"></a>
-    <figcaption>Each spatial feature in an R spatial object has the same set of 
+    <figcaption>Each spatial feature in an R spatial object has the same set of
     associated attributes that describe or characterize the feature.
     Attribute data are stored in a separate *.dbf file. Attribute data can be
     compared to a spreadsheet. Each row in a spreadsheet represents one feature
     in the spatial object.
-    Image Source: National Ecological Observatory Network (NEON) 
+    Image Source: National Ecological Observatory Network (NEON)
     </figcaption>
 </figure>
 
@@ -270,26 +208,11 @@ attributes stored with it.
     # note, the code below just looks at the first 3 features
     head(roads_HARV@data, 3)
 
-    ##   OBJECTID_1 OBJECTID       TYPE             NOTES MISCNOTES RULEID
-    ## 0         14       48 woods road Locust Opening Rd      <NA>      5
-    ## 1         40       91   footpath              <NA>      <NA>      6
-    ## 2         41      106   footpath              <NA>      <NA>      6
-    ##            MAPLABEL SHAPE_LENG             LABEL BIKEHORSE RESVEHICLE
-    ## 0 Locust Opening Rd  1297.3571 Locust Opening Rd         Y         R1
-    ## 1              <NA>   146.2998              <NA>         Y         R1
-    ## 2              <NA>   676.7180              <NA>         Y         R2
-    ##   RECMAP Shape_Le_1                            ResVehic_1
-    ## 0      Y  1297.1062    R1 - All Research Vehicles Allowed
-    ## 1      Y   146.2998    R1 - All Research Vehicles Allowed
-    ## 2      Y   676.7181 R2 - 4WD/High Clearance Vehicles Only
-    ##                    BicyclesHo
-    ## 0 Bicycles and Horses Allowed
-    ## 1 Bicycles and Horses Allowed
-    ## 2 Bicycles and Horses Allowed
+    ## Error in head(roads_HARV@data, 3): object 'roads_HARV' not found
 
-In the map below of the Harvard Forest field site, there are many different features 
-with different spatial object types. We will learn to create maps like this in 
-the 
+In the map below of the Harvard Forest field site, there are many different features
+with different spatial object types. We will learn to create maps like this in
+the
 [*Introduction to Working with Vector Data in R* tutorial series]({{ site.basurl }}/tutorial-series/vector-data-series/).
 
 <figure>
@@ -297,7 +220,7 @@ the
     <img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/plot-color.png"></a>
     <figcaption>The map above contains point and line format vector data. We will
     create a map like this in the vector data tutorial series.
-    Image Source: National Ecological Observatory Network (NEON) 
+    Image Source: National Ecological Observatory Network (NEON)
     </figcaption>
 </figure>
 
@@ -305,8 +228,8 @@ the
 
 ## Challenge: Shapefiles
 
-Have a look at the map above:  **Study Plots by Soil Type**. What is the minimum number of 
-shapefiles that are required to create this map? How do you know? 
+Have a look at the map above:  **Study Plots by Soil Type**. What is the minimum number of
+shapefiles that are required to create this map? How do you know?
 
 </div>
 
@@ -331,7 +254,7 @@ directory (folder) to open properly in a GIS, `R` or `Python` tool.
 Sometimes, a shapefile will have other associated files including:
 
 * `.prj`: the file that contains information on projection format including
-the coordinate system and projection information. It is a plain text file 
+the coordinate system and projection information. It is a plain text file
 describing the projection using well-known text (WKT) format.
 * `.sbn` and `.sbx`: the files that are a spatial index of the features.
 * `.shp.xml`: the file that is the geospatial metadata in XML format, (e.g.
@@ -344,14 +267,14 @@ file types together. And when you share a shapefile with a colleague, it is
 important to zip up all of these files into one package before you send it to
 them!
 
-We cover working with shapefiles in `R` in the 
+We cover working with shapefiles in `R` in the
 [*Introduction to Working With Vector Data in R* series](http://neondataskills.org/tutorial-series/vector-data-series/).
 
 ### Vector Data in .CSV Format
 
-The shapefile format is one (very common) way to store vector data. However, 
+The shapefile format is one (very common) way to store vector data. However,
 you may encounter is in other formats. For example, sometimes, point data are
-stored as a Comma Separated Value (.CSV) format. 
+stored as a Comma Separated Value (.CSV) format.
 
 
 We cover working with vector points in .csv format in the
@@ -360,7 +283,7 @@ We cover working with vector points in .csv format in the
 ## Raster Data
 
 Raster or "gridded" data are saved on a uniform grid and rendered on a map
-as pixels. Each pixel contains a value that represents an area on the Earth's 
+as pixels. Each pixel contains a value that represents an area on the Earth's
 surface.
 
 <figure>
@@ -374,49 +297,24 @@ surface.
 
 ### GeoTIFF
 
-There are many different raster data file formats. In this tutorial series, we 
-will focus on the `GeoTIFF`. The `GeoTIFF` format is similar to the `.tif` 
-format, however the `GeoTIFF` format stores additional spatial `metadata`. 
+There are many different raster data file formats. In this tutorial series, we
+will focus on the `GeoTIFF`. The `GeoTIFF` format is similar to the `.tif`
+format, however the `GeoTIFF` format stores additional spatial `metadata`.
 
 
     # view attributes for a geotif file
     GDALinfo("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
 
-    ## rows        1367 
-    ## columns     1697 
-    ## bands       1 
-    ## lower left origin.x        731453 
-    ## lower left origin.y        4712471 
-    ## res.x       1 
-    ## res.y       1 
-    ## ysign       -1 
-    ## oblique.x   0 
-    ## oblique.y   0 
-    ## driver      GTiff 
-    ## projection  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs 
-    ## file        NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif 
-    ## apparent band summary:
-    ##    GDType hasNoDataValue NoDataValue blockSize1 blockSize2
-    ## 1 Float64           TRUE       -9999          1       1697
-    ## apparent band statistics:
-    ##   Bmin  Bmax   Bmean      Bsd
-    ## 1    0 38.17 18.0978 5.321834
-    ## Metadata:
-    ## AREA_OR_POINT=Area
+    ## Error in .local(.Object, ...):
 
     # import geotiff
     chm_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
-    
+
+    ## Error in .rasterObjectFromFile(x, band = band, objecttype = "RasterLayer", : Cannot create a RasterLayer object from this file. (file does not exist)
+
     chm_HARV
 
-    ## class       : RasterLayer 
-    ## dimensions  : 1367, 1697, 2319799  (nrow, ncol, ncell)
-    ## resolution  : 1, 1  (x, y)
-    ## extent      : 731453, 733150, 4712471, 4713838  (xmin, xmax, ymin, ymax)
-    ## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
-    ## data source : /Users/lwasser/Documents/data/1_DataPortal_Workshop/1_WorkshopData/NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif 
-    ## names       : HARV_chmCrop 
-    ## values      : 0, 38.17  (min, max)
+    ## Error in eval(expr, envir, enclos): object 'chm_HARV' not found
 
 
 ### Metadata in .tif Files
@@ -430,19 +328,19 @@ tags can include the following raster metadata:
 4. The `resolution` of the data
 
 
-We will explore metadata in tif files in the next, tutorial - 
+We will explore metadata in tif files in the next, tutorial -
 [Spatial Intro 03: Data About Data -- Intro to Metadata File Formats and Structure]({{ site.baseurl }}R/metadata-file-formats-structures)
 
-IMPORTANT: just because a `.tif` file can store metadata tags, doesn't mean 
+IMPORTANT: just because a `.tif` file can store metadata tags, doesn't mean
 that metadata are always included! If the data creator doesn't actively add
-`.tif` tags, then they may not be there for us to use. 
+`.tif` tags, then they may not be there for us to use.
 
 ### Metadata - Saving .tif Files in R
 
 In `R`, and many other `GIS` tools, it's important to ensure that `.tif` tags
-are properly saved when you export a `.tif`. For example, when using the 
-`writeRaster()`function in `R`, if you do not specify the `NA` (noData) value 
-when you export a GeoTIFF, it will defaul to a different value which could be 
+are properly saved when you export a `.tif`. For example, when using the
+`writeRaster()`function in `R`, if you do not specify the `NA` (noData) value
+when you export a GeoTIFF, it will default to a different value which could be
 read incorrectly in other programs!
 
 
@@ -453,26 +351,25 @@ read incorrectly in other programs!
                                  datatype = "INT1U",  # the data type
                                  NAflag = -9999)  # your desired NA or noData value
 
-We cover writing `NA` values using the `writeRaster` function in R in 
+We cover writing `NA` values using the `writeRaster` function in R in
 [*Raster Calculations in R - Subtract One Raster from Another and Extract Pixel Values For Defined Locations* tutorial](http://neondataskills.org/R/Raster-Calculations-In-R).
 
-<i class="fa fa-star"></i> **Data Note:** `Tif tags` - metadata tags stored 
-within a `tif` or `GeoTIFF` file are also what your camera uses to store 
-information about how and when a picture was taken! And how your computer reads 
-this metadata and identifies, for example, the make and model of the camera or 
-the date the photo was taken. 
+<i class="fa fa-star"></i> **Data Note:** `Tif tags` - metadata tags stored
+within a `tif` or `GeoTIFF` file are also what your camera uses to store
+information about how and when a picture was taken! And how your computer reads
+this metadata and identifies, for example, the make and model of the camera or
+the date the photo was taken.
 {: .notice}
 
 ### Other Raster File Formats
 
 * **.asc:** A comma separated text file with a spatial heading.
 * **Hierarchical Data Format (HDF5):** An open file format that supports large,
-complex, heterogensous data. More on HDF5 formated rasters can be found in the
-NEON Data Skills [tutorials focusing on HDF5](http://neondataskills.org/HDF5/). 
+complex, heterogeneous data. More on HDF5 formated rasters can be found in the
+NEON Data Skills [tutorials focusing on HDF5](http://neondataskills.org/HDF5/).
 * **.grd:** An ESRI specific raster format.
 * **netCDF:**  
     + <a href="http://www.unidata.ucar.edu/software/netcdf/docs/faq.html" target="_blank">About netCDF (UCAR)</a>
     + <a href="https://publicwiki.deltares.nl/display/OET/Creating+a+netCDF+file+with+R" target="_blank">Create netCDF in R</a>
     + <a href="http://geog.uoregon.edu/bartlein/courses/geog607/Rmd/netCDF_01.htm" target="_blank">A tutorial for version 3 in R</a>
 * **GRIB:** <a href="http://luckgrib.com/tutorials/2015/07/23/what-is-grib.html" target="_blank">What is Grib?</a>
-

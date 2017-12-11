@@ -11,8 +11,8 @@ plot(DSM_HARV,
 ## ----challenge-know-the-data, echo=FALSE---------------------------------
 
 # Everything! We have no idea what this raster represents (what metric),
-# what the units are, what the scale represents, when it was collected, etc. 
-# When we create data it needs to be document sufficiently (and efficiently) 
+# what the units are, what the scale represents, when it was collected, etc.
+# When we create data it needs to be documented sufficiently (and efficiently)
 # for sharing with others.
 
 
@@ -66,7 +66,7 @@ crs(CHM.HARV)
 extent(CHM.HARV)
 
 # 2. the extent and CRS should be the same
-# 3. The extent and CRS are different. 
+# 3. The extent and CRS are different.
 ndvi1.HARV <- raster("NEON-DS-Landsat-NDVI/HARV/2011/ndvi/005_HARV_ndvi_crop.tif")
 crs(ndvi1.HARV)
 extent(ndvi1.HARV)
@@ -120,13 +120,13 @@ XCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@
 # grab y coordinate from the coverage information
 YCoord <- eml_HARV@dataset@coverage@geographicCoverage[[1]]@boundingCoordinates@northBoundingCoordinate@.Data
 
-# map <- get_map(location='Harvard', maptype = "terrain")
+# map <- get_map(location='Harvard', maptype="terrain")
 
 # plot the NW corner of the site.
-map <- get_map(location='massachusetts', maptype = "toner", zoom =8)
+map <- get_map(location='massachusetts', maptype="toner", zoom=8)
 
 ggmap(map, extent=TRUE) +
-  geom_point(aes(x=as.numeric(XCoord), y=as.numeric(YCoord)), 
+  geom_point(aes(x=as.numeric(XCoord), y=as.numeric(YCoord)),
              color="darkred", size=6, pch=18)
 
 
@@ -134,9 +134,9 @@ ggmap(map, extent=TRUE) +
 # Metadata Notes from hf001_10-15-m_Metadata.txt
 # 1. 2001-2015
 # 2. Emery Boos - located at the top of the document, email is available
-# 3. a lat long is available in the metadata at the top, we see the location # described as Prospect Hill Tract (Harvard Forest). 
+# 3. a lat long is available in the metadata at the top, we see the location # described as Prospect Hill Tract (Harvard Forest).
 # 4. 342 m elevation, the veg type is not clear in the metadata
-# 5. Found in the methods: Delayed melting of snow and ice (caused by problems with rain gage heater or heavy precipitation) is noted in log - daily values are corrected if necessary but 15-minute values are not. The gage may underestimate actual precipitation under windy or cold conditions.
+# 5. Found in the methods: Delayed melting of snow and ice (caused by problems with rain gage heater or heavy precipitation) is noted in log - daily values are corrected if necessary but 15-minute values are not. The gauge may underestimate actual precipitation under windy or cold conditions.
 # 6. this could be a discussion. things like units, time zone, etc are all useful
 # if accessed programmatically
 

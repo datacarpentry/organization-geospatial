@@ -6,19 +6,19 @@ date: 2015-10-26
 authors: [Leah A. Wasser, Megan A. Jones]
 contributors: [ ]
 dateCreated: 2015-10-23
-lastModified: 2016-03-11
+lastModified: 2017-12-11
 packagesLibraries: [ ]
-category: [self-paced-tutorial] 
+category: [self-paced-tutorial]
 tags: [R, spatial-data-gis]
 mainTag: spatial-data-management-series
 workshopSeries: [spatial-data-management-series]
-description: "This lesson covers the key spatial attributes that are needed to work with 
+description: "This lesson covers the key spatial attributes that are needed to work with
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
 code1: /R/dc-spatio-temporal-intro/04-intro-CRS-projection.R
 image:
   feature: NEONCarpentryHeader_2.png
   credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink: 
+  creditlink:
 permalink: R/intro-to-coordinate-reference-systems
 comments: true
 ---
@@ -27,7 +27,7 @@ comments: true
 
 ## About
 
-This lesson covers the key spatial attributes that are needed to work with 
+This lesson covers the key spatial attributes that are needed to work with
 spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution.
 
 **R Skill Level:** Beginner - you've got the basics of `R` down.
@@ -38,15 +38,14 @@ spatial data including: Coordinate Reference Systems (CRS), Extent and spatial r
 
 After completing this activity, you will:
 
-* The basic concept of what a Coordinate Reference System (`CRS`) is and how it
-impacts data processing, analysis and visualization.
+* appreciate the basic concept of what a Coordinate Reference System (`CRS`) is
+and how it impacts data processing, analysis and visualization.
 * Understand the basic differences between a geographic and a projected `CRS`.
-* Become familiar with the Universal Trans Mercator (UTM) and Geographic (WGS84) `CRS`s
-
+* Become familiar with the Universal Trans Mercator (UTM) and Geographic (WGS84) CRSs
 
 ## Things You’ll Need To Complete This Lesson
 
-To complete this lesson you will need the most current version of `R`, and 
+To complete this lesson you will need the most current version of `R`, and
 preferably, `RStudio` loaded on your computer.
 
 ### Install R Packages
@@ -57,7 +56,7 @@ preferably, `RStudio` loaded on your computer.
 
 ### Download Data
 
-If you want to follow along, please download 
+If you want to follow along, please download
 
 <a href="http://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/" target="_blank"  class="btn btn-success">
 Download "land" - Natural Earth Global Continent Boundary Layer</a>
@@ -72,13 +71,13 @@ Download all Graticules - Natural Earth Global Graticules Layer</a>
 **Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
 of a lesson series introducing
 [spatial data and data management in `R` ]({{ site.baseurl }}tutorial/URL).
-It is also part of a larger 
+It is also part of a larger
 [spatio-temporal Data Carpentry Workshop ]({{ site.baseurl }}workshops/spatio-temporal-workshop)
 that includes working with  
-[raster data in `R` ]({{ site.baseurl }}tutorial/spatial-raster-series),
-[vector data in `R` ]({{ site.baseurl }}tutorial/spatial-vector-series)
+[raster data in `R`]({{ site.baseurl }}tutorial/spatial-raster-series),
+[vector data in `R`]({{ site.baseurl }}tutorial/spatial-vector-series)
 and  
-[tabular time series in `R` ]({{ site.baseurl }}tutorial/tabular-time-series).
+[tabular time series in `R`]({{ site.baseurl }}tutorial/tabular-time-series).
 
 ****
 
@@ -92,12 +91,12 @@ QGIS documentation.</a>
 
 
 #### Getting Started with CRS
-Check out this short video highlighting how map projections can make continents 
+Check out this short video highlighting how map projections can make continents
 look proportionally larger or smaller than they actually are!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KUF_Ckv8HbE" frameborder="0" allowfullscreen></iframe>
 
-* For more on types of projections, visit 
+* For more on types of projections, visit
 <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/Datums/003r00000008000000/" target="_blank"> ESRI's ArcGIS reference on projection types.</a>.  
 * Read more about <a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank"> choosing a projection/datum.</a>
 
@@ -111,19 +110,19 @@ consists of an X and a Y value, located within a 2 (or more) -dimensional space.
 	<a href="http://open.senecac.on.ca/clea/label/projectImages/15_276_xy-grid.jpg">
 	<img src="http://open.senecac.on.ca/clea/label/projectImages/15_276_xy-grid.jpg"></a>
 	<figcaption> We use coordinate systems with X, Y (and sometimes Z axes) to
-	define the location of objects in space. 
+	define the location of objects in space.
 	Source: http://open.senecac.on.ca
 	</figcaption>
 </figure>
 
 While the above coordinate system is 2-dimensional, we live on a 3-dimensional
 earth that happens to be "round". To define the location of objects on the earth, which is round, we need
-a coordinate system that adapts to the Earth's shape. When we make maps on paper 
-or on a flat computer screen, we move from a 3-Dimensional space (the globe) to 
+a coordinate system that adapts to the Earth's shape. When we make maps on paper
+or on a flat computer screen, we move from a 3-Dimensional space (the globe) to
 a 2-Dimensional space (our computer
 screens or a piece of paper). The components of the CRS define how the
 "flattening" of data that exists in a 3-D globe space. The CRS also defines the
-the coordinate system itself. 
+the coordinate system itself.
 
 <figure>
 	<a href="http://ayresriverblog.com/wp-content/uploads/2011/05/image.png">
@@ -134,77 +133,87 @@ the coordinate system itself.
 	</figcaption>
 </figure>
 
-> A  coordinate reference system (CRS) is a 
-coordinate-based local, regional or global system used to locate geographical 
+> A coordinate reference system (CRS) is a
+coordinate-based local, regional or global system used to locate geographical
 entities. -- Wikipedia
 
 ## The Components of a CRS
 
-The coordinate reference system is made up of several key components: 
+The coordinate reference system is made up of several key components:
 
-* **Coodinate System:** the X, Y grid upon which our data is overlayed and how we define
-where a point is located in space.
-* **Horizontal and vertical units:** The units used to define the grid along the 
+* **Coordinate System:** the X, Y grid upon which our data is overlayed and how we define where a point is located in space.
+* **Horizontal and vertical units:** The units used to define the grid along the
 x, y (and z) axis.
-* **Datum:** A modeled version of the shape of the earth which defines the 
-origin used to place the coordinate system in space. We will explain this further, 
+* **Datum:** A modeled version of the shape of the earth which defines the
+origin used to place the coordinate system in space. We will explain this further,
 below.
-* **Projection Information:** the mathematical equation used to flatten objects 
+* **Projection Information:** the mathematical equation used to flatten objects
 that are on a round surface (e.g. the earth) so we can view them on a flat surface
 (e.g. our computer screens or a paper map).
 
 
 ## Why CRS is Important
 
-It is important to understand the coordinate system that your data uses - 
+It is important to understand the coordinate system that your data uses -
 particularly if you are working with different data stored in different coordinate
-systems. If you have data from the same location that are stored in different 
+systems. If you have data from the same location that are stored in different
 coordinate reference systems, **they will not line up in any GIS or other program**
-unless you have a program like ArcGIS or QGIS that supports **projection on the 
+unless you have a program like ArcGIS or QGIS that supports **projection on the
 fly**. Even if you work in a tool that supports projection on the fly, you will
 want to all of your data in the same projection for performing analysis and processing
 tasks.
 
 <i class="fa fa-star"></i> **Data Tip:** Spatialreference.org provides an
-excellent <a href="http://spatialreference.org/ref/epsg/" target="_blank">online 
+excellent <a href="http://spatialreference.org/ref/epsg/" target="_blank">online
 library of CRS information.</a>
 {: .notice}
 
 ### Coordinate System & Units
 
 We can define a spatial location, such as a plot location, using an x- and a
-y-value - similar to our cartesian coordinate system displayed in the figure, 
-above. 
+y-value - similar to our cartesian coordinate system displayed in the figure,
+above.
 
-For example, the map below, generated in `R` with `ggplot2` shows all of the 
+For example, the map below, generated in `R` with `ggplot2` shows all of the
 continents in the world, in a `Geographic` Coordinate Reference System. The
 units are Degrees and the coordinate system itself is **latitude** and
 **longitude** with the `origin` being the location where the equator meets
-the central meridian on the globe (0,0). 
+the central meridian on the globe (0,0).
 
 
 
     library(rgdal)
     library(ggplot2)
+
+    ## 
+    ## Attaching package: 'ggplot2'
+
+    ## The following object is masked from 'package:raster':
+    ## 
+    ##     calc
+
     library(rgeos)
+
+    ## rgeos version: 0.3-26, (SVN revision 560)
+    ##  GEOS runtime version: 3.5.1-CAPI-1.9.1 r4246 
+    ##  Linking to sp version: 1.2-5 
+    ##  Polygon checking: TRUE
+
     library(raster)
     
     # be sure to set your working directory
     # setwd("~/Documents/data")
     
     # read shapefile
-    worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land", 
+    worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land",
                           layer="ne_110m_land")
 
-    ## OGR data source with driver: ESRI Shapefile 
-    ## Source: "Global/Boundaries/ne_110m_land", layer: "ne_110m_land"
-    ## with 127 features
-    ## It has 2 fields
+    ## Error in ogrInfo(dsn = dsn, layer = layer, encoding = encoding, use_iconv = use_iconv, : Cannot open data source
 
     # convert to dataframe
     worldBound_df <- fortify(worldBound)  
 
-    ## Regions defined for each Polygons
+    ## Error in fortify(worldBound): object 'worldBound' not found
 
     # plot map
     worldMap <- ggplot(worldBound_df, aes(long,lat, group=group)) +
@@ -212,10 +221,12 @@ the central meridian on the globe (0,0).
       xlab("Longitude (Degrees)") + ylab("Latitude (Degrees)") +
       coord_equal() +
       ggtitle("Global Map - Geographic Coordinate System - WGS84 Datum\n Units: Degrees - Latitude / Longitude")
-    
+
+    ## Error in ggplot(worldBound_df, aes(long, lat, group = group)): object 'worldBound_df' not found
+
     worldMap
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/lat-long-example-1.png)
+    ## Error in eval(expr, envir, enclos): object 'worldMap' not found
 
 We can add three coordinate locations to our map. Note that the UNITS are
 in decimal **degrees** (latitude, longitude):
@@ -237,22 +248,24 @@ boundary layer.
     # loc.df <- fortify(loc)  
     
     # add a point to the map
-    mapLocations <- worldMap + geom_point(data=loc.df, 
+    mapLocations <- worldMap + geom_point(data=loc.df,
                             aes(x=lon, y=lat, group=NULL),
                           colour = "springgreen",
                           size=5)
-    
+
+    ## Error in eval(expr, envir, enclos): object 'worldMap' not found
+
     mapLocations + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-lat-long-locations-1.png)
+    ## Error in eval(expr, envir, enclos): object 'mapLocations' not found
 
 ## Geographic CRS - The Good & The Less Good
 
-Geographic coordinate systems in decimal degrees are helpful when we need to 
+Geographic coordinate systems in decimal degrees are helpful when we need to
 locate places on the Earth. However, latitude and longitude
-locations are not located using uniform measurement units. Thus, geographic 
-CRSs are not ideal for measuring distance. This is why other projected `CRS` 
-have been developed. 
+locations are not located using uniform measurement units. Thus, geographic
+CRSs are not ideal for measuring distance. This is why other projected `CRS`
+have been developed.
 
 
 <figure>
@@ -267,8 +280,8 @@ have been developed.
 
 ## Projected CRS - Robinson
 
-We can view the same data above, in another CRS - `Robinson`. `Robinson` is a 
-**projected** `CRS`. Notice that the country boundaries on the map - have a 
+We can view the same data above, in another CRS - `Robinson`. `Robinson` is a
+**projected** `CRS`. Notice that the country boundaries on the map - have a
 different shape compared to the map that we created above in the `CRS`:  
 **Geographic lat/long WGS84**.
 
@@ -276,10 +289,12 @@ different shape compared to the map that we created above in the `CRS`:
     # reproject from longlat to robinson
     worldBound_robin <- spTransform(worldBound,
                                     CRS("+proj=robin"))
-    
+
+    ## Error in spTransform(worldBound, CRS("+proj=robin")): object 'worldBound' not found
+
     worldBound_df_robin <- fortify(worldBound_robin)
 
-    ## Regions defined for each Polygons
+    ## Error in fortify(worldBound_robin): object 'worldBound_robin' not found
 
     # force R to plot x and y values without abbrev
     options(scipen=100)
@@ -289,28 +304,32 @@ different shape compared to the map that we created above in the `CRS`:
       labs(title="World map (robinson)") +
       xlab("X Coordinates (meters)") + ylab("Y Coordinates (meters)") +
       coord_equal()
-    
+
+    ## Error in ggplot(worldBound_df_robin, aes(long, lat, group = group)): object 'worldBound_df_robin' not found
+
     robMap
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/global-map-robinson-1.png)
+    ## Error in eval(expr, envir, enclos): object 'robMap' not found
 
 Now what happens if you try to add the same Lat / Long coordinate locations that
 we used above, to our map, with the `CRS` of `Robinsons`?
 
 
     # add a point to the map
-    newMap <- robMap + geom_point(data=loc.df, 
+    newMap <- robMap + geom_point(data=loc.df,
                           aes(x=lon, y=lat, group=NULL),
                           colour = "springgreen",
                           size=5)
-    
+
+    ## Error in eval(expr, envir, enclos): object 'robMap' not found
+
     newMap + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/add-locations-robinson-1.png)
+    ## Error in eval(expr, envir, enclos): object 'newMap' not found
 
-Notice above that when we try to add lat/long coordinates in degrees, to a map 
-in a different `CRS`, that the points are not in the correct location. We need 
-to first convert the points to the  new projection - a process often referred 
+Notice above that when we try to add lat/long coordinates in degrees, to a map
+in a different `CRS`, that the points are not in the correct location. We need
+to first convert the points to the  new projection - a process often referred
 to as **reprojection** but performed by the `spTransform()` function in `R`.
 
 
@@ -325,72 +344,100 @@ to as **reprojection** but performed by the `spTransform()` function in `R`.
     # convert to spatial Points data frame
     loc.spdf <- SpatialPointsDataFrame(coords = loc.df, data=loc.df,
                                 proj4string=crs(worldBound))  
-    
+
+    ## Error in crs(worldBound): object 'worldBound' not found
+
     loc.spdf
 
-    ## class       : SpatialPointsDataFrame 
-    ## features    : 3 
-    ## extent      : -105.2519, 10.75, 39.6167, 59.95  (xmin, xmax, ymin, ymax)
-    ## coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
-    ## variables   : 2
-    ## names       :       lon,     lat 
-    ## min values  : -105.2519, 39.6167 
-    ## max values  :     10.75,   59.95
+    ## Error in eval(expr, envir, enclos): object 'loc.spdf' not found
 
     # reproject data to Robinson
     loc.spdf.rob <- spTransform(loc.spdf, CRSobj = CRS("+proj=robin"))
-    
+
+    ## Error in spTransform(loc.spdf, CRSobj = CRS("+proj=robin")): object 'loc.spdf' not found
+
     loc.rob.df <- as.data.frame(cbind(loc.spdf.rob$lon, loc.spdf.rob$lat))
+
+    ## Error in cbind(loc.spdf.rob$lon, loc.spdf.rob$lat): object 'loc.spdf.rob' not found
+
     # rename each column
     names(loc.rob.df ) <- c("X","Y")
-    
+
+    ## Error in names(loc.rob.df) <- c("X", "Y"): object 'loc.rob.df' not found
+
     # convert spatial object to a data.frame for ggplot
     loc.rob <- fortify(loc.rob.df)
-    
+
+    ## Error in fortify(loc.rob.df): object 'loc.rob.df' not found
+
     # notice the coordinate system in the Robinson projection (CRS) is DIFFERENT
     # from the coordinate values for the same locations in a geographic CRS.
     loc.rob
 
-    ##            X       Y
-    ## 1 -9162993.5 4279263
-    ## 2   811462.5 6331141
-    ## 3   260256.6 4235608
+    ## Error in eval(expr, envir, enclos): object 'loc.rob' not found
 
     # add a point to the map
-    newMap <- robMap + geom_point(data=loc.rob, 
+    newMap <- robMap + geom_point(data=loc.rob,
                           aes(x=X, y=Y, group=NULL),
                           colour = "springgreen",
                           size=5)
-    
+
+    ## Error in eval(expr, envir, enclos): object 'robMap' not found
+
     newMap + theme(legend.position="none")
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/reproject-robinson-1.png)
+    ## Error in eval(expr, envir, enclos): object 'newMap' not found
 
 ## Compare Maps
 
-Both of the plots above look visually different and also use a different 
+Both of the plots above look visually different and also use a different
 coordinate system. Let's look at both, side by side, with the actual **graticules**
-or latitude and longitude lines rendered on the map. 
+or latitude and longitude lines rendered on the map.
 
 NOTE: The code for this map can
-be found in the .R document that is available for download at the bottom of this 
+be found in the .R document that is available for download at the bottom of this
 page!
 
-![ ]({{ site.baseurl }}/images/rfigs/dc-spatio-temporal-intro/04-intro-CRS-projection/plot-w-graticules-1.png)
+
+    ## Error in theme(line = element_blank(), line = element_blank(), axis.text.x = element_blank(), : formal argument "line" matched by multiple actual arguments
+
+    ## Error in ogrInfo(dsn = dsn, layer = layer, encoding = encoding, use_iconv = use_iconv, : Cannot open data source
+
+    ## Error in fortify(graticule): object 'graticule' not found
+
+    ## Error in ogrInfo(dsn = dsn, layer = layer, encoding = encoding, use_iconv = use_iconv, : Cannot open data source
+
+    ## Error in fortify(data): object 'worldBound_df' not found
+
+    ## Error in eval(expr, envir, enclos): object 'latLongMap' not found
+
+    ## Error in spTransform(graticule, CRS("+proj=robin")): object 'graticule' not found
+
+    ## Error in fortify(graticule_robin): object 'graticule_robin' not found
+
+    ## Error in (function (classes, fdef, mtable) : unable to find an inherited method for function 'spTransform' for signature '"standardGeneric", "CRS"'
+
+    ## Error in fortify(bbox_robin): object 'bbox_robin' not found
+
+    ## Error in ggplot(bbox_robin_df, aes(long, lat, group = group)): object 'bbox_robin_df' not found
+
+    ## Error in eval(expr, envir, enclos): object 'finalRobMap' not found
+
+    ## Error in arrangeGrob(...): object 'latLongMap' not found
 
 
 ## Why Multiple CRS?
 
-You may be wondering, why bother with different `CRS`s if it makes our
+You may be wondering, why bother with different CRSs if it makes our
 analysis more complicated? Well, each `CRS` is optimized to best represent:
 
 * Shape and/or
 * Scale / distance and/or
-* Area 
+* Area
 
 of features in the data. And no one CRS is great at optimizing shape, distance AND
-area. Some `CRS`s are optimized for shape, some distance, some area. Some 
-`CRS`s are also optimized for particular regions - 
+area. Some CRSs are optimized for shape, some distance, some area. Some
+CRSs are also optimized for particular regions -
 for instance the United States, or Europe. Discussing `CRS` as it optimizes shape,
 distance and area is beyond the scope of this tutorial, but it's important to
 understand that the `CRS` that you chose for your data, will impact working with
@@ -399,7 +446,7 @@ the data!
 <div id="challenge" markdown="1">
 ## Challenge
 
-1. Compare the maps of the globe above. What do you notice about the shape of the 
+1. Compare the maps of the globe above. What do you notice about the shape of the
 various countries. Are there any signs of distortion in certain areas on either
 map? Which one is better?
 
@@ -418,13 +465,13 @@ the graphic below optimize?
     <a href="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
     <img src="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg">
     </a>
-    
+
     <figcaption>Maps of the United States in different CRS including Mercator
-    (upper left), Albers equal area (lower left), UTM (Upper RIGHT) and 
-    WGS84 Geographic (Lower RIGHT). 
+    (upper left), Albers equal area (lower left), UTM (Upper RIGHT) and
+    WGS84 Geographic (Lower RIGHT).
     Notice the differences in shape and orientation associated with each
     CRS. These differences are a direct result of the
-    calculations used to "flatten" the data onto a two dimensional map. 
+    calculations used to "flatten" the data onto a two dimensional map.
     Source: opennews.org</figcaption>
 </figure>
 
@@ -435,13 +482,12 @@ the graphic below optimize?
 The above maps provide examples of the two main types of coordinate systems:
 
 1. **Geographic coordinate systems:** coordinate systems that span the entire
-globe (e.g. latitude / longitude). 
-2. **Projected coordinate Systems:** coordinate systems that are localized to 
+globe (e.g. latitude / longitude).
+2. **Projected coordinate Systems:** coordinate systems that are localized to
 minimize visual distortion in a particular region (e.g. Robinson, UTM, State Plane)
 
-In the next tutorial, we will discuss the differences between these `CRS`s in 
+In the next tutorial, we will discuss the differences between these CRSs in
 more detail. Feel
-free to skip over this section and come back to it with fresh eyes if the 
-concept of a `CRS` is becoming too complex. It's easisest to take on in 
+free to skip over this section and come back to it with fresh eyes if the
+concept of a `CRS` is becoming too complex. It's easisest to take on in
 bite sized pieces!
-

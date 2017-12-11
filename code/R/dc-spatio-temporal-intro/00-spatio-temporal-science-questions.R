@@ -1,7 +1,7 @@
-## ----field-site-map, include=TRUE, echo=FALSE, results="hide", message =FALSE, warning=FALSE----
+## ----Field-Site-Map, include=TRUE, echo=FALSE, results="hide", message =FALSE, warning=FALSE----
 
 # create a map that shows the location of BOTH field sites.
-# add a legend with a point for each site. 
+# add a legend with a point for each site.
 library(rgdal)
 # Read the Shapefile
 State.Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
@@ -35,8 +35,8 @@ points(x=-119.73228,y=37.10878,
 # add a legend to our map
 legend("bottomleft",
        legend=c("Harvard Forest (HARV)","San Joachin (SJER)"),
-       pch=19, 
-       bty="n", 
+       pch=19,
+       bty="n",
        col=c("magenta", "darkgreen"),
        cex=1.2)
 
@@ -53,18 +53,18 @@ legend("bottomleft",
 
 ## ----explore-landsat-data, echo=FALSE------------------------------------
 # Answers for Harvard Forest; will vary by location
-# 1. Landsat 8 (good quality), Landsat 7 EMT+ SLC-off (some problem areas), 
+# 1. Landsat 8 (good quality), Landsat 7 EMT+ SLC-off (some problem areas),
 # Landsat 7 EMT+ SLC-on (one strip of missing data), Landsat 4-5 (good quality),
-# Landsat 1-5 (missing large amounts of data). 
+# Landsat 1-5 (missing large amounts of data).
 
 
 ## ----challenge-code-HARV-external-data, echo=FALSE-----------------------
 
-# 1) GIS data, Maps, Remote Sensing, 
+# 1) GIS data, Maps, Remote Sensing,
 # Note: Many research stations (not all) have GIS type of data available.
 
 # 2) Lots of text on pages & EML files
 
-# 3) Some of the file formats found: .csv, EML, .pdf, .shp, .zip, .tiff, 
+# 3) Some of the file formats found: .csv, EML, .pdf, .shp, .zip, .tiff,
 
 
