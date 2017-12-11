@@ -8,7 +8,7 @@ baseurl:   /r-spatial-data-management-intro
 
 # use this when working locally
 # just uncomment the first localhost.
-url: http://localhost:4000
+# url: http://localhost:4000
 # baseurl: http://localhost:4000
 
 #turning off disqus by removing our username
