@@ -10,13 +10,14 @@ require(knitr)
 
 #################### Set up Input Variables #############################
 #Inputs - Where the git repo is on your computer
-gitRepoPath <-"~/Documents/GitHub/NEON-R-Spatio-Temporal-Data-and-Management-Intro/"
+gitRepoPath <- getwd()
+wd <- getwd()
 
 #jekyll will only render md posts that begin with a date. Add one.
 add.date <- "2016-01-12-SI"
 
 #set working dir - this is where the data are located
-wd <- "~/Documents/data/1_DataPortal_Workshop/1_WorkshopData"
+# wd <- "~/Documents/data/1_DataPortal_Workshop/1_WorkshopData"
 
 
 ################### CONFIG BELOW IS REQUIRED BY JEKYLL - DON"T CHANGE ##########
@@ -27,11 +28,11 @@ setwd(wd)
 subDir <- "dc-spatio-temporal-intro/"
 
 #don't change - this is the posts dir location required by jekyll
-postsDir <- paste0("_posts/R/", subDir)
-codeDir <- paste0("code/R/", subDir)
+postsDir <- paste0("/_posts/R/", subDir)
+codeDir <- paste0("/code/R/", subDir)
 
 # images path
-imagePath <- paste0("images/rfigs/", subDir)
+imagePath <- paste0("/images/rfigs/", subDir)
 
 # set the base url for images and links in the md file
 base.url="{{ site.baseurl }}/"
@@ -101,13 +102,13 @@ rmd.files <- list.files(gitRepoPath, pattern="*.Rmd", full.names = TRUE )
 #################### Set up Image Directory #############################
 
 # just render one file
-rmd.files <- rmd.files[5]
+# rmd.files <- rmd.files[5]
 
 for (files in rmd.files) {
-  
+  # files <- rmd.files[1]
   # copy .Rmd file to data working directory 
-  file.copy(from = files, to=wd, overwrite = TRUE)
-  input=basename(files)
+  # file.copy(from = files, to = wd, overwrite = TRUE)
+  input <- basename(files)
   
   # setup path to images
   # print(paste0(imagePath, sub(".Rmd$", "", basename(input)), "/"))
@@ -120,20 +121,20 @@ for (files in rmd.files) {
   render_markdown(strict = TRUE)
   # create the markdown file name - add a date at the beginning to Jekyll recognizes
   # it as a post
-  mdFile <- paste0(gitRepoPath,postsDir,add.date ,sub(".Rmd$", "", input), ".md")
+  mdFile <- paste0(gitRepoPath, postsDir, add.date, sub(".Rmd$", "", input), ".md")
   
   # knit Rmd to jekyll flavored md format 
   knit(input, output = mdFile, envir = parent.frame())
   
   # COPY image directory, rmd file OVER to the GIT SITE###
   # only copy over if there are images for the lesson
-  if (dir.exists(paste0(wd,"/",fig.path))){
-    # copy image directory over
-    file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
-  }
+  # if (dir.exists(paste0(wd,"/",fig.path))){
+  #   # copy image directory over
+  #   file.copy(paste0(wd,"/",fig.path), paste0(gitRepoPath,imagePath), recursive=TRUE)
+  # }
   
   # copy rmd file to the rmd directory on git
-  file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
+  # file.copy(paste0(wd,"/",basename(files)), gitRepoPath, recursive=TRUE)
   
   # delete local repo copies of RMD files just so things are cleaned up??
   
@@ -146,7 +147,7 @@ for (files in rmd.files) {
   
   # CLEAN UP
   # remove Rmd file from data working directory
-  unlink(basename(files))
+  # unlink(basename(files))
   
   # print when file is knit
   doneWith <- paste0("processed: ",files)
@@ -157,6 +158,6 @@ for (files in rmd.files) {
 ###### Local image cleanup #####
 
 # clean up working directory images dir (remove all sub dirs)
-unlink(paste0(wd,"/",imagePath,"*"), recursive = TRUE)
+# unlink(paste0(wd,"/",imagePath,"*"), recursive = TRUE)
 
 ########################### end script  
