@@ -4,3 +4,4 @@ _config.yml
 .Rproj.user
 .Rhistory
 Gemfile.lock
+_episodes_rmd/data*
