@@ -1,30 +1,24 @@
 ---
-layout: post
-title: "Spatial Intro 03: Data About Data -- Intro to Metadata File Formats and Structure"
-date:   2015-10-27
-authors: [Leah A. Wasser, Megan A. Jones]
-contributors: [ ]
-dateCreated: 2015-10-27
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [raster, rgdal, eml, devtools]
-category: [self-paced-tutorial]
-tags: [R, spatial-data-gis, metadata]
-mainTag: spatial-data-management-series
-workshopSeries: [spatial-data-management-series]
-description: "This tutorial covers what metadata are and why we need to work
-with metadata in the context of spatio-temporal data. It
-covers the three common metadata formats: text file
-format, web page format and Ecological Metadata Language (EML)."
-code1: /R/dc-spatio-temporal-intro/03-metadata-formats-and-files.R
-image:
-  feature: NEONCarpentryHeader_2.png
-  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink:
-permalink: /R/metadata-file-formats-structures
-comments: true
+title: "Data About Data -- Intro to Metadata File Formats and Structure"
+teaching: 30
+exercises: 30
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
 ---
 
-{% include _toc.html %}
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("03-")
+```
+
+
 
 This tutorial covers what metadata are and why we need to work
 with metadata in the context of spatio-temporal data. It
@@ -32,8 +26,6 @@ covers the three common metadata formats: text file
 format, web page format and Ecological Metadata Language (EML).
 
 **R Skill Level:** Beginner
-
-<div id="objectives" markdown="1">
 
 # Goals / Objectives
 
@@ -62,9 +54,6 @@ the data.
 
 * [More on Packages in R - Adapted from Software Carpentry.]({{site.baseurl}}R/Packages-In-R/)
 
-****
-
-{% include/_greyBox-wd-rscript.html %}
 
 
 ### Additional Resources
@@ -73,12 +62,11 @@ the data.
 * Information on the
 <a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank"> `raster` R package</a>
 
-</div>
 
 ```{r elevation-map, include=TRUE, results="hide", echo=FALSE}
 library(raster)
 # render DSM for lesson content background
-DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # code output here - DEM rendered on the screen
 plot(DSM_HARV,
@@ -87,23 +75,22 @@ plot(DSM_HARV,
 ```
 
 
-<div id="challenge" markdown="1">
-## Challenge: What Do I Know About My Data?
-
-The figure above was created from a dataset that you are given called:
-`HARV_dsmCrop.tif`.
-
-* What other information would you like to know about the data
-used to create the above map before you would feel comfortable using this data
-to address a research question?
-* Think about the data used to create this plot. If you had to share this data
-with a colleague, what information do they need to know, to efficiently work
-with it?
+> ## What Do I Know About My Data?
+>
+> The figure above was created from a dataset that you are given called:
+> `HARV_dsmCrop.tif`.
+>
+> * What other information would you like to know about the data
+> used to create the above map before you would feel comfortable using this data
+> to address a research question?
+> * Think about the data used to create this plot. If you had to share this data
+> with a colleague, what information do they need to know, to efficiently work
+> with it?
+{: .challenge}
 
 How does thinking about this plot and what you'd like to know about it influence
 how you think about sharing data with a colleague?
 
-</div>
 
 ```{r challenge-know-the-data, echo=FALSE}
 
@@ -251,11 +238,8 @@ in `R`. We cover this in more detail, in the
 library(raster)
 library(rgdal)
 
-# set working directory to ensure R can find the file we wish to import
-# setwd("working-dir-path-here")
-
 # read in a GeoTIFF raster file (.tif) using the raster() function
-DSM_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # view Coordinate Reference System (note, this often contains horizontal units!)
 crs(DSM_HARV)
@@ -320,13 +304,13 @@ Compare the extent and crs to the CHM and DSM. Are they different?
 ```{r challenge-extent, echo=FALSE}
 
 # 1. they should create both objects
-CHM.HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
+CHM.HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
 crs(CHM.HARV)
 extent(CHM.HARV)
 
 # 2. the extent and CRS should be the same
 # 3. The extent and CRS are different.
-ndvi1.HARV <- raster("NEON-DS-Landsat-NDVI/HARV/2011/ndvi/005_HARV_ndvi_crop.tif")
+ndvi1.HARV <- raster("data/NEON-DS-Landsat-NDVI/HARV/2011/ndvi/005_HARV_ndvi_crop.tif")
 crs(ndvi1.HARV)
 extent(ndvi1.HARV)
 ```
@@ -583,19 +567,18 @@ There are many resources available to support metadata documentation including:
 an open-source program that can be used to enter metadataa to be stored in a
 file that conforms to the Ecological Metadata Language (EML) specifications.
 
-<div id="challenge" markdown="1">
-## Challenge: Find & Explore Metadata
 
-Refer back to the list of possible data sources at the end of
-[*Answer a Spatio-temporal Research Question with Data: Where to Start?*]({{ site.baseurl}}/R/spatio-temporal-research-questions#resources-for-locating-spatial-and-ecological-data).
-Choose a site that is relevant to your interests and then find a dataset. For
-this data set find the metadata and answer the following questions:
-
-1. What format are the metadata in?
-2. What metric is collected? Does it have units? If so, what?
-3. Who collected the data? Using what type of instruments?
-
-</div>
+> ## Find & Explore Metadata
+> 
+> Refer back to the list of possible data sources at the end of
+> [*Answer a Spatio-temporal Research Question with Data: Where to Start?*]({{ site.baseurl}}/R/spatio-temporal-research-questions#resources-for-locating-spatial-and-ecological-data).
+> Choose a site that is relevant to your interests and then find a dataset. For
+> this data set find the metadata and answer the following questions:
+> 
+> 1. What format are the metadata in?
+> 2. What metric is collected? Does it have units? If so, what?
+> 3. Who collected the data? Using what type of instruments?
+{: .challenge}
 
 ## ATBD vs Metadata
 

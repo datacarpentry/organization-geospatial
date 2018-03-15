@@ -1,29 +1,21 @@
 ---
-layout: post
-title: "Spatial Intro 00: Answer a Spatio-temporal Research Question with Data - Where to Start?"
-date:   2015-10-30
-authors: [Megan A. Jones, Leah A. Wasser]
-contributors: [Natalie Robinson ]
-dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [ ]
-category: [self-paced-tutorial]
-tags: [R, spatial-data-gis]
-mainTag: spatial-data-management-series
-workshopSeries: [spatial-data-management-series]
-description: "This tutorial provides an overview of finding spatial data to
-support a research question. It covers some of the key data sources,
-providers and places that one can use to find data."
-code1: /R/dc-spatio-temporal-intro/00-spatio-temporal-science-questions.R
-image:
-  feature: NEONCarpentryHeader_2.png
-  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink:
-permalink: /R/spatio-temporal-research-questions
-comments: true
+title: "Answer a Spatio-temporal Research Question with Data - Where to Start?"
+teaching: 30
+exercises: 30
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
 ---
 
-{% include _toc.html %}
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("00-")
+```
 
 This tutorial provides an overview of finding spatial data to support your
 research question. It covers some of the key data sources, providers and
@@ -33,7 +25,7 @@ places that you can look to find data for your study are / research question.
 spatio-temporal tutorial series. The concepts outlined in this tutorial, relate to many other
 programming languages and data types!
 
-<div id="objectives" markdown="1">
+
 
 # Goals / Objectives
 
@@ -45,11 +37,6 @@ answer a spatio-temporal research question.
 [Work with Spatio-temporal Data in R series](http://neondataskills.org/tutorial-series/neon-dc-phenology-series/).
 * Understand that one can work with data from different sites to compare areas.
 
-****
-
-{% include/_greyBox-wd-rscript.html %}
-
-</div>
 
 <figure>
 	<a href="https://xxxx">
@@ -126,16 +113,16 @@ located in the central region of the US state of California.
 
 Both sites are mapped below:
 
-```{r Field-Site-Map, include=TRUE, echo=FALSE, results="hide", message =FALSE, warning=FALSE}
+```{r Field-Site-Map, include=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
 
 # create a map that shows the location of BOTH field sites.
 # add a legend with a point for each site.
 library(rgdal)
 # Read the Shapefile
-State.Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
+State.Boundary.US <- readOGR("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers",
           "US-State-Boundaries-Census-2014")
 
-Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
+Boundary.US <- readOGR("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers",
           "US-Boundary-Dissolved-States")
 # palette(terrain.colors((50)))
 # palette()
