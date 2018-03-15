@@ -1,30 +1,24 @@
 ---
-layout: post
-title: "Spatial Intro 07: Cleaning Data -- Missing and Bad Data Values"
-date:   2015-10-23
-authors: []
-contributors: [ ]
-dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [ ]
-category: [self-paced-tutorial]
-tags: [R, spatial-data-gis]
-mainTag: spatial-data-management-series
-workshopSeries: [spatial-data-management-series]
-description: "This tutorial covers spatial data cleaning - specifically dealing with missing
-(NA / NAN) values and bad values when working with spatial data in R."
-code1: /R/dc-spatio-temporal-intro/08-clean-data-bad-and-missing-values.R
-image:
-  feature: NEONCarpentryHeader_2.png
-  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink:
-permalink: R/missing-bad-data
-comments: true
+title: "Cleaning Data -- Missing and Bad Data Values"
+teaching: 30
+exercises: 30
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
 ---
 
-{% include _toc.html %}
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("08-")
+```
 
 ## About
+
 Add description.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
@@ -50,11 +44,7 @@ preferably, RStudio loaded on your computer.
 
 ### Download Data
 EDIT AS NEEDED
-{% include/dataSubsets/_data_Airborne-Remote-Sensing.html %}
 
-****
-
-{% include/_greyBox-wd-rscript.html %}
 
 **Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
 of a lesson series introducing
@@ -121,8 +111,8 @@ function. By asking for the `sum()` of `is.na()` we can see how many NA / missin
 values we have.
 
 REPLACE CODE TO BE FOR THE SAME SMALLISH DATA SET USED FOR BAD DATA VALUES BELOW
-```{r missing values}
 
+```{r missing values}
 # Check for NA values
 sum(is.na(harMet15.09.11$datetime))
 sum(is.na(harMet15.09.11$airt))
@@ -136,6 +126,7 @@ The results above tell us there are `NoData` values in the `datetime` column.
 However, there are `NoData` values in other variables.  
 
 ### Deal with NoData Values
+
 When we encounter `NoData` values (blank, NaN, -9999, etc.) in our data we
 need to decide how to deal with them. By default `R` treats `NoData` values
 designated

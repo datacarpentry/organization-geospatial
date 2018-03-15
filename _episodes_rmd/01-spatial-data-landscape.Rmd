@@ -1,30 +1,22 @@
 ---
-layout: post
-title: "Spatial Intro 01: The Spatial Data Landscape"
-date:   2015-10-29
-authors: []
-contributors: [ ]
-dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [ ]
-category: [self-paced-tutorial]
-tags: [R, spatial-data-gis]
-mainTag: spatial-data-management-series
-workshopSeries: [spatial-data-management-series]
-description: "This tutorial introduces the spatial data tool landscape. It
-covers the types of gui and non-gui tools that are available. The tutorial
-explores the benefits (and challenges) of using a non-gui (coding) approach to
-method development that supports clear documentation of methods."
-code1: /R/dc-spatio-temporal-intro/01-spatial-data-landscape.R
-image:
-  feature: NEONCarpentryHeader_2.png
-  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink:
-permalink: /R/spatial-data-landscape
-comments: true
+title: "The Spatial Data Landscape"
+teaching: 30
+exercises: 30
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
 ---
 
-{% include _toc.html %}
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("01-")
+```
 
 This tutorial introduces the spatial data tool landscape. It
 covers the types of gui and non-gui tools that are available. The tutorial
@@ -35,7 +27,6 @@ method development that supports clear documentation of methods.
 intensive tutorials in the `R` programming language, however, the conceptual
 topics presented here relate to all programming languages!
 
-<div id="objectives" markdown="1">
 
 # Goals / Objectives
 
@@ -43,9 +34,6 @@ After completing this activity, you will:
 
 * Be aware of the wide variety of tools available to work with spatial data.
 
-****
-
-{% include/_greyBox-wd-rscript.html %}
 
 ### Additional Resources
 

@@ -1,29 +1,24 @@
 ---
-layout: post
-title: "Spatial Intro 08: Intro to Spatial Metadata -- Spatial Resolution and
-Spatial Extent"
-date: 2015-10-22
-authors: [Leah A. Wasser, Megan A. Jones]
-contributors: [ ]
-dateCreated: 2015-10-23
-lastModified: `r format(Sys.time(), "%Y-%m-%d")`
-packagesLibraries: [ ]
-category: [self-paced-tutorial]
-tags: [R, spatial-data-gis]
-mainTag: spatial-data-management-series
-workshopSeries: [spatial-data-management-series]
-description: "This lesson covers the key spatial attributes that are needed to work with
-spatial data including: Coordinate Reference Systems (CRS), Extent and spatial resolution."
-code1: /R/dc-spatio-temporal-intro/07-spatial-resolution-extent.R
-image:
-  feature: NEONCarpentryHeader_2.png
-  credit: A collaboration between the National Ecological Observatory Network (NEON) and Data Carpentry
-  creditlink:
-permalink: R/key-spatial-metadata
-comments: true
+title: "Intro to Spatial Metadata -- Spatial Resolution and Spatial Extent"
+teaching: 30
+exercises: 30
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
 ---
 
-{% include _toc.html %}
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("07-")
+```
+
+
 
 ## About
 
@@ -32,7 +27,7 @@ spatial data including: Coordinate Reference Systems (CRS), Extent and spatial r
 
 **R Skill Level:** Beginner - you've got the basics of `R` down.
 
-<div id="objectives" markdown="1">
+
 
 # Goals / Objectives
 
@@ -57,9 +52,6 @@ preferably, RStudio loaded on your computer.
 ### Download Data
 
 
-****
-
-{% include/_greyBox-wd-rscript.html %}
 
 **Spatial-Temporal Data & Data Management Lesson Series:** This lesson is part
 of a lesson series introducing
@@ -72,15 +64,13 @@ that includes working with
 and  
 [tabular time series in `R` ]({{ site.baseurl }}tutorial/tabular-time-series).
 
-****
-
 ### Additional Resources
 * Read more on coordinate systems in the
 <a href="http://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/coordinate_reference_systems.html" target="_blank">
 QGIS documentation.</a>
 * NEON Data Skills Lesson <a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/" target="_blank">The Relationship Between Raster Resolution, Spatial extent & Number of Pixels - in R</a>
 
-</div>
+
 
 ## Spatial Metadata
 There are three core spatial metadata elements that are crucial to understand
@@ -194,7 +184,7 @@ library(raster)
 library(rgdal)
 
 # Load raster in an R object called 'DEM'
-DEM <- raster("DigitalTerrainModel/SJER2013_DTM.tif")  
+DEM <- raster("data/NEON-DS-Airborne-Remote-Sensing/SJER/DTM/SJER_dtmCrop.tif")  
 
 # View raster attributes
 DEM
