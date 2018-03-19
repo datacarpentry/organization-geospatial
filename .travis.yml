@@ -9,7 +9,7 @@ before_install:
   - echo -e '[checking]\nsslverify=0' > ~/.linkchecker/linkcheckerrc
   - sudo apt-get install -y python-pip libgdal-dev libproj-dev
   - sudo apt-add-repository -y ppa:brightbox/ruby-ng
-  - sudo apt-get update; sudo apt-get install -y ruby2.4 ruby2.4-dev zlib1g-dev
+  - sudo apt-get update && sudo apt-get install -y ruby2.4 ruby2.4-dev zlib1g-dev
   - sudo gem2.4 install jekyll
   - sudo pip install update-copyright
   - R -q -e 'install.packages("remotes"); remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages(); tic::before_install()'
@@ -22,7 +22,10 @@ after_failure: R -q -e 'tic::after_failure()'
 before_deploy: R -q -e 'tic::before_deploy()'
 deploy:
   provider: script
-  script: R -q -e 'tic::deploy()'
+  script:
+    - which jekyll
+    - jekyll -v
+    - R -q -e 'tic::deploy()'
   on:
     all_branches: true
 after_deploy: R -q -e 'tic::after_deploy()'
