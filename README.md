@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/datacarpentry/r-spatial-data-management-intro.svg?branch=master)](https://travis-ci.org/datacarpentry/r-spatial-data-management-intro)
+
 # NEON-R-spatial-raster
 
 NEON and Data Carpentry lesson for Raster spatial data
