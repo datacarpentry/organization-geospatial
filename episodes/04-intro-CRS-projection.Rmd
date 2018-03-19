@@ -235,8 +235,8 @@ have been developed.
 
 
 <figure>
-	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif">
-	<img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif"></a>
+	<a href="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif">
+	<img src="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/LatLongfromGlobeCenter-ESRI.gif"></a>
 	<figcaption>A geographic coordinate system locates latitude and longitude
 	location using angles. Thus the spacing of each line of latitude moving north
 	and south is not uniform.

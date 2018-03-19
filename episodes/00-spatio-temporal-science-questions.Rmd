@@ -177,8 +177,8 @@ achieve this goal we need data that:
 sites that are located 3,000+ miles apart!
 
 <figure>
-	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI_Plot.png">
-	<img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI_Plot.png"></a>
+	<a href="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/NDVI_Plot.png">
+	<img src="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/NDVI_Plot.png"></a>
 	<figcaption>
 	An example plot of NDVI (Normalized Difference Vegetative Index). We see when the
 	vegetation is greener (a larger value) throughout a year or a growing season.
@@ -300,8 +300,8 @@ the year. In this figure, each plot presents a snapshot of the NDVI values
 across an area of 120m x 150m.
 
 <figure>
-	<a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI-Landsat-RS.png">
-	<img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/NDVI-Landsat-RS.png"></a>
+	<a href="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/NDVI-Landsat-RS.png">
+	<img src="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/NDVI-Landsat-RS.png"></a>
 	<figcaption> Remote sensing data can be used to measure the greening and
 	browning of plants over larger areas. Because these data are often collected
 	repeatedly using satellites orbiting the earth, it provides a nice time series
