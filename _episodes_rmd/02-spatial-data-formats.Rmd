@@ -88,8 +88,8 @@ of the vertices determines the type of vector that we are working
 with: **point**, **line** or **polygon**.
 
 <figure>
-    <a href="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png">
-    <img src="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png"></a>
+    <a href="{{ site.baseurl }}/fig/dc-spatial-vector/pnt_line_poly.png">
+    <img src="{{ site.baseurl }}/fig/dc-spatial-vector/pnt_line_poly.png"></a>
     <figcaption> There are 3 types of vector objects: points, lines or
     polygons. Each vector object type has a different structure.
     Image Source: National Ecological Observatory Network (NEON)
@@ -174,8 +174,8 @@ may have a name, length, number of lanes, speed limit, type of road and other
 attributes stored with it.
 
 <figure>
-    <a href="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png">
-    <img src="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png"></a>
+    <a href="{{ site.baseurl }}/fig/dc-spatial-vector/Attribute_Table.png">
+    <img src="{{ site.baseurl }}/fig/dc-spatial-vector/Attribute_Table.png"></a>
     <figcaption>Each spatial feature in an R spatial object has the same set of
     associated attributes that describe or characterize the feature.
     Attribute data are stored in a separate *.dbf file. Attribute data can be
@@ -199,8 +199,8 @@ the
 [*Introduction to Working with Vector Data in R* tutorial series]({{ site.basurl }}/tutorial-series/vector-data-series/).
 
 <figure>
-    <a href="{{ site.baseurl }}/images/dc-spatio-temporal-intro/plot-color.png">
-    <img src="{{ site.baseurl }}/images/dc-spatio-temporal-intro/plot-color.png"></a>
+    <a href="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/plot-color.png">
+    <img src="{{ site.baseurl }}/fig/dc-spatio-temporal-intro/plot-color.png"></a>
     <figcaption>The map above contains point and line format vector data. We will
     create a map like this in the vector data tutorial series.
     Image Source: National Ecological Observatory Network (NEON)
@@ -279,8 +279,8 @@ as pixels. Each pixel contains a value that represents an area on the Earth's
 surface.
 
 <figure>
-    <a href="{{site.baseurl}}/images/dc-spatial-raster/raster_concept.png">
-    <img src="{{site.baseurl}}/images/dc-spatial-raster/raster_concept.png">
+    <a href="{{site.baseurl}}/fig/dc-spatial-raster/raster_concept.png">
+    <img src="{{site.baseurl}}/fig/dc-spatial-raster/raster_concept.png">
     </a>
     <figcaption> Source: National Ecological Observatory Network (NEON)
     </figcaption>
