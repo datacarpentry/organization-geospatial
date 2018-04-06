@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/datacarpentry/organization-geospatial-intro.svg?branch=master)](https://travis-ci.org/datacarpentry/organization-geospatial-intro)
+[![Build Status](https://travis-ci.org/datacarpentry/organization-geospatial.svg?branch=master)](https://travis-ci.org/datacarpentry/organization-geospatial)
 
 # Geospatial Data Organization
 
