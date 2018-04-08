@@ -1,0 +1,56 @@
+---
+title: "Organising a spatial data project"
+teaching: 30
+exercises: ??
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("00-")
+```
+
+### Install R Packages
+
+* **raster:** `install.packages("raster")`
+* **rgdal:** `install.packages("rgdal")`
+
+### Additional Resources
+
+* Wikipedia article on
+<a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
+GIS file formats.</a>
+
+## Get Started With Your Project -  File Organization
+
+Organising a project involving spatial data is no different to any other data analysis project, although you may require more disk space. Using an RStudio Project and organising all your files within that is a good first step.
+
+Additional Resource: https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
+
+When we work with large, spatio-temporal data, it is a good idea to store large data sets in a general data directory that you can easily access from many projects. If you are working in a collaborative environment, use a shared data directory *(NOTE: not sure how best to reconcile these (or cloud envs) with RProject's standalone, self-contained paradigm).*
+
+Within the project, keeping spatial data inputs and processed outputs in separate directories is a good idea. For more complex workflows, you may even want to set up an 'intermediate' directory to hold partially-processed data.
+
+### One Dataset - many files
+
+Remember that some GIS file formats are really 3-6 files that need to be kept together and have the same name, e.g. shapefiles. It may be tempting to store those components separately, but your spatial data will be unusable if you do that.
+
+### Naming conventions
+
+It is generally best to avoid renaming downloaded spatial data, so that a clear connection is maintained with the point of truth. You may otherwise find yourself wondering whether file_A really is just a copy of Official_file_on_website or not.
+
+For datasets you generate, its worth taking the time to come up with a naming convention that works for your project, and sticking to it. File names don't have to be long, they just have to be long enough that you can tell what the file is about. Date generated, topic, and whether a product is intermediate or final are good bits of information to keep in a file name.
+
+Additional Resource: https://speakerdeck.com/jennybc/how-to-name-files
+
+(tip: bear in mind that you can accidentally fill up a hard drive by using dates in file names (and especially date and time). 
+
+
+
