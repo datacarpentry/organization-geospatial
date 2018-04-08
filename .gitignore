@@ -5,3 +5,5 @@ _config.yml
 .Rhistory
 Gemfile.lock
 _episodes_rmd/data*
+_episodes/
+fig/
