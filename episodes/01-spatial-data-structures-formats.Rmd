@@ -1,0 +1,100 @@
+---
+title: "Introduction to Spatial Data"
+teaching: 30
+exercises: ??
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("00-")
+```
+
+This tutorial provides an overview of key spatial data concepts, including structures and common storage and transfer formats.
+
+**Skill Level:** This tutorial provides conceptual background for the Data Carpentry
+geospatial tutorial series. The concepts outlined in this tutorial relate to many 
+programming languages and data types!
+
+
+# Goals / Objectives
+
+After completing this activity, you will:
+
+* Understand the data structures used to represent spatial information, including their strengths and weaknesses
+* Become familiar with common storage and transfer formats
+* Understand how those formats are currently represented in R and in Python **(too much???)**
+
+
+# Structures: Raster and Vector
+
+## Raster
+
+Potential high detail
+'unstructured' beyond grid organisation
+
+
+## Vector
+
+Highlights important features/patterns
+Can build networks/connections
+Loss of detail
+
+
+## Coordinate Reference Systems
+
+Not truly spatial until its connected to a real world location (e.g. raster of the Mona Lisa, CAD vector representation of a microprocessor)
+
+Mention PROJ and GDAL for translating data
+
+CRS is really a whole lesson so know when to stop here.
+
+## Metadata
+
+!!
+
+# Common storage formats
+
+What is required for a storage format to be good? Ability to store CRS and metadata along with the data itself, ???
+
+## Raster
+
+Geotiff, ??? NetCDF?
+
+## Vector
+
+Shp GPKG TAB GDB
+
+Network-aware formats??
+
+## Both
+
+GeoPDF? Geospatial Databases.
+
+# Common transfer formats
+
+Some GIS applications have their own on-disk formats, e.g. GRASS, SAGA. If only one app can open a file, its not a good choice as a transfer standard.
+
+Talk about GDAL here
+
+Some simplified transfer standards eg KML, GeoJSON, csv, even plain text (GPS NMEA sentences). Mention reasons why these might be useful
+
+note that many not truly spatial, or not fully spatial e.g. GeoJSON only supports one CRS
+
+
+# What about spatial data in R or python?
+
+R can consume (almost) anything that GDAL can read, using the rgdal package.
+
+all converted to a limited set of structures defined by sp, sf, or raster (or that point pattern stuff...)
+
+idk what python does???
+
+Next lesson, setting up a spatial data project in R
