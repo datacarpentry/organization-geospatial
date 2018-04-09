@@ -38,18 +38,52 @@ All of the topics below are covered in more detail in later episodes. This episo
 
 ## Raster
 
-Potential high detail
-'unstructured' beyond grid organisation - no implicit weighting of information.
-Can be continuous or categorical
-Imagery as a special case
+The raster data structure is a regular grid of equally-sized cells, each holding a single numeric value. The cell values can represent a continuous surface (e.g. elevation) or a categorical classification (e.g. land use). If this sounds familiar, it is because this data structure is very common: its how we represent any digital image. A geospatial raster is only different from a digital photo in that it is accompanied by spatial information that connects the data to a particular location. This includes the raster's extent and cell size, the number of rows and columns, and its coordinate reference system (CRS, more on this later). 
 
+Raster data has some important advantages:
+
+  * representation of continuous surfaces
+  * potentially very high levels of detail
+  * Data is 'unweighted' across its extent - the geometry doesn't implicitly highlight
+    features (wording?? unbiased?)
+  * Cell-by-cell calculations can be very fast and efficient
+  
+The downsides of raster data are
+
+  * very large file sizes as cell size gets smaller
+  * currently popular formats don't embed metadata well (more on this later!)
+  * can be difficult to represent complex information
+  
+Satellite imagery is probably the most complex raster representation you will work with. Satellites like Landsat capture information at multiple wavelengths, from both human-visible and infrared bands. Final products are split into specific wavelength ranges, so to make a colour image of the land surface, one may have to combine red, green, and blue datasets. 
+
+_nb shld talk to Lovelace et al about borrowing some images from - https://bookdown.org/robinlovelace/geocompr/spatial-class.html#raster-data, for both r and v_
 
 ## Vector
 
-The geometry structures highlight important features/patterns in themselves - what did we choose to represent with the points, lines or polygons? 
-Can build networks/connections with some 
-Potential loss of detail compared to raster
+Vector data structures aim to represent specific features on the Earth's surface, and then assign attributes to those features. All vector datasets are based around coordinate points - usually paired x,y values in 2D space. There are many possible way to arrange and connect a set of points, so some standards have been developed to keep vector formats interoperable. The most common standard you will encounter is OGC Simple Features.
 
+Simple Features defines 17 types of vector geometry, and the vast majority of data uses just three of these classes - Points, Lines, and Polygons. Points are assembled into more complex structures by straight lines only.
+
+<image>
+
+A Point is just a single x,y coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one. The points defining lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.
+
+Vector data has some important advantages:
+
+  * The geometry itself contains information about what the dataset creator thought was important
+  * The geometry structures hold information in themselves - why choose point over polygon, for instance?
+  * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc
+  * Data storage can be very efficient compared to rasters
+  
+The downsides of vector data are
+
+  * potential loss of detail compared to raster
+  * potential bias in datasets - what didn't get recorded?
+  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math
+
+Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.
+
+_<worth mentioning arc-node topology yet? probs leave until specific vector lesson>_
 
 ## Coordinate Reference Systems
 
