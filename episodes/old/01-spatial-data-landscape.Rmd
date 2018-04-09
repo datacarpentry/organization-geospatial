@@ -34,7 +34,7 @@ After completing this activity, you will:
 
 * Be aware of the wide variety of tools available to work with spatial data.
 
-
+ 
 ### Additional Resources
 
 For a list of tools to work with spatial data, visit:
