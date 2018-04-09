@@ -32,29 +32,31 @@ After completing this activity, you will:
 * Become familiar with common storage and transfer formats
 * Understand how those formats are currently represented in R and in Python **(too much???)**
 
+All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started with a spatial data project. 
 
 # Structures: Raster and Vector
 
 ## Raster
 
 Potential high detail
-'unstructured' beyond grid organisation
+'unstructured' beyond grid organisation - no implicit weighting of information.
+Can be continuous or categorical
+Imagery as a special case
 
 
 ## Vector
 
-Highlights important features/patterns
-Can build networks/connections
-Loss of detail
+The geometry structures highlight important features/patterns in themselves - what did we choose to represent with the points, lines or polygons? 
+Can build networks/connections with some 
+Potential loss of detail compared to raster
 
 
 ## Coordinate Reference Systems
 
-Not truly spatial until its connected to a real world location (e.g. raster of the Mona Lisa, CAD vector representation of a microprocessor)
+Not truly spatial until its connected to a real world location (e.g. vs a raster of the Mona Lisa, or CAD vector representation of a microprocessor)
 
 Mention PROJ and GDAL for translating data
 
-CRS is really a whole lesson so know when to stop here.
 
 ## Metadata
 
@@ -91,9 +93,9 @@ note that many not truly spatial, or not fully spatial e.g. GeoJSON only support
 
 # What about spatial data in R or python?
 
-R can consume (almost) anything that GDAL can read, using the rgdal package.
+R spatial packages use GDAL so they can consume any format that GDAL can read/write.
 
-all converted to a limited set of structures defined by sp, sf, or raster (or that point pattern stuff...)
+all inputs are converted to a limited set of structures defined by sp, sf, or raster (or that point pattern stuff...?)
 
 idk what python does???
 

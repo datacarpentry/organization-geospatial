@@ -1,0 +1,95 @@
+---
+title: "The Geospatial Landscape"
+teaching: 20
+exercises: ??
+questions:
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - TBD
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+source("../setup.R")
+knitr_fig_path("00-")
+```
+
+
+# Goals / Objectives
+
+After completing this activity, you will:
+
+  * Understand the difference between GUI and CLI approaches to computing, and their relative strengths and weaknesses 
+  * Be aware of the many GIS applications currently available
+  * Be aware of R packages that can interface with these apps
+
+## GUI vs CLI
+
+The earliest computer systems operated without a Graphical User Interface (GUI), relying only on the Command-Line Interface (CLI). Since mapping and spatial analysis are strongly visual tasks, GIS applications benefited greatly from the emergence of GUIs and quickly came to rely heavily on them. Most modern GIS applications have very complex GUIs, with all common tools and procedures accessed via buttons and menus. 
+
+GUI Pros
+
+  - Tools all laid out in front of you
+  - Complex commands are easy to build
+  - Don't need to remember fiddly syntax rules
+  - Cartography/visualisation is more intuitive and flexible
+  
+GUI Cons
+
+  - Can't record actions and replay
+  - Mostly not designed for batch-processing files
+  - Limited ability to customise functions or write your own
+  - Intimidating interface for new users - so many buttons!
+  
+R and Python are, as programming languages, CLI tools at their core. However, using these languages together with an IDE (Integrated Development Environment) application allows some GUI features to become part of your workflow. IDEs allow the best of both worlds. They provide a place to visually examine data and other software objects, interact with your file system, and draw plots and maps, but your activities are still command-driven - recordable and reproducible.
+
+There are several IDEs available for R, but RStudio is by far the most well-developed. Python has a wider variety to choose from, with PyDev and PyCharm popular options.
+
+Traditional GIS apps are also moving back towards providing a scripting environment for users, further blurring the CLI/GUI divide.
+
+## Commercial License vs Open Source
+
+GIS applications are available under a wide range of licenses, and for commercial software, price points. Some of the most common are listed below.
+
+### Commercial software 
+
+  * [ESRI (Environmental Systems Research Institute)](https://www.esri.com/en-us/home) is an international supplier of geographic information system (GIS) software, web GIS and geodatabase management applications. ESRI provides several licenced platforms for performing GIS, including [ArcGIS](https://www.arcgis.com/home/index.html), [ArcGIS Online](http://www.esri.com/software/arcgis/arcgisonline), and [Portal for ArcGIS](http://server.arcgis.com/en/portal/) a stand alone version of ArGIS Online which you host. ESRI welcomes development on their platforms through their [DevLabs](https://developers.arcgis.com/). ArcGIS software can be installed using [Chef Cookbooks from Github](https://github.com/Esri/arcgis-cookbook).
+  * Pitney Bowes produce [MapInfo Professional](https://www.pitneybowes.com/us/location-intelligence/geographic-information-systems/mapinfo-pro.html), which was one of the earliest desktop GIS programs on the market. 
+  * [Hexagon Geospatial Power Portfolio](https://www.hexagongeospatial.com/products/power-portfolio) includes many geospatial tools including ERDAS Imagine, a powerful remotely sensed image processing platform.
+  * [Manifold](http://www.manifold.net/) is a desktop GIS that emphasies speed through the use of parallel and GPU processing. 
+  
+  
+** a combined graphic with logos from all the above apps would be good here **
+
+
+### FOSS software 
+
+The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports several actively managed GIS platforms:
+
+  * [Quantum GIS](https://www.qgis.org/en/site/) QGIS is a professional GIS application that is built on top of and proud to be itself Free and Open Source Software (FOSS). QGIS is written in Python, but has several interfaces written in R including [RQGIS](https://cran.r-project.org/web/packages/RQGIS/index.html) 
+  * [GRASS GIS](https://grass.osgeo.org/), commonly referred to as GRASS (Geographic Resources Analysis Support System), is a FOSS-GIS software suite used for geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization. GRASS GIS is currently used in academic and commercial settings around the world, as well as by many governmental agencies and environmental consulting companies. It is a founding member of the Open Source Geospatial Foundation (OSGeo).
+  
+(bonus content - GRASS Promo vid, mid 1980's, narrated by William Shatner: https://www.youtube.com/watch?v=cZia3ShzTWM)
+
+  * [SAGA-GIS](http://www.saga-gis.org/en/index.html), or System for Automated Geoscientific Analyses, is a FOSS-GIS application developed by a small team of researchers from the Dept. of Physical Geography, Göttingen, and the Dept. of Physical Geography, Hamburg. SAGA has been designed for an easy and effective implementation of spatial algorithms, offers a comprehensive, growing set of geoscientific methods, provides an easily approachable user interface with many visualisation options, and runs under Windows and Linux operating systems.
+  * [PostGIS](https://postgis.net/) is a geospatial extension to the PostGreSQL relational database.
+
+
+
+<img src="https://qgisblog.files.wordpress.com/2016/12/qgis-logo_anita02.png" height="100"/>
+<img src="https://grass.osgeo.org/uploads/images/logo_variant_nobg.png" height="100"/>
+
+<img src="http://gisgeography.com/wp-content/uploads/2016/01/saga-gis-logo.png" height="100"/>
+
+** a combined graphic with logos from all the above apps would be good here **
+
+## Online GUI
+
+  * Google has created [Google Earth Engine](https://earthengine.google.com/) which combines a multi-petabyte catalog of satellite imagery and geospatial datasets with planetary-scale analysis capabilities and makes it available for scientists, researchers, and developers to detect changes, map trends, and quantify differences on the Earth's surface. [Earth Engine API](https://developers.google.com/earth-engine/) runs in both Python and JavaScript.
+  * [ArcGIS Online](http://www.arcgis.com/features/features.html) provides access to thousands of maps and base layers.
+
+<img src="https://earthengine.google.com/static/images/GoogleEarthEngine_Grey_108.png" height="100"/>
+<img src="https://wp.stolaf.edu/it/files/2017/02/ArcGISOnlineLogoT.png" height="75"/>
