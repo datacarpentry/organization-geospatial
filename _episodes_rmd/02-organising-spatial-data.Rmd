@@ -19,8 +19,7 @@ knitr_fig_path("00-")
 
 ### Additional Resources
 
-* Wikipedia article on
-<a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
+* Wikipedia article on <a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">
 GIS file formats.</a>
 
 ## Get Started With Your Project -  File Organization

@@ -86,7 +86,7 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
 
 ** a combined graphic with logos from all the above apps would be good here **
 
-## Online GUI
+## Online GUI/ Cloud computing
 
   * Google has created [Google Earth Engine](https://earthengine.google.com/) which combines a multi-petabyte catalog of satellite imagery and geospatial datasets with planetary-scale analysis capabilities and makes it available for scientists, researchers, and developers to detect changes, map trends, and quantify differences on the Earth's surface. [Earth Engine API](https://developers.google.com/earth-engine/) runs in both Python and JavaScript.
   * [ArcGIS Online](http://www.arcgis.com/features/features.html) provides access to thousands of maps and base layers.
