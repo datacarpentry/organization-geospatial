@@ -64,7 +64,7 @@ Vector data structures aim to represent specific features on the Earth's surface
 
 Simple Features defines 17 types of vector geometry, and the vast majority of data uses just three of these classes - Points, Lines, and Polygons. Points are assembled into more complex structures by straight lines only.
 
-<image>
+< insert image >
 
 A Point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points defining lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
 
