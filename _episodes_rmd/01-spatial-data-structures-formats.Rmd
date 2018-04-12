@@ -66,145 +66,145 @@ Simple Features defines 17 types of vector geometry, and the vast majority of da
 
 <image>
 
-A Point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points defining lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.
+A Point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points defining lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
 
-Vector data has some important advantages:
+Vector data has some important advantages:  
 
-  * The geometry itself contains information about what the dataset creator thought was important
-  * The geometry structures hold information in themselves - why choose point over polygon, for instance?
-  * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc
-  * Data storage can be very efficient compared to rasters
+  * The geometry itself contains information about what the dataset creator thought was important  
+  * The geometry structures hold information in themselves - why choose point over polygon, for instance?  
+  * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc  
+  * Data storage can be very efficient compared to rasters  
   
-The downsides of vector data are
+The downsides of vector data are  
 
-  * potential loss of detail compared to raster
-  * potential bias in datasets - what didn't get recorded?
-  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math
+  * potential loss of detail compared to raster  
+  * potential bias in datasets - what didn't get recorded?  
+  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
 
-Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.
+Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.  
 
-_<worth mentioning arc-node topology yet? probs leave until specific vector lesson>_
+_<worth mentioning arc-node topology yet? probs leave until specific vector lesson>_  
 
-## Coordinate Reference Systems
+## Coordinate Reference Systems  
 
-A data structure cannot be considered geospatial unless it is accompanied by spatial reference system (SRS) information, in a format that geospatial applications can use to display and manipulate the data correctly. SRS information connects data to the Earth's surface using a mathematical model.
+A data structure cannot be considered geospatial unless it is accompanied by spatial reference system (SRS) information, in a format that geospatial applications can use to display and manipulate the data correctly. SRS information connects data to the Earth's surface using a mathematical model.  
 
-Note: 'CRS' ('coordinate reference system') is a common acronym used interchangeably with SRS.
+Note: 'CRS' ('coordinate reference system') is a common acronym used interchangeably with SRS.  
 
-CRS information has three components:
+CRS information has three components:  
 
-CRS = Datum + Projection + Additional Parameters _formatting_
+CRS = Datum + Projection + Additional Parameters _formatting_  
 
-A common analogy employed to teach projections is the orange peel analogy. If you imagine that the earth is an orange, how you peel it and then flatten the peel is similar to how projections get made. We will also use it here.
+A common analogy employed to teach projections is the orange peel analogy. If you imagine that the earth is an orange, how you peel it and then flatten the peel is similar to how projections get made. We will also use it here.  
 
-### Datum
+### Datum  
 
-A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and defines the starting point (i.e. where is (0,0)?) so the angles reference a meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can also be local, fit to a particular area of the globe, but ill-fitting outside the area of intended use.
+A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and defines the starting point (i.e. where is (0,0)?) so the angles reference a meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can also be local, fit to a particular area of the globe, but ill-fitting outside the area of intended use.  
 
-When datums are used by themselves they are called a Geographic Coordinate System.
+When datums are used by themselves they are called a Geographic Coordinate System.  
 
-_Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_
+_Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_  
 
-<image of citrus from https://github.com/MicheleTobias/R-Projections-Workshop >
+<image of citrus from https://github.com/MicheleTobias/R-Projections-Workshop>  
 
-### Projection
+### Projection  
 
-A Projection is a mathematical transformation of the angular measurements on a round earth to a flat surface (i.e. paper or a computer screen).
+A Projection is a mathematical transformation of the angular measurements on a round earth to a flat surface (i.e. paper or a computer screen).  
 
-The units associated with a given projection are usually linear (feet, meters, etc.).
+The units associated with a given projection are usually linear (feet, meters, etc.).  
 
-Many people use the term "projection" when they actually mean "coordinate reference system". 
+Many people use the term "projection" when they actually mean "coordinate reference system".   
 
-_Orange Peel Analogy: a projeciton is how you peel your orange and then flatten the peel._
+_Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel._  
 
-< image of peeled orange with globe drawn on from  https://github.com/MicheleTobias/R-Projections-Workshop >
+< image of peeled orange with globe drawn on from  https://github.com/MicheleTobias/R-Projections-Workshop >  
 
-### Additional Parameters
+### Additional Parameters  
 
-Additional parameters are often necessary to create the full coordinate reference system. For example, one common additional parameter is a definition of the center of the map. The number of required additional parameters depends on what is needed by each specific projection.
+Additional parameters are often necessary to create the full coordinate reference system. For example, one common additional parameter is a definition of the center of the map. The number of required additional parameters depends on what is needed by each specific projection.  
 
-_Orange Peel Analogy: an additional parameter could include a definition of the location of the stem of the fruit._
+_Orange Peel Analogy: an additional parameter could include a definition of the location of the stem of the fruit._  
 
-### Which CRS/projection should I use?
+### Which CRS/projection should I use?  
 
-To decide if a projection is right for your data, answer these questions:
+To decide if a projection is right for your data, answer these questions:  
 
-  *  What is the area of minimal distortion?
-  *  What aspect of the data does it preserve?
+  *  What is the area of minimal distortion?  
+  *  What aspect of the data does it preserve?  
 
-[University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.
+[University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
 
-Comments from the pros: Take the time to figure identify a projection that is suited for your project. You don't have to stick to the ones that are popular.
+Comments from the pros: Take the time to figure identify a projection that is suited for your project. You don't have to stick to the ones that are popular.  
 
-### Describing Coordinate Reference Systems
+### Describing Coordinate Reference Systems  
 
-There are several common systems in use for storing and transmitting CRS information. These systems must generally comply with ISO 19111. In order of increasing complexity and customisability, they are EPSG, PROJ, and WKT.
+There are several common systems in use for storing and transmitting CRS information. These systems must generally comply with ISO 19111. In order of increasing complexity and customisability, they are EPSG, PROJ, and WKT.  
 
-#### EPSG
+#### EPSG  
 
-The [EPSG system](http://www.epsg.org) is a database of CRS information maintained by the International Association of Oil and Gas Producers. The dataset contains both CRS definitions and information on how to safely convert data from one CRS to another. Using EPSG is easy as every CRS has a integer identifier, e.g. WGS84 is EPSG:4326. The downside is that you can only use the CRSs EPSG defines and cannot customise them.
+The [EPSG system](http://www.epsg.org) is a database of CRS information maintained by the International Association of Oil and Gas Producers. The dataset contains both CRS definitions and information on how to safely convert data from one CRS to another. Using EPSG is easy as every CRS has a integer identifier, e.g. WGS84 is EPSG:4326. The downside is that you can only use the CRSs EPSG defines and cannot customise them.  
 
-EPSG codes can be translated to and from other representational systems. The website spatialreference.org holds the data in many formats.
+EPSG codes can be translated to and from other representational systems. The website spatialreference.org holds the data in many formats.  
 
-Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).
+Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).  
 
-#### OGC Well-known text
+#### OGC Well-known text  
 
-CRS information is often embedded in geospatial data files using the OGC Well-known Text format, which is a nested list of geodetic parameters. The structure of the information is [defined here](http://www.opengeospatial.org/standards/wkt-crs). WKT is valuable in that the CRS information is more transparent than in EPSG, but can be difficult to read and compare.
+CRS information is often embedded in geospatial data files using the OGC Well-known Text format, which is a nested list of geodetic parameters. The structure of the information is [defined here](http://www.opengeospatial.org/standards/wkt-crs). WKT is valuable in that the CRS information is more transparent than in EPSG, but can be difficult to read and compare.  
 
-#### PROJ
+#### PROJ  
 
-PROJ is an open-source library for storing, representing and transforming CRS information. PROJ.5 has been recently released, but PROJ.4 was in use for 25 years so you will still mostly see PROJ referred to as PROJ.4.
+PROJ is an open-source library for storing, representing and transforming CRS information. PROJ.5 has been recently released, but PROJ.4 was in use for 25 years so you will still mostly see PROJ referred to as PROJ.4.  
 
-PROJ defines CRS systems as a text string of key-value pairs, which makes it easy to customise (and with a little practice, easy to read and interpret). PROJ can use EPSG codes as parameters.
+PROJ defines CRS systems as a text string of key-value pairs, which makes it easy to customise (and with a little practice, easy to read and interpret). PROJ can use EPSG codes as parameters.  
 
-< needs more >
+< needs more >  
 
-## Metadata
+## Metadata  
 
-Spatial data is useless without metadata. Essential metadata is, of course, the CRS information, but proper spatial metadata encompasses more than that. History and provenance of a dataset (how it was made), who is in charge of maintaining it, and appropriate (and inappropriate!) use cases should also be documented in metadata. This information should accompany a spatial dataset wherever it goes.
+Spatial data is useless without metadata. Essential metadata is, of course, the CRS information, but proper spatial metadata encompasses more than that. History and provenance of a dataset (how it was made), who is in charge of maintaining it, and appropriate (and inappropriate!) use cases should also be documented in metadata. This information should accompany a spatial dataset wherever it goes.  
 
-ISO 19115, EML, etc 
+ISO 19115, EML, etc   
 
-< needs more >
+< needs more >  
 
 *** 
 
-## Common storage formats
+## Common storage formats  
 
-What is required for a storage format to be good? Ability to store CRS and metadata along with the data itself, ??? http://switchfromshapefile.org/ 
+What is required for a storage format to be good? Ability to store CRS and metadata along with the data itself, ??? http://switchfromshapefile.org/   
 
-## Raster
+## Raster  
 
-Geotiff, NetCDF?
+Geotiff, NetCDF?  
 
-## Vector
+## Vector  
 
-Shp GPKG TAB GDB 
+Shp GPKG TAB GDB   
 
-Network-aware formats?? GRASS
+Network-aware formats?? GRASS  
 
-## Both
+## Both  
 
-GeoPDF? Geospatial Databases.
+GeoPDF? Geospatial Databases.  
 
-# Common transfer formats
+# Common transfer formats  
 
-Some GIS applications have their own on-disk formats, e.g. GRASS, SAGA. If only one app can open a file, its not a good choice as a transfer standard.
+Some GIS applications have their own on-disk formats, e.g. GRASS, SAGA. If only one app can open a file, its not a good choice as a transfer standard.  
 
-Talk about GDAL here?
+Talk about GDAL here?  
 
-Some simplified transfer standards eg KML, GeoJSON, csv, even plain text (GPS NMEA sentences). Mention reasons why these might be useful. 
+Some simplified transfer standards eg KML, GeoJSON, csv, even plain text (GPS NMEA sentences). Mention reasons why these might be useful.   
 
-note that many not truly spatial, or not fully spatial e.g. GeoJSON only supports one CRS
+note that many not truly spatial, or not fully spatial e.g. GeoJSON only supports one CRS  
 
 
-# What about spatial data in R or python?
+# What about spatial data in R or python?  
 
-R spatial packages use GDAL so they can consume any format that GDAL can read/write.
+R spatial packages use GDAL so they can consume any format that GDAL can read/write.  
 
-all inputs are converted to a limited set of structures defined by sp, sf, or raster (and that point pattern stuff...?)
+all inputs are converted to a limited set of structures defined by sp, sf, or raster (and that point pattern stuff...?)  
 
-idk what python does???
+idk what python does???  
 
-Next lesson, setting up a spatial data project in R
+Next lesson, setting up a spatial data project in R  
