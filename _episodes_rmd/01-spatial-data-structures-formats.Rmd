@@ -109,7 +109,12 @@ When datums are used by themselves they are called a Geographic Coordinate Syste
 
 _Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_  
 
-<image of citrus from https://github.com/MicheleTobias/R-Projections-Workshop>  
+  
+```{r, echo=FALSE, fig.caption="Image of citrus"}
+knitr::include_graphics("../fig/citrus.jpg")
+```
+
+Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
 
 ### Projection  
 
@@ -121,7 +126,11 @@ Many people use the term "projection" when they actually mean "coordinate refere
 
 _Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel._  
 
-< image of peeled orange with globe drawn on from  https://github.com/MicheleTobias/R-Projections-Workshop >  
+```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
+knitr::include_graphics("../fig/orange-peel-earth.jpg")
+```
+
+Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 
 ### Additional Parameters  
 
@@ -138,7 +147,11 @@ To decide if a projection is right for your data, answer these questions:
 
 [University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
 
-Comments from the pros: Take the time to figure identify a projection that is suited for your project. You don't have to stick to the ones that are popular.  
+> ## Comments from the pros 
+>
+> Take the time to figure identify a projection that is suited for your project.
+> You don't have to stick to the ones that are popular.  
+{: .callout}
 
 ### Describing Coordinate Reference Systems  
 
@@ -207,6 +220,7 @@ What is required for a storage format to be good? Ability to store CRS and metad
 ## Raster  
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Many geospatial raster formats are just existing image formats with an extended definition that allows CRS information to be embedded in the file. GeoTIFF is one of the most common of these, along with MrSID, JPEG2000 and IMG. Other formats are ASCII-based (GRD, XYZ, ASC), with a few rows of plain-text header information followed by cell values arranged in rows and columns. These are often less useful due to their inefficient storage. More robust, but more complicated formats like NetCDF are available, but not commonly used outside of research.
 =======
 Geotiff, NetCDF?  
@@ -222,6 +236,13 @@ GeoPackage is an SQLite database with an extended definition that allows spatial
 
 =======
 Shp GPKG TAB GDB   
+=======
+Geotiff, ESRI Grid, NetCDF, GRIB
+
+## Vector  
+
+Shp GPKG TAB GDB (File Geodatabase), KML/KMZ, GeoJSON, TopoJSON
+>>>>>>> origin/master
 
 Network-aware formats?? GRASS  
 >>>>>>> refs/remotes/datacarpentry/master
@@ -248,5 +269,6 @@ R spatial packages use GDAL so they can consume any format that GDAL can read/wr
 all inputs are converted to a limited set of structures defined by sp, sf, or raster (and that point pattern stuff...?)  
 
 idk what python does???  
+Python also supports GDAL to read and write spatial data (both Raster and Vector). Many high-level packages are build on top of GDAL to make is easy to manipulate spatial data. Examples of such vector libraries include [Fiona](https://github.com/Toblerity/Fiona), [Geopandas](http://geopandas.readthedocs.io/en/latest/) . For raster data, Rasterio is a powerful raster library.
 
 Next lesson, setting up a spatial data project in R  
