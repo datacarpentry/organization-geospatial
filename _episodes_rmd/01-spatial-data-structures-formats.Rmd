@@ -105,7 +105,12 @@ When datums are used by themselves they are called a Geographic Coordinate Syste
 
 _Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_  
 
-<image of citrus from https://github.com/MicheleTobias/R-Projections-Workshop>  
+  
+```{r, fig.caption="Image of citrus"}
+knitr::include_graphics("../fig/citrus.jpg")
+```
+
+Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
 
 ### Projection  
 
@@ -117,7 +122,11 @@ Many people use the term "projection" when they actually mean "coordinate refere
 
 _Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel._  
 
-< image of peeled orange with globe drawn on from  https://github.com/MicheleTobias/R-Projections-Workshop >  
+```{r, fig.caption="Image of peeled orange with globe"}
+knitr::include_graphics("../fig/orange-peel-earth.jpg")
+```
+
+Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/] (http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 
 ### Additional Parameters  
 
