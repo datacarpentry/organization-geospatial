@@ -126,7 +126,7 @@ _Orange Peel Analogy: a projection is how you peel your orange and then flatten 
 knitr::include_graphics("../fig/orange-peel-earth.jpg")
 ```
 
-Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/] (http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
+Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 
 ### Additional Parameters  
 
