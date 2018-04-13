@@ -134,7 +134,11 @@ To decide if a projection is right for your data, answer these questions:
 
 [University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
 
-Comments from the pros: Take the time to figure identify a projection that is suited for your project. You don't have to stick to the ones that are popular.  
+> ## Comments from the pros 
+>
+> Take the time to figure identify a projection that is suited for your project.
+> You don't have to stick to the ones that are popular.  
+{: .callout}
 
 ### Describing Coordinate Reference Systems  
 
