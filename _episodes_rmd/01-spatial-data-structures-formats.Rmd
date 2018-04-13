@@ -176,11 +176,11 @@ What is required for a storage format to be good? Ability to store CRS and metad
 
 ## Raster  
 
-Geotiff, NetCDF?  
+Geotiff, ESRI Grid, NetCDF, GRIB
 
 ## Vector  
 
-Shp GPKG TAB GDB   
+Shp GPKG TAB GDB (File Geodatabase), KML/KMZ, GeoJSON, TopoJSON
 
 Network-aware formats?? GRASS  
 
@@ -206,5 +206,6 @@ R spatial packages use GDAL so they can consume any format that GDAL can read/wr
 all inputs are converted to a limited set of structures defined by sp, sf, or raster (and that point pattern stuff...?)  
 
 idk what python does???  
+Python also supports GDAL to read and write spatial data (both Raster and Vector). Many high-level packages are build on top of GDAL to make is easy to manipulate spatial data. Examples of such vector libraries include [Fiona](https://github.com/Toblerity/Fiona), [Geopandas](http://geopandas.readthedocs.io/en/latest/) . For raster data, Rasterio is a powerful raster library.
 
 Next lesson, setting up a spatial data project in R  
