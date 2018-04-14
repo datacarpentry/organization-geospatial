@@ -16,15 +16,13 @@ source("../bin/chunk-options.R")
 source("../setup.R")
 knitr_fig_path("00-")
 ```
-
-
 # Goals / Objectives
 
 After completing this activity, you will:
 
-  * Understand the difference between GUI and CLI approaches to computing, and their relative strengths and weaknesses 
+  * Understand the difference between various approaches to geospatial computing, and their relative strengths and weaknesses 
   * Be aware of the many GIS applications currently available
-  * Be aware of R packages that can interface with these apps
+  * Be aware of R and python packages that can access and process spatial data
 
 ## Standalone Software packages 
 
@@ -36,7 +34,6 @@ Most traditional GIS work is carried out in standalone apps that aim to provide 
   * Pitney Bowes produce [MapInfo Professional](https://www.pitneybowes.com/us/location-intelligence/geographic-information-systems/mapinfo-pro.html), which was one of the earliest desktop GIS programs on the market. 
   * [Hexagon Geospatial Power Portfolio](https://www.hexagongeospatial.com/products/power-portfolio) includes many geospatial tools including ERDAS Imagine, a powerful remotely sensed image processing platform.
   * [Manifold](http://www.manifold.net/) is a desktop GIS that emphasies speed through the use of parallel and GPU processing. 
-  
   
 ** a combined graphic with logos from all the above apps would be good here **
 
@@ -52,7 +49,6 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
 
 <img src="https://qgisblog.files.wordpress.com/2016/12/qgis-logo_anita02.png" height="100"/>
 <img src="https://grass.osgeo.org/uploads/images/logo_variant_nobg.png" height="100"/>
-
 <img src="http://gisgeography.com/wp-content/uploads/2016/01/saga-gis-logo.png" height="100"/>
 
 ** a combined graphic with logos from all the above apps would be good here **
@@ -96,6 +92,7 @@ Higher-level scripting languages like R and Python are easier to learn and use. 
 This last point is a huge advantage for GIS-by-programming; these interface packages give you the ability to access functions unique to particular programs, but have your entire workflow recorded in a central document - a document that can be re-run at will. Below are lists of the key spatial packages for R and for Python.
 
 R: 
+
   * `sp` and its successsor `sf` for vector data 
   * `raster` for raster data (NB `stars` is a proposed replacement in early development at 2018) 
   * `rgdal` for an R-friendly GDAL interface
@@ -104,10 +101,11 @@ R:
 An overview of these and other R spatial packages can be [accessed here](https://cran.r-project.org/web/views/Spatial.html). 
 
 Python: 
-  *  [`Fiona`](https://github.com/Toblerity/Fiona), a Python interface to GDAL 
-  *  [`Geopandas`](http://geopandas.readthedocs.io/en/latest/) to represent spatial data structures within Python 
-  *  [`Shapely`](https://toblerity.org/shapely/manual.html#introduction) for vector data operations 
-  *  [`rasterio`](https://rasterio.readthedocs.io/en/latest/intro.html) for raster data import and export
+
+  * [`Fiona`](https://github.com/Toblerity/Fiona), a Python interface to GDAL 
+  * [`Geopandas`](http://geopandas.readthedocs.io/en/latest/) to represent spatial data structures within Python 
+  * [`Shapely`](https://toblerity.org/shapely/manual.html#introduction) for vector data operations 
+  * [`rasterio`](https://rasterio.readthedocs.io/en/latest/intro.html) for raster data import and export
   * [`pysal`](https://pysal.readthedocs.io/en/latest/users/introduction.html) for vector and raster analysis
   * [`matplotlib`](https://matplotlib.org/) for spatial data visualisation.
 
