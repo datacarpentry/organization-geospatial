@@ -30,7 +30,7 @@ After completing this activity, you will:
 
 * Understand the data structures used to represent spatial information, including their strengths and weaknesses
 * Become familiar with common storage and transfer formats
-* Understand how those formats are currently represented in R and in Python **(too much???)**
+* 
 
 All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started. 
 
@@ -66,11 +66,7 @@ Simple Features defines 17 types of vector geometry, and the vast majority of da
 
 < insert image >
 
-<<<<<<< HEAD
-A Point is just a single coordinate pair. A Line made when at least two points are grouped together. A Polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points that make up lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.
-=======
-A Point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points defining lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
->>>>>>> refs/remotes/datacarpentry/master
+A point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points that make up lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
 
 Vector data has some important advantages:  
 
@@ -155,17 +151,12 @@ To decide if a projection is right for your data, answer these questions:
 
 ### Describing Coordinate Reference Systems  
 
-<<<<<<< HEAD
 There are several common systems in use for storing and transmitting CRS information, as well as translating between different CRSs. These systems generally comply with ISO 19111. EPSG, PROJ, and OGC WKT are the most common. They aren't usually used on their own, but are built in to geospatial software.
-=======
-There are several common systems in use for storing and transmitting CRS information. These systems must generally comply with ISO 19111. In order of increasing complexity and customisability, they are EPSG, PROJ, and WKT.  
->>>>>>> refs/remotes/datacarpentry/master
 
 #### EPSG  
 
 The [EPSG system](http://www.epsg.org) is a database of CRS information maintained by the International Association of Oil and Gas Producers. The dataset contains both CRS definitions and information on how to safely convert data from one CRS to another. Using EPSG is easy as every CRS has a integer identifier, e.g. WGS84 is EPSG:4326. The downside is that you can only use the CRSs EPSG defines and cannot customise them.  
 
-<<<<<<< HEAD
 Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).
 
 #### PROJ
@@ -180,95 +171,40 @@ The OGC WKT standard is used by a number of important geospatial apps and softwa
 
 #### Translating between CRS systems
 
-CRS information can generally be translated between EPSG, PROJ and WKT representations without too much trouble, but some mistranslations are possible, especially with obscure projections.
-=======
-EPSG codes can be translated to and from other representational systems. The website spatialreference.org holds the data in many formats.  
-
-Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).  
-
-#### OGC Well-known text  
-
-CRS information is often embedded in geospatial data files using the OGC Well-known Text format, which is a nested list of geodetic parameters. The structure of the information is [defined here](http://www.opengeospatial.org/standards/wkt-crs). WKT is valuable in that the CRS information is more transparent than in EPSG, but can be difficult to read and compare.  
-
-#### PROJ  
-
-PROJ is an open-source library for storing, representing and transforming CRS information. PROJ.5 has been recently released, but PROJ.4 was in use for 25 years so you will still mostly see PROJ referred to as PROJ.4.  
-
-PROJ defines CRS systems as a text string of key-value pairs, which makes it easy to customise (and with a little practice, easy to read and interpret). PROJ can use EPSG codes as parameters.  
-
-< needs more >  
->>>>>>> refs/remotes/datacarpentry/master
+CRS information can generally be translated between EPSG, PROJ and WKT representations without too much trouble, but some mistranslations are possible, especially with obscure projections. For convenience, the website [spatialreference.org](http://spatialreference.org/) holds descriptions of many common projections data in several formats. Users should that the site does not appear to be actively maintained at present, with the last update made in 2013. The GDAL library (more on this in Lesson 3) has a function called [gdalsrsinfo](http://www.gdal.org/gdalsrsinfo.html) that will report a file's CRS information in the format of your choice.
 
 ## Metadata  
 
-Spatial data is useless without metadata. Essential metadata is, of course, the CRS information, but proper spatial metadata encompasses more than that. History and provenance of a dataset (how it was made), who is in charge of maintaining it, and appropriate (and inappropriate!) use cases should also be documented in metadata. This information should accompany a spatial dataset wherever it goes.  
+Spatial data is useless without metadata. Essential metadata is, of course, the CRS information, but proper spatial metadata encompasses more than that. History and provenance of a dataset (how it was made), who is in charge of maintaining it, and appropriate (and inappropriate!) use cases should also be documented in metadata. This information should accompany a spatial dataset wherever it goes. 
 
-<<<<<<< HEAD
-In practice this can be difficult, as many spatial data formats don't have a built-in place to hold this kind of information. Metadata often has to be stored in a companion file, generated and maintained manually.
-=======
-ISO 19115, EML, etc   
-
-< needs more >  
->>>>>>> refs/remotes/datacarpentry/master
+In practice this can be difficult, as many spatial data formats don't have a built-in place to hold this kind of information. Metadata often has to be stored in a companion file, generated and maintained manually. 
 
 *** 
 
 ## Common storage formats  
 
-What is required for a storage format to be good? Ability to store CRS and metadata along with the data itself, ??? http://switchfromshapefile.org/   
+### Raster  
 
-## Raster  
+Many geospatial raster formats are just existing image formats with an extended definition that allows CRS information to be embedded in the file. GeoTIFF is one of the most common of these, along with MrSID, JPEG2000 and IMG. Other formats are ASCII-based (GRD, XYZ, ASC), with a few rows of plain-text header information followed by cell values arranged in rows and columns. These are often less useful due to their inefficient storage. More robust, but more complicated formats like NetCDF are available, but not commonly used outside of research. Other formats are industry-specific, like GRIB for meteorology. 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Many geospatial raster formats are just existing image formats with an extended definition that allows CRS information to be embedded in the file. GeoTIFF is one of the most common of these, along with MrSID, JPEG2000 and IMG. Other formats are ASCII-based (GRD, XYZ, ASC), with a few rows of plain-text header information followed by cell values arranged in rows and columns. These are often less useful due to their inefficient storage. More robust, but more complicated formats like NetCDF are available, but not commonly used outside of research.
-=======
-Geotiff, NetCDF?  
->>>>>>> refs/remotes/datacarpentry/master
+### Vector  
 
-## Vector  
+Many vector file formats (particularly ESRI SHP and MapInfo TAB) are really several interrelated files on disk - one holding a table of attributes, usually in DBF format, one holding related geometric data, and various index and header files. This can make them difficult to move around without placing them in an archive format like zip. Despite this and several other problems, the Shapefile (SHP) is still the most commonly used vector data format. 
 
-<<<<<<< HEAD
-Many vector file formats (particularly ESRI SHP and MapInfo TAB) are really several interrelated files on disk - one holding a table of attributes, usually in DBF format, one holding related geometric data, and various index and header files. This can make them difficult to move around without placing them in an archive format like zip. Despite this and several other problems, the Shapefile (SHP) is still the most commonly used vector data format.
+GeoPackage is an SQLite database with an extended definition that allows spatial data storage. It has the advantage of being a single file on disk, along with stronger internal rules around data and encoding. 
 
-GeoPackage is an SQLite database with an extended definition that allows spatial data storage. It has the advantage of being a single file on disk,
+XML and JSON-style formats for vector spatial data also exist, notably KML (popularised in Google Earth) and GeoJSON. These formats are commonly used by software developers for delivering geospatial data over web services. They have the advantage of being streamable (you don't need to download and open a whole file, you can just access part of it), but like any plain-text format, file size becomes very large very quickly. GeoJSON also only supports the WGS84 coordinate reference system. 
 
+### Why not both?  
 
-=======
-Shp GPKG TAB GDB   
-=======
-Geotiff, ESRI Grid, NetCDF, GRIB
+Very few formats can contain both raster and vector data - in fact, most are even more restrictive than that. Vector datasets are usually locked to one geometry type, e.g. points only. Raster datasets can usually only encode one data type, for example you can't have a multiband GeoTIFF where one layer is integer data and another is floating-point. 
 
-## Vector  
+There are sound reasons for this - format standards are easier to define and maintain, and so is metadata. The effects of particular data manipulations are more predictable if you are confident that all of your input data has the same characteristics. Even so, some limited support for mixed vector geometries is available in R's `sf` package, and mixed raster datatypes in `raster`. Such objects can only be saved in R's native object storage format, RDS, and should be used with caution. 
 
-Shp GPKG TAB GDB (File Geodatabase), KML/KMZ, GeoJSON, TopoJSON
->>>>>>> origin/master
+### Format interoperability  
 
-Network-aware formats?? GRASS  
->>>>>>> refs/remotes/datacarpentry/master
+Many existing file formats were invented by GIS software developers, often in a closed-source environment. This led to the large number of formats on offer today, and considerable problems transferring data between software environments. Some companies have built their own file translation capabilities into their software, but maintaining this capability takes a lot of work. The [Geospatial Data Abstraction Library](http://www.gdal.org/) (GDAL) is an open-source answer to this issue. 
 
-## Both  
+GDAL is a set of software tools that translate between almost any geospatial format in common use today (and some not so common ones). GDAL also contains tools for editing and manipulating both raster and vector files, including reprojecting data to different CRSs. GDAL can be used as a standalone command-line tool, or built in to other GIS software. Several open-source GIS programs use GDAL for all file import/export operations. 
 
-GeoPDF? Geospatial Databases.  
-
-# Common transfer formats  
-
-Some GIS applications have their own on-disk formats, e.g. GRASS, SAGA. If only one app can open a file, its not a good choice as a transfer standard.  
-
-Talk about GDAL here?  
-
-Some simplified transfer standards eg KML, GeoJSON, csv, even plain text (GPS NMEA sentences). Mention reasons why these might be useful.   
-
-note that many not truly spatial, or not fully spatial e.g. GeoJSON only supports one CRS  
-
-
-# What about spatial data in R or python?  
-
-R spatial packages use GDAL so they can consume any format that GDAL can read/write.  
-
-all inputs are converted to a limited set of structures defined by sp, sf, or raster (and that point pattern stuff...?)  
-
-idk what python does???  
-Python also supports GDAL to read and write spatial data (both Raster and Vector). Many high-level packages are build on top of GDAL to make is easy to manipulate spatial data. Examples of such vector libraries include [Fiona](https://github.com/Toblerity/Fiona), [Geopandas](http://geopandas.readthedocs.io/en/latest/) . For raster data, Rasterio is a powerful raster library.
-
-Next lesson, setting up a spatial data project in R  
+***
