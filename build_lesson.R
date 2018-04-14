@@ -7,8 +7,7 @@ BuildLesson <- R6::R6Class(
             if (build_status > 0)
                 stop("Error during building process")
             system("mkdir  _rendered")
-            system("shopt -s extglob ")
-            system("cp -r !(^\.git|_rendered) _rendered")
+            system("cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered")
         })
     )
 
@@ -23,12 +22,12 @@ format_url_errors <- function(res_links, idx) {
 }
 
 CheckLinks <- R6::R6Class(
-     "CheckLinks", inherit = TicStep,
-     public = list(
-         run = function() {
-         ## ignore JS file not included as part of rmarkdown
-         ## ignore email addresses
-         ## ignore embedded images
+                      "CheckLinks", inherit = TicStep,
+                      public = list(
+                          run = function() {
+                              ## ignore JS file not included as part of rmarkdown
+                              ## ignore email addresses
+                              ## ignore embedded images
          link_status <- system("linkchecker --ignore-url=external.+js --ignore-url=^mailto: --ignore-url=^data: --no-warnings  --file-output=csv/link_res.csv _site")
          message("linkchecker exit code: ", link_status)
          ## write output to CSV file and check error codes
