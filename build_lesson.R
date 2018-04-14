@@ -6,8 +6,10 @@ BuildLesson <- R6::R6Class(
             build_status <- system("make lesson-md")
             if (build_status > 0)
                 stop("Error during building process")
+            system("mkdir  _rendered")
+            system("cp -r !(_rendered) _rendered/")
         })
-)
+    )
 
 build_lesson <- function() {
     BuildLesson$new()
