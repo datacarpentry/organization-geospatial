@@ -9,7 +9,7 @@ carpentry: "dc"
 title: "Introduction to Spatio-Temporal Data"
 
 # Contact email address.
-contact: "mailto:lessons@software-carpentry.org"
+email: "lessons@software-carpentry.org"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
