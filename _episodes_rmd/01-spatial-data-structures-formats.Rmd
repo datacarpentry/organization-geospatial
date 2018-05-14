@@ -56,7 +56,6 @@ The downsides of raster data are
   
 Satellite imagery is probably the most complex raster representation you will work with. Satellites like Landsat capture information at multiple wavelengths, from both human-visible and infrared bands. Final products are split into specific wavelength ranges, so to make a colour image of the land surface, one may have to combine red, green, and blue datasets. 
 
-_nb shld talk to Lovelace et al about borrowing some images from - https://bookdown.org/robinlovelace/geocompr/spatial-class.html#raster-data, for both r and v_
 
 ## Vector
 
