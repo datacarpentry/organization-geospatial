@@ -82,8 +82,6 @@ The downsides of vector data are
 
 Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.  
 
-_<worth mentioning arc-node topology yet? probs leave until specific vector lesson>_  
-
 ## Coordinate Reference Systems  
 
 A data structure cannot be considered geospatial unless it is accompanied by spatial reference system (SRS) information, in a format that geospatial applications can use to display and manipulate the data correctly. SRS information connects data to the Earth's surface using a mathematical model.  
