@@ -56,7 +56,6 @@ The downsides of raster data are
   
 Satellite imagery is probably the most complex raster representation you will work with. Satellites like Landsat capture information at multiple wavelengths, from both human-visible and infrared bands. Final products are split into specific wavelength ranges, so to make a colour image of the land surface, one may have to combine red, green, and blue datasets. 
 
-_nb shld talk to Lovelace et al about borrowing some images from - https://bookdown.org/robinlovelace/geocompr/spatial-class.html#raster-data, for both r and v_
 
 ## Vector
 
@@ -82,8 +81,6 @@ The downsides of vector data are
   * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
 
 Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.  
-
-_<worth mentioning arc-node topology yet? probs leave until specific vector lesson>_  
 
 ## Coordinate Reference Systems  
 
