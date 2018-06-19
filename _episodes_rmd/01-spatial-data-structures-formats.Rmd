@@ -164,6 +164,35 @@ Final products are split into specific wavelength ranges, so to make
 a colour image of the land surface, one may have to combine red,
 green, and blue datasets.
 
+## Extent
+The spatial extent is the geographic area that the raster data covers.
+
+<figure>
+<a href="../images/dc-spatial-raster/spatial_extent.png">
+<img src="../images/dc-spatial-raster/spatial_extent.png">
+</a>
+<figcaption> Image Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
+
+The spatial extent of an R spatial object represents the geographic "edge" or
+location that is the furthest north, south, east and west. In other words, `extent`
+represents the overall geographic coverage of the spatial object.
+
+## Resolution
+A raster has horizontal (x and y) resolution. This resolution represents the
+area on the ground that each pixel covers. The units for our data are in meters.
+Given our data resolution is 1 x 1, this means that each pixel represents a
+1 x 1 meter area on the ground.
+
+<figure>
+<a href="../images/dc-spatial-raster/raster_resolution.png">
+<img src="../images/dc-spatial-raster/raster_resolution.png">
+</a>
+<figcaption> Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
+
 ## What is a GeoTIFF??
 Raster data can come in many different formats. In this tutorial, we will use the
 geotiff format which has the extension `.tif`. A `.tif` file stores metadata
@@ -181,10 +210,11 @@ as tags. These tags can include the following raster metadata:
 
 In this tutorial we will discuss all of these metadata tags.
 
-More about the  `.tif` format:
-
-* <a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank"> GeoTIFF on Wikipedia</a>
-* <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
+## More Resources on the  `.tif` format
+>
+> * <a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank"> GeoTIFF on Wikipedia</a>
+> * <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
+{: .callout}
 
 ## Vector
 
@@ -215,25 +245,78 @@ _<worth mentioning arc-node topology yet? probs leave until specific vector less
 
 ## Coordinate Reference Systems  
 
-A data structure cannot be considered geospatial unless it is accompanied by spatial reference system (SRS) information, in a format that geospatial applications can use to display and manipulate the data correctly. SRS information connects data to the Earth's surface using a mathematical model.  
+A data structure cannot be considered geospatial unless it is
+accompanied by coordinate reference system (CRS) information, in
+a format that geospatial applications can use to display and
+manipulate the data correctly. CRS information connects data to the
+Earth's surface using a mathematical model.
 
-Note: 'CRS' ('coordinate reference system') is a common acronym used interchangeably with SRS.  
+> ## CRS vs SRS
+>
+> 'CRS' ('coordinate reference system') and 'SRS' ('spatial reference system') are synonyms and are commonly interchanged.
+{: .callout}
 
-CRS information has three components:  
+The Coordinate Reference System or `CRS` tells your mapping software (for example `R`)
+where the raster is located
+in geographic space. It also tells the mapping software what method should be used to "flatten"
+or project the raster in geographic space.
 
-CRS = Datum + Projection + Additional Parameters _formatting_  
+<figure>
+<a href="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
+<img src="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
+</a>
+
+<figcaption> Maps of the United States in different projections. Notice the
+differences in shape associated with each different projection. These
+differences are a direct result of the calculations used to "flatten" the
+data onto a 2-dimensional map. Source: opennews.org</figcaption>
+</figure>
+
+### What Makes Spatial Data Line Up On A Map?
+There are lots of great resources that describe coordinate reference systems and
+projections in greater detail (read more, below). For the purposes of this
+activity, what is important to understand is that data from the same location
+but saved in **different projections will not line up in any GIS or other
+program**. Thus, it's important when working with spatial data in a program like
+`R` to identify the coordinate reference system applied to the data and retain
+it throughout data processing and analysis.
+
+> ## More Resources on CRS
+>
+> * <a href="http://spatialreference.org/ref/epsg/" target="_blank"> A comprehensive online library of CRS information.</a>
+> * <a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/coordinate_reference_systems.html" target="_blank">QGIS Documentation - CRS Overview.</a>
+> * <a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank">Choosing the Right Map Projection.</a>
+> * <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf" target="_blank"> NCEAS Overview of CRS in R.</a>
+> * Check out this short video highlighting how map projections can make continents
+seems proportionally larger or smaller than they actually are!
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/KUF_Ckv8HbE" frameborder="0" allowfullscreen></iframe>
+{: .callout}
+
+CRS information has three components:
+
+CRS = Datum + Projection + Additional Parameters
 
 A common analogy employed to teach projections is the orange peel analogy. If you imagine that the earth is an orange, how you peel it and then flatten the peel is similar to how projections get made. We will also use it here.  
 
 ### Datum  
 
-A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and defines the starting point (i.e. where is (0,0)?) so the angles reference a meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can also be local, fit to a particular area of the globe, but ill-fitting outside the area of intended use.  
+A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and
+defines the starting point (i.e. where is (0,0)?) so the angles reference a
+meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can
+also be local, fit to a particular area of the globe, but ill-fitting outside the
+area of intended use.
 
 When datums are used by themselves they are called a Geographic Coordinate System.  
 
-_Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_  
-
-<image of citrus from https://github.com/MicheleTobias/R-Projections-Workshop>  
+> ## Orange Peel Analogy
+> A datum is the choice of fruit to use. Is the earth an orange, a lemon, a lime, a grapefruit?
+>
+> ```{r, echo=FALSE, fig.caption="Image of citrus"}
+> knitr::include_graphics("../fig/citrus.jpg")
+> ```
+>
+> Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
+{: .discussion}
 
 ### Projection  
 
@@ -243,17 +326,25 @@ The units associated with a given projection are usually linear (feet, meters, e
 
 Many people use the term "projection" when they actually mean "coordinate reference system".   
 
-_Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel._  
-
-< image of peeled orange with globe drawn on from  https://github.com/MicheleTobias/R-Projections-Workshop >  
+> ## Orange Peel Analogy
+> A projection is how you peel your orange and then flatten the peel.
+>
+> ```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
+> knitr::include_graphics("../fig/orange-peel-earth.jpg")
+> ```
+> Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
+{: .discussion}
 
 ### Additional Parameters  
 
 Additional parameters are often necessary to create the full coordinate reference system. For example, one common additional parameter is a definition of the center of the map. The number of required additional parameters depends on what is needed by each specific projection.  
 
-_Orange Peel Analogy: an additional parameter could include a definition of the location of the stem of the fruit._  
+> ## Orange Peel Analogy
+> An additional parameter could include a definition of the location of the stem of the fruit. What other parameters could be included in this analogy?
+{: .discussion}
 
-### Which CRS/projection should I use?  
+
+### Which CRS/projection should I use?
 
 To decide if a projection is right for your data, answer these questions:  
 
@@ -262,7 +353,11 @@ To decide if a projection is right for your data, answer these questions:
 
 [University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
 
-Comments from the pros: Take the time to figure identify a projection that is suited for your project. You don't have to stick to the ones that are popular.  
+> ## Comments from the pros
+>
+> Take the time to figure identify a projection that is suited for your project.
+> You don't have to stick to the ones that are popular.
+{: .callout}
 
 ### Describing Coordinate Reference Systems  
 
