@@ -5,7 +5,9 @@ exercises: ??
 questions:
  - TBD
 objectives:
- - TBD
+- "Understand the data structures used to represent spatial information, including their strengths and weaknesses"
+- "Become familiar with common storage and transfer formats"
+- "Understand how those formats are currently represented in R and in Python"
 keypoints:
  - TBD
 source: Rmd
@@ -23,39 +25,195 @@ This tutorial provides an overview of key spatial data concepts, including struc
 geospatial tutorial series. The concepts outlined in this tutorial relate to many 
 programming languages and data types!
 
-
-# Goals / Objectives
-
-After completing this activity, you will:
-
-* Understand the data structures used to represent spatial information, including their strengths and weaknesses
-* Become familiar with common storage and transfer formats
-* 
-
 All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started. 
 
 # Structures: Raster and Vector
 
-## Raster
+## About Raster Data
+Raster or "gridded" data are stored as a grid of values which are rendered on a
+map as pixels. Each pixel value represents an area on the Earth's surface.
 
-The raster data structure is a regular grid of equally-sized cells, each holding a single numeric value. The cell values can represent a continuous surface (e.g. elevation) or a categorical classification (e.g. land use). If this sounds familiar, it is because this data structure is very common: its how we represent any digital image. A geospatial raster is only different from a digital photo in that it is accompanied by spatial information that connects the data to a particular location. This includes the raster's extent and cell size, the number of rows and columns, and its coordinate reference system (CRS, more on this later). 
+<figure>
+<a href="../images/dc-spatial-raster/raster_concept.png">
+<img src="../images/dc-spatial-raster/raster_concept.png">
+</a>
+<figcaption> Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
+
+The cell values can represent a continuous surface (e.g. elevation)
+or a categorical classification (e.g. land use). If this sounds
+familiar, it is because this data structure is very common: its how
+we represent any digital image. A geospatial raster is only different
+from a digital photo in that it is accompanied by spatial information
+that connects the data to a particular location. This includes the
+raster's extent and cell size, the number of rows and columns, and
+its coordinate reference system (CRS, more on this later).
+
+## Types of Data Stored in Raster Format
+Raster data can be continuous or categorical. Continuous rasters can have a
+range of quantitative values. Some examples of continuous rasters include:
+
+1. Precipitation maps.
+2. Maps of tree height derived from LiDAR data.
+3. Elevation values for a region.
+
+A map of elevation for Harvard Forest derived from the
+<a href="http://www.neonscience.org/data-collection/airborne-remote-sensing" target="_blank">
+NEON AOP LiDAR sensor</a>
+is below. Elevation is represented as continuous numeric variable in this map. The legend
+shows the continuous range of values in the data from around 300 to 420 meters.
+
+```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
+
+library(raster)
+library(rgdal)
+
+```
+
+```{r elevation-map, echo=FALSE}
+# render DSM for tutorial content background
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+library(ggplot2)
+
+# convert to a df for plotting in two steps,
+# First, to a SpatialPointsDataFrame
+DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
+# Then to a 'conventional' dataframe
+DSM_HARV_df  <- data.frame(DSM_HARV_pts)
+rm(DSM_HARV_pts)
+
+ggplot() +
+geom_raster(data = DSM_HARV_df , aes(x = x, y = y, fill = HARV_dsmCrop)) +
+ggtitle("Continuous Elevation Map - NEON Harvard Forest Field Site") +
+coord_equal()
+
+```
+
+Some rasters contain categorical data where each pixel represents a discrete
+class such as a landcover type (e.g., "forest" or "grassland") rather than a
+continuous value such as elevation or temperature. Some examples of classified
+maps include:
+
+1. Landcover / land-use maps.
+2. Tree height maps classified as short, medium, tall trees.
+3. Elevation maps classified as low, medium and high elevation.
+
+#### Categorical Landcover Map for the United States
+<figure>
+<a href="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif ">
+<img src="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif">
+</a>
+<figcaption> Map of the United States showing landcover as categorical data.
+Each color is a different landcover category.  Source:
+<a href="http://www.mrlc.gov/nlcd06_data.php" target="_blank">
+Multi-Resolution Land Characteristics Consortium, USGS</a>
+</figcaption>
+</figure>
+
+#### Categorical Elevation Map of the NEON Harvard Forest Site
+The legend of this map shows the colors representing each discrete class.
+
+```{r classified-elevation-map, echo=FALSE, warning=FALSE, message=FALSE}
+
+# Load raster into R
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+# convert to a df for plotting in two steps,
+# First, to a SpatialPointsDataFrame
+DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
+# Then to a 'conventional' dataframe
+DSM_HARV_df  <- data.frame(DSM_HARV_pts)
+
+library(ggplot2)
+library(dplyr)
+
+DSM_HARV_df <- DSM_HARV_df %>%
+mutate(fct_elevation = cut(HARV_dsmCrop, 3,
+labels = c("Low Elevation","Middle Elevation","High Elevation")
+)
+)
+
+ggplot() +
+geom_raster(data = DSM_HARV_df , aes(x = x, y = y, fill = fct_elevation)) +
+ggtitle("Classified Elevation Map - NEON Harvard Forest Field Site") +
+coord_equal()
+
+```
 
 Raster data has some important advantages:
 
-  * representation of continuous surfaces
-  * potentially very high levels of detail
-  * Data is 'unweighted' across its extent - the geometry doesn't implicitly highlight
-    features (wording?? unbiased?)
-  * Cell-by-cell calculations can be very fast and efficient
-  
+* representation of continuous surfaces
+* potentially very high levels of detail
+* data is 'unweighted' across its extent - the geometry doesn't implicitly highlight
+features (wording?? unbiased?)
+* cell-by-cell calculations can be very fast and efficient
+
 The downsides of raster data are
 
-  * very large file sizes as cell size gets smaller
-  * currently popular formats don't embed metadata well (more on this later!)
-  * can be difficult to represent complex information
-  
-Satellite imagery is probably the most complex raster representation you will work with. Satellites like Landsat capture information at multiple wavelengths, from both human-visible and infrared bands. Final products are split into specific wavelength ranges, so to make a colour image of the land surface, one may have to combine red, green, and blue datasets. 
+* very large file sizes as cell size gets smaller
+* currently popular formats don't embed metadata well (more on this later!)
+* can be difficult to represent complex information
 
+Satellite imagery is probably the most complex raster representation
+you will work with. Satellites like Landsat capture information at
+multiple wavelengths, from both human-visible and infrared bands.
+Final products are split into specific wavelength ranges, so to make
+a colour image of the land surface, one may have to combine red,
+green, and blue datasets.
+
+## Extent
+The spatial extent is the geographic area that the raster data covers.
+
+<figure>
+<a href="../images/dc-spatial-raster/spatial_extent.png">
+<img src="../images/dc-spatial-raster/spatial_extent.png">
+</a>
+<figcaption> Image Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
+
+The spatial extent of an R spatial object represents the geographic "edge" or
+location that is the furthest north, south, east and west. In other words, `extent`
+represents the overall geographic coverage of the spatial object.
+
+## Resolution
+A raster has horizontal (x and y) resolution. This resolution represents the
+area on the ground that each pixel covers. The units for our data are in meters.
+Given our data resolution is 1 x 1, this means that each pixel represents a
+1 x 1 meter area on the ground.
+
+<figure>
+<a href="../images/dc-spatial-raster/raster_resolution.png">
+<img src="../images/dc-spatial-raster/raster_resolution.png">
+</a>
+<figcaption> Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
+
+## What is a GeoTIFF??
+Raster data can come in many different formats. In this tutorial, we will use the
+geotiff format which has the extension `.tif`. A `.tif` file stores metadata
+or attributes about the file as embedded `tif tags`. For instance, your camera
+might
+store a tag that describes the make and model of the camera or the date the
+photo was taken when it saves a `.tif`. A GeoTIFF is a standard `.tif` image
+format with additional spatial (georeferencing) information embedded in the file
+as tags. These tags can include the following raster metadata:
+
+1. A Coordinate Reference System (`CRS`)
+2. Spatial Extent (`extent`)
+3. Values that represent missing data (`NoDataValue`)
+4. The `resolution` of the data
+
+In this tutorial we will discuss all of these metadata tags.
+
+## More Resources on the  `.tif` format
+>
+> * <a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank"> GeoTIFF on Wikipedia</a>
+> * <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
+{: .callout}
 
 ## Vector
 
@@ -84,30 +242,78 @@ Vector datasets are in use in many industries besides geospatial. For instance, 
 
 ## Coordinate Reference Systems  
 
-A data structure cannot be considered geospatial unless it is accompanied by spatial reference system (SRS) information, in a format that geospatial applications can use to display and manipulate the data correctly. SRS information connects data to the Earth's surface using a mathematical model.  
+A data structure cannot be considered geospatial unless it is
+accompanied by coordinate reference system (CRS) information, in
+a format that geospatial applications can use to display and
+manipulate the data correctly. CRS information connects data to the
+Earth's surface using a mathematical model.
 
-Note: 'CRS' ('coordinate reference system') is a common acronym used interchangeably with SRS.  
+> ## CRS vs SRS
+>
+> 'CRS' ('coordinate reference system') and 'SRS' ('spatial reference system') are synonyms and are commonly interchanged.
+{: .callout}
 
-CRS information has three components:  
+The Coordinate Reference System or `CRS` tells your mapping software (for example `R`)
+where the raster is located
+in geographic space. It also tells the mapping software what method should be used to "flatten"
+or project the raster in geographic space.
 
-CRS = Datum + Projection + Additional Parameters _formatting_  
+<figure>
+<a href="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
+<img src="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
+</a>
+
+<figcaption> Maps of the United States in different projections. Notice the
+differences in shape associated with each different projection. These
+differences are a direct result of the calculations used to "flatten" the
+data onto a 2-dimensional map. Source: opennews.org</figcaption>
+</figure>
+
+### What Makes Spatial Data Line Up On A Map?
+There are lots of great resources that describe coordinate reference systems and
+projections in greater detail (read more, below). For the purposes of this
+activity, what is important to understand is that data from the same location
+but saved in **different projections will not line up in any GIS or other
+program**. Thus, it's important when working with spatial data in a program like
+`R` to identify the coordinate reference system applied to the data and retain
+it throughout data processing and analysis.
+
+> ## More Resources on CRS
+>
+> * <a href="http://spatialreference.org/ref/epsg/" target="_blank"> A comprehensive online library of CRS information.</a>
+> * <a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/coordinate_reference_systems.html" target="_blank">QGIS Documentation - CRS Overview.</a>
+> * <a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank">Choosing the Right Map Projection.</a>
+> * <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf" target="_blank"> NCEAS Overview of CRS in R.</a>
+> * Check out this short video highlighting how map projections can make continents
+seems proportionally larger or smaller than they actually are!
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/KUF_Ckv8HbE" frameborder="0" allowfullscreen></iframe>
+{: .callout}
+
+CRS information has three components:
+
+CRS = Datum + Projection + Additional Parameters
 
 A common analogy employed to teach projections is the orange peel analogy. If you imagine that the earth is an orange, how you peel it and then flatten the peel is similar to how projections get made. We will also use it here.  
 
 ### Datum  
 
-A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and defines the starting point (i.e. where is (0,0)?) so the angles reference a meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can also be local, fit to a particular area of the globe, but ill-fitting outside the area of intended use.  
+A Datum is a model of the shape of the earth. It has angular units (i.e. degrees) and
+defines the starting point (i.e. where is (0,0)?) so the angles reference a
+meaningful spot on the earth. Common global datums are WGS84 and NAD83. Datums can
+also be local, fit to a particular area of the globe, but ill-fitting outside the
+area of intended use.
 
 When datums are used by themselves they are called a Geographic Coordinate System.  
 
-_Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?_  
-
-  
-```{r, echo=FALSE, fig.caption="Image of citrus"}
-knitr::include_graphics("../fig/citrus.jpg")
-```
-
-Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
+> ## Orange Peel Analogy
+> A datum is the choice of fruit to use. Is the earth an orange, a lemon, a lime, a grapefruit?
+>
+> ```{r, echo=FALSE, fig.caption="Image of citrus"}
+> knitr::include_graphics("../fig/citrus.jpg")
+> ```
+>
+> Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
+{: .discussion}
 
 ### Projection  
 
@@ -117,11 +323,15 @@ The units associated with a given projection are usually linear (feet, meters, e
 
 Many people use the term "projection" when they actually mean "coordinate reference system".   
 
-_Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel._  
 
-```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
-knitr::include_graphics("../fig/orange-peel-earth.jpg")
-```
+> ## Orange Peel Analogy
+> A projection is how you peel your orange and then flatten the peel.
+>
+> ```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
+> knitr::include_graphics("../fig/orange-peel-earth.jpg")
+> ```
+> Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
+{: .discussion}
 
 Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 
@@ -129,9 +339,12 @@ Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/]
 
 Additional parameters are often necessary to create the full coordinate reference system. For example, one common additional parameter is a definition of the center of the map. The number of required additional parameters depends on what is needed by each specific projection.  
 
-_Orange Peel Analogy: an additional parameter could include a definition of the location of the stem of the fruit._  
+> ## Orange Peel Analogy
+> An additional parameter could include a definition of the location of the stem of the fruit. What other parameters could be included in this analogy?
+{: .discussion}
 
-### Which CRS/projection should I use?  
+
+### Which CRS/projection should I use?
 
 To decide if a projection is right for your data, answer these questions:  
 
@@ -143,7 +356,7 @@ To decide if a projection is right for your data, answer these questions:
 > ## Comments from the pros 
 >
 > Take the time to figure identify a projection that is suited for your project.
-> You don't have to stick to the ones that are popular.  
+> You don't have to stick to the ones that are popular.
 {: .callout}
 
 ### Describing Coordinate Reference Systems  

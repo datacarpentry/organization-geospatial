@@ -7,3 +7,6 @@ Gemfile.lock
 _episodes_rmd/data*
 _episodes/
 fig/
+.Rproj.user
+.Rhistory
+.RData
