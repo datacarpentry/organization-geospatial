@@ -215,31 +215,6 @@ In this tutorial we will discuss all of these metadata tags.
 > * <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
 {: .callout}
 
-## Vector
-
-Vector data structures aim to represent specific features on the Earth's surface, and then assign attributes to those features. All vector datasets are based around coordinate points - usually paired x,y values in 2D space. There are many possible way to arrange and connect a set of points, so some standards have been developed to keep vector formats interoperable. The most common standard you will encounter is OGC Simple Features.
-
-Simple Features defines 17 types of vector geometry, and the vast majority of data uses just three of these classes - Points, Lines, and Polygons. Points are assembled into more complex structures by straight lines only.
-
-< insert image >
-
-A point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points that make up lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
-
-Vector data has some important advantages:  
-
-  * The geometry itself contains information about what the dataset creator thought was important  
-  * The geometry structures hold information in themselves - why choose point over polygon, for instance?  
-  * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc  
-  * Data storage can be very efficient compared to rasters  
-  
-The downsides of vector data are  
-
-  * potential loss of detail compared to raster  
-  * potential bias in datasets - what didn't get recorded?  
-  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
-
-Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.
-
 # Multi-band Raster Data
 
 ## The Basics of Imagery - About Spectral Remote Sensing Data
@@ -346,6 +321,32 @@ to learn more about time series stacks.
 Data Skills
 [Imaging Spectroscopy HDF5 in R ]({{site.baseurl}}/HDF5/Imaging-Spectroscopy-HDF5-In-R/)
 episode for more about working with hyperspectral data cubes.
+
+
+## Vector
+
+Vector data structures aim to represent specific features on the Earth's surface, and then assign attributes to those features. All vector datasets are based around coordinate points - usually paired x,y values in 2D space. There are many possible way to arrange and connect a set of points, so some standards have been developed to keep vector formats interoperable. The most common standard you will encounter is OGC Simple Features.
+
+Simple Features defines 17 types of vector geometry, and the vast majority of data uses just three of these classes - Points, Lines, and Polygons. Points are assembled into more complex structures by straight lines only.
+
+< insert image >
+
+A point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points that make up lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
+
+Vector data has some important advantages:  
+
+  * The geometry itself contains information about what the dataset creator thought was important  
+  * The geometry structures hold information in themselves - why choose point over polygon, for instance?  
+  * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc  
+  * Data storage can be very efficient compared to rasters  
+  
+The downsides of vector data are  
+
+  * potential loss of detail compared to raster  
+  * potential bias in datasets - what didn't get recorded?  
+  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
+
+Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.
 
 ## Coordinate Reference Systems
 
