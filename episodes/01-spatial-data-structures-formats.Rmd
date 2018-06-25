@@ -215,15 +215,159 @@ In this tutorial we will discuss all of these metadata tags.
 > * <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
 {: .callout}
 
+# Multi-band Raster Data
+
+## The Basics of Imagery - About Spectral Remote Sensing Data
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe>
+
+## About Raster Bands in R
+As discussed in the
+[Intro to Raster Data episode]({{ base.url }}/R/Introduction-to-Raster-Data-In-R),
+a raster can contain 1 or more bands.
+
+<figure>
+<a href="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
+<img src="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
+</a>
+<figcaption>A raster can contain one or more bands. We can use the
+raster function to import one single band from a single OR multi-band
+raster.  Source: National Ecological Observatory Network (NEON).</figcaption>
+</figure>
+
+To work with multi-band rasters in `R`, we need to change how we import and plot
+our data in several ways.
+
+* To import multi band raster data we will use the `stack()` function.
+* If our multi-band data are imagery that we wish to composite, we can use
+`plotRGB()` (instead of `plot()`) to plot a 3 band raster image.
+
+## About Multi-Band Imagery
+One type of multi-band raster dataset that is familiar to many of us is a color
+image. A basic color image consists of three bands: red, green, and blue. Each
+band represents light reflected from the red, green or blue portions of the
+electromagnetic spectrum. The pixel brightness for each band, when composited
+creates the colors that we see in an image.
+
+<figure>
+<a href="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg">
+<img src="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg"></a>
+<figcaption>A color image consists of 3 bands - red, green and blue. When
+rendered together in a GIS, or even a tool like Photoshop or any other
+image software, they create a color image.
+Source: National Ecological Observatory Network (NEON).
+</figcaption>
+</figure>
+
+We can plot each band of a multi-band image individually.
+
+> ## Data Tip
+> In many GIS applications, a single band
+> would render as a single image in grayscale. We will therefore use a grayscale
+> palette to render individual bands.
+{: .callout}
+
+```{r demonstrate-RGB-Image, echo=FALSE}
+library(raster)
+# Use stack function to read in all bands
+RGB_stack_HARV <- stack("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
+
+names(RGB_stack_HARV) <- c("Red Band", "Green Band", "Blue Band")
+
+grayscale_colors <- gray.colors(100,
+start = 0.0,
+end = 1.0,
+gamma = 2.2,
+alpha = NULL)
+
+# Create an RGB image from the raster stack
+plot(RGB_stack_HARV,
+col = grayscale_colors,
+axes = FALSE)
+
+```
+
+Or we can composite all three bands together to make a color image.
+
+```{r plot-RGB-now, echo=FALSE, message=FALSE }
+# Create an RGB image from the raster stack
+
+original_par <- par() # create original par for easy reversal at end
+par(col.axis = "white", col.lab = "white", tck = 0)
+plotRGB(RGB_stack_HARV, r = 1, g = 2, b = 3,
+axes = TRUE,
+main = "3 Band Color Composite Image\n NEON Harvard Forest Field Site")
+box(col = "white")
+
+```
+
+In a multi-band dataset, the rasters will always have the same *extent*,
+*CRS* and *resolution*.
+
+```{r reset-par, echo=FALSE, results="hide", warning=FALSE}
+par(original_par) # go back to original par
+
+```
+
+## Other Types of Multi-band Raster Data
+
+Multi-band raster data might also contain:
+
+1. **Time series:** the same variable, over the same area, over time. Check out
+[Raster Time Series Data in R ]({{site.baseurl}}/R/Raster-Times-Series-Data-In-R/)
+to learn more about time series stacks.
+2. **Multi or hyperspectral imagery:** image rasters that have 4 or more
+(multi-spectral) or more than 10-15 (hyperspectral) bands. Check out the NEON
+Data Skills
+[Imaging Spectroscopy HDF5 in R ]({{site.baseurl}}/HDF5/Imaging-Spectroscopy-HDF5-In-R/)
+episode for more about working with hyperspectral data cubes.
+
+
 ## Vector
 
-Vector data structures aim to represent specific features on the Earth's surface, and then assign attributes to those features. All vector datasets are based around coordinate points - usually paired x,y values in 2D space. There are many possible way to arrange and connect a set of points, so some standards have been developed to keep vector formats interoperable. The most common standard you will encounter is OGC Simple Features.
+Vector data structures aim to represent specific features on the Earth's surface, and then
+assign attributes to those features. Vectors are composed of discrete geometric locations (x, y
+values) known as
+**vertices** that define the "shape" of the spatial object. The organization
+of the vertices determines the type of vector that we are working
+with: point, line or polygon.
 
-Simple Features defines 17 types of vector geometry, and the vast majority of data uses just three of these classes - Points, Lines, and Polygons. Points are assembled into more complex structures by straight lines only.
+<figure>
+<a href="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png">
+<img src="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png"></a>
+<figcaption> There are 3 types of vector objects: points, lines or
+polygons. Each object type has a different structure.
+Image Source: National Ecological Observatory Network (NEON)
+</figcaption>
+</figure>
 
-< insert image >
+* **Points:** Each individual point is defined by a single x, y coordinate.
+There can be many points in a vector point file. Examples of point data include:
+sampling locations, the location of individual trees or the location of plots.
 
-A point is just a single coordinate pair. A line made when at least two points are grouped together. A polygon requires at least three points, and then a fourth point that matches the first one, closing the loop. The points that make up lines and polygons also need to be arranged in a sensible sequence to be valid - if you draw straight lines between each point, those lines should never cross. Following these rules makes it possible to do complex geometric operations by layering vector datasets together.  
+* **Lines:** Lines are composed of many (at least 2) vertices, or points, that
+are connected. For instance, a road or a stream may be represented by a line. This
+line is composed of a series of segments, each "bend" in the road or stream
+represents a vertex that has defined `x, y` location.
+
+* **Polygons:** A polygon consists of 3 or more vertices that are connected and
+"closed". Thus the outlines of plot boundaries, lakes, oceans, and states or
+countries are often represented by polygons. Occasionally, a polygon can have a
+hole in the middle of it (like a doughnut), this is something to be aware of but
+not an issue we will deal with in this episode.
+
+> ## Data Tip
+> Sometimes, boundary layers such as
+>  states and countries, are stored as lines rather than polygons. However, these
+> boundaries, when represented as a line, will not create a closed object with a defined "area" that can be "filled".
+{: .callout}
+
+A point is just a single coordinate pair. A line made when at least two points are grouped
+together. A polygon requires at least three points, and then a fourth point that matches the
+first one, closing the loop. The points that make up lines and polygons also need to be arranged
+in a sensible sequence to be valid - if you draw straight lines between each point, those lines
+should never cross. Following these rules makes it possible to do complex geometric operations
+by layering vector datasets together.
 
 Vector data has some important advantages:  
 
@@ -238,9 +382,28 @@ The downsides of vector data are
   * potential bias in datasets - what didn't get recorded?  
   * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
 
-Vector datasets are in use in many industries besides geospatial. For instance, computer graphics are largely vector-based, although the data structures in use tend to join points using arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-based. The difference is, again, that geospatial datasets are accompanied by information tying their features to real-world locations. Its time to talk about how that works.  
+Vector datasets are in use in many industries besides geospatial. For instance, computer
+graphics are largely vector-based, although the data structures in use tend to join points using
+arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-
+based. The difference is, again, that geospatial datasets are accompanied by information tying
+their features to real-world locations.
 
-## Coordinate Reference Systems  
+## Shapefiles: Points, Lines, and Polygons
+Geospatial data in vector format are often stored in a `shapefile` format.
+Because the structure of points, lines, and polygons are different, each
+individual shapefile can only contain one vector type (all points, all lines
+or all polygons). You will not find a mixture of point, line and polygon
+objects in a single shapefile.
+
+Objects stored in a shapefile often have a set of associated `attributes` that
+describe the data. For example, a line shapefile that contains the locations of
+streams, might contain the associated stream name, stream "order" and other
+information about each stream line object.
+
+* More about shapefiles can found on
+<a href="https://en.wikipedia.org/wiki/Shapefile" target="_blank">Wikipedia</a>.
+
+## Coordinate Reference Systems
 
 A data structure cannot be considered geospatial unless it is
 accompanied by coordinate reference system (CRS) information, in
