@@ -414,7 +414,7 @@ stone wall).
     <a href="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png">
     <img src="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png"></a>
     <figcaption>The shapefile format allows us to store attributes for each
-        feature (vector object) stored in the shapefile. The attribute table, is
+        feature (vector object) stored in the shapefile. The attribute table is
         similar to a spreadsheet. There is a row for each feature. The first column
         contains the unique ID of the feature. We can add additional columns that
         describe the feature. Image Source: National Ecological Observatory Network
