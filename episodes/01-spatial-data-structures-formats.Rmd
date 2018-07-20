@@ -238,10 +238,6 @@ raster.  Source: National Ecological Observatory Network (NEON).</figcaption>
 To work with multi-band rasters in `R`, we need to change how we import and plot
 our data in several ways.
 
-* To import multi band raster data we will use the `stack()` function.
-* If our multi-band data are imagery that we wish to composite, we can use
-`plotRGB()` (instead of `plot()`) to plot a 3 band raster image.
-
 ## About Multi-Band Imagery
 One type of multi-band raster dataset that is familiar to many of us is a color
 image. A basic color image consists of three bands: red, green, and blue. Each
@@ -580,4 +576,26 @@ Many existing file formats were invented by GIS software developers, often in a 
 
 GDAL is a set of software tools that translate between almost any geospatial format in common use today (and some not so common ones). GDAL also contains tools for editing and manipulating both raster and vector files, including reprojecting data to different CRSs. GDAL can be used as a standalone command-line tool, or built in to other GIS software. Several open-source GIS programs use GDAL for all file import/export operations. 
 
-***
+## NDVI Data
+The Normalized Difference Vegetation Index or NDVI is a quantitative index of
+greenness ranging from 0-1 where 0 represents minimal or no greenness and 1
+represents maximum greenness.
+
+NDVI is often used for a quantative proxy measure of vegetation health, cover
+and phenology (life cycle stage) over large areas. Our NDVI data is a Landsat
+derived single band product saved as a GeoTIFF for different times of the year.
+
+<figure>
+<a href="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/Images/ndvi_example.jpg">
+<img src="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/Images/ndvi_example.jpg"></a>
+<figcaption>NDVI is calculated from the visible and near-infrared light
+reflected by vegetation. Healthy vegetation (left) absorbs most of the
+visible light that hits it, and reflects a large portion of
+near-infrared light. Unhealthy or sparse vegetation (right) reflects more
+visible light and less near-infrared light. Image & Caption Source: NASA
+</figcaption>
+</figure>
+
+> ## Data Tip
+> You can read more about NDVI data on [NASA's Earth Observatory page](https://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php).
+{: .callout}
