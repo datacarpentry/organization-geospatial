@@ -19,27 +19,30 @@ source("../setup.R")
 knitr_fig_path("00-")
 ```
 
-This tutorial provides an overview of key spatial data concepts, including structures and common storage and transfer formats.
+```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
+library(raster)
+library(rgdal)
+library(ggplot2)
+library(dplyr)
+```
 
-**Skill Level:** This tutorial provides conceptual background for the Data Carpentry
-geospatial tutorial series. The concepts outlined in this tutorial relate to many 
-programming languages and data types!
+```{r load-data, results = 'hide', echo = FALSE, message = FALSE}
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+DSM_HARV_df <- raster::as.data.frame(DSM_HARV, xy = TRUE)
 
-All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started. 
+RGB_stack_HARV <- stack("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
+names(RGB_stack_HARV) <- c("Red Band", "Green Band", "Blue Band")
+```
 
-# Structures: Raster and Vector
+This episode provides an overview of key spatial data concepts, including structures and common storage and transfer formats. All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started. 
+
+# Data Structures: Raster and Vector
 
 ## About Raster Data
 Raster or "gridded" data are stored as a grid of values which are rendered on a
 map as pixels. Each pixel value represents an area on the Earth's surface.
 
-<figure>
-<a href="../images/dc-spatial-raster/raster_concept.png">
-<img src="../images/dc-spatial-raster/raster_concept.png">
-</a>
-<figcaption> Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
+![Source: National Ecological Observatory Network (NEON)](../fig/dc-spatial-raster/raster_concept.png)
 
 The cell values can represent a continuous surface (e.g. elevation)
 or a categorical classification (e.g. land use). If this sounds
@@ -59,36 +62,15 @@ range of quantitative values. Some examples of continuous rasters include:
 3. Elevation values for a region.
 
 A map of elevation for Harvard Forest derived from the
-<a href="http://www.neonscience.org/data-collection/airborne-remote-sensing" target="_blank">
-NEON AOP LiDAR sensor</a>
+[NEON AOP LiDAR sensor](http://www.neonscience.org/data-collection/airborne-remote-sensing)
 is below. Elevation is represented as continuous numeric variable in this map. The legend
 shows the continuous range of values in the data from around 300 to 420 meters.
 
-```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
-
-library(raster)
-library(rgdal)
-
-```
-
 ```{r elevation-map, echo=FALSE}
-# render DSM for tutorial content background
-DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
-
-library(ggplot2)
-
-# convert to a df for plotting in two steps,
-# First, to a SpatialPointsDataFrame
-DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
-# Then to a 'conventional' dataframe
-DSM_HARV_df  <- data.frame(DSM_HARV_pts)
-rm(DSM_HARV_pts)
-
 ggplot() +
 geom_raster(data = DSM_HARV_df , aes(x = x, y = y, fill = HARV_dsmCrop)) +
 ggtitle("Continuous Elevation Map - NEON Harvard Forest Field Site") +
 coord_equal()
-
 ```
 
 Some rasters contain categorical data where each pixel represents a discrete
@@ -100,46 +82,18 @@ maps include:
 2. Tree height maps classified as short, medium, tall trees.
 3. Elevation maps classified as low, medium and high elevation.
 
-#### Categorical Landcover Map for the United States
-<figure>
-<a href="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif ">
-<img src="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif">
-</a>
-<figcaption> Map of the United States showing landcover as categorical data.
-Each color is a different landcover category.  Source:
-<a href="http://www.mrlc.gov/nlcd06_data.php" target="_blank">
-Multi-Resolution Land Characteristics Consortium, USGS</a>
-</figcaption>
-</figure>
-
 #### Categorical Elevation Map of the NEON Harvard Forest Site
 The legend of this map shows the colors representing each discrete class.
 
 ```{r classified-elevation-map, echo=FALSE, warning=FALSE, message=FALSE}
-
-# Load raster into R
-DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
-
-# convert to a df for plotting in two steps,
-# First, to a SpatialPointsDataFrame
-DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
-# Then to a 'conventional' dataframe
-DSM_HARV_df  <- data.frame(DSM_HARV_pts)
-
-library(ggplot2)
-library(dplyr)
-
 DSM_HARV_df <- DSM_HARV_df %>%
-mutate(fct_elevation = cut(HARV_dsmCrop, 3,
-labels = c("Low Elevation","Middle Elevation","High Elevation")
-)
-)
+  mutate(fct_elevation = cut(HARV_dsmCrop, 3,
+  labels = c("Low Elevation","Middle Elevation","High Elevation")))
 
 ggplot() +
 geom_raster(data = DSM_HARV_df , aes(x = x, y = y, fill = fct_elevation)) +
 ggtitle("Classified Elevation Map - NEON Harvard Forest Field Site") +
 coord_equal()
-
 ```
 
 Raster data has some important advantages:
@@ -166,13 +120,8 @@ green, and blue datasets.
 ## Extent
 The spatial extent is the geographic area that the raster data covers.
 
-<figure>
-<a href="../images/dc-spatial-raster/spatial_extent.png">
-<img src="../images/dc-spatial-raster/spatial_extent.png">
-</a>
-<figcaption> Image Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
+
+![Image Source: National Ecological Observatory Network (NEON)](../fig/dc-spatial-raster/spatial_extent.png)
 
 The spatial extent of an R spatial object represents the geographic "edge" or
 location that is the furthest north, south, east and west. In other words, `extent`
@@ -184,16 +133,10 @@ area on the ground that each pixel covers. The units for our data are in meters.
 Given our data resolution is 1 x 1, this means that each pixel represents a
 1 x 1 meter area on the ground.
 
-<figure>
-<a href="../images/dc-spatial-raster/raster_resolution.png">
-<img src="../images/dc-spatial-raster/raster_resolution.png">
-</a>
-<figcaption> Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
+![Source: National Ecological Observatory Network (NEON)](../fig/dc-spatial-raster/raster_resolution.png)
 
 ## What is a GeoTIFF??
-Raster data can come in many different formats. In this tutorial, we will use the
+Raster data can come in many different formats. In this episode, we will use the
 geotiff format which has the extension `.tif`. A `.tif` file stores metadata
 or attributes about the file as embedded `tif tags`. For instance, your camera
 might
@@ -202,12 +145,10 @@ photo was taken when it saves a `.tif`. A GeoTIFF is a standard `.tif` image
 format with additional spatial (georeferencing) information embedded in the file
 as tags. These tags can include the following raster metadata:
 
-1. A Coordinate Reference System (`CRS`)
+1. A Coordinate Reference System (CRS)
 2. Spatial Extent (`extent`)
 3. Values that represent missing data (`NoDataValue`)
 4. The `resolution` of the data
-
-In this tutorial we will discuss all of these metadata tags.
 
 ## More Resources on the  `.tif` format
 >
@@ -223,24 +164,17 @@ In this tutorial we will discuss all of these metadata tags.
 
 ## About Raster Bands in R
 As discussed in the
-[Intro to Raster Data episode]({{ base.url }}/R/Introduction-to-Raster-Data-In-R),
+[Intro to Raster Data episode]({{ base.url }}/01-raster-structure/),
 a raster can contain 1 or more bands.
 
-<figure>
-<a href="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
-<img src="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
-</a>
-<figcaption>A raster can contain one or more bands. We can use the
+![Source: National Ecological Observatory Network (NEON).](../fig/dc-spatial-raster/single_multi_raster.png)
+
+A raster can contain one or more bands. We can use the
 raster function to import one single band from a single OR multi-band
-raster.  Source: National Ecological Observatory Network (NEON).</figcaption>
-</figure>
+raster. Source: National Ecological Observatory Network (NEON).
 
 To work with multi-band rasters in `R`, we need to change how we import and plot
 our data in several ways.
-
-* To import multi band raster data we will use the `stack()` function.
-* If our multi-band data are imagery that we wish to composite, we can use
-`plotRGB()` (instead of `plot()`) to plot a 3 band raster image.
 
 ## About Multi-Band Imagery
 One type of multi-band raster dataset that is familiar to many of us is a color
@@ -249,15 +183,12 @@ band represents light reflected from the red, green or blue portions of the
 electromagnetic spectrum. The pixel brightness for each band, when composited
 creates the colors that we see in an image.
 
-<figure>
-<a href="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg">
-<img src="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg"></a>
-<figcaption>A color image consists of 3 bands - red, green and blue. When
+![Source: National Ecological Observatory Network (NEON).](../fig/dc-spatial-raster/RGBSTack_1.jpg)
+
+A color image consists of 3 bands - red, green and blue. When
 rendered together in a GIS, or even a tool like Photoshop or any other
 image software, they create a color image.
 Source: National Ecological Observatory Network (NEON).
-</figcaption>
-</figure>
 
 We can plot each band of a multi-band image individually.
 
@@ -268,29 +199,14 @@ We can plot each band of a multi-band image individually.
 {: .callout}
 
 ```{r demonstrate-RGB-Image, echo=FALSE}
-library(raster)
-# Use stack function to read in all bands
-RGB_stack_HARV <- stack("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
+grayscale_colors <- gray.colors(100, start = 0.0, end = 1.0, gamma = 2.2, alpha = NULL)
 
-names(RGB_stack_HARV) <- c("Red Band", "Green Band", "Blue Band")
-
-grayscale_colors <- gray.colors(100,
-start = 0.0,
-end = 1.0,
-gamma = 2.2,
-alpha = NULL)
-
-# Create an RGB image from the raster stack
-plot(RGB_stack_HARV,
-col = grayscale_colors,
-axes = FALSE)
-
+plot(RGB_stack_HARV, col = grayscale_colors, axes = FALSE)
 ```
 
 Or we can composite all three bands together to make a color image.
 
-```{r plot-RGB-now, echo=FALSE, message=FALSE }
-# Create an RGB image from the raster stack
+```{r plot-RGB-now, echo=FALSE, message=FALSE, warning = FALSE }
 
 original_par <- par() # create original par for easy reversal at end
 par(col.axis = "white", col.lab = "white", tck = 0)
@@ -299,47 +215,40 @@ axes = TRUE,
 main = "3 Band Color Composite Image\n NEON Harvard Forest Field Site")
 box(col = "white")
 
-```
-
-In a multi-band dataset, the rasters will always have the same *extent*,
-*CRS* and *resolution*.
-
-```{r reset-par, echo=FALSE, results="hide", warning=FALSE}
 par(original_par) # go back to original par
-
 ```
+
+In a multi-band dataset, the rasters will always have the same extent,
+CRS and resolution.
 
 ## Other Types of Multi-band Raster Data
 
 Multi-band raster data might also contain:
 
-1. **Time series:** the same variable, over the same area, over time. Check out
-[Raster Time Series Data in R ]({{site.baseurl}}/R/Raster-Times-Series-Data-In-R/)
-to learn more about time series stacks.
+1. **Time series:** the same variable, over the same area, over time. We will learn 
+how to work with and plot time series data later in this workshop, starting with the
+[Raster Time Series Data in R](https://datacarpentry.org/r-raster-vector-geospatial/12-time-series-raster/) episode. 
 2. **Multi or hyperspectral imagery:** image rasters that have 4 or more
 (multi-spectral) or more than 10-15 (hyperspectral) bands. Check out the NEON
 Data Skills
-[Imaging Spectroscopy HDF5 in R ]({{site.baseurl}}/HDF5/Imaging-Spectroscopy-HDF5-In-R/)
+[Imaging Spectroscopy HDF5 in R ](https://www.neonscience.org/hsi-hdf5-r)
 episode for more about working with hyperspectral data cubes.
-
 
 ## Vector
 
 Vector data structures aim to represent specific features on the Earth's surface, and then
 assign attributes to those features. Vectors are composed of discrete geometric locations (x, y
 values) known as
-**vertices** that define the "shape" of the spatial object. The organization
+vertices that define the "shape" of the spatial object. The organization
 of the vertices determines the type of vector that we are working
 with: point, line or polygon.
 
-<figure>
-<a href="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png">
-<img src="{{ site.baseurl }}/images/dc-spatial-vector/pnt_line_poly.png"></a>
-<figcaption> There are 3 types of vector objects: points, lines or
+
+![Point, line, polygon](../fig/dc-spatial-vector/pnt_line_poly.png)
+
+There are 3 types of vector objects: points, lines or
 polygons. Each object type has a different structure.
 Image Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
 
 * **Points:** Each individual point is defined by a single x, y coordinate.
 There can be many points in a vector point file. Examples of point data include:
@@ -410,21 +319,19 @@ attribute called `TYPE`. Each line in the shapefile has an associated `TYPE`
 which describes the type of road (woods road, footpath, boardwalk, or
 stone wall).
 
-<figure>
-    <a href="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png">
-    <img src="{{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png"></a>
-    <figcaption>The shapefile format allows us to store attributes for each
-        feature (vector object) stored in the shapefile. The attribute table is
-        similar to a spreadsheet. There is a row for each feature. The first column
-        contains the unique ID of the feature. We can add additional columns that
-        describe the feature. Image Source: National Ecological Observatory Network
-        (NEON)
-    </figcaption>
-</figure>
+![Shapefile format figure]({{ site.baseurl }}/images/dc-spatial-vector/Attribute_Table.png)
 
+The shapefile format allows us to store attributes for each
+feature (vector object) stored in the shapefile. The attribute table is
+similar to a spreadsheet. There is a row for each feature. The first column
+contains the unique ID of the feature. We can add additional columns that
+describe the feature. Image Source: National Ecological Observatory Network
+(NEON).
 
-* More about shapefiles can found on
-<a href="https://en.wikipedia.org/wiki/Shapefile" target="_blank">Wikipedia</a>.
+> ## More on shapefiles
+> * More about shapefiles can found on 
+> [Wikipedia](https://en.wikipedia.org/wiki/Shapefile).
+{: .callout}
 
 ## Coordinate Reference Systems
 
@@ -435,41 +342,36 @@ manipulate the data correctly. CRS information connects data to the
 Earth's surface using a mathematical model.
 
 > ## CRS vs SRS
->
 > 'CRS' ('coordinate reference system') and 'SRS' ('spatial reference system') are synonyms and are commonly interchanged.
 {: .callout}
 
-The Coordinate Reference System or `CRS` tells your mapping software (for example `R`)
+The Coordinate Reference System or CRS tells your mapping software (for example `R`)
 where the raster is located
 in geographic space. It also tells the mapping software what method should be used to "flatten"
 or project the raster in geographic space.
 
-<figure>
-<a href="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
-<img src="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg">
-</a>
+![Different projections of the contiguous United States](https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg)
 
-<figcaption> Maps of the United States in different projections. Notice the
+Maps of the United States in different projections. Notice the
 differences in shape associated with each different projection. These
 differences are a direct result of the calculations used to "flatten" the
-data onto a 2-dimensional map. Source: opennews.org</figcaption>
-</figure>
+data onto a 2-dimensional map. Source: opennews.org
 
 ### What Makes Spatial Data Line Up On A Map?
 There are lots of great resources that describe coordinate reference systems and
 projections in greater detail (read more, below). For the purposes of this
 activity, what is important to understand is that data from the same location
-but saved in **different projections will not line up in any GIS or other
-program**. Thus, it's important when working with spatial data in a program like
+but saved in different projections will not line up in any GIS or other
+program. Thus, it's important when working with spatial data in a program like
 `R` to identify the coordinate reference system applied to the data and retain
 it throughout data processing and analysis.
 
 > ## More Resources on CRS
 >
-> * <a href="http://spatialreference.org/ref/epsg/" target="_blank"> A comprehensive online library of CRS information.</a>
-> * <a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/coordinate_reference_systems.html" target="_blank">QGIS Documentation - CRS Overview.</a>
-> * <a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank">Choosing the Right Map Projection.</a>
-> * <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf" target="_blank"> NCEAS Overview of CRS in R.</a>
+> * [A comprehensive online library of CRS information.](http://spatialreference.org/ref/epsg/)
+> * [QGIS Documentation - CRS Overview.](https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
+> * [Choosing the Right Map Projection.](https://source.opennews.org/en-US/learning/choosing-right-map-projection/)
+> * [NCEAS Overview of CRS in R.](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)
 > * Check out this short video highlighting how map projections can make continents
 seems proportionally larger or smaller than they actually are!
 > <iframe width="560" height="315" src="https://www.youtube.com/embed/KUF_Ckv8HbE" frameborder="0" allowfullscreen></iframe>
@@ -494,32 +396,24 @@ When datums are used by themselves they are called a Geographic Coordinate Syste
 > ## Orange Peel Analogy
 > A datum is the choice of fruit to use. Is the earth an orange, a lemon, a lime, a grapefruit?
 >
-> ```{r, echo=FALSE, fig.caption="Image of citrus"}
-> knitr::include_graphics("../fig/citrus.jpg")
-> ```
+> ![Image of citrus](../fig/citrus.jpg)
 >
 > Image source: [https://github.com/MicheleTobias/R-Projections-Workshop](https://github.com/MicheleTobias/R-Projections-Workshop)
 {: .discussion}
 
 ### Projection  
 
-A Projection is a mathematical transformation of the angular measurements on a round earth to a flat surface (i.e. paper or a computer screen).  
-
-The units associated with a given projection are usually linear (feet, meters, etc.).  
-
-Many people use the term "projection" when they actually mean "coordinate reference system".   
-
+A projection is a mathematical transformation of the angular measurements on a round
+earth to a flat surface (i.e. paper or a computer screen). The units associated with
+a given projection are usually linear (feet, meters, etc.). Many people use the term
+"projection" when they actually mean "coordinate reference system".   
 
 > ## Orange Peel Analogy
 > A projection is how you peel your orange and then flatten the peel.
 >
-> ```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
-> knitr::include_graphics("../fig/orange-peel-earth.jpg")
-> ```
+> ![Image of peeled orange with globe](../fig/orange-peel-earth.jpg)
 > Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 {: .discussion}
-
-Image source: [http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 
 ### Additional Parameters  
 
@@ -529,7 +423,6 @@ Additional parameters are often necessary to create the full coordinate referenc
 > An additional parameter could include a definition of the location of the stem of the fruit. What other parameters could be included in this analogy?
 {: .discussion}
 
-
 ### Which CRS/projection should I use?
 
 To decide if a projection is right for your data, answer these questions:  
@@ -537,7 +430,12 @@ To decide if a projection is right for your data, answer these questions:
   *  What is the area of minimal distortion?  
   *  What aspect of the data does it preserve?  
 
-[University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) has a good discussion of these aspects of projections. Online tools like [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
+> ## More info
+> [University of Colorado's Map Projections](https://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj_f.html) 
+> and the [Department of Geo-Information Processing](http://kartoweb.itc.nl/geometrics/map%20projections/mappro.html) 
+> has a good discussion of these aspects of projections. Online tools like 
+> [Projection Wizard](http://projectionwizard.org/) can also help you discover projections that might be a good fit for your data.  
+{: .callout}
 
 > ## Comments from the pros 
 >
@@ -553,13 +451,13 @@ There are several common systems in use for storing and transmitting CRS informa
 
 The [EPSG system](http://www.epsg.org) is a database of CRS information maintained by the International Association of Oil and Gas Producers. The dataset contains both CRS definitions and information on how to safely convert data from one CRS to another. Using EPSG is easy as every CRS has a integer identifier, e.g. WGS84 is EPSG:4326. The downside is that you can only use the CRSs EPSG defines and cannot customise them.  
 
-Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).
+> ## More info
+> Detailed information on the structure of the EPSG dataset is [available here](http://www.epsg.org/GuidanceNotes).
+{: .callout}
 
 #### PROJ
 
-[PROJ](http://proj4.org/) is an open-source library for storing, representing and transforming CRS information. PROJ.5 has been recently released, but PROJ.4 was in use for 25 years so you will still mostly see PROJ referred to as PROJ.4. 
-
-PROJ represents CRS information as a text string of key-value pairs, which makes it easy to customise (and with a little practice, easy to read and interpret). 
+[PROJ](http://proj4.org/) is an open-source library for storing, representing and transforming CRS information. PROJ.5 has been recently released, but PROJ.4 was in use for 25 years so you will still mostly see PROJ referred to as PROJ.4. PROJ represents CRS information as a text string of key-value pairs, which makes it easy to customise (and with a little practice, easy to read and interpret). 
 
 #### OGC Well-known text (WKT)
 
@@ -603,4 +501,23 @@ Many existing file formats were invented by GIS software developers, often in a 
 
 GDAL is a set of software tools that translate between almost any geospatial format in common use today (and some not so common ones). GDAL also contains tools for editing and manipulating both raster and vector files, including reprojecting data to different CRSs. GDAL can be used as a standalone command-line tool, or built in to other GIS software. Several open-source GIS programs use GDAL for all file import/export operations. 
 
-***
+## NDVI Data
+The Normalized Difference Vegetation Index or NDVI is a quantitative index of
+greenness ranging from 0-1 where 0 represents minimal or no greenness and 1
+represents maximum greenness.
+
+NDVI is often used for a quantative proxy measure of vegetation health, cover
+and phenology (life cycle stage) over large areas. Our NDVI data is a Landsat
+derived single band product saved as a GeoTIFF for different times of the year.
+
+![NDVI figure](http://earthobservatory.nasa.gov/Features/MeasuringVegetation/Images/ndvi_example.jpg)
+
+NDVI is calculated from the visible and near-infrared light
+reflected by vegetation. Healthy vegetation (left) absorbs most of the
+visible light that hits it, and reflects a large portion of
+near-infrared light. Unhealthy or sparse vegetation (right) reflects more
+visible light and less near-infrared light. Image & Caption Source: NASA
+
+> ## More info
+> You can read more about NDVI data on [NASA's Earth Observatory page](https://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php).
+{: .callout}
