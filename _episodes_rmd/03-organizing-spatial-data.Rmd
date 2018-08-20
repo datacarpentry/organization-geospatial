@@ -1,7 +1,7 @@
 ---
 title: "Organising a spatial data project"
-teaching: 10
-exercises: ??
+teaching: 15
+exercises: 10
 questions:
  - TBD
 objectives:
