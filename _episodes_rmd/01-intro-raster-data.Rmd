@@ -3,11 +3,16 @@ title: "Introduction to Spatial Data"
 teaching: 30
 exercises: 15
 questions:
- - TBD
+ - "What format should I use to represent my data?"
+ - "What are the main data types used for representing geospatial data?"
+ - "What are the main attributes of raster and vector data?"
 objectives:
-- "Understand the data structures used to represent spatial information, including their strengths and weaknesses"
-- "Become familiar with common storage and transfer formats"
-- "Understand how those formats are currently represented in R and in Python"
+- "Describe the difference between raster and vector data."
+- "Describe the strengths and weaknesses of storing data in raster and vector data storage formats."
+- "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each."
+- "Describe the three types of vectors and identify types of data that would be stored in each."
+- "Name some common schemes for describing coordinate reference systems."
+- "Interpret a PROJ4 coordinate reference system description."
 keypoints:
  - TBD
 source: Rmd
@@ -19,15 +24,14 @@ source("../setup.R")
 knitr_fig_path("00-")
 ```
 
-This tutorial provides an overview of key spatial data concepts, including structures and common storage and transfer formats.
+This tutorial provides an overview of key spatial data concepts,
+including structures and common storage and transfer formats. 
+Each of these topics is covered in more detail in later lessons. 
+This lesson provides just enough background information
+to help you get started and to make sense of the later lessons in
+this workshop.
 
-**Skill Level:** This tutorial provides conceptual background for the Data Carpentry
-geospatial tutorial series. The concepts outlined in this tutorial relate to many 
-programming languages and data types!
-
-All of the topics below are covered in more detail in later episodes. This episode just provides enough background to help you get started. 
-
-# Structures: Raster and Vector
+# Data Structures: Raster and Vector
 
 ## About Raster Data
 Raster or "gridded" data are stored as a grid of values which are rendered on a
