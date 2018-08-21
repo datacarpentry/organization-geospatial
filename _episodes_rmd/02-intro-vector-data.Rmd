@@ -22,7 +22,7 @@ knitr_fig_path("02-")
 
 ## Vector
 
-Vector data structures aim to represent specific features on the Earth's surface, and then
+Vector data structures represent specific features on the Earth's surface, and
 assign attributes to those features. Vectors are composed of discrete geometric locations (x, y
 values) known as
 **vertices** that define the "shape" of the spatial object. The organization

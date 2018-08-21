@@ -9,11 +9,10 @@ questions:
 objectives:
 - "Describe the difference between raster and vector data."
 - "Describe the strengths and weaknesses of storing data in raster format."
-- "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each."
-- "Name some common schemes for describing coordinate reference systems."
-- "Interpret a PROJ4 coordinate reference system description."
+- "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format."
 keypoints:
- - TBD
+ - "Raster data is pixelated data where each pixel is associated with a specific location."
+ - ""
 source: Rmd
 ---
 
@@ -23,75 +22,74 @@ source("../setup.R")
 knitr_fig_path("01-")
 ```
 
-This tutorial provides an overview of key spatial data concepts,
-including structures and common storage and transfer formats. 
-Each of these topics is covered in more detail in later lessons. 
-This lesson provides just enough background information
-to help you get started and to make sense of the later lessons in
-this workshop.
+```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
+library(raster)
+library(rgdal)
+library(ggplot2)
+```
+
+```{r, results = 'hide', echo = FALSE, message = FALSE}
+# load data needed to generate figures
+# for demonstration only - learners do not need this data for this lesson
+DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+
+# convert to a df for plotting
+DSM_HARV_df <- as.data.frame(DSM_HARV, xy = TRUE)
+```
+
+This episode introduces the two primary types of geospatial
+data: rasters and vectors. After briefly introducing these
+data types, this episode focuses on raster data, describing
+some major features and types of raster data. A 
+[later episode](({{ base.url }}/02-intro-vector-data/)) provides more detail about vector data.
 
 # Data Structures: Raster and Vector
 
-Brief intro to raster vs. vector. Link to next episode for 
-intro to vector data. Link to appropriate sections of 
-raster vector lesson for more detailed work. Include outline of
-what will be covered in raster vector lesson?
+The two primary types of geospatial data are raster
+and vector data. Raster data is stored as a grid of values which are rendered on a
+map as pixels. Each pixel value represents an area on the Earth's surface. Vector data structures represent specific features on the
+Earth's surface, and
+assign attributes to those features. Vector data structures
+will be discussed in more detail in [the next episode](({{ base.url }}/02-intro-vector-data/)).
+
+The [R for Raster and Vector Data](https://datacarpentry.org/r-raster-vector-geospatial/)
+lesson will focus on how to work with both raster and vector 
+data sets, therefore it is essential that we understand the 
+basic structures of these types of data and the types of data
+that they can be used to represent.
 
 ## About Raster Data
-Raster or "gridded" data are stored as a grid of values which are rendered on a
-map as pixels. Each pixel value represents an area on the Earth's surface.
 
-![Raster Councept]("../images/dc-spatial-raster/raster_concept.png")
-Source: National Ecological Observatory Network (NEON)
-
-The cell values can represent a continuous surface (e.g. elevation)
-or a categorical classification (e.g. land use). If this sounds
-familiar, it is because this data structure is very common: its how
+Raster data is any pixelated (or grided) data where each pixel is associated
+with a specific geographical location. The value of a pixel can be
+continuous (e.g. elevation) or categorical (e.g. land use). If this sounds
+familiar, it is because this data structure is very common: it's how
 we represent any digital image. A geospatial raster is only different
 from a digital photo in that it is accompanied by spatial information
 that connects the data to a particular location. This includes the
 raster's extent and cell size, the number of rows and columns, and
-its coordinate reference system (CRS, more on this later).
+its coordinate reference system (or CRS, more on this in [a later episode](({{ base.url }}/03-crs/)).
 
-## Types of Data Stored in Raster Format
-Raster data can be continuous or categorical. Continuous rasters can have a
-range of quantitative values. Some examples of continuous rasters include:
+![Raster Concept]("../images/dc-spatial-raster/raster_concept.png")
+Source: National Ecological Observatory Network (NEON)
+
+Some examples of continuous rasters include:
 
 1. Precipitation maps.
 2. Maps of tree height derived from LiDAR data.
 3. Elevation values for a region.
 
-A map of elevation for Harvard Forest derived from the
-<a href="http://www.neonscience.org/data-collection/airborne-remote-sensing" target="_blank">
-NEON AOP LiDAR sensor</a>
+A map of elevation for Harvard Forest derived from the [NEON AOP LiDAR sensor](http://www.neonscience.org/data-collection/airborne-remote-sensing)
 is below. Elevation is represented as continuous numeric variable in this map. The legend
 shows the continuous range of values in the data from around 300 to 420 meters.
 
-```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
-
-library(raster)
-library(rgdal)
-
-```
-
 ```{r elevation-map, echo=FALSE}
 # render DSM for tutorial content background
-DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
-
-library(ggplot2)
-
-# convert to a df for plotting in two steps,
-# First, to a SpatialPointsDataFrame
-DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
-# Then to a 'conventional' dataframe
-DSM_HARV_df  <- data.frame(DSM_HARV_pts)
-rm(DSM_HARV_pts)
-
+# for demonstration only, code not shown
 ggplot() +
 geom_raster(data = DSM_HARV_df , aes(x = x, y = y, fill = HARV_dsmCrop)) +
 ggtitle("Continuous Elevation Map - NEON Harvard Forest Field Site") +
 coord_equal()
-
 ```
 
 Some rasters contain categorical data where each pixel represents a discrete
@@ -100,20 +98,13 @@ continuous value such as elevation or temperature. Some examples of classified
 maps include:
 
 1. Landcover / land-use maps.
-2. Tree height maps classified as short, medium, tall trees.
-3. Elevation maps classified as low, medium and high elevation.
+2. Tree height maps classified as short, medium, and tall trees.
+3. Elevation maps classified as low, medium, and high elevation.
 
-#### Categorical Landcover Map for the United States
-<figure>
-<a href="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif ">
-<img src="http://neondataskills.org/images/spatialData/NLCD06_conus_lg.gif">
-</a>
-<figcaption> Map of the United States showing landcover as categorical data.
-Each color is a different landcover category.  Source:
-<a href="http://www.mrlc.gov/nlcd06_data.php" target="_blank">
-Multi-Resolution Land Characteristics Consortium, USGS</a>
-</figcaption>
-</figure>
+![]() 
+Map of the United States showing landcover as categorical data.
+Each color is a different landcover category.  Source: Homer, C.G., et al., 2015, Completion of the 2011 National Land Cover Database for the conterminous United States-Representing a decade of land cover change information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p. 345-354
+
 
 #### Categorical Elevation Map of the NEON Harvard Forest Site
 The legend of this map shows the colors representing each discrete class.
