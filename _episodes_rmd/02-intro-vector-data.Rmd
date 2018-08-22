@@ -7,8 +7,6 @@ questions:
 objectives:
 - "Describe the strengths and weaknesses of storing data in vector format."
 - "Describe the three types of vectors and identify types of data that would be stored in each."
-- "Name some common schemes for describing coordinate reference systems."
-- "Interpret a PROJ4 coordinate reference system description."
 keypoints:
  - TBD
 source: Rmd
@@ -20,48 +18,83 @@ source("../setup.R")
 knitr_fig_path("02-")
 ```
 
-## Vector
+```{r load-libraries, echo = FALSE, results='hide', message = FALSE, warning = FALSE}
+# load libraries for demonstration code
+library(sf)
+library(ggplot2)
 
-Vector data structures represent specific features on the Earth's surface, and
-assign attributes to those features. Vectors are composed of discrete geometric locations (x, y
+# read in data for demonstration code
+# learners do not need this data
+NE.States.Boundary.US <- st_read("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers/Boundary-US-State-NEast.shp")
+
+lines_HARV <- st_read("data/NEON-DS-Site-Layout-Files/HARV/HARV_roads.shp")
+point_HARV <- st_read("data/NEON-DS-Site-Layout-Files/HARV/HARVtower_UTM18N.shp")
+```
+
+## About Vector Data
+
+Vector data structures represent specific features on the Earth's
+surface, and
+assign attributes to those features. Vectors are composed of discrete
+geometric locations (x, y
 values) known as
-**vertices** that define the "shape" of the spatial object. The organization
+vertices that define the shape of the spatial object. The organization
 of the vertices determines the type of vector that we are working
 with: point, line or polygon.
 
-![Types of vector objects]("{{site.baseurl}}/images/dc-spatial-vector/pnt_line_poly.png")
+![Types of vector objects]("../images/dc-spatial-vector/pnt_line_poly.png")
 
-There are 3 types of vector objects: points, lines or
-polygons. Each object type has a different structure.
-Image Source: National Ecological Observatory Network (NEON)
+(Image Source: National Ecological Observatory Network (NEON))
 
-* **Points:** Each individual point is defined by a single x, y coordinate.
+* **Points:** Each point is defined by a single x, y coordinate.
 There can be many points in a vector point file. Examples of point data include:
-sampling locations, the location of individual trees or the location of plots.
+sampling locations, the location of individual trees, or the location of
+survey plots.
 
-* **Lines:** Lines are composed of many (at least 2) vertices, or points, that
-are connected. For instance, a road or a stream may be represented by a line. This
-line is composed of a series of segments, each "bend" in the road or stream
-represents a vertex that has defined `x, y` location.
+* **Lines:** Lines are composed of many (at least 2) points that
+are connected. For instance, a road or a stream may be represented by a
+line. This
+line is composed of a series of segments, each "bend" in the road or
+stream
+represents a vertex that has defined x, y location.
 
-* **Polygons:** A polygon consists of 3 or more vertices that are connected and
-"closed". Thus the outlines of plot boundaries, lakes, oceans, and states or
-countries are often represented by polygons. Occasionally, a polygon can have a
-hole in the middle of it (like a doughnut), this is something to be aware of but
-not an issue we will deal with in this episode.
+* **Polygons:** A polygon consists of 3 or more vertices that are 
+connected and closed. The outlines of survey plot boundaries, lakes,
+oceans, and states or
+countries are often represented by polygons. 
 
 > ## Data Tip
 > Sometimes, boundary layers such as
 >  states and countries, are stored as lines rather than polygons. However, these
-> boundaries, when represented as a line, will not create a closed object with a defined "area" that can be "filled".
+> boundaries, when represented as a line, will not create a closed object with a defined area that can be filled.
 {: .callout}
 
-A point is just a single coordinate pair. A line made when at least two points are grouped
-together. A polygon requires at least three points, and then a fourth point that matches the
-first one, closing the loop. The points that make up lines and polygons also need to be arranged
-in a sensible sequence to be valid - if you draw straight lines between each point, those lines
-should never cross. Following these rules makes it possible to do complex geometric operations
-by layering vector datasets together.
+> ## Identify Vector Types
+> 
+> The plot below includes examples of two of the three types of vector
+> objects. Use the definitions above to identify which features
+> are represented by which vector type.
+> 
+> ```{r, echo = FALSE}
+> ggplot() +
+>   geom_sf(data = NE.States.Boundary.US, aes(color ="color"), 
+>       show.legend = "line") +
+>     scale_color_manual(name = "", labels = "State Boundary", 
+>       values = c("color" = "gray18")) +
+>  geom_sf(data = point_HARV, aes(shape = "shape"), color = 
+>     "purple") +
+>    scale_shape_manual(name = "", labels = "Fisher Tower", 
+>       values = c("shape" = 19)) +
+>  ggtitle("Fisher Tower location in Harvard Forest field site") + 
+>    theme(legend.background = element_rect(color = NA)) 
+> ```
+> 
+> > ## Solution
+> >
+> > State boundaries are polygons. The Fisher Tower location is
+> > a point. There are no line features shown. 
+> {: .solution}
+{: .challenge}
 
 Vector data has some important advantages:  
 
