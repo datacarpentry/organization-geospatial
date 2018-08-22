@@ -1,14 +1,16 @@
 ---
 title: "Introduction to Vector Data"
-teaching: 15
-exercises: 10
+teaching: 10
+exercises: 5
 questions:
  - "What are the main attributes of vector data?"
 objectives:
 - "Describe the strengths and weaknesses of storing data in vector format."
 - "Describe the three types of vectors and identify types of data that would be stored in each."
 keypoints:
- - TBD
+ - "Vector data structures represent specific features on the Earth's surface along with attributes of those features."
+ - "Vector objects are either points, lines, or polygons."
+ - 
 source: Rmd
 ---
 
@@ -97,69 +99,61 @@ countries are often represented by polygons.
 {: .challenge}
 
 Vector data has some important advantages:  
-
   * The geometry itself contains information about what the dataset creator thought was important  
   * The geometry structures hold information in themselves - why choose point over polygon, for instance?  
   * Each geometry feature can carry multiple attributes instead of just one, e.g. a database of cities can have attributes for name, country, population, etc  
   * Data storage can be very efficient compared to rasters  
   
-The downsides of vector data are  
-
+The downsides of vector data include:  
   * potential loss of detail compared to raster  
   * potential bias in datasets - what didn't get recorded?  
-  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math  
+  * Calculations involving multiple vector layers need to do math on the geometry as well as the attributes, so can be slow compared to raster math.
 
-Vector datasets are in use in many industries besides geospatial. For instance, computer
+Vector datasets are in use in many industries besides geospatial fields. For instance, computer
 graphics are largely vector-based, although the data structures in use tend to join points using
 arcs and complex curves rather than straight lines. Computer-aided design (CAD) is also vector-
-based. The difference is, again, that geospatial datasets are accompanied by information tying
+based. The difference is that geospatial datasets are accompanied by information tying
 their features to real-world locations.
 
-## Shapefiles: Points, Lines, and Polygons
-Geospatial data in vector format are often stored in a `shapefile` format.
+## Vector Data Format for this Workshop
+
+Like raster data, vector data can also come in many 
+different formats. For this workshop, we will use the Shapefile
+format which has the extension `.shp`. A `.shp` file stores 
+the geographic coordinates of each vertice in the vector, 
+as well as metadata including: 
+
+1. Extent - the spatial extent of the shapefile (i.e. geographic
+area that the shapefile covers). The spatial extent for a shapefile
+represents the combined extent for all spatial objects in the
+shapefile.
+2. Object type - whether the shapefile includes points, lines, 
+or polygons.
+3. Coordinate Reference System (CRS) - we will introduce this concept in [a later episode](({{ base.url }}/03-crs/)).
+4. Other attributes - ror example, a line shapefile that contains
+the locations of
+streams, might contain the name of each stream. 
+
 Because the structure of points, lines, and polygons are different, each
 individual shapefile can only contain one vector type (all points, all lines
 or all polygons). You will not find a mixture of point, line and polygon
 objects in a single shapefile.
 
-Objects stored in a shapefile often have a set of associated `attributes` that
-describe the data. For example, a line shapefile that contains the locations of
-streams, might contain the associated stream name, stream "order" and other
-information about each stream line object.
+> ## More Resources
+> More about shapefiles can be found on [Wikipedia](https://en.wikipedia.org/wiki/Shapefile)
+{: .callout}
 
-* More about shapefiles can found on
-<a href="https://en.wikipedia.org/wiki/Shapefile" target="_blank">Wikipedia</a>.
-
-### Why not both?  
-
-Very few formats can contain both raster and vector data - in fact, most are even more restrictive
-than that. Vector datasets are usually locked to one geometry type, e.g. points only. Raster
-datasets can usually only encode one data type, for example you can't have a multiband GeoTIFF
-where one layer is integer data and another is floating-point. 
-
-There are sound reasons for this - format standards are easier to define and maintain, and so is
-metadata. The effects of particular data manipulations are more predictable if you are confident
-that all of your input data has the same characteristics. Even so, some limited support for mixed
-vector geometries is available in R's `sf` package, and mixed raster datatypes in `raster`. Such
-objects can only be saved in R's native object storage format, RDS, and should be used with
-caution. 
-
-### Common Storage Formats
-### Vector  
-
-Many vector file formats (particularly ESRI SHP and MapInfo TAB) are really several interrelated
-files on disk - one holding a table of attributes, usually in DBF format, one holding related
-geometric data, and various index and header files. This can make them difficult to move around
-without placing them in an archive format like zip. Despite this and several other problems, the
-Shapefile (SHP) is still the most commonly used vector data format. 
-
-GeoPackage is an SQLite database with an extended definition that allows spatial data storage. It
-has the advantage of being a single file on disk, along with stronger internal rules around data
-and encoding. 
-
-XML and JSON-style formats for vector spatial data also exist, notably KML (popularised in Google
-Earth) and GeoJSON. These formats are commonly used by software developers for delivering
-geospatial data over web services. They have the advantage of being streamable (you don't need to
-download and open a whole file, you can just access part of it), but like any plain-text format,
-file size becomes very large very quickly. GeoJSON also only supports the WGS84 coordinate
-reference system. 
+> ## Why not both?  
+> Very few formats can contain both raster and vector data - in
+> fact, most are even more restrictive
+> than that. Vector datasets are usually locked to one geometry
+> type, e.g. points only. Raster
+> datasets can usually only encode one data type, for example you
+> can't have a multiband GeoTIFF
+> where one layer is integer data and another is floating-point. 
+> There are sound reasons for this - format standards are easier to
+> define and maintain, and so is
+> metadata. The effects of particular data manipulations are more
+> predictable if you are confident
+> that all of your input data has the same characteristics.
+{: .callout}

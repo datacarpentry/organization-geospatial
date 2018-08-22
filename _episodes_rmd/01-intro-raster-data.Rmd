@@ -201,7 +201,7 @@ of changes in resolution.
 ![Resolution image]("../images/dc-spatial-raster/raster_resolution.png")
 (Source: National Ecological Observatory Network (NEON))
 
-## Raster Data Format for this Lesson
+## Raster Data Format for this Workshop
 Raster data can come in many different formats. For this workshop, 
 we will use the GeoTIFF format which has the extension `.tif`. 
 A `.tif` file stores metadata
@@ -217,7 +217,7 @@ metadata:
 1. Extent
 2. Resolution
 3. Coordinate Reference System (CRS) - we will introduce this concept in [a later episode](({{ base.url }}/03-crs/))
-3. Values that represent missing data (`NoDataValue`) - we will introduce this concept in [a later lesson](https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure/index.html).
+4. Values that represent missing data (`NoDataValue`) - we will introduce this concept in [a later lesson](https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure/index.html).
 
 We will discuss these attributes in more detail in [a later lesson](https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure/index.html).
 In that lesson, we will also learn how to use R to extract raster
