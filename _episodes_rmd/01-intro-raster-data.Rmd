@@ -101,10 +101,15 @@ maps include:
 2. Tree height maps classified as short, medium, and tall trees.
 3. Elevation maps classified as low, medium, and high elevation.
 
-![]() 
-Map of the United States showing landcover as categorical data.
-Each color is a different landcover category.  Source: Homer, C.G., et al., 2015, Completion of the 2011 National Land Cover Database for the conterminous United States-Representing a decade of land cover change information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p. 345-354
+![USA landcover classification]("../images/USA_landcover_classification.png")
 
+The map above shows the contiguous United States with landcover as
+categorical data.
+Each color is a different landcover category.  (Source: Homer, C.G., et
+al., 2015, Completion of the 2011 National Land Cover Database for the
+conterminous United States-Representing a decade of land cover change
+information. Photogrammetric Engineering and Remote Sensing, v. 81, no.
+5, p. 345-354)
 
 #### Categorical Elevation Map of the NEON Harvard Forest Site
 The legend of this map shows the colors representing each discrete class.
@@ -136,19 +141,31 @@ coord_equal()
 
 ```
 
-Raster data has some important advantages:
 
-* representation of continuous surfaces
-* potentially very high levels of detail
-* data is 'unweighted' across its extent - the geometry doesn't implicitly highlight
-features (wording?? unbiased?)
-* cell-by-cell calculations can be very fast and efficient
-
-The downsides of raster data are
-
-* very large file sizes as cell size gets smaller
-* currently popular formats don't embed metadata well (more on this later!)
-* can be difficult to represent complex information
+> ## Advantages and Disadvantages
+> 
+> With your neighbor, brainstorm potential advantages and
+> disadvantages of storing data in raster format. Add your
+> ideas to the Etherpad. The Instructor will discuss and
+> add any points that weren't brought up in the small group
+> discussions. 
+> 
+> > ## Solution
+> > Raster data has some important advantages:
+> > 
+> > * representation of continuous surfaces
+> > * potentially very high levels of detail
+> > * data is 'unweighted' across its extent - the geometry doesn't 
+> > implicitly highlight features
+> > * cell-by-cell calculations can be very fast and efficient
+> > 
+> > The downsides of raster data are
+> > 
+> > * very large file sizes as cell size gets smaller
+> > * currently popular formats don't embed metadata well (more on this later!)
+> > * can be difficult to represent complex information
+> {: .solution}
+{: .challenge}
 
 Satellite imagery is probably the most complex raster representation
 you will work with. Satellites like Landsat capture information at
@@ -157,20 +174,29 @@ Final products are split into specific wavelength ranges, so to make
 a colour image of the land surface, one may have to combine red,
 green, and blue datasets.
 
-## Extent
-The spatial extent is the geographic area that the raster data covers.
+## Important Features of Raster Data
 
-<figure>
-<a href="../images/dc-spatial-raster/spatial_extent.png">
-<img src="../images/dc-spatial-raster/spatial_extent.png">
-</a>
-<figcaption> Image Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
-
+### Extent
+The spatial extent is the geographic area that the raster data covers. 
 The spatial extent of an R spatial object represents the geographic "edge" or
 location that is the furthest north, south, east and west. In other words, `extent`
 represents the overall geographic coverage of the spatial object.
+
+![Spatial extent image]("../images/dc-spatial-raster/spatial_extent.png")
+(Image Source: National Ecological Observatory Network (NEON))
+
+> ## Extent Challenge
+> 
+> In the image above, the dashed boxes around each set of objects 
+> seems to imply that the three objects have the same extent. Is this 
+> accurate? If not, which object(s) have a different extent?
+> 
+> > ## Solution
+> > The lines and polygon objects have the same extent. The extent for
+> > the points object is smaller in the vertical direction than the 
+> > other two because there are no points on the line at y = 8.
+> {: .solution}
+{: .challenge}
 
 ## Resolution
 A raster has horizontal (x and y) resolution. This resolution represents the
