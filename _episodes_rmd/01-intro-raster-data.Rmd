@@ -12,7 +12,9 @@ objectives:
 - "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format."
 keypoints:
  - "Raster data is pixelated data where each pixel is associated with a specific location."
- - ""
+ - "Raster data always has an extent and a resolution."
+ - "The extent is the geographical area covered by a raster."
+ - "The resolution is the area covered by each pixel of a raster."
 source: Rmd
 ---
 
@@ -141,7 +143,6 @@ coord_equal()
 
 ```
 
-
 > ## Advantages and Disadvantages
 > 
 > With your neighbor, brainstorm potential advantages and
@@ -159,7 +160,7 @@ coord_equal()
 > > implicitly highlight features
 > > * cell-by-cell calculations can be very fast and efficient
 > > 
-> > The downsides of raster data are
+> > The downsides of raster data are:
 > > 
 > > * very large file sizes as cell size gets smaller
 > > * currently popular formats don't embed metadata well (more on this later!)
@@ -167,19 +168,12 @@ coord_equal()
 > {: .solution}
 {: .challenge}
 
-Satellite imagery is probably the most complex raster representation
-you will work with. Satellites like Landsat capture information at
-multiple wavelengths, from both human-visible and infrared bands.
-Final products are split into specific wavelength ranges, so to make
-a colour image of the land surface, one may have to combine red,
-green, and blue datasets.
-
-## Important Features of Raster Data
+## Important Attributes of Raster Data
 
 ### Extent
 The spatial extent is the geographic area that the raster data covers. 
-The spatial extent of an R spatial object represents the geographic "edge" or
-location that is the furthest north, south, east and west. In other words, `extent`
+The spatial extent of an R spatial object represents the geographic edge or
+location that is the furthest north, south, east and west. In other words, extent
 represents the overall geographic coverage of the spatial object.
 
 ![Spatial extent image]("../images/dc-spatial-raster/spatial_extent.png")
@@ -198,94 +192,58 @@ represents the overall geographic coverage of the spatial object.
 > {: .solution}
 {: .challenge}
 
-## Resolution
-A raster has horizontal (x and y) resolution. This resolution represents the
-area on the ground that each pixel covers. The units for our data are in meters.
-Given our data resolution is 1 x 1, this means that each pixel represents a
-1 x 1 meter area on the ground.
+### Resolution
+A resolution of a raster represents the area on the ground that each
+pixel of the raster covers. The image below illustrates the effect
+of changes in resolution. 
 
-<figure>
-<a href="../images/dc-spatial-raster/raster_resolution.png">
-<img src="../images/dc-spatial-raster/raster_resolution.png">
-</a>
-<figcaption> Source: National Ecological Observatory Network (NEON)
-</figcaption>
-</figure>
+![Resolution image]("../images/dc-spatial-raster/raster_resolution.png")
+(Source: National Ecological Observatory Network (NEON))
 
-## What is a GeoTIFF??
-Raster data can come in many different formats. In this tutorial, we will use the
-geotiff format which has the extension `.tif`. A `.tif` file stores metadata
-or attributes about the file as embedded `tif tags`. For instance, your camera
-might
-store a tag that describes the make and model of the camera or the date the
-photo was taken when it saves a `.tif`. A GeoTIFF is a standard `.tif` image
-format with additional spatial (georeferencing) information embedded in the file
-as tags. These tags can include the following raster metadata:
+## Raster Data Format for this Lesson
+Raster data can come in many different formats. For this workshop, 
+we will use the GeoTIFF format which has the extension `.tif`. 
+A `.tif` file stores metadata
+or attributes about the file as embedded `tif tags`. 
+For instance, your camera might
+store a tag that describes the make and model of the camera 
+or the date the photo was taken when it saves a `.tif`. 
+A GeoTIFF is a standard `.tif` image
+format with additional spatial (georeferencing) information embedded in
+the file as tags. These tags should include the following raster
+metadata:
 
-1. A Coordinate Reference System (`CRS`)
-2. Spatial Extent (`extent`)
-3. Values that represent missing data (`NoDataValue`)
-4. The `resolution` of the data
+1. Extent
+2. Resolution
+3. Coordinate Reference System (CRS) - we will introduce this concept in [a later episode](({{ base.url }}/03-crs/))
+3. Values that represent missing data (`NoDataValue`) - we will introduce this concept in [a later lesson](https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure/index.html).
 
-In this tutorial we will discuss all of these metadata tags.
+We will discuss these attributes in more detail in [a later lesson](https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure/index.html).
+In that lesson, we will also learn how to use R to extract raster
+attributes from
+a GeoTIFF file. 
 
-## More Resources on the  `.tif` format
->
-> * <a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank"> GeoTIFF on Wikipedia</a>
-> * <a href="https://trac.osgeo.org/geotiff/" target="_blank"> OSGEO TIFF documentation</a>
+> ## More Resources on the  `.tif` format
+> * [GeoTIFF on Wikipedia](https://en.wikipedia.org/wiki/GeoTIFF)
+> * [OSGEO TIFF documentation](https://trac.osgeo.org/geotiff/)
 {: .callout}
 
-# Multi-band Raster Data
+## Multi-band Raster Data
 
-## The Basics of Imagery - About Spectral Remote Sensing Data
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3iaFzafWJQE" frameborder="0" allowfullscreen></iframe>
-
-## About Raster Bands in R
-As discussed in the
-[Intro to Raster Data episode]({{ base.url }}/R/Introduction-to-Raster-Data-In-R),
-a raster can contain 1 or more bands.
-
-<figure>
-<a href="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
-<img src="{{ site.baseurl }}/images/dc-spatial-raster/single_multi_raster.png">
-</a>
-<figcaption>A raster can contain one or more bands. We can use the
-raster function to import one single band from a single OR multi-band
-raster.  Source: National Ecological Observatory Network (NEON).</figcaption>
-</figure>
-
-To work with multi-band rasters in R, we need to change how we import and plot
-our data in several ways.
-
-* To import multi band raster data we will use the `stack()` function.
-* If our multi-band data are imagery that we wish to composite, we can use
-`plotRGB()` (instead of `plot()`) to plot a 3 band raster image.
-
-## About Multi-Band Imagery
-One type of multi-band raster dataset that is familiar to many of us is a color
-image. A basic color image consists of three bands: red, green, and blue. Each
-band represents light reflected from the red, green or blue portions of the
-electromagnetic spectrum. The pixel brightness for each band, when composited
+A raster can contain one or more bands. One type of multi-band raster
+dataset that is familiar to many of us is a color
+image. A basic color image consists of three bands: red, green, and blue.
+Each
+band represents light reflected from the red, green or blue portions of
+the
+electromagnetic spectrum. The pixel brightness for each band, when
+composited
 creates the colors that we see in an image.
 
-<figure>
-<a href="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg">
-<img src="{{ site.baseurl }}/images/dc-spatial-raster/RGBSTack_1.jpg"></a>
-<figcaption>A color image consists of 3 bands - red, green and blue. When
-rendered together in a GIS, or even a tool like Photoshop or any other
-image software, they create a color image.
-Source: National Ecological Observatory Network (NEON).
-</figcaption>
-</figure>
+![RGB multi-band raster image]("../images/dc-spatial-raster/RGBSTack_1.jpg")
+(Source: National Ecological Observatory Network (NEON).)
 
 We can plot each band of a multi-band image individually.
-
-> ## Data Tip
-> In many GIS applications, a single band
-> would render as a single image in grayscale. We will therefore use a grayscale
-> palette to render individual bands.
-{: .callout}
 
 ```{r demonstrate-RGB-Image, echo=FALSE}
 library(raster)
@@ -321,27 +279,23 @@ box(col = "white")
 
 ```
 
-In a multi-band dataset, the rasters will always have the same *extent*,
-*CRS* and *resolution*.
+In a multi-band dataset, the rasters will always have the same extent,
+resolution, and CRS.
 
 ```{r reset-par, echo=FALSE, results="hide", warning=FALSE}
 par(original_par) # go back to original par
-
 ```
 
-## Other Types of Multi-band Raster Data
-
-Multi-band raster data might also contain:
-
-1. **Time series:** the same variable, over the same area, over time. Check out
-[Raster Time Series Data in R ]({{site.baseurl}}/R/Raster-Times-Series-Data-In-R/)
-to learn more about time series stacks.
-2. **Multi or hyperspectral imagery:** image rasters that have 4 or more
-(multi-spectral) or more than 10-15 (hyperspectral) bands. Check out the NEON
-Data Skills
-[Imaging Spectroscopy HDF5 in R ]({{site.baseurl}}/HDF5/Imaging-Spectroscopy-HDF5-In-R/)
-episode for more about working with hyperspectral data cubes.
-
-## Common storage formats  
-
-Many geospatial raster formats are just existing image formats with an extended definition that allows CRS information to be embedded in the file. GeoTIFF is one of the most common of these, along with MrSID, JPEG2000 and IMG. Other formats are ASCII-based (GRD, XYZ, ASC), with a few rows of plain-text header information followed by cell values arranged in rows and columns. These are often less useful due to their inefficient storage. More robust, but more complicated formats like NetCDF are available, but not commonly used outside of research. Other formats are industry-specific, like GRIB for meteorology. 
+> ## Other Types of Multi-band Raster Data
+> 
+> Multi-band raster data might also contain:
+> 
+> 1. **Time series:** the same variable, over the same area, over time. 
+> We will be working with time series data in the [Raster Time Series Data in R](https://datacarpentry.org/r-raster-vector-geospatial/12-time-series-raster/index.html) episode.
+> 2. **Multi or hyperspectral imagery:** image rasters that have 4 or
+> more (multi-spectral) or more than 10-15 (hyperspectral) bands. We
+> won't be working with this type of data in this workshop, but you can
+> check out the NEON Data Skills 
+> [Imaging Spectroscopy HDF5 in R](https://www.neonscience.org/hsi-hdf5-r)
+> tutorial if you're interested in working with hyperspectral data cubes.
+{: .callout}
