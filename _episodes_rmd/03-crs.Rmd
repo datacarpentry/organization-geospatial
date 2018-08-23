@@ -94,7 +94,7 @@ required additional parameters depends on what is needed by each specific projec
 > the fruit. What other parameters could be included in this analogy?
 {: .discussion}
 
-## Which CRS/projection should I use?
+## Which projection should I use?
 
 To decide if a projection is right for your data, answer these questions:  
 
