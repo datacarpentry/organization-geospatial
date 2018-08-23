@@ -10,7 +10,6 @@ objectives:
 keypoints:
  - "Vector data structures represent specific features on the Earth's surface along with attributes of those features."
  - "Vector objects are either points, lines, or polygons."
- - 
 source: Rmd
 ---
 
@@ -123,14 +122,14 @@ format which has the extension `.shp`. A `.shp` file stores
 the geographic coordinates of each vertice in the vector, 
 as well as metadata including: 
 
-1. Extent - the spatial extent of the shapefile (i.e. geographic
+* **Extent** - the spatial extent of the shapefile (i.e. geographic
 area that the shapefile covers). The spatial extent for a shapefile
 represents the combined extent for all spatial objects in the
 shapefile.
-2. Object type - whether the shapefile includes points, lines, 
+* **Object type** - whether the shapefile includes points, lines, 
 or polygons.
-3. Coordinate Reference System (CRS) - we will introduce this concept in [a later episode](({{ base.url }}/03-crs/)).
-4. Other attributes - ror example, a line shapefile that contains
+* **Coordinate reference system (CRS)** - we will introduce this concept in [a later episode](({{ base.url }}/03-crs/)).
+* **Other attributes** - ror example, a line shapefile that contains
 the locations of
 streams, might contain the name of each stream. 
 

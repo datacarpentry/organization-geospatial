@@ -9,6 +9,7 @@ objectives:
 - "Interpret a PROJ4 coordinate reference system description."
 keypoints:
  - "All geospatial datasets (raster and vector) are associated with a specific coordinate reference system."
+ - "A coordinate reference system includes datum, projection, and additional parameters specific to the dataset."
 source: Rmd
 ---
 
