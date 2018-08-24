@@ -38,7 +38,7 @@ where the raster is located
 in geographic space. It also tells the mapping software what method should be used to flatten
 or project the raster in geographic space.
 
-![Maps of the United States in different projections]("https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg")
+![Maps of the United States in different projections](https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg)
 
 The above image shows maps of the United States in different projections. Notice the
 differences in shape associated with each projection. These
@@ -151,6 +151,7 @@ zone. Image source: Chrismurf at English Wikipedia, via [Wikimedia Commons](http
 > > * Projection is UTM, zone 18, datum is WGS84, ellipsoid is WGS84.
 > > * The data is in meters.
 > > * The data comes from the eastern US seaboard. 
+> {: .solution}
 {: .challenge}
 
 > ## Other Common Systems
@@ -198,7 +199,7 @@ kind of information. Metadata often has to be stored in a companion file, and
 generated and maintained manually. 
 
 > ## More Resources on CRS
-> *[spatialreference.org](http://spatialreference.org/ref/epsg/) - A comprehensive online library of CRS information.
+> * [spatialreference.org](http://spatialreference.org/ref/epsg/) - A comprehensive online library of CRS information.
 > * [QGIS Documentation - CRS Overview.](https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 > * [Choosing the Right Map Projection.](https://source.opennews.org/en-US/learning/choosing-right-map-projection/)
 > * [NCEAS Overview of CRS in R.](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)
