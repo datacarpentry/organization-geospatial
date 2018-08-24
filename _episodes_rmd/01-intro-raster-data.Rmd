@@ -3,18 +3,18 @@ title: "Introduction to Raster Data"
 teaching: 15
 exercises: 10
 questions:
- - "What format should I use to represent my data?"
- - "What are the main data types used for representing geospatial data?"
- - "What are the main attributes of raster data?"
+- "What format should I use to represent my data?"
+- "What are the main data types used for representing geospatial data?"
+- "What are the main attributes of raster data?"
 objectives:
 - "Describe the difference between raster and vector data."
 - "Describe the strengths and weaknesses of storing data in raster format."
 - "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format."
 keypoints:
- - "Raster data is pixelated data where each pixel is associated with a specific location."
- - "Raster data always has an extent and a resolution."
- - "The extent is the geographical area covered by a raster."
- - "The resolution is the area covered by each pixel of a raster."
+- "Raster data is pixelated data where each pixel is associated with a specific location."
+- "Raster data always has an extent and a resolution."
+- "The extent is the geographical area covered by a raster."
+- "The resolution is the area covered by each pixel of a raster."
 source: Rmd
 ---
 
