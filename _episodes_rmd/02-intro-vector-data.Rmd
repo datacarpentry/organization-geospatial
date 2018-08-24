@@ -3,13 +3,13 @@ title: "Introduction to Vector Data"
 teaching: 10
 exercises: 5
 questions:
- - "What are the main attributes of vector data?"
+- "What are the main attributes of vector data?"
 objectives:
 - "Describe the strengths and weaknesses of storing data in vector format."
 - "Describe the three types of vectors and identify types of data that would be stored in each."
 keypoints:
- - "Vector data structures represent specific features on the Earth's surface along with attributes of those features."
- - "Vector objects are either points, lines, or polygons."
+- "Vector data structures represent specific features on the Earth's surface along with attributes of those features."
+- "Vector objects are either points, lines, or polygons."
 source: Rmd
 ---
 

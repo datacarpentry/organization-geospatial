@@ -3,16 +3,16 @@ title: "The Geospatial Landscape"
 teaching: 10
 exercises: 0
 questions:
- - "What programs and applications are available for working with geospatial data?"
+- "What programs and applications are available for working with geospatial data?"
 objectives:
- - "Describe the difference between various approaches to geospatial computing, and their relative strengths and weaknesses."
+- "Describe the difference between various approaches to geospatial computing, and their relative strengths and weaknesses."
 - "Name some commonly used GIS applications."
 - "Name some commonly used R packages that can access and process spatial data."
 - "Describe pros and cons for working with geospatial data using a command-line versus a graphical user interface."
 keypoints:
- - "Many software packages exist for working with geospatial data."
- - "Command-line programs allow you to automate and reproduce your work."
- - "The RStudio GUI provides a user-friendly interface for working with R."
+- "Many software packages exist for working with geospatial data."
+- "Command-line programs allow you to automate and reproduce your work."
+- "The RStudio GUI provides a user-friendly interface for working with R."
 source: Rmd
 ---
 
