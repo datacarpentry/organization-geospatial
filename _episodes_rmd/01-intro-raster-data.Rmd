@@ -70,9 +70,9 @@ we represent any digital image. A geospatial raster is only different
 from a digital photo in that it is accompanied by spatial information
 that connects the data to a particular location. This includes the
 raster's extent and cell size, the number of rows and columns, and
-its coordinate reference system (or CRS, more on this in [a later episode](({{ base.url }}/03-crs/)).
+its coordinate reference system (or CRS), more on this in [a later episode](({{ base.url }}/03-crs/)).
 
-![Raster Concept]("../images/dc-spatial-raster/raster_concept.png")
+![Raster Concept](../images/dc-spatial-raster/raster_concept.png)
 Source: National Ecological Observatory Network (NEON)
 
 Some examples of continuous rasters include:
@@ -103,7 +103,7 @@ maps include:
 2. Tree height maps classified as short, medium, and tall trees.
 3. Elevation maps classified as low, medium, and high elevation.
 
-![USA landcover classification]("../images/USA_landcover_classification.png")
+![USA landcover classification](../images/USA_landcover_classification.png)
 
 The map above shows the contiguous United States with landcover as
 categorical data.
@@ -177,7 +177,7 @@ The spatial extent of an R spatial object represents the geographic edge or
 location that is the furthest north, south, east and west. In other words, extent
 represents the overall geographic coverage of the spatial object.
 
-![Spatial extent image]("../images/dc-spatial-raster/spatial_extent.png")
+![Spatial extent image](../images/dc-spatial-raster/spatial_extent.png)
 (Image Source: National Ecological Observatory Network (NEON))
 
 > ## Extent Challenge
@@ -198,7 +198,7 @@ A resolution of a raster represents the area on the ground that each
 pixel of the raster covers. The image below illustrates the effect
 of changes in resolution. 
 
-![Resolution image]("../images/dc-spatial-raster/raster_resolution.png")
+![Resolution image](../images/dc-spatial-raster/raster_resolution.png)
 (Source: National Ecological Observatory Network (NEON))
 
 ## Raster Data Format for this Workshop
@@ -241,7 +241,7 @@ electromagnetic spectrum. The pixel brightness for each band, when
 composited
 creates the colors that we see in an image.
 
-![RGB multi-band raster image]("../images/dc-spatial-raster/RGBSTack_1.jpg")
+![RGB multi-band raster image](../images/dc-spatial-raster/RGBSTack_1.jpg)
 (Source: National Ecological Observatory Network (NEON).)
 
 We can plot each band of a multi-band image individually.
