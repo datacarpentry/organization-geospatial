@@ -1,0 +1,19 @@
+Package: rspatialintro
+Imports:
+ checkpoint,
+ devtools,
+ EML,
+ ggmap,
+ ggplot2,
+ gridExtra,
+ hunspell,
+ knitr,
+ methods,
+ purrr,
+ R6,
+ raster,
+ readr,
+ remotes,
+ rgdal,
+ rgeos,
+ stringr
