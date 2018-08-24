@@ -43,7 +43,7 @@ vertices that define the shape of the spatial object. The organization
 of the vertices determines the type of vector that we are working
 with: point, line or polygon.
 
-![Types of vector objects]("../images/dc-spatial-vector/pnt_line_poly.png")
+![Types of vector objects](../images/dc-spatial-vector/pnt_line_poly.png)
 
 (Image Source: National Ecological Observatory Network (NEON))
 
