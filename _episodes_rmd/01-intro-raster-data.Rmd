@@ -104,7 +104,7 @@ maps include:
 2. Tree height maps classified as short, medium, and tall trees.
 3. Elevation maps classified as low, medium, and high elevation.
 
-![USA landcover classification](../fig/USA_landcover_classification.svg)
+![USA landcover classification](../fig/USA_landcover_classification.png)
 
 The map above shows the contiguous United States with landcover as categorical
 data. Each color is a different landcover category. (Source: Homer, C.G., et
