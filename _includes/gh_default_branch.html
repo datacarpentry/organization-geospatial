@@ -2,6 +2,8 @@
 identify the default branch of the GitHub repo for the lesson, to create the correct link for "Improve on GitHub"
 {% endcomment %}
 
+{% if jekyll.environment == "production" %}
+
 {% comment %}
 First, get the name of the repository
 {% endcomment %}
@@ -17,3 +19,22 @@ of the metadata that is relevant to the present repository.
 Now, we can extract the default branch for the repo
 {% endcomment %}
 {% assign default_branch = repo_info[0].default_branch %}
+
+{% comment %}
+Other variables requested by the template
+{% endcomment %}
+{% assign repo_url = site.github.repository_url %}
+{% assign search_domain_url = site.github.url %}
+{% assign project_title = site.github.project_title %}
+{% assign source_branch = site.github.source.branch %}
+
+{% elsif jekyll.environment == "development" %}
+
+{% assign repo_name = "" %}
+{% assign repo_url = "" %}
+{% assign default_branch = "" %}
+{% assign search_domain_url = "" %}
+{% assign project_title = "" %}
+{% assign source_branch = "" %}
+
+{% endif %}
