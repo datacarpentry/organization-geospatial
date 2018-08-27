@@ -1,0 +1,5 @@
+{% if jekyll.environment == "development" %}
+{% assign github_metadata = [] %}
+{% elsif jeykyll.environment == "production" %}
+{% assign github_metadata = site.github %}
+{% endif %}
