@@ -45,7 +45,7 @@ licenses and price points. Some of the most common are listed below.
   * [Hexagon Geospatial Power Portfolio](https://www.hexagongeospatial.com/products/power-portfolio) 
   includes many geospatial tools including ERDAS Imagine, a powerful remotely sensed
   image processing platform.
-  * [Manifold](http://www.manifold.net/) is a desktop GIS that emphasies speed through
+  * [Manifold](http://www.manifold.net/) is a desktop GIS that emphasizes speed through
   the use of parallel and GPU processing. 
 
 ### Open-source software 
@@ -156,3 +156,4 @@ Traditional GIS apps are also moving back towards providing a scripting environm
 users, further blurring the CLI/GUI divide. ESRI have adopted Python into their
 software, and QGIS is both Python and R-friendly.
 
+{% include links.md %}
