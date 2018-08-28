@@ -3,6 +3,8 @@ layout: page
 title: "Instructor Notes"
 ---
 
+{% include base_path.html %}
+
 ## Instructor notes
 
 ## Lesson motivation and learning objectives
