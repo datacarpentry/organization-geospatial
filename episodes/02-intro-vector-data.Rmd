@@ -123,7 +123,7 @@ the shapefile covers). The spatial extent for a shapefile represents the
 combined extent for all spatial objects in the shapefile.
 * **Object type** - whether the shapefile includes points, lines, or polygons.
 * **Coordinate reference system (CRS)**
-* **Other attributes** - ror example, a line shapefile that contains the
+* **Other attributes** - for example, a line shapefile that contains the
 locations of streams, might contain the name of each stream.
 
 Because the structure of points, lines, and polygons are different, each
