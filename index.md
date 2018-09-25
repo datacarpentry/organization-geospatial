@@ -6,7 +6,7 @@ The goal of this lesson is to provide an introduction to core geospatial
 data concepts. It is intended as a pre-requisite for 
 the [R for Raster and Vector Data](https://datacarpentry.org/r-raster-vector-geospatial/) lesson
 for learners who have no prior experience working with geospatial data. This lesson can
-be taught in approximately 75 minutes hours and covers the following topics:
+be taught in approximately 75 minutes and covers the following topics:
 
 - Introduction to raster and vector data format and attributes
 - Examples of data types commonly stored in raster vs vector format
