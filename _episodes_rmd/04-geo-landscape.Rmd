@@ -77,7 +77,7 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
   * [PostGIS](https://postgis.net/) is a geospatial extension to the PostGreSQL
   relational database.
 
-### Online GUI/ Cloud computing
+### Online + Cloud computing
 
   * Google has created [Google Earth Engine](https://earthengine.google.com/) which
   combines a multi-petabyte catalog of satellite imagery and geospatial datasets with
@@ -87,6 +87,16 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
   runs in both Python and JavaScript.
   * [ArcGIS Online](http://www.arcgis.com/features/features.html) provides access to
   thousands of maps and base layers.
+
+Private companies have that released SDK platforms for large scale GIS analysis:
+
+ * [Kepler.gl](http://kepler.gl/#/) is Uber's toolkit for handling large datasets (i.e. Uber's data archive).
+ * [Boundless Geospatial](https://boundlessgeo.com/) is built upon OSGEO software for enterprise solutions. 
+
+Publically funded open-source platforms for large scale GIS analysis:
+
+ * [PanGEO](http://pangeo.io/) for the Earth Sciences. 
+ * [Sepal.io](https://sepal.io/) by [FAO Openforis](http://www.openforis.org/tools/geospatial-toolkit.html) utilizing EOS satellite imagery and cloud resources for global forest monitoring.
 
 ## GUI vs CLI 
 
