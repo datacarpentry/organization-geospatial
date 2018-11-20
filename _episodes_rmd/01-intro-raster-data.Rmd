@@ -61,7 +61,7 @@ that they can be used to represent.
 
 ## About Raster Data
 
-Raster data is any pixelated (or grided) data where each pixel is associated
+Raster data is any pixelated (or gridded) data where each pixel is associated
 with a specific geographical location. The value of a pixel can be
 continuous (e.g. elevation) or categorical (e.g. land use). If this sounds
 familiar, it is because this data structure is very common: it's how
