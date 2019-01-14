@@ -35,8 +35,10 @@ To most effectively use these materials, **please make sure to download the data
 ## About the Data
 The data and lessons in this workshop were originally developed through a hackathon funded by the National Ecological Observatory Network (NEON) - an NSF funded observatory in Boulder, Colorado - in collaboration with Data Carpentry, SESYNC and CYVERSE. NEON is collecting data for 30 years to help scientists understand how aquatic and terrestrial ecosystems are changing. The data used in these lessons cover two NEON field sites:  
 \
-Harvard Forest (HARV) - Massachusetts, USA  
-San Joaquin Experimental Range (SJER) - California, USA  
+\
+**Harvard Forest (HARV)** - Massachusetts, USA  
+\
+**San Joaquin Experimental Range (SJER)** - California, USA  
 
 ## The Files
 | Dataset | File name | Description |
@@ -54,10 +56,11 @@ San Joaquin Experimental Range (SJER) - California, USA
 | [Introduction to Geospatial Raster and Vector Data with R](http://www.datacarpentry.org/r-raster-vector-geospatial) | Open, work with, and plot vector and raster-format spatial data in R. |
 
 ## Sticky Notes
-Each learner has two sticky notes - green and pink
-* If you are following along well, or have completed an exercise, put the green sticky note on your laptop  
+Each learner has two sticky notes - green and pink  
 \
-* If you run into a problem and need help,  put up the pink one and a helper can assist them.  
+- If you are following along well, or have completed an exercise, put the green sticky note on your laptop  
+\
+- If you run into a problem and need help,  put up the pink one and a helper can assist them.  
 \
 \
 
@@ -72,20 +75,20 @@ Each learner has two sticky notes - green and pink
 
 ## Rasters
 Questions:  
-- "What format should I use to represent my data?"
-- "What are the main data types used for representing geospatial data?"
-- "What are the main attributes of raster data?"  
+- What format should I use to represent my data?  
+- What are the main data types used for representing geospatial data?  
+- What are the main attributes of raster data?  
 \
 Objectives:  
-- "Describe the difference between raster and vector data."
-- "Describe the strengths and weaknesses of storing data in raster format."
-- "Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format."  
+- Describe the difference between raster and vector data.  
+- Describe the strengths and weaknesses of storing data in raster format.  
+- Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format.    
 \
 Keypoints:
-- "Raster data is pixelated data where each pixel is associated with a specific location."
-- "Raster data always has an extent and a resolution."
-- "The extent is the geographical area covered by a raster."
-- "The resolution is the area covered by each pixel of a raster."
+- Raster data is pixelated data where each pixel is associated with a specific location.  
+- Raster data always has an extent and a resolution.  
+- The extent is the geographical area covered by a raster.  
+- The resolution is the area covered by each pixel of a raster.
 
 ## What is a Raster
 ```{r load-libraries-1, results='hide', echo=FALSE, message=FALSE}
@@ -116,9 +119,10 @@ ggplot() +
 ```
 
 ## Rasters with Categorical Data
-![USA landcover classification](../fig/USA_landcover_classification.png){width=85%}
+![USA landcover classification](../fig/USA_landcover_classification.png){width=75%}
 
 ## Rasters with Categorical Data
+
 ```{r classified-elevation-map, echo=FALSE, warning=FALSE, message=FALSE}
 # Load raster into R
 DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
@@ -190,8 +194,7 @@ axes = FALSE)
 original_par <- par() # create original par for easy reversal at end
 par(col.axis = "white", col.lab = "white", tck = 0)
 plotRGB(RGB_stack_HARV, r = 1, g = 2, b = 3,
-axes = TRUE,
-main = "3 Band Color Composite Image\n NEON Harvard Forest Field Site")
+axes = TRUE)
 box(col = "white")
 
 ```
@@ -219,18 +222,18 @@ point_HARV <- st_read("data/NEON-DS-Site-Layout-Files/HARV/HARVtower_UTM18N.shp"
 
 ## Vector Objects
 Questions:  
-- "What are the main attributes of vector data?"  
+- What are the main attributes of vector data?  
 \
-Objectives:
-- "Describe the strengths and weaknesses of storing data in vector format."
-- "Describe the three types of vectors and identify types of data that would be stored in each."  
+Objectives:  
+- Describe the strengths and weaknesses of storing data in vector format.  
+- Describe the three types of vectors and identify types of data that would be stored in each.    
 \
-Keypoints:
-- "Vector data structures represent specific features on the Earth's surface along with attributes of those features."
-- "Vector objects are either points, lines, or polygons."
+Keypoints:  
+- Vector data structures represent specific features on the Earth's surface along with attributes of those features.  
+- Vector objects are either points, lines, or polygons.  
 
 ## Types of Vector Objects
-![Types of vector objects](../fig/dc-spatial-vector/pnt_line_poly.png){width=95%}
+![Types of vector objects](../fig/dc-spatial-vector/pnt_line_poly.png){width=75%}
 
 ## Exercise: Identify these Vector Types
 ```{r, echo = FALSE}
@@ -269,15 +272,15 @@ ggplot() +
 
 ## CRS
 Questions:  
-* "What is a coordinate reference system and how do I interpret one?"  
+- What is a coordinate reference system and how do I interpret one?  
 \
 Objectives:  
-* "Name some common schemes for describing coordinate reference systems."
-* "Interpret a PROJ4 coordinate reference system description."  
+- Name some common schemes for describing coordinate reference systems.  
+- Interpret a PROJ4 coordinate reference system description.  
 \
 Keypoints:  
-* "All geospatial datasets (raster and vector) are associated with a specific coordinate reference system."
-* "A coordinate reference system includes datum, projection, and additional parameters specific to the
+- All geospatial datasets (raster and vector) are associated with a specific coordinate reference system.  
+- A coordinate reference system includes datum, projection, and additional parameters specific to the dataset.  
 
 ## Projections
 ![Maps of the United States in different projections](https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg){width=95%}
@@ -319,15 +322,26 @@ the data
 ## UTM Zones
 ![The UTM zones across the continental United States.](https://upload.wikimedia.org/wikipedia/commons/8/8d/Utm-zones-USA.svg)
 
+## You can do a lot with those parameters
+![](../fig/jasondavies_maps_640.gif)
+
+See Jason Davies's Map Projection Transitions - https://www.jasondavies.com/maps/transition/
+
 ## Exercise: Reading a PROJ4 String
 Here is a PROJ4 string for one of the datasets we will use in this workshop:  
 \
-`+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0`  
+`+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs`  
+`+ellps=WGS84 +towgs84=0,0,0`  
 \
  
 * What projection, zone, datum, and ellipsoid are used for this data?
 * What are the units of the data?
 * Using the map above, what part of the United States was this data collected from?
+
+## Need help choosing a projection
+See http://projectionwizard.org/ 
+
+![](../fig/projection_wizard.png){width=80%}
 
 ## Overview
 1. Introduction to Raster Data	
@@ -340,18 +354,18 @@ Here is a PROJ4 string for one of the datasets we will use in this workshop:
 
 ## The Landscape of GIS
 Questions:  
-- "What programs and applications are available for working with geospatial data?"  
+- What programs and applications are available for working with geospatial data?    
 \
 Objectives:
-- "Describe the difference between various approaches to geospatial computing, and their relative strengths and weaknesses."
-- "Name some commonly used GIS applications."
-- "Name some commonly used R packages that can access and process spatial data."
-- "Describe pros and cons for working with geospatial data using a command-line versus a graphical user interface."  
+- Describe the difference between various approaches to geospatial computing, and their relative strengths and weaknesses.  
+- Name some commonly used GIS applications.  
+- Name some commonly used R packages that can access and process spatial data.  
+- Describe pros and cons for working with geospatial data using a command-line versus a graphical user interface.  
 \
 Keypoints:
-- "Many software packages exist for working with geospatial data."
-- "Command-line programs allow you to automate and reproduce your work."
-- "The RStudio GUI provides a user-friendly interface for working with R."
+- Many software packages exist for working with geospatial data.  
+- Command-line programs allow you to automate and reproduce your work.  
+- The RStudio GUI provides a user-friendly interface for working with R.  
 
 
 ## Benefits of using a GUI
@@ -372,3 +386,11 @@ Keypoints:
 * `raster` for working with raster data  
 \
 * `rgdal` for an R-friendly GDAL interface
+
+## Additional Resources for Learning
+* [Geocomputation with R](https://geocompr.robinlovelace.net/) by Lovelace et al.  
+     - Great online book covering materials here in depth  
+\
+* [Spatial Data Science](http://r-spatial.org/book) by Edzer Pebsma and Roger Bivand
+     - Online book in progress by authors of many R spatial packages   
+     - Covers emerging packages, such as `stars` for spatio-temporal rasters
