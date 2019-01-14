@@ -30,7 +30,7 @@ library(rgdal)
 library(ggplot2)
 ```
 
-```{r, results = 'hide', echo = FALSE, message = FALSE}
+```{r load-dsm, results = 'hide', echo = FALSE, message = FALSE}
 # load data needed to generate figures
 # for demonstration only - learners do not need this data for this lesson
 DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
