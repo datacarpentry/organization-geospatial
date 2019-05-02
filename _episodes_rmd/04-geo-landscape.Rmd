@@ -55,7 +55,7 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
   * [QGIS](https://www.qgis.org/en/site/) is a professional GIS application that is
   built on top of and proud to be itself Free and Open Source Software (FOSS). QGIS is
   written in Python, but has several interfaces written in R including
-  [RQGIS](https://cran.r-project.org/web/packages/RQGIS/index.html). 
+  [RQGIS](https://cran.r-project.org/package=RQGIS). 
   * [GRASS GIS](https://grass.osgeo.org/), commonly referred to as GRASS 
   (Geographic Resources Analysis Support System), is a FOSS-GIS software suite used for
   geospatial data management and analysis, image processing, graphics and maps
