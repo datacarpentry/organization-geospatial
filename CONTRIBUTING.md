@@ -127,7 +127,7 @@ In brief:
         make changes on your desktop and push to your branch on GitHub:
         the pull request will update automatically.
 
-3.  This repository contains two repositories for storing the lesson episodes: 
+3.  This repository contains two repositories for storing the lesson episodes:
 `_episodes` and `_episodes_rmd`. To modify episodes, make changes to the
 files in the `_episodes_rmd` directory **NOT** the `_episodes` directory.
 The Markdown files in `_episodes` render automatically from the RMarkdown
@@ -154,8 +154,8 @@ You can also [reach us by email][contact].
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
 [how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
-[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues
-[repo]: https://github.com/swcarpentry/r-novice-gapminder
+[issues]: https://github.com/datacarpentry/organization-geospatial/issues
+[repo]: https://github.com/datacarpentry/organization-geospatial
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
 [swc-site]: http://software-carpentry.org/
