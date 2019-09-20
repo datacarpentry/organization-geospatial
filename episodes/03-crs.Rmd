@@ -1,7 +1,7 @@
 ---
 title: "Coordinate Reference Systems"
-teaching: 15
-exercises: 10
+teaching: 10
+exercises: 5
 questions:
 - "What is a coordinate reference system and how do I interpret one?"
 objectives:
