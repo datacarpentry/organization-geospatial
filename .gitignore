@@ -1,5 +1,11 @@
-_site
+*.pyc
+*~
 .DS_Store
+.ipynb_checkpoints
+.sass-cache
+.jekyll-cache/
+__pycache__
+_site
 _config.yml
 .Rproj.user
 .Rhistory
@@ -10,3 +16,9 @@ fig/
 .Rproj.user
 .Rhistory
 .RData
+.bundle/
+.vendor/
+vendor/
+.docker-vendor/
+Gemfile.lock
+.*history
