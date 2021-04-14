@@ -1,0 +1,61 @@
+{
+  "contributors": [
+    {
+      "type": "Editor",
+      "name": "Christopher Prener",
+      "orcid": "0000-0002-4310-9888"
+    },
+    {
+      "type": "Editor",
+      "name": "Tyson Lee Swetnam",
+      "orcid": "0000-0002-6639-7181"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Lauren O'Brien",
+      "orcid": "0000-0002-7336-2171"
+    },
+    {
+      "name": "Joseph Stachelek",
+      "orcid": "0000-0002-5924-2464"
+    },
+    {
+      "name": "Tracy Teal",
+      "orcid": "0000-0002-9180-9598"
+    },
+    {
+      "name": "Dev Paudel",
+      "orcid": "0000-0002-0739-4343"
+    },
+    {
+      "name": "Paul Miller"
+    },
+    {
+      "name": "Anne Fouilloux",
+      "orcid": "0000-0002-1784-2920"
+    },
+    {
+      "name": "Chris Prener",
+      "orcid": "0000-0002-4310-9888"
+    },
+    {
+      "name": "Ethan P White",
+      "orcid": "0000-0001-6728-7745"
+    },
+    {
+      "name": "Katrin Leinweber",
+      "orcid": "0000-0001-5135-5758"
+    },
+    {
+      "name": "Michael Koontz",
+      "orcid": "0000-0002-8276-210X"
+    },
+    {
+      "name": "Whalen"
+    }
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  }
+}
