@@ -175,7 +175,7 @@ Commons](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_
 > CRS has a integer identifier, e.g. WGS84 is EPSG:4326. The downside is that you can only use the
 > CRSs EPSG defines and cannot customise them. Detailed information on the structure of
 > the EPSG dataset is 
-> [available on their website](http://www.epsg.org/GuidanceNotes).
+> [available on their website](https://epsg.org/guidance-notes.html).
 > 
 > * The OGC WKT standard is used by a number of important geospatial apps and software libraries. 
 > WKT is a nested list of geodetic parameters. The structure of the information is 
