@@ -90,8 +90,7 @@ The [Open Source Geospatial Foundation (OSGEO)](http://www.osgeo.org/) supports 
 
 Private companies have that released SDK platforms for large scale GIS analysis:
 
- * [Kepler.gl](http://kepler.gl/#/) is Uber's toolkit for handling large datasets (i.e. Uber's data archive).
- * [Boundless Geospatial](https://boundlessgeo.com/) is built upon OSGEO software for enterprise solutions. 
+ * [Kepler.gl](http://kepler.gl/#/) is Uber's toolkit for handling large datasets (i.e. Uber's data archive). 
 
 Publically funded open-source platforms for large scale GIS analysis:
 
