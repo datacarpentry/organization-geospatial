@@ -1,6 +1,3 @@
----
-layout: base
----
 
 # Contributing
 
