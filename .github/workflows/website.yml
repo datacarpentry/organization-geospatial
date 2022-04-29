@@ -6,7 +6,7 @@ on:
 jobs:
   build-website:
     if: github.repository != 'carpentries/styles' && (github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     defaults:
       run:
         shell: bash
@@ -76,7 +76,7 @@ jobs:
           while read -r cmd
           do
             eval sudo $cmd
-          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "20.04"), sep = "\n")')
+          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "18.04"), sep = "\n")')
 
       - run: make site
       - run: make lesson-check
