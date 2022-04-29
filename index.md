@@ -1,5 +1,7 @@
 ---
 layout: lesson
+root: .
+permalink: index.html
 ---
 
 The goal of this lesson is to provide an introduction to core geospatial
