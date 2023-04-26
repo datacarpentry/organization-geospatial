@@ -73,7 +73,7 @@ A map of elevation for Harvard Forest derived from the [NEON AOP LiDAR sensor](h
 is below. Elevation is represented as continuous numeric variable in this map. The legend
 shows the continuous range of values in the data from around 300 to 420 meters.
 
-<img src="../fig/rmd-01-elevation-map-1.png" title="plot of chunk elevation-map" alt="plot of chunk elevation-map" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-elevation-map-1.png" alt="plot of chunk elevation-map" width="612" style="display: block; margin: auto;" />
 
 Some rasters contain categorical data where each pixel represents a discrete
 class such as a landcover type (e.g., "forest" or "grassland") rather than a
@@ -93,7 +93,7 @@ conterminous United States-Representing a decade of land cover change
 information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p.
 345-354)
 
-<img src="../fig/rmd-01-classified-elevation-map-1.png" title="plot of chunk classified-elevation-map" alt="plot of chunk classified-elevation-map" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-classified-elevation-map-1.png" alt="plot of chunk classified-elevation-map" width="612" style="display: block; margin: auto;" />
 
 The map above shows elevation data for the NEON Harvard Forest field
 site. We will be working with data from this site later in the workshop. 
@@ -213,11 +213,11 @@ creates the colors that we see in an image.
 
 We can plot each band of a multi-band image individually.
 
-<img src="../fig/rmd-01-demonstrate-RGB-Image-1.png" title="plot of chunk demonstrate-RGB-Image" alt="plot of chunk demonstrate-RGB-Image" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-demonstrate-RGB-Image-1.png" alt="plot of chunk demonstrate-RGB-Image" width="612" style="display: block; margin: auto;" />
 
 Or we can composite all three bands together to make a color image.
 
-<img src="../fig/rmd-01-plot-RGB-now-1.png" title="plot of chunk plot-RGB-now" alt="plot of chunk plot-RGB-now" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-plot-RGB-now-1.png" alt="plot of chunk plot-RGB-now" width="612" style="display: block; margin: auto;" />
 
 In a multi-band dataset, the rasters will always have the same extent,
 resolution, and CRS.

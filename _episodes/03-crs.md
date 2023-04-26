@@ -82,14 +82,14 @@ parameters depends on what is needed by each specific projection.
 > * A datum is the choice of fruit to use. Is the earth an orange, a lemon, a
 >   lime, a grapefruit?
 >
-> <img src="../fig/citrus.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+> <img src="../fig/citrus.jpg" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 >
 >  [Image source](https://github.com/MicheleTobias/R-Projections-Workshop)
 > {: .text-center}
 > 
 > A projection is how you peel your orange and then flatten the peel.
 >
-> <img src="../fig/orange-peel-earth.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
+> <img src="../fig/orange-peel-earth.jpg" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
 > [Image source](http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 > {: .text-center}
 > 
