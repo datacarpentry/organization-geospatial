@@ -19,7 +19,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, include=FALSE}
-source("../setup.R")
+source("files/setup.R")
 ```
 
 ## Coordinate Reference Systems

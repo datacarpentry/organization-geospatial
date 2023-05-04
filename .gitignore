@@ -51,7 +51,7 @@ _config.yml
 Gemfile.lock
 _episodes_rmd/data*
 _episodes/
-fig/
+
 .bundle/
 .vendor/
 vendor/

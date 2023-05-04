@@ -22,7 +22,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, include=FALSE}
-source("../setup.R")
+source("files/setup.R")
 ```
 
 ```{r load-libraries-1, results="hide", echo=FALSE, message=FALSE}
