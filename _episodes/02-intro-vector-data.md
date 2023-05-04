@@ -18,6 +18,33 @@ source: Rmd
 
 
 
+~~~
+Error: package or namespace load failed for 'sf' in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/home/runner/work/_temp/Library/sf/libs/sf.so':
+  libproj.so.15: cannot open shared object file: No such file or directory
+~~~
+{: .error}
+
+
+
+~~~
+Error in st_read("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers/Boundary-US-State-NEast.shp"): could not find function "st_read"
+~~~
+{: .error}
+
+
+
+~~~
+Error in st_read("data/NEON-DS-Site-Layout-Files/HARV/HARV_roads.shp"): could not find function "st_read"
+~~~
+{: .error}
+
+
+
+~~~
+Error in st_read("data/NEON-DS-Site-Layout-Files/HARV/HARVtower_UTM18N.shp"): could not find function "st_read"
+~~~
+{: .error}
 
 ## About Vector Data
 
@@ -58,7 +85,11 @@ countries are often represented by polygons.
 > objects. Use the definitions above to identify which features
 > are represented by which vector type.
 > 
-> <img src="../fig/rmd-02-unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
+> 
+> ~~~
+> Error in eval(expr, envir, enclos): object 'NE.States.Boundary.US' not found
+> ~~~
+> {: .error}
 > 
 > > ## Solution
 > >
