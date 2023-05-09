@@ -1,87 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatial01-intro-raster-data.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/01-intro-raster-data.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatial02-intro-vector-data.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/02-intro-vector-data.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatial03-crs.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/03-crs.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatial04-geo-landscape.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/04-geo-landscape.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatial404.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/404.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialCODE_OF_CONDUCT.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialLICENSE.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_1.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/aio.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_10.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_1.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_15.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_10.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_20.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_15.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_30.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_20.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_5.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_30.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_graticules_all/ne_110m_wgs84_bounding_box.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_graticules_5.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialdata/Global/Boundaries/ne_110m_land/ne_110m_land.README.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_graticules_all/ne_110m_wgs84_bounding_box.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialindex.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/data/Global/Boundaries/ne_110m_land/ne_110m_land.README.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/01-intro-raster-data.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/images.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/02-intro-vector-data.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/index.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/03-crs.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/01-intro-raster-data.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/04-geo-landscape.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/02-intro-vector-data.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/404.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/03-crs.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/04-geo-landscape.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/LICENSE.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/index.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/profiles.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialinstructor/reference.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialprofiles.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://datacarpentry.github.io/organization-geospatialreference.html</loc>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/organization-geospatial/reference.html</loc>
   </url>
 </urlset>
