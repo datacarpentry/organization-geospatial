@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.0",
+    "Version": "4.3.1",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -762,7 +762,6 @@
       "Package": "httpuv",
       "Version": "1.6.9",
       "Source": "Repository",
-      "Repository": "RSPM",
       "RemoteType": "repository",
       "RemoteUrl": "https://github.com/rstudio/httpuv",
       "RemoteRef": "v1.6.9",
@@ -1002,12 +1001,6 @@
       "Version": "0.12",
       "Source": "Repository",
       "Repository": "RSPM",
-      "RemoteType": "standard",
-      "RemotePkgRef": "mime",
-      "RemoteRef": "mime",
-      "RemoteRepos": "https://cran.rstudio.com",
-      "RemotePkgPlatform": "source",
-      "RemoteSha": "0.12",
       "Requirements": [
         "tools"
       ],
@@ -1054,7 +1047,7 @@
       "Package": "openssl",
       "Version": "2.0.6",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "https://carpentries.r-universe.dev",
       "Requirements": [
         "askpass"
       ],
