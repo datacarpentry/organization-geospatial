@@ -153,7 +153,7 @@ objects in a single shapefile.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 ## Extent Challenge
-
+![](fig/dc-spatial-vector/spatial_extent.png){alt='Spatial extent image'}
 In the image above, the dashed boxes around each set of objects
 seems to imply that the three objects have the same extent. Is this
 accurate? If not, which object(s) have a different extent?
