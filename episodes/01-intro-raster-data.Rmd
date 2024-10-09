@@ -193,23 +193,6 @@ represents the overall geographic coverage of the spatial object.
 (Image Source: National Ecological Observatory Network (NEON))
 {: .text-center}
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Extent Challenge
-
-In the image above, the dashed boxes around each set of objects
-seems to imply that the three objects have the same extent. Is this
-accurate? If not, which object(s) have a different extent?
-
-:::::::::::::::  solution
-
-## Solution
-
-The lines and polygon objects have the same extent. The extent for
-the points object is smaller in the vertical direction than the
-other two because there are no points on the line at y = 8.
-
-
 
 :::::::::::::::::::::::::
 
