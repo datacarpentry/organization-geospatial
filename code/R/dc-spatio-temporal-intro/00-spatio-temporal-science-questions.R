@@ -2,13 +2,13 @@
 
 # create a map that shows the location of BOTH field sites.
 # add a legend with a point for each site.
-library(rgdal)
-# Read the Shapefile
-State.Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
-          "US-State-Boundaries-Census-2014")
+#library(rgdal)
+library(terra)
 
-Boundary.US <- readOGR("NEON-DS-Site-Layout-Files/US-Boundary-Layers",
-          "US-Boundary-Dissolved-States")
+# Read the Shapefile
+State.Boundary.US <- vect("NEON-DS-Site-Layout-Files/US-Boundary-Layers/US-State-Boundaries-Census-2014.shp")
+
+Boundary.US <- vect("NEON-DS-Site-Layout-Files/US-Boundary-Layers/US-Boundary-Dissolved-States.shp")
 # palette(terrain.colors((50)))
 # palette()
 
@@ -33,12 +33,12 @@ points(x=-119.73228,y=37.10878,
        pch=19)
 
 # add a legend to our map
-legend("bottomleft",
-       legend=c("Harvard Forest (HARV)","San Joachin (SJER)"),
-       pch=19,
-       bty="n",
-       col=c("magenta", "darkgreen"),
-       cex=1.2)
+#legend("bottomleft",
+#       legend=c("Harvard Forest (HARV)","San Joachin (SJER)"),
+#       pch=19,
+#       bty="n",
+#       col=c("magenta", "darkgreen"),
+#       cex=1.2)
 
 
 ## ----sources-of-data, echo=FALSE-----------------------------------------

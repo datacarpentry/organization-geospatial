@@ -1,11 +1,13 @@
 ## ----import-vector, warning=FALSE----------------------------------------
 
 # load libraries required to work with spatial data
-library(raster) # commands to view metadata from vector objects
-library(rgdal) # library of common GIS functions
+#library(raster) # commands to view metadata from vector objects
+# library(rgdal) # library of common GIS functions
+library(terra)
+
 
 # Open shapefile
-roads_HARV <- readOGR("NEON-DS-Site-Layout-Files/HARV","HARV_roads")
+roads_HARV <- vect("NEON-DS-Site-Layout-Files/HARV/HARV_roads.shp")
 
 # view slots available for the object
 slotNames(roads_HARV)
@@ -17,16 +19,17 @@ slotNames(roads_HARV)
 ## ----view-lines-coordinates----------------------------------------------
 
 # view the coordinates for each vertex, for the last feature in the spatial object
-roads_HARV@lines[13]
+length(roads_HARV)
+names(roads_HARV)
 
-# view the coordinates for the last feature in the spatial object
-roads_HARV@lines[14]
+geom(roads_HARV[13])
+
 
 
 ## ----view-attributes-----------------------------------------------------
 # view all attributes for a spatial object
 # note, the code below just looks at the first 3 features
-head(roads_HARV@data, 3)
+head(names(roads_HARV), 3)
 
 
 ## ----challenge-code-shapefiles, echo=FALSE-------------------------------
@@ -41,12 +44,9 @@ head(roads_HARV@data, 3)
 
 ## ----import-tif----------------------------------------------------------
 # view attributes for a geotif file
-GDALinfo("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
+CHM_HARV <- rast("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
 
-# import geotiff
-chm_HARV <- raster("NEON-DS-Airborne-Remote-Sensing/HARV/CHM/HARV_chmCrop.tif")
-
-chm_HARV
+CHM_HARV
 
 
 ## ----na-value-tiff, eval=FALSE-------------------------------------------

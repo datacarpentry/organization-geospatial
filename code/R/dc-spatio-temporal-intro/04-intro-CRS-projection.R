@@ -1,28 +1,32 @@
 ## ----lat-long-example----------------------------------------------------
 
-library(rgdal)
+# library(rgdal)
+# library(rgeos)
+# library(raster)
+
+library(terra)
 library(ggplot2)
-library(rgeos)
-library(raster)
+
 
 # be sure to set your working directory
 # setwd("~/Documents/data")
 
 # read shapefile
-worldBound <- readOGR(dsn="Global/Boundaries/ne_110m_land",
-                      layer="ne_110m_land")
+# this data isn't used in the workshop anymore
+#worldBound <- vect("Global/Boundaries/ne_110m_land",
+#                      layer="ne_110m_land")
 
 # convert to dataframe
-worldBound_df <- fortify(worldBound)  
+#worldBound_df <- fortify(worldBound)  
 
 # plot map
-worldMap <- ggplot(worldBound_df, aes(long,lat, group=group)) +
-  geom_polygon() +
-  xlab("Longitude (Degrees)") + ylab("Latitude (Degrees)") +
-  coord_equal() +
-  ggtitle("Global Map - Geographic Coordinate System - WGS84 Datum\n Units: Degrees - Latitude / Longitude")
+#worldMap <- ggplot(worldBound_df, aes(long,lat, group=group)) +
+#  geom_polygon() +
+#  xlab("Longitude (Degrees)") + ylab("Latitude (Degrees)") +
+#  coord_equal() +
+#  ggtitle("Global Map - Geographic Coordinate System - WGS84 Datum\n Units: Degrees - Latitude / Longitude")
 
-worldMap
+# worldMap
 
 
 ## ----add-lat-long-locations----------------------------------------------
