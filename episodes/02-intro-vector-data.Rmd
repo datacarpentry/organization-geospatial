@@ -5,18 +5,17 @@ exercises: 5
 source: Rmd
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::::::::::::::::::::::::::::::::::::::: questions 
+- What are the main attributes of vector data?
+- What is the difference between vector and raster data?
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::: objectives 
 - Describe the strengths and weaknesses of storing data in vector format.
 - Describe the three types of vectors and identify types of data that would be stored in each.
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::: questions
 
-- What are the main attributes of vector data?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, include=FALSE}
 source("files/setup.R")
@@ -24,15 +23,15 @@ source("files/setup.R")
 
 ```{r load-libraries, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
 # load libraries for demonstration code
-library(sf)
+library(terra)
 library(ggplot2)
 
 # read in data for demonstration code
 # learners do not need this data
-NE.States.Boundary.US <- st_read("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers/Boundary-US-State-NEast.shp")
+NE.States.Boundary.US <- vect("data/NEON-DS-Site-Layout-Files/US-Boundary-Layers/Boundary-US-State-NEast.shp")
 
-lines_HARV <- st_read("data/NEON-DS-Site-Layout-Files/HARV/HARV_roads.shp")
-point_HARV <- st_read("data/NEON-DS-Site-Layout-Files/HARV/HARVtower_UTM18N.shp")
+lines_HARV <- vect("data/NEON-DS-Site-Layout-Files/HARV/HARV_roads.shp")
+point_HARV <- vect("data/NEON-DS-Site-Layout-Files/HARV/HARVtower_UTM18N.shp")
 ```
 
 ## About Vector Data
@@ -103,7 +102,7 @@ a point. There are no line features shown.
 
 
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::: 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -148,8 +147,6 @@ individual shapefile can only contain one vector type (all points, all lines
 or all polygons). You will not find a mixture of point, line and polygon
 objects in a single shapefile.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 ## Extent Challenge

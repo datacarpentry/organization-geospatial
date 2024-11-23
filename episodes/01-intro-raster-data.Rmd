@@ -5,36 +5,36 @@ exercises: 10
 source: Rmd
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
-
-- Describe the difference between raster and vector data.
-- Describe the strengths and weaknesses of storing data in raster format.
-- Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: questions
-
+::::: questions
 - What format should I use to represent my data?
 - What are the main data types used for representing geospatial data?
 - What are the main attributes of raster data?
+::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::: objectives
+- Describe the difference between raster and vector data.
+- Describe the strengths and weaknesses of storing data in raster format.
+- Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format.
+:::::
+
+
+
 
 ```{r, include=FALSE}
 source("files/setup.R")
 ```
 
 ```{r load-libraries-1, results="hide", echo=FALSE, message=FALSE}
-library(raster)
-library(rgdal)
+# library(raster)
+# library(rgdal)
+library(terra)
 library(ggplot2)
 ```
 
 ```{r, results="hide", echo=FALSE, message=FALSE}
 # load data needed to generate figures
 # for demonstration only - learners do not need this data for this lesson
-DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+DSM_HARV <- rast("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # convert to a df for plotting
 DSM_HARV_df <- as.data.frame(DSM_HARV, xy = TRUE)
@@ -57,7 +57,7 @@ will be discussed in more detail in [the next episode]({{ base.url }}/02-intro-v
 The [R for Raster and Vector Data](https://datacarpentry.org/r-raster-vector-geospatial/)
 lesson will focus on how to work with both raster and vector
 data sets, therefore it is essential that we understand the
-basic structures of these types of data and the types of data
+basic structures of these types of data, and the types of data
 that they can be used to represent.
 
 ## About Raster Data
@@ -116,13 +116,13 @@ information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p.
 
 ```{r classified-elevation-map, echo=FALSE, warning=FALSE, message=FALSE}
 # Load raster into R
-DSM_HARV <- raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+DSM_HARV <- rast("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 # convert to a df for plotting in two steps,
-# First, to a SpatialPointsDataFrame
-DSM_HARV_pts <- rasterToPoints(DSM_HARV, spatial = TRUE)
+# First, to a SpatVector of points
+DSM_HARV_pts <- as.points(DSM_HARV)
 # Then to a 'conventional' dataframe
-DSM_HARV_df  <- data.frame(DSM_HARV_pts)
+DSM_HARV_df  <- as.data.frame(DSM_HARV_pts, geom="XY", xy=TRUE)
 
 library(ggplot2)
 library(dplyr)
@@ -194,10 +194,6 @@ represents the overall geographic coverage of the spatial object.
 {: .text-center}
 
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ### Resolution
 
 A resolution of a raster represents the area on the ground that each
@@ -261,9 +257,9 @@ creates the colors that we see in an image.
 We can plot each band of a multi-band image individually.
 
 ```{r demonstrate-RGB-Image, echo=FALSE}
-library(raster)
+library(terra)
 # Use stack function to read in all bands
-RGB_stack_HARV <- stack("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
+RGB_stack_HARV <- rast("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
 
 names(RGB_stack_HARV) <- c("Red Band", "Green Band", "Blue Band")
 
