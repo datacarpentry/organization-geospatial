@@ -40,7 +40,8 @@ will use only CRS throughout this workshop.
 The CRS associated with a dataset tells your mapping software (for example R)
 where the raster is located in geographic space. It also tells the mapping
 software what method should be used to flatten or project the raster in
-geographic space.
+geographic space. 
+A CRS could be either in Geographic Coordinates (GCS) where locations are placed on a spherical earth using angular units such as degrees of latitude and longitude, or in Projected Coordinates (PCS) where locations are represented on a flat surface or map using linear units such as meters and feets. 
 
 ![](https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg){alt='Maps of the United States in different projections'}
 
@@ -91,14 +92,14 @@ peel is similar to how projections get made.
 - A datum is the choice of fruit to use. Is the earth an orange, a lemon, a
   lime, a grapefruit?
 
-<img src="fig/citrus.jpg" width="320" style="display: block; margin: auto;" />
+<img src="fig/citrus.jpg" style="display: block; margin: auto;" />
 
 [Image source](https://github.com/MicheleTobias/R-Projections-Workshop)
 {: .text-center}
 
 A projection is how you peel your orange and then flatten the peel.
 
-<img src="fig/orange-peel-earth.jpg" width="856" style="display: block; margin: auto;" />
+<img src="fig/orange-peel-earth.jpg" style="display: block; margin: auto;" />
 
 [Image source](https://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
 {: .text-center}

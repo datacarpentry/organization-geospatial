@@ -5,18 +5,17 @@ exercises: 5
 source: Rmd
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::::::::::::::::::::::::::::::::::::::: questions 
+- What are the main attributes of vector data?
+- What is the difference between vector and raster data?
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::: objectives 
 - Describe the strengths and weaknesses of storing data in vector format.
 - Describe the three types of vectors and identify types of data that would be stored in each.
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::: questions
 
-- What are the main attributes of vector data?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
@@ -67,7 +66,14 @@ The plot below includes examples of two of the three types of vector
 objects. Use the definitions above to identify which features
 are represented by which vector type.
 
-<img src="fig/02-intro-vector-data-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+``` error
+Error in `fortify()`:
+! `data` must be a <data.frame>, or an object coercible by `fortify()`,
+  or a valid <data.frame>-like object coercible by `as.data.frame()`.
+Caused by error in `.prevalidate_data_frame_like_object()`:
+! `dim(data)` must return an <integer> of length 2.
+```
 
 :::::::::::::::  solution
 
@@ -78,7 +84,7 @@ a point. There are no line features shown.
 
 
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::: 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -122,6 +128,27 @@ Because the structure of points, lines, and polygons are different, each
 individual shapefile can only contain one vector type (all points, all lines
 or all polygons). You will not find a mixture of point, line and polygon
 objects in a single shapefile.
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+## Extent Challenge
+![](fig/dc-spatial-vector/spatial_extent.png){alt='Spatial extent image'}
+In the image above, the dashed boxes around each set of objects
+seems to imply that the three objects have the same extent. Is this
+accurate? If not, which object(s) have a different extent?
+
+:::::::::::::::  solution
+
+## Solution
+
+The lines and polygon objects have the same extent. The extent for
+the points object is smaller in the vertical direction than the
+other two because there are no points on the line at y = 8.
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 

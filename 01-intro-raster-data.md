@@ -5,21 +5,20 @@ exercises: 10
 source: Rmd
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
-
-- Describe the difference between raster and vector data.
-- Describe the strengths and weaknesses of storing data in raster format.
-- Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: questions
-
+::::: questions
 - What format should I use to represent my data?
 - What are the main data types used for representing geospatial data?
 - What are the main attributes of raster data?
+::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::: objectives
+- Describe the difference between raster and vector data.
+- Describe the strengths and weaknesses of storing data in raster format.
+- Distinguish between continuous and categorical raster data and identify types of datasets that would be stored in each format.
+:::::
+
+
+
 
 
 
@@ -44,7 +43,7 @@ will be discussed in more detail in [the next episode]({{ base.url }}/02-intro-v
 The [R for Raster and Vector Data](https://datacarpentry.org/r-raster-vector-geospatial/)
 lesson will focus on how to work with both raster and vector
 data sets, therefore it is essential that we understand the
-basic structures of these types of data and the types of data
+basic structures of these types of data, and the types of data
 that they can be used to represent.
 
 ## About Raster Data
@@ -149,27 +148,6 @@ represents the overall geographic coverage of the spatial object.
 (Image Source: National Ecological Observatory Network (NEON))
 {: .text-center}
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Extent Challenge
-
-In the image above, the dashed boxes around each set of objects
-seems to imply that the three objects have the same extent. Is this
-accurate? If not, which object(s) have a different extent?
-
-:::::::::::::::  solution
-
-## Solution
-
-The lines and polygon objects have the same extent. The extent for
-the points object is smaller in the vertical direction than the
-other two because there are no points on the line at y = 8.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Resolution
 

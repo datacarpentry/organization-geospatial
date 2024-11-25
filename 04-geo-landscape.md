@@ -45,6 +45,8 @@ licenses and price points. Some of the most common are listed below.
 - [Hexagon Geospatial Power Portfolio](https://www.hexagongeospatial.com/products/power-portfolio)
   includes many geospatial tools including ERDAS Imagine, a powerful remotely sensed
   image processing platform.
+- [NV5 GEOSPATIAL SOFTWARE](https://www.nv5geospatialsoftware.com/Products/ENVI)
+  ENVI, image analysis and processing software offers geospatial data visualization, processing, and analysis.
 - [Manifold](https://www.manifold.net/) is a desktop GIS that emphasizes speed through
   the use of parallel and GPU processing.
 
