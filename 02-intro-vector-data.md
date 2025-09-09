@@ -68,10 +68,10 @@ are represented by which vector type.
 
 
 ``` error
-Error in `fortify()`:
+Error in `fortify()` at ggplot2/R/layer.R:124:3:
 ! `data` must be a <data.frame>, or an object coercible by `fortify()`,
   or a valid <data.frame>-like object coercible by `as.data.frame()`.
-Caused by error in `.prevalidate_data_frame_like_object()`:
+Caused by error in `.prevalidate_data_frame_like_object()` at ggplot2/R/fortify.R:72:3:
 ! `dim(data)` must return an <integer> of length 2.
 ```
 
