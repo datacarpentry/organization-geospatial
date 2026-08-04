@@ -51,8 +51,6 @@ The above image shows maps of the United States in different projections. Notice
 the differences in shape associated with each projection. These differences are
 a direct result of the calculations used to flatten the data onto a
 2-dimensional map. (Source: opennews.org)
-{: .text-center}
-
 There are lots of great resources that describe coordinate reference systems and
 projections in greater detail. For the purposes of this workshop, what is
 important to understand is that data from the same location but saved in
@@ -99,8 +97,6 @@ knitr::include_graphics("fig/citrus.jpg")
 ```
 
 [Image source](https://github.com/MicheleTobias/R-Projections-Workshop)
-{: .text-center}
-
 A projection is how you peel your orange and then flatten the peel.
 
 ```{r, echo=FALSE, fig.caption="Image of peeled orange with globe"}
@@ -108,8 +104,6 @@ knitr::include_graphics("fig/orange-peel-earth.jpg")
 ```
 
 [Image source](https://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
-{: .text-center}
-
 - An additional parameter could include a definition of the location of the
   stem of the fruit. What other parameters could be included in this analogy?
   
@@ -166,8 +160,6 @@ zone.
 Image source: Chrismurf at English Wikipedia, via [Wikimedia
 Commons](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system#/media/File:Utm-zones-USA.svg)
 (CC-BY).
-{: .text-center}
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Reading a PROJ4 String

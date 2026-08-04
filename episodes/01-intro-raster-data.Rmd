@@ -75,8 +75,6 @@ its coordinate reference system (or CRS).
 ![](fig/dc-spatial-raster/raster_concept.png){alt='Raster Concept'}
 
 Source: National Ecological Observatory Network (NEON)
-{: .text-center}
-
 Some examples of continuous rasters include:
 
 1. Precipitation maps.
@@ -191,9 +189,6 @@ represents the overall geographic coverage of the spatial object.
 ![](fig/dc-spatial-raster/spatial_extent.png){alt='Spatial extent image'}
 
 (Image Source: National Ecological Observatory Network (NEON))
-{: .text-center}
-
-
 ### Resolution
 
 A resolution of a raster represents the area on the ground that each
@@ -203,8 +198,6 @@ of changes in resolution.
 ![](fig/dc-spatial-raster/raster_resolution.png){alt='Resolution image'}
 
 (Source: National Ecological Observatory Network (NEON))
-{: .text-center}
-
 ## Raster Data Format for this Workshop
 
 Raster data can come in many different formats. For this workshop, we will use
@@ -252,8 +245,6 @@ creates the colors that we see in an image.
 ![](fig/dc-spatial-raster/RGBSTack_1.jpg){alt='RGB multi-band raster image'}
 
 (Source: National Ecological Observatory Network (NEON).)
-{: .text-center}
-
 We can plot each band of a multi-band image individually.
 
 ```{r demonstrate-RGB-Image, echo=FALSE}
