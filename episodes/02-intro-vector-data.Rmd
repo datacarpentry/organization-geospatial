@@ -45,8 +45,6 @@ are working with: point, line or polygon.
 ![](fig/dc-spatial-vector/pnt_line_poly.png){alt='Types of vector objects'}
 
 Image Source: National Ecological Observatory Network (NEON)
-{: .text-center}
-
 - **Points:** Each point is defined by a single x, y coordinate. There can be
   many points in a vector point file. Examples of point data include: sampling
   locations, the location of individual trees, or the location of survey plots.
