@@ -61,8 +61,6 @@ its coordinate reference system (or CRS).
 ![](fig/dc-spatial-raster/raster_concept.png){alt='Raster Concept'}
 
 Source: National Ecological Observatory Network (NEON)
-{: .text-center}
-
 Some examples of continuous rasters include:
 
 1. Precipitation maps.
@@ -73,7 +71,7 @@ A map of elevation for Harvard Forest derived from the [NEON AOP LiDAR sensor](h
 is below. Elevation is represented as continuous numeric variable in this map. The legend
 shows the continuous range of values in the data from around 300 to 420 meters.
 
-<img src="fig/01-intro-raster-data-rendered-elevation-map-1.png" style="display: block; margin: auto;" />
+<img src="fig/01-intro-raster-data-rendered-elevation-map-1.png" alt="" style="display: block; margin: auto;" />
 
 Some rasters contain categorical data where each pixel represents a discrete
 class such as a landcover type (e.g., "forest" or "grassland") rather than a
@@ -93,7 +91,7 @@ conterminous United States-Representing a decade of land cover change
 information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p.
 345-354)
 
-<img src="fig/01-intro-raster-data-rendered-classified-elevation-map-1.png" style="display: block; margin: auto;" />
+<img src="fig/01-intro-raster-data-rendered-classified-elevation-map-1.png" alt="" style="display: block; margin: auto;" />
 
 The map above shows elevation data for the NEON Harvard Forest field
 site. We will be working with data from this site later in the workshop.
@@ -146,9 +144,6 @@ represents the overall geographic coverage of the spatial object.
 ![](fig/dc-spatial-raster/spatial_extent.png){alt='Spatial extent image'}
 
 (Image Source: National Ecological Observatory Network (NEON))
-{: .text-center}
-
-
 ### Resolution
 
 A resolution of a raster represents the area on the ground that each
@@ -158,8 +153,6 @@ of changes in resolution.
 ![](fig/dc-spatial-raster/raster_resolution.png){alt='Resolution image'}
 
 (Source: National Ecological Observatory Network (NEON))
-{: .text-center}
-
 ## Raster Data Format for this Workshop
 
 Raster data can come in many different formats. For this workshop, we will use
@@ -207,15 +200,13 @@ creates the colors that we see in an image.
 ![](fig/dc-spatial-raster/RGBSTack_1.jpg){alt='RGB multi-band raster image'}
 
 (Source: National Ecological Observatory Network (NEON).)
-{: .text-center}
-
 We can plot each band of a multi-band image individually.
 
-<img src="fig/01-intro-raster-data-rendered-demonstrate-RGB-Image-1.png" style="display: block; margin: auto;" />
+<img src="fig/01-intro-raster-data-rendered-demonstrate-RGB-Image-1.png" alt="" style="display: block; margin: auto;" />
 
 Or we can composite all three bands together to make a color image.
 
-<img src="fig/01-intro-raster-data-rendered-plot-RGB-now-1.png" style="display: block; margin: auto;" />
+<img src="fig/01-intro-raster-data-rendered-plot-RGB-now-1.png" alt="" style="display: block; margin: auto;" />
 
 In a multi-band dataset, the rasters will always have the same extent,
 resolution, and CRS.

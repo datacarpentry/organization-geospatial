@@ -32,8 +32,6 @@ are working with: point, line or polygon.
 ![](fig/dc-spatial-vector/pnt_line_poly.png){alt='Types of vector objects'}
 
 Image Source: National Ecological Observatory Network (NEON)
-{: .text-center}
-
 - **Points:** Each point is defined by a single x, y coordinate. There can be
   many points in a vector point file. Examples of point data include: sampling
   locations, the location of individual trees, or the location of survey plots.
@@ -68,10 +66,10 @@ are represented by which vector type.
 
 
 ``` error
-Error in `fortify()` at ggplot2/R/layer.R:124:3:
+Error in `fortify()`:
 ! `data` must be a <data.frame>, or an object coercible by `fortify()`,
   or a valid <data.frame>-like object coercible by `as.data.frame()`.
-Caused by error in `.prevalidate_data_frame_like_object()` at ggplot2/R/fortify.R:72:3:
+Caused by error in `check_data_frame_like()`:
 ! `dim(data)` must return an <integer> of length 2.
 ```
 

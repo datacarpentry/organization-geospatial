@@ -49,8 +49,6 @@ The above image shows maps of the United States in different projections. Notice
 the differences in shape associated with each projection. These differences are
 a direct result of the calculations used to flatten the data onto a
 2-dimensional map. (Source: opennews.org)
-{: .text-center}
-
 There are lots of great resources that describe coordinate reference systems and
 projections in greater detail. For the purposes of this workshop, what is
 important to understand is that data from the same location but saved in
@@ -92,18 +90,14 @@ peel is similar to how projections get made.
 - A datum is the choice of fruit to use. Is the earth an orange, a lemon, a
   lime, a grapefruit?
 
-<img src="fig/citrus.jpg" style="display: block; margin: auto;" />
+<img src="fig/citrus.jpg" alt="" style="display: block; margin: auto;" />
 
 [Image source](https://github.com/MicheleTobias/R-Projections-Workshop)
-{: .text-center}
-
 A projection is how you peel your orange and then flatten the peel.
 
-<img src="fig/orange-peel-earth.jpg" style="display: block; margin: auto;" />
+<img src="fig/orange-peel-earth.jpg" alt="" style="display: block; margin: auto;" />
 
 [Image source](https://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/)
-{: .text-center}
-
 - An additional parameter could include a definition of the location of the
   stem of the fruit. What other parameters could be included in this analogy?
   
@@ -160,8 +154,6 @@ zone.
 Image source: Chrismurf at English Wikipedia, via [Wikimedia
 Commons](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system#/media/File:Utm-zones-USA.svg)
 (CC-BY).
-{: .text-center}
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Reading a PROJ4 String
