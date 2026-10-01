@@ -5,12 +5,9 @@
 
 # Geospatial Data Organization
 
-This lesson is built and deployed automatically using the Carpentries' Sandpaper.
+**This curriculum is retired.** The lesson pages remain online but the source repository is archived and no new contributions can be made.
+[Contact The Carpentries](mailto:team@carpentries.org) with your questions.
 
-Good luck.
-
-## Contributing to lesson development
-
-- Each time you push a change to GitHub, SandPaper rebuilds the lesson, and when it's successful (look for the green badge at the top of the README file), it publishes the result at [http://www.datacarpentry.org/organization-geospatial/](https://www.datacarpentry.org/organization-geospatial/)
-
-
+**Looking for an alternative?** The [Geospatial Data Carpentry with R for Urbanists](https://carpentries-incubator.github.io/r-geospatial-urban/) lesson in The Carpentries Incubator is actively maintained and has received good reviews from Instructors who have taught it. 
+The Maintainers of that lesson are inviting feedback from Instructors who have tried teaching it. 
+Why not give that curriculum a try, and [let the developers know whether it worked for your community](https://github.com/carpentries-incubator/r-geospatial-urban/issues/new?template=pilot_workshop_feedback.yml)?
