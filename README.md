@@ -5,12 +5,6 @@
 
 # Geospatial Data Organization
 
-This lesson is built and deployed automatically using the Carpentries' Sandpaper.
-
-Good luck.
-
-## Contributing to lesson development
-
-- Each time you push a change to GitHub, SandPaper rebuilds the lesson, and when it's successful (look for the green badge at the top of the README file), it publishes the result at [http://www.datacarpentry.org/organization-geospatial/](https://www.datacarpentry.org/organization-geospatial/)
-
+**This curriculum is retired.** The lesson pages remain online but the source repository is archived and no new contributions can be made.
+[Contact The Carpentries](mailto:team@carpentries.org) with your questions.
 

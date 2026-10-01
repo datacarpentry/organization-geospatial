@@ -3,6 +3,14 @@ permalink: index.html
 site: sandpaper::sandpaper_site
 ---
 
+:::::::::::::::::::::::::::::::::::::::::: callout
+
+### Lesson Retired
+**This curriculum is retired.** The lesson pages remain online but the source repository is archived and no new contributions can be made.
+[Contact The Carpentries](mailto:team@carpentries.org) with your questions.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 The goal of this lesson is to provide an introduction to core geospatial
 data concepts. It is intended for learners who have no prior experience working with geospatial data, and as a pre-requisite for
 the [R for Raster and Vector Data](https://datacarpentry.org/r-raster-vector-geospatial/) lesson
